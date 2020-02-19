@@ -1,0 +1,2 @@
+module projlab_game {
+}
