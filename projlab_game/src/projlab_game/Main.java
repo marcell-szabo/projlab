@@ -6,6 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		//KUGLÓFAAAASZ
 		//sikerülni fog a push<3
+		//SZERETLEK <3 <3 <3
 
 
 	}
