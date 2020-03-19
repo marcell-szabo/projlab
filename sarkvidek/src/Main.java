@@ -1,4 +1,3 @@
 public Main {
-    
-
+    some code;
 }
