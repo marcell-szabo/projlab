@@ -54,9 +54,7 @@ import java.time.LocalTime;
             event.setBegin(12,30);
             Assert.assertEquals(LocalTime.of(12,30), event.getBegin());
 
-            Assert.assertEquals(LocalTime.of(23,59), event.getEnd());
-            event.setEnd(14,30);
-            Assert.assertEquals(LocalTime.of(14,30), event.getEnd());
+         
 
 
 
