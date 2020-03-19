@@ -46,6 +46,10 @@ import java.time.LocalTime;
             Assert.assertEquals("Teszt", event.getName());
             event.setName("Uj nev");
 
+            Assert.assertEquals(LocalTime.of(6,9), event.getEnd());
+            event.setEnd(6,9);
+            Assert.assertEquals(LocalTime.of(6,9), event.getEnd());
+
             Assert.assertEquals(LocalDate.of(1999,3,9), event.getDate());
             event.setDate(2019,12,1);
             Assert.assertEquals(LocalDate.of(2019,12,1), event.getDate());
