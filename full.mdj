@@ -46331,6 +46331,85 @@
 							"name": "Tester"
 						}
 					]
+				},
+				{
+					"_type": "UMLCollaboration",
+					"_id": "AAAAAAFw83R0YK5KT7E=",
+					"_parent": {
+						"$ref": "AAAAAAFw8xGM0xxsj4k="
+					},
+					"name": "Initialization",
+					"ownedElements": [
+						{
+							"_type": "UMLInteraction",
+							"_id": "AAAAAAFw83R0Ya5L4/w=",
+							"_parent": {
+								"$ref": "AAAAAAFw83R0YK5KT7E="
+							},
+							"name": "Interaction1",
+							"ownedElements": [
+								{
+									"_type": "UMLCommunicationDiagram",
+									"_id": "AAAAAAFw83R0Ya5MStI=",
+									"_parent": {
+										"$ref": "AAAAAAFw83R0Ya5L4/w="
+									},
+									"name": "Initialization",
+									"ownedViews": [
+										{
+											"_type": "UMLFrameView",
+											"_id": "AAAAAAFw83R0Ya5N32U=",
+											"_parent": {
+												"$ref": "AAAAAAFw83R0Ya5MStI="
+											},
+											"model": {
+												"$ref": "AAAAAAFw83R0Ya5MStI="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFw83R0Ya5OugU=",
+													"_parent": {
+														"$ref": "AAAAAAFw83R0Ya5N32U="
+													},
+													"font": "Arial;13;0",
+													"left": 75.97900390625,
+													"top": 10,
+													"width": 68.92626953125,
+													"height": 13,
+													"text": "Initialization"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFw83R0Yq5PLZM=",
+													"_parent": {
+														"$ref": "AAAAAAFw83R0Ya5N32U="
+													},
+													"font": "Arial;13;1",
+													"left": 10,
+													"top": 10,
+													"width": 60.97900390625,
+													"height": 13,
+													"text": "interaction"
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 5,
+											"top": 5,
+											"width": 695,
+											"height": 595,
+											"nameLabel": {
+												"$ref": "AAAAAAFw83R0Ya5OugU="
+											},
+											"frameTypeLabel": {
+												"$ref": "AAAAAAFw83R0Yq5PLZM="
+											}
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			]
 		}
