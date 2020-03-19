@@ -1,3 +1,3 @@
 public class Main {
-    some code;
+    //az intellij jobb mint az eclipse
 }
