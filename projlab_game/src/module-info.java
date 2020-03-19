@@ -1,2 +1,0 @@
-module projlab_game {
-}
