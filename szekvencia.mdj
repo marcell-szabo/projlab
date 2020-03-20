@@ -66700,7 +66700,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 117.07177734375,
+													"left": 112.72998046875,
 													"top": 181,
 													"width": 1,
 													"height": 13
@@ -66714,9 +66714,9 @@
 													"font": "Arial;13;1",
 													"left": 93,
 													"top": 181,
-													"width": 19.07177734375,
+													"width": 14.72998046875,
 													"height": 13,
-													"text": "opt"
+													"text": "alt"
 												},
 												{
 													"_type": "UMLInteractionOperandCompartmentView",
@@ -66846,9 +66846,9 @@
 																	"font": "Arial;13;0",
 																	"left": 108,
 																	"top": 584,
-																	"width": 204.79443359375,
+																	"width": 219.66064453125,
 																	"height": 13,
-																	"text": "[pick up food && heatlimit isn't max]"
+																	"text": "[pick up food && heatlimit unless max]"
 																}
 															],
 															"font": "Arial;13;0",
@@ -70962,7 +70962,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFw9SoNf1B2l8s="
 									},
-									"interactionOperator": "opt",
+									"interactionOperator": "alt",
 									"operands": [
 										{
 											"_type": "UMLInteractionOperand",
@@ -70998,7 +70998,7 @@
 												"$ref": "AAAAAAFw9S5B41Hmr+Y="
 											},
 											"name": "InteractionOperand3",
-											"guard": "pick up food && heatlimit isn't max"
+											"guard": "pick up food && heatlimit unless max"
 										},
 										{
 											"_type": "UMLInteractionOperand",
