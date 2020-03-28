@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Flare extends Item {
+public abstract class Flare extends Item {
 
     /**
      * Default constructor

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Charge extends Item {
+public abstract class Charge extends Item {
 
     /**
      * Default constructor

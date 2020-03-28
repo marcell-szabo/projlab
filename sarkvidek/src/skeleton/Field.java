@@ -67,7 +67,7 @@ public abstract class Field {
      */
     public Result canHelp() {
         // TODO implement here
-        return false;
+        return null;
     }
 
     /**
@@ -86,7 +86,7 @@ public abstract class Field {
      */
     public Result buildIgloo() {
         // TODO implement here
-        return OK;
+        return null;
     }
 
     /**

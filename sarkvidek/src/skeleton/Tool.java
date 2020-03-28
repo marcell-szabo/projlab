@@ -38,7 +38,7 @@ public abstract class Tool extends Item {
 	* Virtuális, üres függvény.
      * @param f
      */
-    virtual public void clean(Field f) {
+    public void clean(Field f) {
         // TODO implement here
     }
 
@@ -48,7 +48,7 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    virtual public Result swim(Field f, Player p) {
+    public Result swim(Field f, Player p) {
         // TODO implement here
         return null;
     }
@@ -59,7 +59,7 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    virtual public Result help(Field f, Player p) {
+    public Result help(Field f, Player p) {
         // TODO implement here
         return null;
     }

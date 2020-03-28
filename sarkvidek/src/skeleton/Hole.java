@@ -19,7 +19,7 @@ public class Hole extends Field {
      */
     public Result storm() {
         // TODO implement here
-        return OK;
+        return null;
     }
 
     /**

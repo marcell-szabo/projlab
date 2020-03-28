@@ -13,6 +13,11 @@ public class Rope extends Item {
     public Rope() {
     }
 
+    @Override
+    public Result pickMeUp(Player p) {
+        return null;
+    }
+
     /**
 	*Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány szeretné magát összehasonlítani vele).
      * @param r 

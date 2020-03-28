@@ -14,15 +14,16 @@ public class Eskimo extends Player {
     }
 
     /**
-     * : Statikus attribútum. Az eszkimó testhő szintjének maximális számát adja meg. 
+     * Statikus attribútum. Az eszkimó testhő szintjének maximális számát adja meg.
      */
-    private static void heatlimit = 5;
+    private static int heatlimit = 5;
 
     /**
      *  A Player osztályban lévő absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza ez a metódus is.
      */
     public Result specialSkill() {
         // TODO implement here
+        return null;
     }
 
 }

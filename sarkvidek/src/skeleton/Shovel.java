@@ -13,6 +13,11 @@ public class Shovel extends Item {
     public Shovel() {
     }
 
+    @Override
+    public Result pickMeUp(Player p) {
+        return null;
+    }
+
     /**
 	* Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát összehasonlítani vele).
      * @param s 

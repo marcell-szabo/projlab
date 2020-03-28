@@ -13,6 +13,11 @@ public class DivingSuit extends Item {
     public DivingSuit() {
     }
 
+    @Override
+    public Result pickMeUp(Player p) {
+        return null;
+    }
+
     /**
 	* Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit példány szeretné magát összehasonlítani vele).
      * @param d - egy olyan DivingSuit példány amivel összehasonlítja magát a függvény hívó példány

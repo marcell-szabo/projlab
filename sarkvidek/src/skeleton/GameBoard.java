@@ -16,8 +16,7 @@ public class GameBoard {
 	/**
      * A táblához tartozó mezők tárolására szolgál.
      */
-    private Field[] fields {
-    }
+    private Field[] fields;
 
     /**
 	* Az átvett játékos-szám alapján létrehozza a mezőket majd eltárolja azokat fields tömbben. Végül meghívja a setNeighbours() függvényt.

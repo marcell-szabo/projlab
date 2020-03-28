@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Gun extends Item {
+public abstract class Gun extends Item {
 
     /**
      * Default constructor
