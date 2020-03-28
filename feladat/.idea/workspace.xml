@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a80934d4-1449-4cc5-a618-64d6c5ecaad2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../sark/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sark/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sark/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/.idea/$CACHE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sarkvidek/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/sarkvidek.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../sarkvidek/sarkvidek.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Boolean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Chance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Charge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/DivingSuit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Eskimo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Explorer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Field.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Flare.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/FlareGun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Food.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/GameBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Gun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Hole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/IceField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Igloo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Rope.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Shovel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Snow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Storm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sarkvidek/src/Tool.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\szabo\Documents\KINGA\projlab\feladat\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Zlx1Qz68fyfpiKHo4tJolNRZL0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sarkvidek" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="skeleton.Main" />
+      <module name="sarkvidek" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="sarkvidek" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="sarkvidek" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a80934d4-1449-4cc5-a618-64d6c5ecaad2" name="Default Changelist" comment="" />
+      <created>1585427266500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585427266500</updated>
+      <workItem from="1585427275482" duration="397000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585427573234">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585427573234" />
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585427566938">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1585427566938" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1585427671448">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585427671448" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1585427673337">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585427673337" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1585427673336">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585427673336" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1585427673336">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585427673336" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1585427673337">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585427673337" />
+  </component>
+</project>
