@@ -2,7 +2,7 @@
 import java.util.*;
 
 /**
- * 
+ * Étel felvételének kezelésére szolgáló osztály.
  */
 public class Food extends Item {
 
@@ -13,18 +13,13 @@ public class Food extends Item {
     }
 
     /**
-     * @param p 
-     * @return
+	* Meghívja a Player osztály increaseHeat() függvényét. Amivel az általa hívott metódus tér vissza, az lesz ennek a függvénynek is a visszatérési értéke.
+     * @param p Player
+     * @return Result
      */
     public Result pickMeUp(Player p) {
         // TODO implement here
         return null;
     }
-
-    /**
-     * @param p 
-     * @return
-     */
-    public abstract Result pickMeUp(Player p);
 
 }

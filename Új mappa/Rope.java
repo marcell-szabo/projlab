@@ -2,7 +2,7 @@
 import java.util.*;
 
 /**
- * 
+ * A kötél felvételére, illetve a köteles kimentés kezelésére szolgáló osztály.
  */
 public class Rope extends Item {
 
@@ -13,6 +13,7 @@ public class Rope extends Item {
     }
 
     /**
+	*Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány szeretné magát összehasonlítani vele).
      * @param r 
      * @return
      */
@@ -22,6 +23,7 @@ public class Rope extends Item {
     }
 
     /**
+	* Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a paraméterként a kapott Field példányt. A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
      * @param f 
      * @param p 
      * @return
@@ -30,11 +32,5 @@ public class Rope extends Item {
         // TODO implement here
         return null;
     }
-
-    /**
-     * @param p 
-     * @return
-     */
-    public abstract Result pickMeUp(Player p);
 
 }
