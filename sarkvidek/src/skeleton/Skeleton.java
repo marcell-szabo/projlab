@@ -15,7 +15,7 @@ public class Skeleton {
         int command = scan.nextInt();
         System.out.println(command);
         switch (command) {
-            case 1: System.out.println("Helyzetváltoztatás");
+            case 1: System.out.print("Helyzetváltoztatás");
                     break;
             case 2: System.out.print("Hó eltakaritása");
                     break;
