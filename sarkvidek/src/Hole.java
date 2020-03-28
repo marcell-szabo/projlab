@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Hole extends Field {
+public abstract class Hole extends Field {
 
     /**
      * Default constructor
