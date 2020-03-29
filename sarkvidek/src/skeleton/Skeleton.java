@@ -10,17 +10,17 @@ public class Skeleton {
 
 
     public void runSkeleton() {
-        System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
-                "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
-                "\n4. Speciális képesség használata\n5. Jelzőrakéta összeszerelése és elsütése\n6. Vihar");
         Scanner scan = new Scanner(System.in);
-        int command = scan.nextInt();
-        System.out.println(command);
         Player p1 = new Eskimo(new Game(), new IceField());
         Player p2 = new Explorer(new Game(), new IceField());
         Result res;
         boolean exit = false;
         while (exit != true) {
+            System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
+                    "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
+                    "\n4. Speciális képesség használata\n5. Jelzőrakéta összeszerelése és elsütése\n6. Vihar");
+            int command = scan.nextInt();
+            System.out.println(command);
             switch (command) {
                 case 1:
                     System.out.print("Helyzetváltoztatás\n");
@@ -32,19 +32,21 @@ public class Skeleton {
                     switch (c) {
                         case "J":
                             d = RIGHT;
+                            p1.move(d);
                             break;
                         case "B":
                             d = LEFT;
+                            p1.move(d);
                             break;
                         case "F":
                             d = UP;
+                            p1.move(d);
                             break;
                         case "L":
                             d = DOWN;
+                            p1.move(d);
                             break;
-                    }
-                    p1.move(d);
-                    break;
+                    }break;
                 case 2:
                     System.out.print("Hó eltakaritása\n");
                     p1.clean();

@@ -146,9 +146,12 @@ public abstract class Player {
      * @return
      */
     public Result move(Direction d) {
+        System.out.print(this.toString() + ".move();\n");
         actualfield.addNeighbour(new Hole(), Direction.RIGHT);
         Field field = actualfield.checkNeighbour(d);
-        return field.stepOn(this);
+        field.stepOn(this);
+        System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
+        return NOTHING;
     }
 
     /**
