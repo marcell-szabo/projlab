@@ -57,17 +57,24 @@ public abstract class Field {
      * @return Field, annak a mezőnek a referenciájával amire lépett
      */
     public Field checkNeighbour(Direction d) {
-        // TODO implement here
-        return null;
+        return neighbours.get(d);
     }
 
     /**
-	* Akkor tér vissza OK értékkel, ha az adott mezőről megoldható a vízbe esett játékos vízből való kimentése. Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét, majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust. Ha legalább egy OK értékkel tér vissza, akkor ő is, különben pedig DIE-al.
+	* Akkor tér vissza OK értékkel, ha az adott mezőről megoldható a vízbe esett játékos vízből való kimentése.
+     * Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét,
+     * majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust.
+     * Ha legalább egy OK értékkel tér vissza, akkor ő is, különben pedig DIE-al.
      * @return Result OK vagy DIE
      */
     public Result canHelp() {
-        // TODO implement here
-        return null;
+        for (Player p : players) {
+            for(Tool t : p.getTools()) {
+                if (t.help(this, p) == Result.OK)
+                    return Result.OK;
+            }
+        }
+        return Result.DIE;
     }
 
     /**

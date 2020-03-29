@@ -24,13 +24,14 @@ public class Hole extends Field {
     }
 
     /**
-	* A Field osztályban lévő absztrakt függvény megvalósítása. Az attribútumként kapott Player példány helpMe() metódusát hívja meg, majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
+	* A Field osztályban lévő absztrakt függvény megvalósítása.
+     * Az attribútumként kapott Player példány helpMe() metódusát hívja meg,
+     * majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
      * @param p erre a mezőre lépő Player
      * @return Result
      */
     public Result stepOn(Player p) {
-        // TODO implement here
-        return null;
+        return p.helpMe();
     }
 
 }

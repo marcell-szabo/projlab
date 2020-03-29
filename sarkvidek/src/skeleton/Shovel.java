@@ -33,7 +33,7 @@ public class Shovel extends Item {
      * @param f
      */
     public void clean(Field f) {
-        // TODO implement here
+        f.clean();
     }
 
 }

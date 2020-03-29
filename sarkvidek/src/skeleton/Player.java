@@ -28,7 +28,7 @@ public abstract class Player {
     /**
      * Tárolja, hogy az adott játékos melyik mezőn áll.
      */
-    private Field actualfireld;
+    private Field actualfield;
 
     /**
      * Tárolja a játékosnál található tárgyakat. 
@@ -55,8 +55,13 @@ public abstract class Player {
      * @return
      */
     public Result clean() {
-        // TODO implement here
-        return null;
+        Result r = actualfield.clean();
+        if (r == Result.OK) {
+            for (Tool t : tools) {
+                t.clean(actualfield);
+            }
+        }
+        return r;
     }
 
     /**
@@ -75,21 +80,38 @@ public abstract class Player {
     public abstract Result specialSkill();
 
     /**
-	* Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét. Ezek után beállítja a jelenlegi játékos actualfield nevű attribútumának értékét a megkapott mezőre. Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni, amivel az általa hívott metódus visszatért.
+	* Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét.
+     * Ezek után beállítja a jelenlegi játékos actualfield nevű attribútumának értékét a megkapott mezőre.
+     * Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
+     * amivel az általa hívott metódus visszatért.
      * @param f 
      * @return
      */
     public Result changeField(Field f) {
-        // TODO implement here
-        return null;
+        actualfield.leaveField(this);
+        actualfield = f;
+        return f.stepOn(this);
     }
 
     /**
-	*Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.  Ezt követően a visszatérési értékek kerülnek vizsgálatra. Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is. Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal. Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára. Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
+	*Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.
+     * Ezt követően a visszatérési értékek kerülnek vizsgálatra.
+     * Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is.
+     * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
+     * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
+     * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
      * @return
      */
     public Result helpMe() {
-        // TODO implement here
+        for (Tool t : tools) {
+            if (t.swim(actualfield, this) != Result.NOTHING)
+                return t.swim(actualfield, this);
+        }
+        for (Direction d: Direction.values()) {
+            if (actualfield.checkNeighbour(d) != null){
+                return actualfield.checkNeighbour(d).canHelp();
+            }
+        }
         return null;
     }
 
@@ -118,8 +140,8 @@ public abstract class Player {
      * @return
      */
     public Result move(Direction d) {
-        // TODO implement here
-        return null;
+        Field field = actualfield.checkNeighbour(d);
+        return field.stepOn(this);
     }
 
     /**

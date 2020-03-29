@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Scanner;
 
+import static skeleton.Direction.*;
+
 public class Skeleton {
 
 
@@ -16,10 +18,32 @@ public class Skeleton {
         Scanner scan = new Scanner(System.in);
         int command = scan.nextInt();
         System.out.println(command);
+        Player p1 = new Eskimo();
         switch (command) {
-            case 1: System.out.print("Helyzetváltoztatás");
+            case 1: System.out.print("Helyzetváltoztatás\n");
+                    System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
+                            "mely irányba szeretne haladni.");
+                    Scanner sc = new Scanner(System.in);
+                    String c = sc.next();
+                    Direction d = UP;
+                    switch (c) {
+                        case "J":
+                            d = RIGHT;
+                            break;
+                        case "B":
+                            d = LEFT;
+                            break;
+                        case "F":
+                            d = UP;
+                            break;
+                        case "L":
+                            d = DOWN;
+                            break;
+                    }
+                    p1.move(d);
                     break;
             case 2: System.out.print("Hó eltakaritása");
+                    p1.clean();
                     break;
             case 3: System.out.print("Tárgy felvétele");
                     break;
