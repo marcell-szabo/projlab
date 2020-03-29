@@ -4,6 +4,7 @@ import javax.print.DocFlavor;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Scanner;
+import static skeleton.Direction.*;
 
 public class Skeleton {
 
@@ -16,6 +17,7 @@ public class Skeleton {
         Scanner scan = new Scanner(System.in);
         int command = scan.nextInt();
         System.out.println(command);
+        Player p1 = new Eskimo();
         switch (command) {
             case 1:
                 System.out.println("Helyzetváltoztatás\n");
