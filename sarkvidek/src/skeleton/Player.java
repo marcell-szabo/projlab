@@ -33,7 +33,7 @@ public abstract class Player {
     /**
      * Tárolja a játékosnál található tárgyakat. 
      */
-    protected Tool[] tools;
+    private List<Tool> tools = new ArrayList<>();
 
     /**
      * Default constructor
@@ -57,12 +57,14 @@ public abstract class Player {
      * @return
      */
     public Result clean() {
+        System.out.print(this.toString() + ".clean();\n");
         Result r = actualfield.clean();
         if (r == Result.OK) {
             for (Tool t : tools) {
                 t.clean(actualfield);
             }
         }
+        System.out.print(this.toString() + ".clean() returned Result r;\n");
         return r;
     }
 
@@ -71,22 +73,8 @@ public abstract class Player {
      * @return
      */
     public Result assemble() {
-        System.out.print(this.toString() + ".assemble();");
-        actualfield.haveAllPlayer(game.getPlayerNumber());
-        System.out.print("Minden játékos egy mezőn tartózkodik? i/n\n");
-        Scanner scan = new Scanner(System.in);
-        char c1 = scan.next().charAt(0);
-        if(c1 == 'i') {
-            game.haveAllParts();
-            System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
-            char c2 = scan.next().charAt(0);
-            if(c2 == 'i') {
-                System.out.print(this.toString() + ".assemble() returned Result WIN;");
-                return Result.WIN;
-            }
-        }
-        System.out.print(this.toString() + "assemble() returned Result ");
-        return Result.NOTHING;
+        // TODO implement here
+        return null;
     }
 
     /**
