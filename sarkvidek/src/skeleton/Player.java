@@ -55,12 +55,14 @@ public abstract class Player {
      * @return
      */
     public Result clean() {
+        System.out.print(this.toString() + ".clean();\n");
         Result r = actualfield.clean();
         if (r == Result.OK) {
             for (Tool t : tools) {
                 t.clean(actualfield);
             }
         }
+        System.out.print(this.toString() + ".clean() returned Result r;\n");
         return r;
     }
 
@@ -87,9 +89,11 @@ public abstract class Player {
      * @param f 
      * @return
      */
-    public Result changeField(Field f) {
+    public Result changeField(Field f){
+        System.out.print(this.toString() + ".changeField(Field f);\n");
         actualfield.leaveField(this);
         actualfield = f;
+        System.out.print(this.toString() + ".changeField(Field f) returned r;\n");
         return f.stepOn(this);
     }
 
@@ -103,15 +107,19 @@ public abstract class Player {
      * @return
      */
     public Result helpMe() {
+        System.out.print(this.toString() + ".helpMe();\n");
         for (Tool t : tools) {
             if (t.swim(actualfield, this) != Result.NOTHING)
+                System.out.print(this.toString() + ".storm() returned Result r;\n");
                 return t.swim(actualfield, this);
         }
         for (Direction d: Direction.values()) {
             if (actualfield.checkNeighbour(d) != null){
+                System.out.print(this.toString() + ".storm() returned Result r;\n");
                 return actualfield.checkNeighbour(d).canHelp();
             }
         }
+        System.out.print(this.toString() + ".storm() returned null;\n");
         return null;
     }
 
@@ -140,7 +148,9 @@ public abstract class Player {
      * @return
      */
     public Result move(Direction d) {
+        System.out.print(this.toString() + ".move();\n");
         Field field = actualfield.checkNeighbour(d);
+        System.out.print(this.toString() + ".move() returned Result r;\n");
         return field.stepOn(this);
     }
 

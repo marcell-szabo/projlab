@@ -31,6 +31,8 @@ public class Hole extends Field {
      * @return Result
      */
     public Result stepOn(Player p) {
+        System.out.print(this.toString() + ".stepOn(Player p);\n");
+        System.out.print(this.toString() + ".stepOn(Player p) returned Result r;\n");
         return p.helpMe();
     }
 

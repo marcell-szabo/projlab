@@ -41,6 +41,7 @@ public class DivingSuit extends Item {
      * @return Result enum
      */
     private Result swim(Hole h, Player p) {
+        System.out.print(this.toString() + ".swim(Hole h, Player p);\n");
         System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
                 "mely irányba szeretne kimászni.");
         Scanner sc = new Scanner(System.in);
@@ -58,8 +59,11 @@ public class DivingSuit extends Item {
         }
             if (h.checkNeighbour(d) == null)
                 swim(h, p);
-            else
+            else {
+                System.out.print(this.toString() + ".swim(Hole h, Player p) returned Result r;\n");
                 return p.changeField(h.checkNeighbour(d));
+            }
+        System.out.print(this.toString() + ".storm() returned null;\n");
         return null;
     }
 

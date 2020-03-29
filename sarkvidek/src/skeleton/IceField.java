@@ -2,10 +2,6 @@ package skeleton;
 
 import java.util.*;
 
-import skeleton.Result;
-
-import static skeleton.Result.OK;
-
 /**
  * Jégtáblák/Jégmezők kezelésére szolgáló osztály. Egyrészt a jégmezők teherbírásának vizsgálatát végzi el, másrészt pedig vihar esetén kezeli, hogy ha az adott mezőn esik a hó, akkor az milyen kritériumok mellett (van-e igloo vagy nincs) milyen következményekkel jár (mezőn levő hórétegek számát mindig növeljük, viszont a testhő csökkentése csak az iglooval védetlen mezőkön történik meg).
  */
@@ -45,13 +41,19 @@ public class IceField extends Field {
     }
 
     /**
-	* A Field osztályban lévő absztrakt függvény megvalósítása. OK értékkel tér vissza, ha az adott mezőn lévő játékosok számát még elbírja a jégtábla. Ellenkező esetben pedig DIE értékkel fog visszatérni.
+	* A Field osztályban lévő absztrakt függvény megvalósítása. OK értékkel tér vissza, ha az adott mezőn lévő játékosok számát még elbírja a jégtábla.
+     * Ellenkező esetben pedig DIE értékkel fog visszatérni.
      * @param p 
      * @return
      */
     public Result stepOn(Player p) {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".stepOn(Player p);\n");
+        if (capacity >= players.size()+1) {
+            System.out.print(this.toString() + ".stepOn(Player p) returned Result r;\n");
+            return Result.OK;
+        }
+        System.out.print(this.toString() + ".stepOn(Player p) returned Result r;\n");
+        return Result.DIE;
     }
 
     /**

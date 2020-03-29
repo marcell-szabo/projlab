@@ -36,6 +36,8 @@ public class Rope extends Item {
      * @return
      */
     public Result help(Field f, Player p) {
+        System.out.print(this.toString() + ".help(Field f, Player p);\n");
+        System.out.print(this.toString() + ".help(Field f, Player p) returned Result r;\n");
         return p.changeField(f);
     }
 

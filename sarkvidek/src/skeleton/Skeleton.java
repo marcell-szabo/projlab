@@ -20,7 +20,7 @@ public class Skeleton {
         System.out.println(command);
         Player p1 = new Eskimo();
         switch (command) {
-            case 1: System.out.print("Helyzetváltoztatás\n");
+            case 1: System.out.println("Helyzetváltoztatás");
                     System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
                             "mely irányba szeretne haladni.");
                     Scanner sc = new Scanner(System.in);
