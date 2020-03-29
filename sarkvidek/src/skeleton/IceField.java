@@ -55,7 +55,7 @@ public class IceField extends Field {
 	* A Field osztályban lévő absztrakt függvény megvalósítása. OK értékkel tér vissza, ha az adott mezőn lévő
      * játékosok számát még elbírja a jégtábla. Ellenkező esetben pedig DIE értékkel fog visszatérni.
      * @param p 
-     * @return
+     * @return Result
      */
     public Result stepOn(Player p) {
         // TODO implement here

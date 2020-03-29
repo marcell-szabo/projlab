@@ -28,7 +28,7 @@ public class Hole extends Field {
      * Az attribútumként kapott Player példány helpMe() metódusát hívja meg,
      * majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
      * @param p erre a mezőre lépő Player
-     * @return Result
+     * @return Result, hogy sikerült-e kimenteni a játékost.
      */
     public Result stepOn(Player p) {
         System.out.print(this.toString() + ".stepOn(Player p);\n");
