@@ -18,7 +18,8 @@ public class Hole extends Field {
      * @return OK
      */
     public Result storm() {
-        // TODO implement here
+        System.out.print(this.toString() + ".storm();\n");
+        System.out.print(this.toString() + ".storm() returned Result r;\n");
         return null;
     }
 

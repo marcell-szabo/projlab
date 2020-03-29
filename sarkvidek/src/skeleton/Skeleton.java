@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Skeleton {
 
+
+
     public void runSkeleton() {
         System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
                             "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
@@ -25,7 +27,9 @@ public class Skeleton {
                     break;
             case 5: System.out.print("Jelzőrakéta összeszerelése");
                     break;
-            case 6: System.out.print("Vihar");
+            case 6: //System.out.print("Vihar");
+                    GameBoard gb = new GameBoard(5);
+                    gb.storm();
                     break;
         }
     }

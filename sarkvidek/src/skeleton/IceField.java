@@ -2,10 +2,18 @@ package skeleton;
 
 import java.util.*;
 
+import skeleton.Result;
+
+import static skeleton.Result.OK;
+
 /**
  * Jégtáblák/Jégmezők kezelésére szolgáló osztály. Egyrészt a jégmezők teherbírásának vizsgálatát végzi el, másrészt pedig vihar esetén kezeli, hogy ha az adott mezőn esik a hó, akkor az milyen kritériumok mellett (van-e igloo vagy nincs) milyen következményekkel jár (mezőn levő hórétegek számát mindig növeljük, viszont a testhő csökkentése csak az iglooval védetlen mezőkön történik meg).
  */
 public class IceField extends Field {
+    /**
+     * Megadja, hogy adott mező tartalmaz-e igloot. (Ha tartalmaz, akkor TRUE az értéke)
+     */
+    private boolean igloo;
 
     /**
      * Default constructor
@@ -14,17 +22,26 @@ public class IceField extends Field {
     }
 
     /**
-     * Megadja, hogy adott mező tartalmaz-e igloot. (Ha tartalmaz, akkor TRUE az értéke)
-     */
-    private boolean igloo;
-
-    /**
 	* A Field osztályban lévő absztrakt függvény megvalósítása. Az adott mező snow attribútumának értékét megnöveli eggyel. Amennyiben az adott mező nem tartalmaz igloo-t, akkor az ilyen mezőn álló játékosokra meghívja a decreaseHeat() metódust. Amivel ez a függvény visszatér, azzal tér vissza a storm() is.
      * @return
      */
     public Result storm() {
-        // TODO implement here
-        return null;
+        Result r = Result.OK;
+        System.out.print(this.toString() + ".storm();\n");
+        System.out.print("Van iglu a jégtáblán? i/n \n");
+        Scanner scan = new Scanner(System.in);
+        char c = scan.next().charAt(0);
+        if(c == 'n') {
+            Eskimo esk = new Eskimo();
+            Explorer exp = new Explorer();
+            players.add(esk);
+            players.add(exp);
+            for(Player p : players) {
+                r = p.decreaseHeat();
+            }
+        }
+        System.out.print(this.toString() + ".storm() returned Result r;\n");
+        return r;
     }
 
     /**

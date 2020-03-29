@@ -2,17 +2,14 @@ package skeleton;
 
 import java.util.*;
 
+import skeleton.Result;
+
+import static skeleton.Result.OK;
+
 /**
  * Játékosok kezelésére szolgáló osztály. A játékosok munkájának és testhőjének vizsgálata mellett a körökben elvégezhető cselekvésekkel foglalkozik. Minden játékos köre addig tart, amíg a work attribútumának értéke nem csökken le nullára. Minden cselekvés, ami az adott esetben engedélyezett, az egy egység munkavégzéssel jár (például tárgy felvétele olyan mezőn, amin még van hóréteg nem engedélyezett, és ilyenkor ez nem is jár munkavégzéssel).
  */
 public abstract class Player {
-
-    /**
-     * Default constructor
-     */
-    public Player() {
-    }
-
     /**
      * Az adott játékos testhő szintjének mennyiségét tárolja.
      */
@@ -37,6 +34,12 @@ public abstract class Player {
      * Tárolja a játékosnál található tárgyakat. 
      */
     private Tool[] tools;
+
+    /**
+     * Default constructor
+     */
+    public Player() {
+    }
 
     /**
 	* Elsőként beállítja a jelenlegi játékos work attribútumának értéket négy egységre, majd végigvárja (egy ciklusban) a játékos lépéseit (míg a work értéke nulla nem lesz, vagy véget nem ér a játék győzelem vagy halál miatt). Futás során az általunk választott cselekvésekhez szükséges függvényeket fogja meghívni. Ha az általa meghívott függvények OK-kal térnek vissza, akkor csökkenti a work értékét eggyel, majd ellenőrzi, hogy ezt követően nem csökkent-e nullára. Amennyiben nem, akkor folytatódik a ciklus futása, ellenben ha ez az érték nullára csökkent, akkor kilép a ciklusból, és a round() metódus OK értékkel tér vissza. Ha futás során bármely függvény DIE vagy WIN visszatérési értékkel rendelkezik, akkor a round() szintén kilép a ciklusából és ugyanazzal fog visszatérni amit kapott. (NOTHING hatására nem csökkenti a work attribútumot, és biztosan benne marad a ciklusban)
@@ -91,12 +94,14 @@ public abstract class Player {
     }
 
     /**
-	* Csökkenti a játékos heat nevű attribútumának értékét eggyel, majd megvizsgálja, hogy mennyi a heat értéke. Amennyiben ez nullára csökkent, akkor DIE, minden más esetben pedig OK  visszatérési értéke lesz. 
+	 * Csökkenti a játékos heat nevű attribútumának értékét eggyel, majd megvizsgálja, hogy mennyi a heat értéke.
+     * Amennyiben ez nullára csökkent, akkor DIE, minden más esetben pedig OK  visszatérési értéke lesz.
      * @return
      */
     public Result decreaseHeat() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".decreaseHeat();\n");
+        System.out.print(this.toString() + ".decreaseHeat() returned Result\n");
+        return Result.OK;
     }
 
     /**

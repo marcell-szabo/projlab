@@ -8,12 +8,6 @@ import java.util.*;
 public abstract class Field {
 
     /**
-     * Default constructor
-     */
-    public Field() {
-    }
-
-    /**
      * Az adott mezőn lévő hóréteg mennyiségét tárolja.
      */
     private int snow;
@@ -21,12 +15,12 @@ public abstract class Field {
     /**
      * Az adott mező teherbíró képességét tárolja el. Stabil jégtábla esetén a max játékosok száma, lyuk esetén pedig nulla az értéke.
      */
-    private int capacity;
+    protected int capacity;
 
     /**
      * Tárolja, hogy az adott mezőn melyik játékosok vannak rajta.
      */
-    private Player[] players;
+    protected List<Player> players = new ArrayList<>();
 
     /**
      * Tárolja a 4 irányban elhelyezkedő mezőt.
@@ -36,7 +30,13 @@ public abstract class Field {
 	/**
      * Tárolja, hogy a mezőn milyen tárgyat lehet felvenni. 
      */
-    private Item item;
+    protected Item item;
+
+    /**
+     * Default constructor
+     */
+    public Field() {
+    }
 
     /**
 	* Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.

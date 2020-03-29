@@ -6,17 +6,21 @@ import java.util.*;
  * Létrehozza, inicializálja, összefogja s egyben tárolja az összes mezőt. Ha az adott körben úgy adta a gép, hogy lesz hóvihar, akkor az előzőek mellett kezeli azt is, hogy melyik mezőkre fog leesni egy réteg hó.
  */
 public class GameBoard {
+	/**
+     * A táblához tartozó mezők tárolására szolgál.
+     */
+    private List<Field> fields = new ArrayList<>();
 
     /**
      * Default constructor
      */
-    public GameBoard() {
+    public GameBoard(int allplayer) {
+        //csak proba, majd sok objektum lesz
+        Hole h = new Hole();
+        fields.add(h);
+        IceField icef = new IceField();
+        fields.add(icef);
     }
-
-	/**
-     * A táblához tartozó mezők tárolására szolgál.
-     */
-    private Field[] fields;
 
     /**
 	* Az átvett játékos-szám alapján létrehozza a mezőket majd eltárolja azokat fields tömbben. Végül meghívja a setNeighbours() függvényt.
@@ -47,8 +51,12 @@ public class GameBoard {
      * @return DIE or OK
      */
     public Result storm() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".storm()\n" );
+        Result r = Result.OK;
+        for (Field f: fields)
+            r = f.storm();
+        System.out.print(this.toString() + ".storm() returned Result r;\n");
+        return r;
     }
 
 }
