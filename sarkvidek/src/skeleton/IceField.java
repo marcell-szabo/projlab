@@ -84,4 +84,131 @@ public class IceField extends Field {
         return null;
     }
 
+    /**
+     *  Megvizsgálja a rajta található hó mennyiségét. Ha ez nulla, és található rajta jégbe fagyott tárgy,
+     *  akkor meghívja az Item osztály pickMeUp(Player) függvényét.
+     *  Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
+     * @return
+     */
+    public Result pickUp(Player p) {
+
+        List<Tool> tools;
+        Result res;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Adja meg a kívánt kódot\n" + "1. Ásó felvétele\n2. Kötél felvétele\n"
+                + "3. Búvárruha felvétele\n4. Étel elfogyasztása\n5. Jelzőrakéta alkatrészének felvétele\n");
+        int tool = scan.nextInt();
+        System.out.println(tool);
+        switch(tool){
+            case 1:
+                System.out.println("Ásó felvétele\n");
+                System.out.println("1. Van már ásója\n2. Nincs ásója\n");
+                int shovel = scan.nextInt();
+                System.out.println(shovel);
+                switch (shovel){
+                    case 1:
+                        System.out.println("Van már ásója\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    case 2:
+                        System.out.println("Nincs ásója\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        item  = new Shovel();
+                        res = item.pickMeUp(p);
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    default:
+                        System.out.println("Helytelen érték\n");
+                        break;
+
+
+                }break;
+            case 2:
+                System.out.println("Kötél felvétele\n");
+                System.out.println("1. Van már kötele\n2. Nincs kötele\n");
+                int rope = scan.nextInt();
+                System.out.println(rope);
+                switch (rope){
+                    case 1:
+                        System.out.println("Van már kötele\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    case 2:
+                        System.out.println("Nincs kötele\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        item = new Rope();
+                        res = item.pickMeUp(p);
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    default:
+                        System.out.println("Helytelen érték\n");
+                        break;
+                }break;
+            case 3:
+                System.out.println("Búvárruha felvétele\n");
+                System.out.println("1. Van már búvárruhája\n2. Nincs búvárruhája\n");
+                int divingsuit = scan.nextInt();
+                System.out.println(divingsuit);
+                switch (divingsuit){
+                    case 1:
+                        System.out.println("Van már búvárruhája\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    case 2:
+                        System.out.println("Nincs búvárruhája\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        item = new DivingSuit();
+                        res = item.pickMeUp(p);
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    default:
+                        System.out.println("Helytelen érték\n");
+                        break;
+                }break;
+            case 4:
+                System.out.println("Étel fogyasztása\n");
+                System.out.println("1. A testője maximumon van\n2. Nincs maximumon a testhője\n");
+                int food = scan.nextInt();
+                System.out.println(food);
+                switch (food){
+                    case 1:
+                        System.out.println("A testője maximumon van\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    case 2:
+                        System.out.println("Nincs maximumon a testhője\n");
+                        System.out.println(this.toString() + ".pickUp(e);");
+                        tools = p.getTools();
+                        item = new Food();
+                        res = item.pickMeUp(p);
+                        System.out.println("ice.pickUp(e) returned Result res;");
+                        break;
+                    default:
+                        System.out.println("Helytelen érték\n");
+                        break;
+                }break;
+            case 5:
+                System.out.println("Jelzőrakéta alkatrészének felvétele\n");
+                System.out.println(this.toString() + ".pickUp(e);");
+                tools = p.getTools();
+                item = new FlareGun();
+                res = item.pickMeUp(p);
+                System.out.println("ice.pickUp(e) returned Result res;");
+                break;
+        }
+        return null;
+    }
+
+
 }
