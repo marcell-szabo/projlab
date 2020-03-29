@@ -14,14 +14,19 @@ public class Eskimo extends Player {
     /**
      * Default constructor
      */
-    public Eskimo() {
+    public Eskimo(Game g, Field actual) {
+        super(g, actual);
     }
 
     /**
-     *  A Player osztályban lévő absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza ez a metódus is.
+     *  A Player osztályban lévő absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt
+     *  Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
+     *  ez a metódus is.
      */
     public Result specialSkill() {
-        // TODO implement here
+        System.out.println(this.toString() + ".specialSkill()");
+        actualfield.buildIgloo();
+        System.out.println(this.toString() + ".specialSkill() returned Result res");
         return null;
     }
 

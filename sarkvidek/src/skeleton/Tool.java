@@ -20,7 +20,7 @@ public abstract class Tool extends Item {
      */
     public Result pickMeUp(Player p) {
         // TODO implement here
-        return null;
+        return Result.NOTHING;
     }
 
     /**
@@ -37,7 +37,7 @@ public abstract class Tool extends Item {
 	* Virtuális, üres függvény.
      * @param f
      */
-    public abstract void clean(Field f);
+    public void clean(Field f){}
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -45,7 +45,9 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    public abstract Result swim(Field f, Player p);
+    public Result swim(Field f, Player p){
+        return Result.NOTHING;
+    }
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -53,7 +55,9 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    public abstract Result help(Field f, Player p);
+    public Result help(Field f, Player p){
+        return Result.NOTHING;
+    }
 
 
 }

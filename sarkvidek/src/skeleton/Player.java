@@ -4,6 +4,7 @@ import java.util.*;
 
 import skeleton.Result;
 
+import static skeleton.Result.NOTHING;
 import static skeleton.Result.OK;
 
 /**
@@ -112,11 +113,12 @@ public abstract class Player {
                 return t.swim(actualfield, this);
         }
         for (Direction d: Direction.values()) {
-            if (actualfield.checkNeighbour(d) != null){
+            Field i = actualfield.checkNeighbour(d);
+            if (i != null){
                 return actualfield.checkNeighbour(d).canHelp();
             }
         }
-        return null;
+        return NOTHING;
     }
 
     /**
@@ -144,6 +146,7 @@ public abstract class Player {
      * @return
      */
     public Result move(Direction d) {
+        actualfield.addNeighbour(new Hole(), Direction.RIGHT);
         Field field = actualfield.checkNeighbour(d);
         return field.stepOn(this);
     }

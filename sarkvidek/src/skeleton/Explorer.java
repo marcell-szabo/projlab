@@ -10,7 +10,8 @@ public class Explorer extends Player {
     /**
      * Default constructor
      */
-    public Explorer() {
+    public Explorer(Game g, Field actual) {
+        super(g, actual);
     }
 
     /**
@@ -23,7 +24,17 @@ public class Explorer extends Player {
      * @return Result - minden esetben OK
      */
     public Result specialSkill(){
-        return null;
+        System.out.println(this.toString() + ".specialSkill()");
+        actualfield.addNeighbour(new IceField(), Direction.RIGHT);
+        for (Direction d: Direction.values()) {
+            Field i = actualfield.checkNeighbour(d);
+            if (i != null){
+                int capacity = i.getCapacity();
+                return Result.NOTHING;
+            }
+        }
+        System.out.println(this.toString() + ".specialSkill() returned Result res");
+        return Result.NOTHING;
     }
 
 }

@@ -25,7 +25,7 @@ public abstract class Field {
     /**
      * Tárolja a 4 irányban elhelyezkedő mezőt.
      */
-    private Map<Direction, Field>  neighbours;
+    private Map<Direction, Field>  neighbours = new EnumMap<>(Direction.class);
 
 	/**
      * Tárolja, hogy a mezőn milyen tárgyat lehet felvenni. 
@@ -57,9 +57,13 @@ public abstract class Field {
      * @return Field, annak a mezőnek a referenciájával amire lépett
      */
     public Field checkNeighbour(Direction d) {
-        System.out.print(this.toString() + ".checkNeighbour(Direction d);\n");
+        System.out.print(this.toString() + ".checkNeighbour(Direction d);\n" + d);
         System.out.print(this.toString() + ".checkNeighbour(Direction d) returned Field f;\n");
         return neighbours.get(d);
+    }
+
+    public void addNeighbour(Field f, Direction d) {
+        neighbours.put(d,f);
     }
 
     /**
@@ -74,12 +78,12 @@ public abstract class Field {
         for (Player p : players) {
             for(Tool t : p.getTools()) {
                 if (t.help(this, p) == Result.OK){
-                    System.out.print(this.toString() + ".storm() returned Result r;\n");
+                    System.out.print(this.toString() + ".canHelp() returned Result r;\n");
                     return Result.OK;
                 }
             }
         }
-        System.out.print(this.toString() + ".storm() returned Result r;\n");
+        System.out.print(this.toString() + ".canHelp() returned Result r;\n");
         return Result.DIE;
     }
 
@@ -98,7 +102,6 @@ public abstract class Field {
      * @return OK
      */
     public Result buildIgloo() {
-        // TODO implement here
         return null;
     }
 
@@ -142,7 +145,8 @@ public abstract class Field {
      * @return kapacitás
      */
     public int getCapacity() {
-        // TODO implement here
+        System.out.println(this.toString() + ".getCapacity();");
+        System.out.println(this.toString() + ".getCapacity() returned int capacity;");
         return 0;
     }
 
