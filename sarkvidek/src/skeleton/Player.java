@@ -13,12 +13,12 @@ public abstract class Player {
     /**
      * Az adott játékos testhő szintjének mennyiségét tárolja.
      */
-    private int heat;
+    protected int heat;
 
     /**
      * Az adott játékos munkájának (szebben megfogalmazva: munkára fordítható energiájának) egységeit tárolja.
      */
-    private int work;
+    protected int work;
 
     /**
      * Tárolja az aktuális játékot.
@@ -28,17 +28,19 @@ public abstract class Player {
     /**
      * Tárolja, hogy az adott játékos melyik mezőn áll.
      */
-    private Field actualfield;
+    protected Field actualfield;
 
     /**
      * Tárolja a játékosnál található tárgyakat. 
      */
-    private Tool[] tools;
+    protected Tool[] tools;
 
     /**
      * Default constructor
      */
-    public Player() {
+    public Player(Game g, Field actual) {
+        game = g;
+        actualfield = actual;
     }
 
     /**
@@ -69,8 +71,22 @@ public abstract class Player {
      * @return
      */
     public Result assemble() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".assemble();");
+        actualfield.haveAllPlayer(game.getPlayerNumber());
+        System.out.print("Minden játékos egy mezőn tartózkodik? i/n\n");
+        Scanner scan = new Scanner(System.in);
+        char c1 = scan.next().charAt(0);
+        if(c1 == 'i') {
+            game.haveAllParts();
+            System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
+            char c2 = scan.next().charAt(0);
+            if(c2 == 'i') {
+                System.out.print(this.toString() + ".assemble() returned Result WIN;");
+                return Result.WIN;
+            }
+        }
+        System.out.print(this.toString() + "assemble() returned Result ");
+        return Result.NOTHING;
     }
 
     /**

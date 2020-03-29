@@ -16,12 +16,12 @@ public class Game {
     /**
      * Az adott játékosokat tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el (beleértve a határokat is).
      */
-    private Player[] players;
+    private List<Player> players;
 
     /**
      * A jelzőrakéta alkotóelemeinek (GUN, FLARE, CHARGE) tárolására szolgál. 
      */
-    private FlareGun[] flare_gun;
+    private List<FlareGun> flare_gun;
 
     /**
      * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát. Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát. Ezt követően a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
@@ -49,7 +49,8 @@ public class Game {
      * @return int player száma
      */
     public int getPlayerNumber() {
-        // TODO implement here
+        System.out.print(this.toString() + ".getPlayerNumber();");
+        System.out.print(this.toString() + ".getPlayerNumber() returned int n;");
         return 0;
     }
 
@@ -74,7 +75,8 @@ public class Game {
      * @return true or false
      */
     public boolean haveAllParts() {
-        // TODO implement here
+        System.out.print(this.toString() + ".haveAllParts();\n");
+        System.out.print(this.toString() + "haveAllParts() returned boolean b;\n");
         return false;
     }
 
