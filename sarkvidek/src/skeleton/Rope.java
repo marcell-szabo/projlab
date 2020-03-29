@@ -37,14 +37,16 @@ public class Rope extends Tool {
     }
 
     /**
-	* Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a paraméterként a kapott Field példányt. A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
+	* Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a paraméterként a kapott Field példányt.
+     * A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
      * @param f 
      * @param p 
      * @return
      */
     public Result help(Field f, Player p) {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".help(Field f, Player p);\n");
+        System.out.print(this.toString() + ".help(Field f, Player p) returned Result r;\n");
+        return p.changeField(f);
     }
 
 }

@@ -57,17 +57,30 @@ public abstract class Field {
      * @return Field, annak a mezőnek a referenciájával amire lépett
      */
     public Field checkNeighbour(Direction d) {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".checkNeighbour(Direction d);\n");
+        System.out.print(this.toString() + ".checkNeighbour(Direction d) returned Field f;\n");
+        return neighbours.get(d);
     }
 
     /**
-	* Akkor tér vissza OK értékkel, ha az adott mezőről megoldható a vízbe esett játékos vízből való kimentése. Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét, majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust. Ha legalább egy OK értékkel tér vissza, akkor ő is, különben pedig DIE-al.
+	* Akkor tér vissza OK értékkel, ha az adott mezőről megoldható a vízbe esett játékos vízből való kimentése.
+     * Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét,
+     * majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust.
+     * Ha legalább egy OK értékkel tér vissza, akkor ő is, különben pedig DIE-al.
      * @return Result OK vagy DIE
      */
     public Result canHelp() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".canHelp();\n");
+        for (Player p : players) {
+            for(Tool t : p.getTools()) {
+                if (t.help(this, p) == Result.OK){
+                    System.out.print(this.toString() + ".storm() returned Result r;\n");
+                    return Result.OK;
+                }
+            }
+        }
+        System.out.print(this.toString() + ".storm() returned Result r;\n");
+        return Result.DIE;
     }
 
     /**
@@ -94,16 +107,24 @@ public abstract class Field {
      * @param p mozgatni kívánt Player
      */
     public void leaveField(Player p) {
-        // TODO implement here
+        System.out.print(this.toString() + ".leaveField(Player p);\n");
+        players.remove(p);
     }
 
     /**
-	* Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti az értékét, majd pedig OK-kal tér vissza. Ellenkező esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.  
+	* Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti az értékét, majd pedig OK-kal tér vissza.
+     * Ellenkező esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.
      * @return OK or NOTHING
      */
     public Result clean() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".clean();\n");
+        if(snow != 0){
+            snow--;
+            System.out.print(this.toString() + ".clean() returned Result r;\n");
+            return Result.OK;
+        }
+        System.out.print(this.toString() + ".clean() returned Result r;\n");
+        return Result.NOTHING;
     }
 
     /**

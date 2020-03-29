@@ -13,7 +13,6 @@ public abstract class Tool extends Item {
     public Tool() {
     }
 
-
     /**
 	* Legelőször a Player osztály getTools() függvénye kerül meghívásra, mely a játékosnál lévő eszközöket tartalmazó listával tér vissza. Ezt követően meghívja a lista minden elemére a Tool osztály isSame(Item) metódusát. Ezután ezeknek a visszatérési értékei kerülnek vizsgálat alá. Amennyiben minden függvény hívást követően csak FALSE visszatérési értékeket kapunk, akkor meghívásra kerül a Player osztály addItem(Item) metódusa, majd ezt követően OK-kal tér vissza. Különben pedig NOTHING lesz a visszatérési érték. 
      * @param p 
@@ -38,9 +37,7 @@ public abstract class Tool extends Item {
 	* Virtuális, üres függvény.
      * @param f
      */
-    public void clean(Field f) {
-        // TODO implement here
-    }
+    public abstract void clean(Field f);
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -48,10 +45,7 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    public Result swim(Field f, Player p) {
-        // TODO implement here
-        return null;
-    }
+    public abstract Result swim(Field f, Player p);
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -59,11 +53,7 @@ public abstract class Tool extends Item {
      * @param p 
      * @return
      */
-    public Result help(Field f, Player p) {
-        // TODO implement here
-        return null;
-    }
+    public abstract Result help(Field f, Player p);
 
-  
 
 }

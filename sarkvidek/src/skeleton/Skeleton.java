@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Skeleton {
 
+
+
     public void runSkeleton() {
         System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
                             "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
@@ -16,10 +18,30 @@ public class Skeleton {
         System.out.println(command);
         switch (command) {
             case 1:
-                System.out.print("Helyzetváltoztatás\n");
-                break;
+                System.out.println("Helyzetváltoztatás\n");
+                System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
+                            "mely irányba szeretne haladni.");
+                    Scanner sc = new Scanner(System.in);
+                    String c = sc.next();
+                    Direction d = UP;
+                    switch (c) {
+                        case "J":
+                            d = RIGHT;
+                            break;
+                        case "B":
+                            d = LEFT;
+                            break;
+                        case "F":
+                            d = UP;
+                            break;
+                        case "L":
+                            d = DOWN;
+                            break;
+                    }
+                    p1.move(d);break;
             case 2:
                 System.out.print("Hó eltakaritása\n");
+                    p1.clean();
                 break;
             case 3:
                 System.out.print("Tárgy felvétele\n");

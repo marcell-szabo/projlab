@@ -41,7 +41,8 @@ public class Shovel extends Tool {
      * @param f
      */
     public void clean(Field f) {
-        // TODO implement here
+        System.out.print(this.toString() + ".clean(Field f);\n");
+        f.clean();
     }
 
 }

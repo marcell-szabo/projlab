@@ -55,8 +55,15 @@ public abstract class Player {
      * @return
      */
     public Result clean() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".clean();\n");
+        Result r = actualfield.clean();
+        if (r == Result.OK) {
+            for (Tool t : tools) {
+                t.clean(actualfield);
+            }
+        }
+        System.out.print(this.toString() + ".clean() returned Result r;\n");
+        return r;
     }
 
     /**
@@ -75,21 +82,44 @@ public abstract class Player {
     public abstract Result specialSkill();
 
     /**
-	* Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét. Ezek után beállítja a jelenlegi játékos actualfield nevű attribútumának értékét a megkapott mezőre. Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni, amivel az általa hívott metódus visszatért.
+	* Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét.
+     * Ezek után beállítja a jelenlegi játékos actualfield nevű attribútumának értékét a megkapott mezőre.
+     * Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
+     * amivel az általa hívott metódus visszatért.
      * @param f 
      * @return
      */
-    public Result changeField(Field f) {
-        // TODO implement here
-        return null;
+    public Result changeField(Field f){
+        System.out.print(this.toString() + ".changeField(Field f);\n");
+        actualfield.leaveField(this);
+        actualfield = f;
+        System.out.print(this.toString() + ".changeField(Field f) returned r;\n");
+        return f.stepOn(this);
     }
 
     /**
-	*Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.  Ezt követően a visszatérési értékek kerülnek vizsgálatra. Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is. Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal. Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára. Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
+	*Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.
+     * Ezt követően a visszatérési értékek kerülnek vizsgálatra.
+     * Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is.
+     * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
+     * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
+     * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
      * @return
      */
     public Result helpMe() {
-        // TODO implement here
+        System.out.print(this.toString() + ".helpMe();\n");
+        for (Tool t : tools) {
+            if (t.swim(actualfield, this) != Result.NOTHING)
+                System.out.print(this.toString() + ".storm() returned Result r;\n");
+                return t.swim(actualfield, this);
+        }
+        for (Direction d: Direction.values()) {
+            if (actualfield.checkNeighbour(d) != null){
+                System.out.print(this.toString() + ".storm() returned Result r;\n");
+                return actualfield.checkNeighbour(d).canHelp();
+            }
+        }
+        System.out.print(this.toString() + ".storm() returned null;\n");
         return null;
     }
 
@@ -120,8 +150,10 @@ public abstract class Player {
      * @return
      */
     public Result move(Direction d) {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".move();\n");
+        Field field = actualfield.checkNeighbour(d);
+        System.out.print(this.toString() + ".move() returned Result r;\n");
+        return field.stepOn(this);
     }
 
     /**
