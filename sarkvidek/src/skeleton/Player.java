@@ -23,17 +23,17 @@ public abstract class Player {
     /**
      * Tárolja az aktuális játékot.
      */
-    private Game game;
+    private Game game = new Game();
 
     /**
      * Tárolja, hogy az adott játékos melyik mezőn áll.
      */
-    private Field actualfireld;
+    private Field actualfield;
 
     /**
      * Tárolja a játékosnál található tárgyakat. 
      */
-    private Tool[] tools;
+    private List<Tool> tools = new ArrayList<>();
 
     /**
      * Default constructor
@@ -100,16 +100,18 @@ public abstract class Player {
      */
     public Result decreaseHeat() {
         System.out.print(this.toString() + ".decreaseHeat();\n");
-        System.out.print(this.toString() + ".decreaseHeat() returned Result\n");
+        System.out.print(this.toString() + ".decreaseHeat() returned Result;\n");
         return Result.OK;
     }
 
     /**
 	* A listához hozzáadja a megkapott eszközt. 
-     * @param t
+     * @param t - listához adandó eszköz
      */
     public void addTool(Tool t) {
-        // TODO implement here
+        System.out.println(this.toString() + ".addTool(t);\n");
+        System.out.println(this.toString() + ".addTool(t) returned;\n");
+        return;
     }
 
     /**
@@ -124,27 +126,31 @@ public abstract class Player {
 
     /**
 	* Legelőször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e. Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad. Ellenkező esetben kimarad a növelés, és NOTHING értékkel tér vissza.  
-     * @return
+     * @return r - testhő csökkentés eredménye
      */
     public Result increaseHeat() {
-        // TODO implement here
+        System.out.println(this.toString() + ".increaseHeat();");
+        System.out.println(this.toString() + ".increaseHeat() returned Result r;");
         return null;
     }
 
     /**
 	* Meghívja a Game osztály addPart(FlareGun) függvényét.
-     * @param f
+     * @param f - a jelző rakéta egy darabja
      */
     public void addPart(FlareGun f) {
-        // TODO implement here
+        System.out.println(this.toString() + ".addPart(item);");
+        game.addPart(f);
+        System.out.println(this.toString() + ".addPart(item) returned;");
     }
 
     /**
 	*Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
-     * @return
+     * @return tools
      */
     public List<Tool> getTools() {
-        // TODO implement here
+        System.out.println(this.toString() + ".getTools();");
+        System.out.println(this.toString() + ".getTools() returned List<Tool> tools;");
         return null;
     }
 

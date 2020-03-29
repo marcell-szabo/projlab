@@ -20,7 +20,9 @@ public class FlareGun extends Item {
      * @return Result
      */
     public Result pickMeUp(Player p) {
-        // TODO implement here
+        System.out.println(this.toString() + ".pickMeUp(p);");
+        p.addPart(this);
+        System.out.println(this.toString() + ".pickMeUp(p) returned Result res;");
         return null;
     }
 

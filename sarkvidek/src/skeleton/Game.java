@@ -16,12 +16,12 @@ public class Game {
     /**
      * Az adott játékosokat tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el (beleértve a határokat is).
      */
-    private Player[] players;
+    private List<Player> players = new ArrayList<>();
 
     /**
      * A jelzőrakéta alkotóelemeinek (GUN, FLARE, CHARGE) tárolására szolgál. 
      */
-    private FlareGun[] flare_gun;
+    private List<FlareGun> flare_gun = new ArrayList<>();
 
     /**
      * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát. Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát. Ezt követően a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
@@ -66,7 +66,8 @@ public class Game {
      * @param f hozzáadandó FlareGun rész
      */
     public void addPart(FlareGun f) {
-        // TODO implement here
+        System.out.println(this.toString() + ".addPart(f);");
+        System.out.println(this.toString() + ".addPart(f) returned;");
     }
 
     /**

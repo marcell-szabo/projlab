@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
  */
-public class DivingSuit extends Item {
+public class DivingSuit extends Tool {
 
     /**
      * Default constructor
@@ -13,8 +13,16 @@ public class DivingSuit extends Item {
     public DivingSuit() {
     }
 
+    /**
+     * a paraméterknt megadott player felvesz egy búvárruhát
+     * @param p a player aki felveszi az búvárruhát
+     * @return Result a felvétel sikerességéről
+     */
     @Override
     public Result pickMeUp(Player p) {
+        System.out.println(this.toString() + ".pickMeUp(p);");
+        p.addTool(this);
+        System.out.println(this.toString() + ".pickMeUp(p) returned Result res;");
         return null;
     }
 

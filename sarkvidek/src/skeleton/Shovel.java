@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Az ásó felvételének, illetve az ásóval rendelkező játékosok hóréteg ellapátolásának kezelésére szolgáló osztály.
  */
-public class Shovel extends Item {
+public class Shovel extends Tool {
 
     /**
      * Default constructor
@@ -13,8 +13,16 @@ public class Shovel extends Item {
     public Shovel() {
     }
 
+    /**
+     * a paraméterknt megadott karakter felvesz egy ásót
+     * @param p a karakter aki felveszi az ásót
+     * @return Result a felvétel sikerességéről
+     */
     @Override
     public Result pickMeUp(Player p) {
+        System.out.println(this.toString() + ".pickMeUp(p);");
+        p.addTool(this);
+        System.out.println(this.toString() + ".pickMeUp(p) returned Return res;");
         return null;
     }
 
