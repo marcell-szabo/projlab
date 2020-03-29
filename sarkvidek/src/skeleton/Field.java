@@ -71,7 +71,7 @@ public abstract class Field {
      * Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét,
      * majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust.
      * Ha legalább egy OK értékkel tér vissza, akkor ő is, különben pedig DIE-al.
-     * @return Result OK vagy DIE
+     * @return Result OK vagy DIE - attól függően, hogy ki lehet-e menteni a játékost
      */
     public Result canHelp() {
         System.out.print(this.toString() + ".canHelp();\n");
@@ -117,7 +117,7 @@ public abstract class Field {
     /**
 	* Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti az értékét, majd pedig OK-kal tér vissza.
      * Ellenkező esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.
-     * @return OK or NOTHING
+     * @return Result OK or NOTHING - attól függően, hogy van-e még hóréteg a mezőn
      */
     public Result clean() {
         System.out.print(this.toString() + ".clean();\n");

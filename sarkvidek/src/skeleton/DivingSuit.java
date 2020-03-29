@@ -42,11 +42,12 @@ public class DivingSuit extends Tool {
 	* A Tool osztály swim(Field, Player) függvényének felüldefiniálása.
      * A játékos által megadott irányt átadva meghívja az actualfield checkNeighbour(Direction) függvényét,
      * ami visszatér az ott található mező referenciájával. Ha ez NULL érték lenne (tehát arra tenger van), akkor újra meg kell adni az irányt.
-     * Ha megkaptuk a választott szomszédos mező referenciáját, akkor ezt átadva meghívódik a paraméterben megkapott játékos changeField(Field) függvénye.
+     * Ha megkaptuk a választott szomszédos mező referenciáját,
+     * akkor ezt átadva meghívódik a paraméterben megkapott játékos changeField(Field) függvénye.
      * Ennek a metódusnak a visszatérési értékével tér vissza a swim(Field, Player) függvény is.
      * @param h - a lyuk amibe beleesett a player búvárruhában
      * @param p - melyik játékos esett bele
-     * @return Result enum
+     * @return Result a kimászásról
      */
     private Result swim(Hole h, Player p) {
         System.out.print(this.toString() + ".swim(Hole h, Player p);\n");
@@ -71,7 +72,7 @@ public class DivingSuit extends Tool {
                 System.out.print(this.toString() + ".swim(Hole h, Player p) returned Result r;\n");
                 return p.changeField(h.checkNeighbour(d));
             }
-        System.out.print(this.toString() + ".storm() returned null;\n");
+        System.out.print(this.toString() + ".swim(Hole h, Player p) returned null;\n");
         return null;
     }
 

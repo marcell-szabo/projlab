@@ -5,7 +5,6 @@ import java.util.*;
 import skeleton.Result;
 
 import static skeleton.Result.NOTHING;
-import static skeleton.Result.OK;
 
 /**
  * Játékosok kezelésére szolgáló osztály. A játékosok munkájának és testhőjének vizsgálata mellett a körökben elvégezhető cselekvésekkel foglalkozik. Minden játékos köre addig tart, amíg a work attribútumának értéke nem csökken le nullára. Minden cselekvés, ami az adott esetben engedélyezett, az egy egység munkavégzéssel jár (például tárgy felvétele olyan mezőn, amin még van hóréteg nem engedélyezett, és ilyenkor ez nem is jár munkavégzéssel).
@@ -54,8 +53,10 @@ public abstract class Player {
     }
 
     /**
-	*Meghívja a Field osztály clean() metódusát. Amennyiben ez OK-kal tér vissza, akkor meghívja a tools attribútumban tárolt összes Tool példány clean(Field) függvényét. Végül visszatér azzal, amivel a Field osztály először meghívott clean() függvénye tért vissza.
-     * @return
+	*Meghívja a Field osztály clean() metódusát. Amennyiben ez OK-kal tér vissza,
+     * akkor meghívja a tools attribútumban tárolt összes Tool példány clean(Field) függvényét.
+     * Végül visszatér azzal, amivel a Field osztály először meghívott clean() függvénye tért vissza.
+     * @return Result
      */
     public Result clean() {
         System.out.print(this.toString() + ".clean();\n");
@@ -90,11 +91,13 @@ public abstract class Player {
      * Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
      * amivel az általa hívott metódus visszatért.
      * @param f 
-     * @return
+     * @return Result
      */
     public Result changeField(Field f) {
+        System.out.print(this.toString() + ".changeField(Field f);\n");
         actualfield.leaveField(this);
         actualfield = f;
+        System.out.print(this.toString() + ".changeField(Field f) returned Result r;\n");
         return f.stepOn(this);
     }
 
@@ -105,19 +108,24 @@ public abstract class Player {
      * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
      * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
      * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
-     * @return
+     * @return Result
      */
     public Result helpMe() {
+        System.out.print(this.toString() + ".helpMe();\n");
         for (Tool t : tools) {
-            if (t.swim(actualfield, this) != Result.NOTHING)
+            if (t.swim(actualfield, this) != Result.NOTHING){
+                System.out.print(this.toString() + ".helpMe() returned Result r;\n");
                 return t.swim(actualfield, this);
+            }
         }
         for (Direction d: Direction.values()) {
             Field i = actualfield.checkNeighbour(d);
             if (i != null){
+                System.out.print(this.toString() + ".helpMe() returned Result r;\n");
                 return actualfield.checkNeighbour(d).canHelp();
             }
         }
+        System.out.print(this.toString() + ".helpMe() returned Result r;\n");
         return NOTHING;
     }
 
@@ -141,9 +149,11 @@ public abstract class Player {
     }
 
     /**
-	* Legelőször a megkapott irányra meghívja a checkNeighbour(Direction) metódust. Ezt követően az előbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra. Amivel ez visszatér, azzal fog a move(Direction) is.
+	* Legelőször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
+     * Ezt követően az előbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
+     * Amivel ez visszatér, azzal fog a move(Direction) is.
      * @param d 
-     * @return
+     * @return Result
      */
     public Result move(Direction d) {
         System.out.print(this.toString() + ".move();\n");
