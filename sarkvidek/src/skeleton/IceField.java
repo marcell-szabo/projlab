@@ -26,9 +26,10 @@ public class IceField extends Field {
     }
 
     /**
-	* A Field osztályban lévő absztrakt függvény megvalósítása. Az adott mező snow attribútumának értékét megnöveli
+     * A Field osztályban lévő absztrakt függvény megvalósítása. Az adott mező snow attribútumának értékét megnöveli
      * eggyel. Amennyiben az adott mező nem tartalmaz igloo-t, akkor az ilyen mezőn álló játékosokra meghívja a
      * decreaseHeat() metódust. Amivel ez a függvény visszatér, azzal tér vissza a storm() is.
+     *
      * @return
      */
     public Result storm() {
@@ -37,13 +38,13 @@ public class IceField extends Field {
         System.out.print("Van iglu a jégtáblán? i/n \n");
         Scanner scan = new Scanner(System.in);
         char c = scan.next().charAt(0);
-        if(c == 'n') {
+        if (c == 'n') {
             //TODO
             Eskimo esk = new Eskimo(new Game(), this);
             Explorer exp = new Explorer(new Game(), this);
             players.add(esk);
             players.add(exp);
-            for(Player p : players) {
+            for (Player p : players) {
                 r = p.decreaseHeat();
             }
         }
@@ -52,9 +53,10 @@ public class IceField extends Field {
     }
 
     /**
-	* A Field osztályban lévő absztrakt függvény megvalósítása. OK értékkel tér vissza, ha az adott mezőn lévő
+     * A Field osztályban lévő absztrakt függvény megvalósítása. OK értékkel tér vissza, ha az adott mezőn lévő
      * játékosok számát még elbírja a jégtábla. Ellenkező esetben pedig DIE értékkel fog visszatérni.
-     * @param p 
+     *
+     * @param p
      * @return Result
      */
     public Result stepOn(Player p) {
@@ -63,7 +65,8 @@ public class IceField extends Field {
     }
 
     /**
-	* Ha van igloo a mezőn, akkor TRUE-val tér vissza, ellenkező esetben pedig FALSE-szal.
+     * Ha van igloo a mezőn, akkor TRUE-val tér vissza, ellenkező esetben pedig FALSE-szal.
+     *
      * @return
      */
     public boolean haveIgloo() {
@@ -72,10 +75,11 @@ public class IceField extends Field {
     }
 
     /**
-	*A Field osztály virtuális buildIgloo() metódusának a felüldefiniálása. Akkor hívódik meg, ha egy eszkimó
+     * A Field osztály virtuális buildIgloo() metódusának a felüldefiniálása. Akkor hívódik meg, ha egy eszkimó
      * igloot szeretne építeni a jégtáblán. Ha még nem volt igloo a mezőn, akkor az igloo attribútum értékét
      * TRUE-ra állítja, majd OK értékkel tér vissza. Amennyiben volt igloo az adott, mezőn, akkor NOTHING lesz
      * a visszatérési értéke.
+     *
      * @return res Result
      */
     public Result buildIgloo() {
@@ -85,9 +89,10 @@ public class IceField extends Field {
     }
 
     /**
-     *  Megvizsgálja a rajta található hó mennyiségét. Ha ez nulla, és található rajta jégbe fagyott tárgy,
-     *  akkor meghívja az Item osztály pickMeUp(Player) függvényét.
-     *  Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
+     * Megvizsgálja a rajta található hó mennyiségét. Ha ez nulla, és található rajta jégbe fagyott tárgy,
+     * akkor meghívja az Item osztály pickMeUp(Player) függvényét.
+     * Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
+     *
      * @return
      */
     public Result pickUp(Player p) {
@@ -99,13 +104,13 @@ public class IceField extends Field {
                 + "3. Búvárruha felvétele\n4. Étel elfogyasztása\n5. Jelzőrakéta alkatrészének felvétele\n");
         int tool = scan.nextInt();
         System.out.println(tool);
-        switch(tool){
+        switch (tool) {
             case 1:
                 System.out.println("Ásó felvétele\n");
                 System.out.println("1. Van már ásója\n2. Nincs ásója\n");
                 int shovel = scan.nextInt();
                 System.out.println(shovel);
-                switch (shovel){
+                switch (shovel) {
                     case 1:
                         System.out.println("Van már ásója\n");
                         System.out.println(this.toString() + ".pickUp(e);");
@@ -116,7 +121,7 @@ public class IceField extends Field {
                         System.out.println("Nincs ásója\n");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
-                        item  = new Shovel();
+                        item = new Shovel();
                         res = item.pickMeUp(p);
                         System.out.println("ice.pickUp(e) returned Result res;");
                         break;
@@ -124,14 +129,14 @@ public class IceField extends Field {
                         System.out.println("Helytelen érték\n");
                         break;
 
-
-                }break;
+                }
+                break;
             case 2:
                 System.out.println("Kötél felvétele\n");
                 System.out.println("1. Van már kötele\n2. Nincs kötele\n");
                 int rope = scan.nextInt();
                 System.out.println(rope);
-                switch (rope){
+                switch (rope) {
                     case 1:
                         System.out.println("Van már kötele\n");
                         System.out.println(this.toString() + ".pickUp(e);");
@@ -149,13 +154,14 @@ public class IceField extends Field {
                     default:
                         System.out.println("Helytelen érték\n");
                         break;
-                }break;
+                }
+                break;
             case 3:
                 System.out.println("Búvárruha felvétele\n");
                 System.out.println("1. Van már búvárruhája\n2. Nincs búvárruhája\n");
                 int divingsuit = scan.nextInt();
                 System.out.println(divingsuit);
-                switch (divingsuit){
+                switch (divingsuit) {
                     case 1:
                         System.out.println("Van már búvárruhája\n");
                         System.out.println(this.toString() + ".pickUp(e);");
@@ -173,13 +179,14 @@ public class IceField extends Field {
                     default:
                         System.out.println("Helytelen érték\n");
                         break;
-                }break;
+                }
+                break;
             case 4:
                 System.out.println("Étel fogyasztása\n");
                 System.out.println("1. A testője maximumon van\n2. Nincs maximumon a testhője\n");
                 int food = scan.nextInt();
                 System.out.println(food);
-                switch (food){
+                switch (food) {
                     case 1:
                         System.out.println("A testője maximumon van\n");
                         System.out.println(this.toString() + ".pickUp(e);");
@@ -197,7 +204,8 @@ public class IceField extends Field {
                     default:
                         System.out.println("Helytelen érték\n");
                         break;
-                }break;
+                }
+                break;
             case 5:
                 System.out.println("Jelzőrakéta alkatrészének felvétele\n");
                 System.out.println(this.toString() + ".pickUp(e);");
