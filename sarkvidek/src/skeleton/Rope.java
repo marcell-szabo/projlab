@@ -15,6 +15,7 @@ public class Rope extends Tool {
 
     /**
      * a paraméterknt megadott player felvesz egy kötelet
+     *
      * @param p a player aki felveszi az kötelet
      * @return Result a felvétel sikerességéről
      */
@@ -27,9 +28,11 @@ public class Rope extends Tool {
     }
 
     /**
-	*Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány szeretné magát összehasonlítani vele).
-     * @param r 
-     * @return
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány
+     * szeretné magát összehasonlítani vele).
+     *
+     * @param r rope példány
+     * @return true
      */
     public boolean isSame(Rope r) {
         // TODO implement here
@@ -37,10 +40,12 @@ public class Rope extends Tool {
     }
 
     /**
-	* Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a paraméterként a kapott Field példányt.
+     * Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a
+     * paraméterként a kapott Field példányt.
      * A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
-     * @param f 
-     * @param p 
+     *
+     * @param f az a field amire a player lépni akar
+     * @param p az a játékos amelyik a másik fieldre lépne
      * @return
      */
     public Result help(Field f, Player p) {

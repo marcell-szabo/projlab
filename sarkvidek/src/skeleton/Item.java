@@ -15,8 +15,9 @@ public abstract class Item {
 
 
     /**
-	* Absztrakt függvény. A FlareGun, a Food vagy a Tool osztály pickMeUp(Player) függvénye kerül meghívásra.
-     * @param p 
+     * Absztrakt függvény. A FlareGun, a Food vagy a Tool osztály pickMeUp(Player) függvénye kerül meghívásra.
+     *
+     * @param p
      * @return
      */
     public abstract Result pickMeUp(Player p);

@@ -15,6 +15,7 @@ public class Shovel extends Tool {
 
     /**
      * a paraméterknt megadott karakter felvesz egy ásót
+     *
      * @param p a karakter aki felveszi az ásót
      * @return Result a felvétel sikerességéről
      */
@@ -27,9 +28,11 @@ public class Shovel extends Tool {
     }
 
     /**
-	* Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát összehasonlítani vele).
-     * @param s 
-     * @return
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param s shovel példány
+     * @return true
      */
     public boolean isSame(Shovel s) {
         // TODO implement here
@@ -37,8 +40,11 @@ public class Shovel extends Tool {
     }
 
     /**
-	* Akkor hívódik meg, ha az ásást végző játékosnál van ásó. Ekkor ez a függvény meghívja a Field clean() metódusát, ezzel még egy réteget ellapátolva arról (persze, ha ez lehetséges). Void visszatérésű, mivel nincs jelentősége, hogy ez a művelet sikerült-e vagy sem.
-     * @param f
+     * Akkor hívódik meg, ha az ásást végző játékosnál van ásó. Ekkor ez a függvény meghívja a
+     * Field clean() metódusát, ezzel még egy réteget ellapátolva arról (persze, ha ez lehetséges).
+     * Void visszatérésű, mivel nincs jelentősége, hogy ez a művelet sikerült-e vagy sem.
+     *
+     * @param f actualfield
      */
     public void clean(Field f) {
         System.out.print(this.toString() + ".clean(Field f);\n");

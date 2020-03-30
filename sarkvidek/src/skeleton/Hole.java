@@ -16,8 +16,10 @@ public class Hole extends Field {
     }
 
     /**
-	*A Field osztályban lévő absztrakt függvény megvalósítása. Az adott mező snow attribútumának értékét megnöveli eggyel. Mindig OK-kal tér vissza.
-     * @return OK
+     * A Field osztályban lévő absztrakt függvény megvalósítása. Az adott mező snow attribútumának értékét megnöveli eggyel.
+     * Mindig OK-kal tér vissza.
+     *
+     * @return OK mindig
      */
     public Result storm() {
         System.out.print(this.toString() + ".storm();\n");
@@ -26,9 +28,10 @@ public class Hole extends Field {
     }
 
     /**
-	* A Field osztályban lévő absztrakt függvény megvalósítása.
+     * A Field osztályban lévő absztrakt függvény megvalósítása.
      * Az attribútumként kapott Player példány helpMe() metódusát hívja meg,
      * majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
+     *
      * @param p erre a mezőre lépő Player
      * @return Result, hogy sikerült-e kimenteni a játékost.
      */

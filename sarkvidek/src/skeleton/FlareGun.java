@@ -15,7 +15,8 @@ public class FlareGun extends Item {
 
 
     /**
-	* Attribútumként átadva önmaga referenciáját meghívja a Player osztály addPart(FlareGun) függvényét.
+     * Attribútumként átadva önmaga referenciáját meghívja a Player osztály addPart(FlareGun) függvényét.
+     *
      * @param p Player
      * @return Result
      */

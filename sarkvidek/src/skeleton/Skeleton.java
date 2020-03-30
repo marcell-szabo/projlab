@@ -50,7 +50,8 @@ public class Skeleton {
                             d = DOWN;
                             p1.move(d);
                             break;
-                    }break;
+                    }
+                    break;
                 case 2:
                     System.out.print("Hó eltakaritása\n");
                     p1.clean();

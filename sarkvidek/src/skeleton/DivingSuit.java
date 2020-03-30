@@ -17,6 +17,7 @@ public class DivingSuit extends Tool {
 
     /**
      * a paraméterknt megadott player felvesz egy búvárruhát
+     *
      * @param p a player aki felveszi az búvárruhát
      * @return Result a felvétel sikerességéről
      */
@@ -29,7 +30,9 @@ public class DivingSuit extends Tool {
     }
 
     /**
-	* Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit példány szeretné magát összehasonlítani vele).
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit
+     * példány szeretné magát összehasonlítani vele).
+     *
      * @param d - egy olyan DivingSuit példány amivel összehasonlítja magát a függvény hívó példány
      * @return true
      */
@@ -39,12 +42,13 @@ public class DivingSuit extends Tool {
     }
 
     /**
-	* A Tool osztály swim(Field, Player) függvényének felüldefiniálása.
+     * A Tool osztály swim(Field, Player) függvényének felüldefiniálása.
      * A játékos által megadott irányt átadva meghívja az actualfield checkNeighbour(Direction) függvényét,
-     * ami visszatér az ott található mező referenciájával. Ha ez NULL érték lenne (tehát arra tenger van), akkor újra meg kell adni az irányt.
-     * Ha megkaptuk a választott szomszédos mező referenciáját,
+     * ami visszatér az ott található mező referenciájával. Ha ez NULL érték lenne (tehát arra tenger van),
+     * akkor újra meg kell adni az irányt.Ha megkaptuk a választott szomszédos mező referenciáját,
      * akkor ezt átadva meghívódik a paraméterben megkapott játékos changeField(Field) függvénye.
      * Ennek a metódusnak a visszatérési értékével tér vissza a swim(Field, Player) függvény is.
+     *
      * @param h - a lyuk amibe beleesett a player búvárruhában
      * @param p - melyik játékos esett bele
      * @return Result a kimászásról
@@ -66,12 +70,12 @@ public class DivingSuit extends Tool {
             case "L":
                 d = DOWN;
         }
-            if (h.checkNeighbour(d) == null)
-                swim(h, p);
-            else {
-                System.out.print(this.toString() + ".swim(Hole h, Player p) returned Result r;\n");
-                return p.changeField(h.checkNeighbour(d));
-            }
+        if (h.checkNeighbour(d) == null)
+            swim(h, p);
+        else {
+            System.out.print(this.toString() + ".swim(Hole h, Player p) returned Result r;\n");
+            return p.changeField(h.checkNeighbour(d));
+        }
         System.out.print(this.toString() + ".swim(Hole h, Player p) returned null;\n");
         return null;
     }

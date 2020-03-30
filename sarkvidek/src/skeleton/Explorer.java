@@ -3,7 +3,8 @@ package skeleton;
 import java.util.*;
 
 /**
- * Sarkkutató karaktertípus esetén megadja a maximális testhő mértékét, illetve kezeli a sarkkutató különleges képességét, tehát egy szomszédos mező teherbírásának vizsgálatát. 
+ * Sarkkutató karaktertípus esetén megadja a maximális testhő mértékét,
+ * illetve kezeli a sarkkutató különleges képességét, tehát egy szomszédos mező teherbírásának vizsgálatát.
  */
 public class Explorer extends Player {
     /**
@@ -19,16 +20,22 @@ public class Explorer extends Player {
     }
 
     /**
-	* A Player osztályban lévő absztrakt függvény megvalósítása. Először bekér egy irányt, majd erre meghívja a checkNeighbour(Direction) függvényt. Amennyiben ez NULL értékkel tér vissza, akkor a játékosnak újra meg kell adnia egy irányt. Amikor sikerül egy jó irányt megadni, tehát nem NULL visszatérési értéke lesz, akkor a visszakapott mezőre meghívja a getCapacity() függvényt. Minden esetben OK-al té vissza.
+     * A Player osztályban lévő absztrakt függvény megvalósítása.
+     * Először bekér egy irányt, majd erre meghívja a checkNeighbour(Direction) függvényt.
+     * Amennyiben ez NULL értékkel tér vissza, akkor a játékosnak újra meg kell adnia egy irányt.
+     * Amikor sikerül egy jó irányt megadni, tehát nem NULL visszatérési értéke lesz, akkor a visszakapott
+     * mezőre meghívja a getCapacity() függvényt. Minden esetben OK-al té vissza.
+     *
      * @return Result - minden esetben OK
      */
-    public Result specialSkill(){
+    public Result specialSkill() {
         System.out.println(this.toString() + ".specialSkill()");
         actualfield.addNeighbour(new IceField(), Direction.RIGHT);
-        for (Direction d: Direction.values()) {
+        for (Direction d : Direction.values()) {
             Field i = actualfield.checkNeighbour(d);
-            if (i != null){
+            if (i != null) {
                 int capacity = i.getCapacity();
+                System.out.println(this.toString() + ".specialSkill() returned Result res\n\n");
                 return Result.NOTHING;
             }
         }

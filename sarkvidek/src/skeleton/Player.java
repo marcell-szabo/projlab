@@ -31,7 +31,7 @@ public abstract class Player {
     protected Field actualfield;
 
     /**
-     * Tárolja a játékosnál található tárgyakat. 
+     * Tárolja a játékosnál található tárgyakat.
      */
     private List<Tool> tools = new ArrayList<>();
 
@@ -44,8 +44,17 @@ public abstract class Player {
     }
 
     /**
-	* Elsőként beállítja a jelenlegi játékos work attribútumának értéket négy egységre, majd végigvárja (egy ciklusban) a játékos lépéseit (míg a work értéke nulla nem lesz, vagy véget nem ér a játék győzelem vagy halál miatt). Futás során az általunk választott cselekvésekhez szükséges függvényeket fogja meghívni. Ha az általa meghívott függvények OK-kal térnek vissza, akkor csökkenti a work értékét eggyel, majd ellenőrzi, hogy ezt követően nem csökkent-e nullára. Amennyiben nem, akkor folytatódik a ciklus futása, ellenben ha ez az érték nullára csökkent, akkor kilép a ciklusból, és a round() metódus OK értékkel tér vissza. Ha futás során bármely függvény DIE vagy WIN visszatérési értékkel rendelkezik, akkor a round() szintén kilép a ciklusából és ugyanazzal fog visszatérni amit kapott. (NOTHING hatására nem csökkenti a work attribútumot, és biztosan benne marad a ciklusban)
-     * @return
+     * Elsőként beállítja a jelenlegi játékos work attribútumának értéket négy egységre, majd végigvárja
+     * (egy ciklusban) a játékos lépéseit (míg a work értéke nulla nem lesz, vagy véget nem ér a
+     * játék győzelem vagy halál miatt). Futás során az általunk választott cselekvésekhez szükséges
+     * függvényeket fogja meghívni. Ha az általa meghívott függvények OK-kal térnek vissza, akkor csökkenti a
+     * work értékét eggyel, majd ellenőrzi, hogy ezt követően nem csökkent-e nullára. Amennyiben nem, akkor
+     * folytatódik a ciklus futása, ellenben ha ez az érték nullára csökkent, akkor kilép a ciklusból, és a round()
+     * metódus OK értékkel tér vissza. Ha futás során bármely függvény DIE vagy WIN visszatérési értékkel rendelkezik,
+     * akkor a round() szintén kilép a ciklusából és ugyanazzal fog visszatérni amit kapott. (NOTHING hatására nem
+     * csökkenti a work attribútumot, és biztosan benne marad a ciklusban)
+     *
+     * @return a körben történt-e win, die
      */
     public Result round() {
         // TODO implement here
@@ -53,9 +62,10 @@ public abstract class Player {
     }
 
     /**
-	*Meghívja a Field osztály clean() metódusát. Amennyiben ez OK-kal tér vissza,
+     * Meghívja a Field osztály clean() metódusát. Amennyiben ez OK-kal tér vissza,
      * akkor meghívja a tools attribútumban tárolt összes Tool példány clean(Field) függvényét.
      * Végül visszatér azzal, amivel a Field osztály először meghívott clean() függvénye tért vissza.
+     *
      * @return Result
      */
     public Result clean() {
@@ -71,8 +81,14 @@ public abstract class Player {
     }
 
     /**
-	*A game attribútumban tárolt Game-re meghívja a getPlayerNumber() függvényt. A visszakapott értéket átadja az általa hívott a haveAllPlayers() metódusnak. Ha ez FALSE értékkel tér vissza, akkor ő OK-kal fog. TRUE esetén viszont meghívja a HaveAllParts() függvényt, amely ha TRUE-val tér vissza, akkor az assemble() WIN-nel fog. Amennyiben a haveAllParts() metódus FALSE értékkel tér vissza, akkor az assemble() OK-kal fog. (Ezekben az esetekben azért tér vissza OK-kal, mert a feleslegesen megpróbált összeszerelés is munkának számít).
-     * @return
+     * A game attribútumban tárolt Game-re meghívja a getPlayerNumber() függvényt.
+     * A visszakapott értéket átadja az általa hívott a haveAllPlayers() metódusnak.
+     * Ha ez FALSE értékkel tér vissza, akkor ő OK-kal fog. TRUE esetén viszont meghívja a HaveAllParts() függvényt,
+     * amely ha TRUE-val tér vissza, akkor az assemble() WIN-nel fog. Amennyiben a haveAllParts() metódus FALSE értékkel
+     * tér vissza, akkor az assemble() OK-kal fog. (Ezekben az esetekben azért tér vissza OK-kal,
+     * mert a feleslegesen megpróbált összeszerelés is munkának számít).
+     *
+     * @return az összeszerelés sikeressége
      */
     public Result assemble() {
         System.out.print(this.toString() + ".assemble();");
@@ -80,11 +96,11 @@ public abstract class Player {
         System.out.print("Minden játékos egy mezőn tartózkodik? i/n\n");
         Scanner scan = new Scanner(System.in);
         char c1 = scan.next().charAt(0);
-        if(c1 == 'i') {
+        if (c1 == 'i') {
             game.haveAllParts();
             System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
             char c2 = scan.next().charAt(0);
-            if(c2 == 'i') {
+            if (c2 == 'i') {
                 System.out.print(this.toString() + ".assemble() returned Result WIN;");
                 return Result.WIN;
             }
@@ -94,47 +110,51 @@ public abstract class Player {
     }
 
     /**
-	* Absztrakt függvény. Az Eskimo vagy az Explorer osztály specialSkill() függvénye hívódik meg.
+     * Absztrakt függvény. Az Eskimo vagy az Explorer osztály specialSkill() függvénye hívódik meg.
+     *
      * @return
      */
     public abstract Result specialSkill();
 
     /**
-	* Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét.
+     * Meghívja az actualfieldben tárolt mezőre a Field osztály leaveField(Player) függvényét.
      * Ezek után beállítja a jelenlegi játékos actualfield nevű attribútumának értékét a megkapott mezőre.
      * Ezt követően meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
      * amivel az általa hívott metódus visszatért.
-     * @param f 
-     * @return Result
+     *
+     * @param f megkapja a mezőt amire lép, ez lesz az actualfield
+     * @return Result a sikerességről
      */
     public Result changeField(Field f) {
         System.out.print(this.toString() + ".changeField(Field f);\n");
         actualfield.leaveField(this);
         actualfield = f;
+        f.stepOn(this);
         System.out.print(this.toString() + ".changeField(Field f) returned Result r;\n");
-        return f.stepOn(this);
+        return NOTHING;
     }
 
     /**
-	*Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.
+     * Először a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.
      * Ezt követően a visszatérési értékek kerülnek vizsgálatra.
      * Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is.
      * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
      * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
      * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
-     * @return Result
+     *
+     * @return Result a segítségkérés sikerességével
      */
     public Result helpMe() {
         System.out.print(this.toString() + ".helpMe();\n");
         for (Tool t : tools) {
-            if (t.swim(actualfield, this) != Result.NOTHING){
+            if (t.swim(actualfield, this) != Result.NOTHING) {
                 System.out.print(this.toString() + ".helpMe() returned Result r;\n");
                 return t.swim(actualfield, this);
             }
         }
-        for (Direction d: Direction.values()) {
+        for (Direction d : Direction.values()) {
             Field i = actualfield.checkNeighbour(d);
-            if (i != null){
+            if (i != null) {
                 System.out.print(this.toString() + ".helpMe() returned Result r;\n");
                 return actualfield.checkNeighbour(d).canHelp();
             }
@@ -144,9 +164,10 @@ public abstract class Player {
     }
 
     /**
-	 * Csökkenti a játékos heat nevű attribútumának értékét eggyel, majd megvizsgálja, hogy mennyi a heat értéke.
+     * Csökkenti a játékos heat nevű attribútumának értékét eggyel, majd megvizsgálja, hogy mennyi a heat értéke.
      * Amennyiben ez nullára csökkent, akkor DIE, minden más esetben pedig OK  visszatérési értéke lesz.
-     * @return
+     *
+     * @return a testhőcsökkentés sikerességével tér vissza
      */
     public Result decreaseHeat() {
         System.out.print(this.toString() + ".decreaseHeat();\n");
@@ -155,33 +176,38 @@ public abstract class Player {
     }
 
     /**
-	* A listához hozzáadja a megkapott eszközt. 
-     * @param t
+     * A listához hozzáadja a megkapott eszközt.
+     *
+     * @param t tool példány
      */
     public void addTool(Tool t) {
         // TODO implement here
     }
 
     /**
-	* Legelőször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
+     * Legelőször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
      * Ezt követően az előbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
      * Amivel ez visszatér, azzal fog a move(Direction) is.
-     * @param d 
-     * @return Result
+     *
+     * @param d mozgásnál preferált irány
+     * @return Result a sikerességről
      */
     public Result move(Direction d) {
         System.out.print(this.toString() + ".move();\n");
         actualfield.addNeighbour(new Hole(), Direction.RIGHT);
         Field field = actualfield.checkNeighbour(d);
-        if(field != null)
+        if (field != null)
             field.stepOn(this);
         System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
         return NOTHING;
     }
 
     /**
-	* Legelőször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e. Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad. Ellenkező esetben kimarad a növelés, és NOTHING értékkel tér vissza.  
-     * @return
+     * Legelőször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e.
+     * Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad.
+     * Ellenkező esetben kimarad a növelés, és NOTHING értékkel tér vissza.
+     *
+     * @return a testhőnöeléssel visszatér
      */
     public Result increaseHeat() {
         // TODO implement here
@@ -189,16 +215,18 @@ public abstract class Player {
     }
 
     /**
-	* Meghívja a Game osztály addPart(FlareGun) függvényét.
-     * @param f
+     * Meghívja a Game osztály addPart(FlareGun) függvényét.
+     *
+     * @param f jelzőrakéta elem
      */
     public void addPart(FlareGun f) {
         // TODO implement here
     }
 
     /**
-	*Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
-     * @return
+     * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
+     *
+     * @return eszközöket tartalmazó lista
      */
     public List<Tool> getTools() {
         // TODO implement here

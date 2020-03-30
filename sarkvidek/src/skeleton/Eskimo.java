@@ -3,7 +3,8 @@ package skeleton;
 import java.util.*;
 
 /**
- * Eszkimó karaktertípus esetén megadja a maximális testhő mértékét, illetve kezeli az eszkimó különleges képességét, tehát az igloo építésének menetét. 
+ * Eszkimó karaktertípus esetén megadja a maximális testhő mértékét,
+ * illetve kezeli az eszkimó különleges képességét, tehát az igloo építésének menetét.
  */
 public class Eskimo extends Player {
     /**
@@ -15,13 +16,13 @@ public class Eskimo extends Player {
      * Default constructor
      */
     public Eskimo(Game g, Field actual) {
-    super(g, actual);
+        super(g, actual);
     }
 
     /**
-     *  A Player osztályban lévő absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt
-     *  Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
-     *  ez a metódus is.
+     * A Player osztályban lévő absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt
+     * Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
+     * ez a metódus is.
      */
     public Result specialSkill() {
         System.out.println(this.toString() + ".specialSkill()");

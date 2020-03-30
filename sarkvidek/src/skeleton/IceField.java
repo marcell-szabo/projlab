@@ -93,7 +93,7 @@ public class IceField extends Field {
      * akkor meghívja az Item osztály pickMeUp(Player) függvényét.
      * Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
      *
-     * @return
+     * @return REsult az eredménnyel
      */
     public Result pickUp(Player p) {
 
