@@ -91,7 +91,7 @@ public abstract class Player {
      * @return az összeszerelés sikeressége
      */
     public Result assemble() {
-        System.out.print(this.toString() + ".assemble();");
+        System.out.print(this.toString() + ".assemble();\n");
         actualfield.haveAllPlayer(game.getPlayerNumber());
         System.out.print("Minden játékos egy mezőn tartózkodik? i/n\n");
         Scanner scan = new Scanner(System.in);
@@ -101,11 +101,11 @@ public abstract class Player {
             System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
             char c2 = scan.next().charAt(0);
             if(c2 == 'i') {
-                System.out.print(this.toString() + ".assemble() returned Result WIN;\n");
+                System.out.print(this.toString() + ".assemble() returned Result WIN;\n\n");
                 return Result.WIN;
             }
         }
-        System.out.print(this.toString() + "assemble() returned Result NOTHING\n");
+        System.out.print(this.toString() + "assemble() returned Result NOTHING\n\n");
         return Result.NOTHING;
     }
 

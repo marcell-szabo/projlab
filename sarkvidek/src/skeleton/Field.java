@@ -103,7 +103,8 @@ public abstract class Field {
      * @return boolean TRUE or FALSE
      */
     public boolean haveAllPlayer(int allplayer) {
-        // TODO implement here
+        System.out.print(this.toString() +".haveAllPlayers(allplayer);\n");
+        System.out.print(this.toString() +".haveAllPlayers(allplayer) returned boolean b;\n");
         return false;
     }
 

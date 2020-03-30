@@ -22,7 +22,7 @@ public class Skeleton {
         while (exit != true) {
             System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
                     "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
-                    "\n4. Speciális képesség használata\n5. Jelzőrakéta összeszerelése és elsütése\n6. Vihar\n7. Exit");
+                    "\n4. Speciális képesség használata\n5. Jelzőrakéta összeszerelése és elsütése\n6. Vihar\n7. Kilépés");
             int command = scan.nextInt();
             System.out.println(command);
             switch (command) {
@@ -59,16 +59,16 @@ public class Skeleton {
                     break;
                 case 4:
                     System.out.println("Adja meg a kívánt kódot!\n" + "1. Eszkimó iglut épít\n"
-                            + "2. Sarkkutató teherbírást vizsgál");
+                            + "2. Sarkkutató teherbírást vizsgál\n");
                     int special = scan.nextInt();
                     System.out.println(special);
                     switch (special) {
                         case 1:
-                            System.out.println("Eszkimó iglut épít");
+                            System.out.println("Eszkimó iglut épít\n");
                             res = p1.specialSkill();
                             break;
                         case 2:
-                            System.out.println("Sarkkutató teherbírást vizsgál");
+                            System.out.println("Sarkkutató teherbírást vizsgál\n");
                             res = p2.specialSkill();
                             break;
                         default:
@@ -85,6 +85,7 @@ public class Skeleton {
                     break;
                 case 7:
                     exit = true;
+                    break;
                 default:
                     System.out.println("Hibás válasz!\n");
                     break;

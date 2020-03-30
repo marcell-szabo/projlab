@@ -64,8 +64,8 @@ public class Game {
      * @return int player száma
      */
     public int getPlayerNumber() {
-        System.out.print(this.toString() + ".getPlayerNumber();");
-        System.out.print(this.toString() + ".getPlayerNumber() returned int n;");
+        System.out.print(this.toString() + ".getPlayerNumber();\n");
+        System.out.print(this.toString() + ".getPlayerNumber() returned int n;\n");
         return 0;
     }
 
