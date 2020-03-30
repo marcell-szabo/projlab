@@ -86,6 +86,7 @@ public class Game {
     public void addPart(FlareGun f) {
         System.out.println(this.toString() + ".addPart(f);");
         System.out.println(this.toString() + ".addPart(f) returned;");
+        return;
     }
 
     /**

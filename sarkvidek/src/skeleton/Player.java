@@ -220,7 +220,10 @@ public abstract class Player {
      * @param f jelzőrakéta elem
      */
     public void addPart(FlareGun f) {
-        // TODO implement here
+        System.out.println(this.toString() + ".addPart(f);");
+        game.addPart(f);
+        System.out.println(this.toString() + ".addPart(f) returned;");
+        return;
     }
 
     /**
