@@ -66,7 +66,7 @@ public abstract class Player {
                 t.clean(actualfield);
             }
         }
-        System.out.print(this.toString() + ".clean() returned Result r;\n");
+        System.out.print(this.toString() + ".clean() returned Result r;\n\n");
         return r;
     }
 
@@ -75,8 +75,22 @@ public abstract class Player {
      * @return
      */
     public Result assemble() {
-        // TODO implement here
-        return null;
+        System.out.print(this.toString() + ".assemble();");
+        actualfield.haveAllPlayer(game.getPlayerNumber());
+        System.out.print("Minden játékos egy mezőn tartózkodik? i/n\n");
+        Scanner scan = new Scanner(System.in);
+        char c1 = scan.next().charAt(0);
+        if(c1 == 'i') {
+            game.haveAllParts();
+            System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
+            char c2 = scan.next().charAt(0);
+            if(c2 == 'i') {
+                System.out.print(this.toString() + ".assemble() returned Result WIN;");
+                return Result.WIN;
+            }
+        }
+        System.out.print(this.toString() + "assemble() returned Result NOTHING\n\n");
+        return Result.NOTHING;
     }
 
     /**
@@ -159,7 +173,8 @@ public abstract class Player {
         System.out.print(this.toString() + ".move();\n");
         actualfield.addNeighbour(new Hole(), Direction.RIGHT);
         Field field = actualfield.checkNeighbour(d);
-        field.stepOn(this);
+        if(field != null)
+            field.stepOn(this);
         System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
         return NOTHING;
     }

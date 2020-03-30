@@ -4,10 +4,15 @@ import javax.print.DocFlavor;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Scanner;
+
 import static skeleton.Direction.*;
 
 public class Skeleton {
+    Game g;
 
+    Skeleton() {
+        g = new Game();
+    }
 
     public void runSkeleton() {
         Scanner scan = new Scanner(System.in);
@@ -26,8 +31,7 @@ public class Skeleton {
                     System.out.print("Helyzetváltoztatás\n");
                     System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
                             "mely irányba szeretne haladni.");
-                    Scanner sc = new Scanner(System.in);
-                    String c = sc.next();
+                    String c = scan.next();
                     Direction d = UP;
                     switch (c) {
                         case "J":

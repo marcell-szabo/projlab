@@ -15,7 +15,7 @@ public class Eskimo extends Player {
      * Default constructor
      */
     public Eskimo(Game g, Field actual) {
-        super(g, actual);
+    super(g, actual);
     }
 
     /**
@@ -26,7 +26,7 @@ public class Eskimo extends Player {
     public Result specialSkill() {
         System.out.println(this.toString() + ".specialSkill()");
         actualfield.buildIgloo();
-        System.out.println(this.toString() + ".specialSkill() returned Result res");
+        System.out.println(this.toString() + ".specialSkill() returned Result res\n\n");
         return null;
     }
 

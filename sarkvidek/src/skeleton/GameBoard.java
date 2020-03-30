@@ -20,21 +20,14 @@ public class GameBoard {
         fields.add(h);
         IceField icef = new IceField();
         fields.add(icef);
-    }
-
-    /**
-	* Az átvett játékos-szám alapján létrehozza a mezőket majd eltárolja azokat fields tömbben. Végül meghívja a setNeighbours() függvényt.
-     * @param allplayer összes játékos száma
-     */
-    public void init(int allplayer) {
-        // TODO implement here
+        setNeighbours();
     }
 
     /**
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján. 
      */
     public void setNeighbours() {
-        // TODO implement here
+        fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
     }
 
     /**
@@ -55,7 +48,7 @@ public class GameBoard {
         Result r = Result.OK;
         for (Field f: fields)
             r = f.storm();
-        System.out.print(this.toString() + ".storm() returned Result r;\n");
+        System.out.print(this.toString() + ".storm() returned Result r;\n\n");
         return r;
     }
 

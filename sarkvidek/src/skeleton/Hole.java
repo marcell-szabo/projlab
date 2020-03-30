@@ -2,6 +2,8 @@ package skeleton;
 
 import java.util.*;
 
+import static skeleton.Result.OK;
+
 /**
  * Lyukak kezelésére szolgáló osztály. A vele kapcsolatos kimentési kísérletet is ez az osztály kezdi meg.
  */
@@ -32,8 +34,9 @@ public class Hole extends Field {
      */
     public Result stepOn(Player p) {
         System.out.print(this.toString() + ".stepOn(Player p);\n");
+        p.helpMe();
         System.out.print(this.toString() + ".stepOn(Player p) returned Result r;\n");
-        return p.helpMe();
+        return Result.OK;
     }
 
 }

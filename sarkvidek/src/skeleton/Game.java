@@ -1,5 +1,6 @@
 package skeleton;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.util.*;
 
 /**
@@ -8,10 +9,9 @@ import java.util.*;
 public class Game {
 
     /**
-     * Default constructor
+     * A játéktáblát tárolja.
      */
-    public Game() {
-    }
+    private GameBoard gameboard;
 
     /**
      * Az adott játékosokat tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el (beleértve a határokat is).
@@ -24,14 +24,19 @@ public class Game {
     private List<FlareGun> flare_gun = new ArrayList<>();
 
     /**
-     * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát. Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát. Ezt követően a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
+     * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
+     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát.
+     * Ezt követően a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public void init() {
-        // TODO implement here
+    public Game() {
+        gameboard = new GameBoard(2);
+        players.add(new Eskimo(this, gameboard.getStartField()));
+        players.add(new Explorer(this, gameboard.getStartField()));
     }
 
     /**
-     * A korábban létrehozott Player példányoknak állítja be az actualfield attribútumát. Ehhez lekéri a kezdő mező referenciáját a GameBoard-tól a getStartField() függvény segítségével.
+     * A korábban létrehozott Player példányoknak állítja be az actualfield attribútumát.
+     * Ehhez lekéri a kezdő mező referenciáját a GameBoard-tól a getStartField() függvény segítségével.
      */
     public void setActualFields() {
         // TODO implement here
