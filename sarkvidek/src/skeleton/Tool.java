@@ -3,8 +3,8 @@ package skeleton;
 import java.util.*;
 
 /**
- * Az eszkÃ¶zÃ¶k felvÃ©telÃ©nek, illetve a velÃ¼k kapcsolatos interakciÃ³k
- * (Ã¡sÃ¡s, kÃ¶teles kimentÃ©s, bÃºvÃ¡rruha hasznÃ¡latÃ¡val tÃ¶rtÃ©nÅ‘ kimenekÃ¼lÃ©s) kezelÃ©sÃ©re szolgÃ¡lÃ³ absztrakt osztÃ¡ly.
+ * Az eszközök felvételének, illetve a velük kapcsolatos interakciók
+ * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés) kezelésére szolgáló absztrakt osztály.
  */
 public abstract class Tool extends Item {
 
@@ -15,14 +15,14 @@ public abstract class Tool extends Item {
     }
 
     /**
-	 * LegelÅ‘szÃ¶r a Player osztÃ¡ly getTools() fÃ¼ggvÃ©nye kerÃ¼l meghÃ­vÃ¡sra,
-     * mely a jÃ¡tÃ©kosnÃ¡l lÃ©vÅ‘ eszkÃ¶zÃ¶ket tartalmazÃ³ listÃ¡val tÃ©r vissza.
-     * Ezt kÃ¶vetÅ‘en meghÃ­vja a lista minden elemÃ©re a Tool osztÃ¡ly isSame(Item) metÃ³dusÃ¡t.
-     * EzutÃ¡n ezeknek a visszatÃ©rÃ©si Ã©rtÃ©kei kerÃ¼lnek vizsgÃ¡lat alÃ¡.
-     * Amennyiben minden fÃ¼ggvÃ©ny hÃ­vÃ¡st kÃ¶vetÅ‘en csak FALSE visszatÃ©rÃ©si Ã©rtÃ©keket kapunk,
-     * akkor meghÃ­vÃ¡sra kerÃ¼l a Player osztÃ¡ly addItem(Item) metÃ³dusa, majd ezt kÃ¶vetÅ‘en OK-kal tÃ©r vissza.
-     * KÃ¼lÃ¶nben pedig NOTHING lesz a visszatÃ©rÃ©si Ã©rtÃ©k.
-     * @param p - A JÃ¡tÃ©kos aki felvesz egy Toolt
+	 * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
+     * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
+     * Ezt követõen meghívja a lista minden elemére a Tool osztály isSame(Item) metódusát.
+     * Ezután ezeknek a visszatérési értékei kerülnek vizsgálat alá.
+     * Amennyiben minden függvény hívást követõen csak FALSE visszatérési értékeket kapunk,
+     * akkor meghívásra kerül a Player osztály addItem(Item) metódusa, majd ezt követõen OK-kal tér vissza.
+     * Különben pedig NOTHING lesz a visszatérési érték.
+     * @param p - A Játékos aki felvesz egy Toolt
      * @return
      */
     public Result pickMeUp(Player p) {
@@ -31,7 +31,7 @@ public abstract class Tool extends Item {
     }
 
     /**
-	* MegvizsgÃ¡lja a megkapott eszkÃ¶zre, hogy az adott jÃ¡tÃ©kos rendelkezik-e mÃ¡r vele.
+	* Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
      * @param t 
      * @return
      */
@@ -41,13 +41,13 @@ public abstract class Tool extends Item {
     }
 
     /**
-	* VirtuÃ¡lis, Ã¼res fÃ¼ggvÃ©ny.
+	* Virtuális, üres függvény.
      * @param f
      */
     public void clean(Field f){}
 
     /**
-	* VirtuÃ¡lis fÃ¼ggvÃ©ny, ami NOTHING Ã©rtÃ©kkel tÃ©r vissza.
+	* Virtuális függvény, ami NOTHING értékkel tér vissza.
      * @param f 
      * @param p 
      * @return
@@ -57,7 +57,7 @@ public abstract class Tool extends Item {
     }
 
     /**
-	* VirtuÃ¡lis fÃ¼ggvÃ©ny, ami NOTHING Ã©rtÃ©kkel tÃ©r vissza.
+	* Virtuális függvény, ami NOTHING értékkel tér vissza.
      * @param f 
      * @param p 
      * @return

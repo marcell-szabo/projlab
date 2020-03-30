@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * InterfÃ©sz, amely a tÃ¡rgyak egysÃ©ges kezelÃ©sÃ©t biztosÃ­tja, ez szolgÃ¡l a tÃ¡rgyak felvÃ©telÃ©nek kezelÃ©sÃ©re.
+ * Interfész, amely a tárgyak egységes kezelését biztosítja, ez szolgál a tárgyak felvételének kezelésére.
  */
 public abstract class Item {
 
@@ -15,7 +15,7 @@ public abstract class Item {
 
 
     /**
-     * Absztrakt fÃ¼ggvÃ©ny. A FlareGun, a Food vagy a Tool osztÃ¡ly pickMeUp(Player) fÃ¼ggvÃ©nye kerÃ¼l meghÃ­vÃ¡sra.
+     * Absztrakt függvény. A FlareGun, a Food vagy a Tool osztály pickMeUp(Player) függvénye kerül meghívásra.
      *
      * @param p
      * @return

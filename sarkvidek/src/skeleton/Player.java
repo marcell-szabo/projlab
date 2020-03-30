@@ -7,31 +7,31 @@ import skeleton.Result;
 import static skeleton.Result.NOTHING;
 
 /**
- * JÃ¡tÃ©kosok kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly. A jÃ¡tÃ©kosok munkÃ¡jÃ¡nak Ã©s testhÅ‘jÃ©nek vizsgÃ¡lata mellett a kÃ¶rÃ¶kben elvÃ©gezhetÅ‘ cselekvÃ©sekkel foglalkozik. Minden jÃ¡tÃ©kos kÃ¶re addig tart, amÃ­g a work attribÃºtumÃ¡nak Ã©rtÃ©ke nem csÃ¶kken le nullÃ¡ra. Minden cselekvÃ©s, ami az adott esetben engedÃ©lyezett, az egy egysÃ©g munkavÃ©gzÃ©ssel jÃ¡r (pÃ©ldÃ¡ul tÃ¡rgy felvÃ©tele olyan mezÅ‘n, amin mÃ©g van hÃ³rÃ©teg nem engedÃ©lyezett, Ã©s ilyenkor ez nem is jÃ¡r munkavÃ©gzÃ©ssel).
+ * Játékosok kezelésére szolgáló osztály. A játékosok munkájának és testhõjének vizsgálata mellett a körökben elvégezhetõ cselekvésekkel foglalkozik. Minden játékos köre addig tart, amíg a work attribútumának értéke nem csökken le nullára. Minden cselekvés, ami az adott esetben engedélyezett, az egy egység munkavégzéssel jár (például tárgy felvétele olyan mezõn, amin még van hóréteg nem engedélyezett, és ilyenkor ez nem is jár munkavégzéssel).
  */
 public abstract class Player {
     /**
-     * Az adott jÃ¡tÃ©kos testhÅ‘ szintjÃ©nek mennyisÃ©gÃ©t tÃ¡rolja.
+     * Az adott játékos testhõ szintjének mennyiségét tárolja.
      */
     protected int heat;
 
     /**
-     * Az adott jÃ¡tÃ©kos munkÃ¡jÃ¡nak (szebben megfogalmazva: munkÃ¡ra fordÃ­thatÃ³ energiÃ¡jÃ¡nak) egysÃ©geit tÃ¡rolja.
+     * Az adott játékos munkájának (szebben megfogalmazva: munkára fordítható energiájának) egységeit tárolja.
      */
     protected int work;
 
     /**
-     * TÃ¡rolja az aktuÃ¡lis jÃ¡tÃ©kot.
+     * Tárolja az aktuális játékot.
      */
     private Game game;
 
     /**
-     * TÃ¡rolja, hogy az adott jÃ¡tÃ©kos melyik mezÅ‘n Ã¡ll.
+     * Tárolja, hogy az adott játékos melyik mezõn áll.
      */
     protected Field actualfield;
 
     /**
-     * TÃ¡rolja a jÃ¡tÃ©kosnÃ¡l talÃ¡lhatÃ³ tÃ¡rgyakat.
+     * Tárolja a játékosnál található tárgyakat.
      */
     private List<Tool> tools = new ArrayList<>();
 
@@ -44,17 +44,17 @@ public abstract class Player {
     }
 
     /**
-     * ElsÅ‘kÃ©nt beÃ¡llÃ­tja a jelenlegi jÃ¡tÃ©kos work attribÃºtumÃ¡nak Ã©rtÃ©ket nÃ©gy egysÃ©gre, majd vÃ©gigvÃ¡rja
-     * (egy ciklusban) a jÃ¡tÃ©kos lÃ©pÃ©seit (mÃ­g a work Ã©rtÃ©ke nulla nem lesz, vagy vÃ©get nem Ã©r a
-     * jÃ¡tÃ©k gyÅ‘zelem vagy halÃ¡l miatt). FutÃ¡s sorÃ¡n az Ã¡ltalunk vÃ¡lasztott cselekvÃ©sekhez szÃ¼ksÃ©ges
-     * fÃ¼ggvÃ©nyeket fogja meghÃ­vni. Ha az Ã¡ltala meghÃ­vott fÃ¼ggvÃ©nyek OK-kal tÃ©rnek vissza, akkor csÃ¶kkenti a
-     * work Ã©rtÃ©kÃ©t eggyel, majd ellenÅ‘rzi, hogy ezt kÃ¶vetÅ‘en nem csÃ¶kkent-e nullÃ¡ra. Amennyiben nem, akkor
-     * folytatÃ³dik a ciklus futÃ¡sa, ellenben ha ez az Ã©rtÃ©k nullÃ¡ra csÃ¶kkent, akkor kilÃ©p a ciklusbÃ³l, Ã©s a round()
-     * metÃ³dus OK Ã©rtÃ©kkel tÃ©r vissza. Ha futÃ¡s sorÃ¡n bÃ¡rmely fÃ¼ggvÃ©ny DIE vagy WIN visszatÃ©rÃ©si Ã©rtÃ©kkel rendelkezik,
-     * akkor a round() szintÃ©n kilÃ©p a ciklusÃ¡bÃ³l Ã©s ugyanazzal fog visszatÃ©rni amit kapott. (NOTHING hatÃ¡sÃ¡ra nem
-     * csÃ¶kkenti a work attribÃºtumot, Ã©s biztosan benne marad a ciklusban)
+     * Elsõként beállítja a jelenlegi játékos work attribútumának értéket négy egységre, majd végigvárja
+     * (egy ciklusban) a játékos lépéseit (míg a work értéke nulla nem lesz, vagy véget nem ér a
+     * játék gyõzelem vagy halál miatt). Futás során az általunk választott cselekvésekhez szükséges
+     * függvényeket fogja meghívni. Ha az általa meghívott függvények OK-kal térnek vissza, akkor csökkenti a
+     * work értékét eggyel, majd ellenõrzi, hogy ezt követõen nem csökkent-e nullára. Amennyiben nem, akkor
+     * folytatódik a ciklus futása, ellenben ha ez az érték nullára csökkent, akkor kilép a ciklusból, és a round()
+     * metódus OK értékkel tér vissza. Ha futás során bármely függvény DIE vagy WIN visszatérési értékkel rendelkezik,
+     * akkor a round() szintén kilép a ciklusából és ugyanazzal fog visszatérni amit kapott. (NOTHING hatására nem
+     * csökkenti a work attribútumot, és biztosan benne marad a ciklusban)
      *
-     * @return a kÃ¶rben tÃ¶rtÃ©nt-e win, die
+     * @return a körben történt-e win, die
      */
     public Result round() {
         // TODO implement here
@@ -62,9 +62,9 @@ public abstract class Player {
     }
 
     /**
-     * MeghÃ­vja a Field osztÃ¡ly clean() metÃ³dusÃ¡t. Amennyiben ez OK-kal tÃ©r vissza,
-     * akkor meghÃ­vja a tools attribÃºtumban tÃ¡rolt Ã¶sszes Tool pÃ©ldÃ¡ny clean(Field) fÃ¼ggvÃ©nyÃ©t.
-     * VÃ©gÃ¼l visszatÃ©r azzal, amivel a Field osztÃ¡ly elÅ‘szÃ¶r meghÃ­vott clean() fÃ¼ggvÃ©nye tÃ©rt vissza.
+     * Meghívja a Field osztály clean() metódusát. Amennyiben ez OK-kal tér vissza,
+     * akkor meghívja a tools attribútumban tárolt összes Tool példány clean(Field) függvényét.
+     * Végül visszatér azzal, amivel a Field osztály elõször meghívott clean() függvénye tért vissza.
      *
      * @return Result
      */
@@ -81,24 +81,24 @@ public abstract class Player {
     }
 
     /**
-     * A game attribÃºtumban tÃ¡rolt Game-re meghÃ­vja a getPlayerNumber() fÃ¼ggvÃ©nyt.
-     * A visszakapott Ã©rtÃ©ket Ã¡tadja az Ã¡ltala hÃ­vott a haveAllPlayers() metÃ³dusnak.
-     * Ha ez FALSE Ã©rtÃ©kkel tÃ©r vissza, akkor Å‘ OK-kal fog. TRUE esetÃ©n viszont meghÃ­vja a HaveAllParts() fÃ¼ggvÃ©nyt,
-     * amely ha TRUE-val tÃ©r vissza, akkor az assemble() WIN-nel fog. Amennyiben a haveAllParts() metÃ³dus FALSE Ã©rtÃ©kkel
-     * tÃ©r vissza, akkor az assemble() OK-kal fog. (Ezekben az esetekben azÃ©rt tÃ©r vissza OK-kal,
-     * mert a feleslegesen megprÃ³bÃ¡lt Ã¶sszeszerelÃ©s is munkÃ¡nak szÃ¡mÃ­t).
+     * A game attribútumban tárolt Game-re meghívja a getPlayerNumber() függvényt.
+     * A visszakapott értéket átadja az általa hívott a haveAllPlayers() metódusnak.
+     * Ha ez FALSE értékkel tér vissza, akkor õ OK-kal fog. TRUE esetén viszont meghívja a HaveAllParts() függvényt,
+     * amely ha TRUE-val tér vissza, akkor az assemble() WIN-nel fog. Amennyiben a haveAllParts() metódus FALSE értékkel
+     * tér vissza, akkor az assemble() OK-kal fog. (Ezekben az esetekben azért tér vissza OK-kal,
+     * mert a feleslegesen megpróbált összeszerelés is munkának számít).
      *
-     * @return az Ã¶sszeszerelÃ©s sikeressÃ©ge
+     * @return az összeszerelés sikeressége
      */
     public Result assemble() {
         System.out.print(this.toString() + ".assemble();\n");
         actualfield.haveAllPlayer(game.getPlayerNumber());
-        System.out.print("Minden jÃ¡tÃ©kos egy mezÅ‘n tartÃ³zkodik? i/n\n");
+        System.out.print("Minden jatekos egy mezon tartozkodik? i/n\n");
         Scanner scan = new Scanner(System.in);
         char c1 = scan.next().charAt(0);
         if (c1 == 'i') {
             game.haveAllParts();
-            System.out.print("A jÃ¡tÃ©kos Ã©s csapata rendelkezik az Ã¶sszes alkatrÃ©sszel? i/n\n");
+            System.out.print("A jatekos es csapata rendelkezik az osszes alkatresszel? i/n\n");
             char c2 = scan.next().charAt(0);
             if(c2 == 'i') {
                 System.out.print(this.toString() + ".assemble() returned Result WIN;\n\n");
@@ -110,20 +110,20 @@ public abstract class Player {
     }
 
     /**
-     * Absztrakt fÃ¼ggvÃ©ny. Az Eskimo vagy az Explorer osztÃ¡ly specialSkill() fÃ¼ggvÃ©nye hÃ­vÃ³dik meg.
+     * Absztrakt függvény. Az Eskimo vagy az Explorer osztály specialSkill() függvénye hívódik meg.
      *
      * @return
      */
     public abstract Result specialSkill();
 
     /**
-     * MeghÃ­vja az actualfieldben tÃ¡rolt mezÅ‘re a Field osztÃ¡ly leaveField(Player) fÃ¼ggvÃ©nyÃ©t.
-     * Ezek utÃ¡n beÃ¡llÃ­tja a jelenlegi jÃ¡tÃ©kos actualfield nevÅ± attribÃºtumÃ¡nak Ã©rtÃ©kÃ©t a megkapott mezÅ‘re.
-     * Ezt kÃ¶vetÅ‘en meghÃ­vja a Field osztÃ¡ly stepOn(Player) fÃ¼ggvÃ©nyÃ©t, Ã©s azzal fog visszatÃ©rni,
-     * amivel az Ã¡ltala hÃ­vott metÃ³dus visszatÃ©rt.
+     * Meghívja az actualfieldben tárolt mezõre a Field osztály leaveField(Player) függvényét.
+     * Ezek után beállítja a jelenlegi játékos actualfield nevû attribútumának értékét a megkapott mezõre.
+     * Ezt követõen meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
+     * amivel az általa hívott metódus visszatért.
      *
-     * @param f megkapja a mezÅ‘t amire lÃ©p, ez lesz az actualfield
-     * @return Result a sikeressÃ©grÅ‘l
+     * @param f megkapja a mezõt amire lép, ez lesz az actualfield
+     * @return Result a sikerességrõl
      */
     public Result changeField(Field f) {
         System.out.print(this.toString() + ".changeField(Field f);\n");
@@ -135,14 +135,14 @@ public abstract class Player {
     }
 
     /**
-     * ElÅ‘szÃ¶r a swim(Field, Player) metÃ³dus kerÃ¼l meghÃ­vÃ¡sra minden egyes eszkÃ¶zre.
-     * Ezt kÃ¶vetÅ‘en a visszatÃ©rÃ©si Ã©rtÃ©kek kerÃ¼lnek vizsgÃ¡latra.
-     * Ha ezek kÃ¶zÃ¼l bÃ¡rmelyik nem NOTHING Ã©rtÃ©ket vesz fel, akkor azzal az Ã©rtÃ©kkel tÃ©r vissza a helpMe() is.
-     * Ha pedig mindegyik NOTHING-gal tÃ©r vissza, akkor minden irÃ¡nyt megvizsgÃ¡l a checkNeighbour(Direction) metÃ³dussal.
-     * Amennyiben a visszatÃ©rÃ©si Ã©rtÃ©k nem NULL, akkor meghÃ­vÃ³dik a canHelp() fÃ¼ggvÃ©ny a megkapott referenciÃ¡ra.
-     * Ebben az esetben amivel ez a metÃ³dus tÃ©r vissza, azzal fog a helpMe() is.
+     * Elõször a swim(Field, Player) metódus kerül meghívásra minden egyes eszközre.
+     * Ezt követõen a visszatérési értékek kerülnek vizsgálatra.
+     * Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is.
+     * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
+     * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
+     * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
      *
-     * @return Result a segÃ­tsÃ©gkÃ©rÃ©s sikeressÃ©gÃ©vel
+     * @return Result a segítségkérés sikerességével
      */
     public Result helpMe() {
         System.out.print(this.toString() + ".helpMe();\n");
@@ -164,10 +164,10 @@ public abstract class Player {
     }
 
     /**
-     * CsÃ¶kkenti a jÃ¡tÃ©kos heat nevÅ± attribÃºtumÃ¡nak Ã©rtÃ©kÃ©t eggyel, majd megvizsgÃ¡lja, hogy mennyi a heat Ã©rtÃ©ke.
-     * Amennyiben ez nullÃ¡ra csÃ¶kkent, akkor DIE, minden mÃ¡s esetben pedig OK  visszatÃ©rÃ©si Ã©rtÃ©ke lesz.
+     * Csökkenti a játékos heat nevû attribútumának értékét eggyel, majd megvizsgálja, hogy mennyi a heat értéke.
+     * Amennyiben ez nullára csökkent, akkor DIE, minden más esetben pedig OK  visszatérési értéke lesz.
      *
-     * @return a testhÅ‘csÃ¶kkentÃ©s sikeressÃ©gÃ©vel tÃ©r vissza
+     * @return a testhõcsökkentés sikerességével tér vissza
      */
     public Result decreaseHeat() {
         System.out.print(this.toString() + ".decreaseHeat();\n");
@@ -176,21 +176,21 @@ public abstract class Player {
     }
 
     /**
-     * A listÃ¡hoz hozzÃ¡adja a megkapott eszkÃ¶zt.
+     * A listához hozzáadja a megkapott eszközt.
      *
-     * @param t tool pÃ©ldÃ¡ny
+     * @param t tool példány
      */
     public void addTool(Tool t) {
         // TODO implement here
     }
 
     /**
-     * LegelÅ‘szÃ¶r a megkapott irÃ¡nyra meghÃ­vja a checkNeighbour(Direction) metÃ³dust.
-     * Ezt kÃ¶vetÅ‘en az elÅ‘bb hÃ­vott fÃ¼ggvÃ©ny visszatÃ©rÃ©si Ã©rtÃ©kÃ©t Ã¡tadva kerÃ¼l a changeField(Field) meghÃ­vÃ¡sra.
-     * Amivel ez visszatÃ©r, azzal fog a move(Direction) is.
+     * Legelõször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
+     * Ezt követõen az elõbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
+     * Amivel ez visszatér, azzal fog a move(Direction) is.
      *
-     * @param d mozgÃ¡snÃ¡l preferÃ¡lt irÃ¡ny
-     * @return Result a sikeressÃ©grÅ‘l
+     * @param d mozgásnál preferált irány
+     * @return Result a sikerességrõl
      */
     public Result move(Direction d) {
         System.out.print(this.toString() + ".move();\n");
@@ -203,11 +203,11 @@ public abstract class Player {
     }
 
     /**
-     * LegelÅ‘szÃ¶r megvizsgÃ¡lja, hogy az adott jÃ¡tÃ©kos heat attribÃºtumÃ¡nak Ã©rtÃ©ke a maximÃ¡lis Ã©rtÃ©k alatt van-e.
-     * Amennyiben igen, akkor megnÃ¶veli eggyel az Ã©rtÃ©kÃ©t, majd OK visszatÃ©rÃ©si Ã©rtÃ©ket ad.
-     * EllenkezÅ‘ esetben kimarad a nÃ¶velÃ©s, Ã©s NOTHING Ã©rtÃ©kkel tÃ©r vissza.
+     * Legelõször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e.
+     * Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad.
+     * Ellenkezõ esetben kimarad a növelés, és NOTHING értékkel tér vissza.
      *
-     * @return a testhÅ‘nÃ¶elÃ©ssel visszatÃ©r
+     * @return a testhõnöeléssel visszatér
      */
     public Result increaseHeat() {
         // TODO implement here
@@ -215,9 +215,9 @@ public abstract class Player {
     }
 
     /**
-     * MeghÃ­vja a Game osztÃ¡ly addPart(FlareGun) fÃ¼ggvÃ©nyÃ©t.
+     * Meghívja a Game osztály addPart(FlareGun) függvényét.
      *
-     * @param f jelzÅ‘rakÃ©ta elem
+     * @param f jelzõrakéta elem
      */
     public void addPart(FlareGun f) {
         System.out.println(this.toString() + ".addPart(f);");
@@ -227,9 +227,9 @@ public abstract class Player {
     }
 
     /**
-     * Visszaadja az eszkÃ¶zÃ¶ket tartalmazÃ³ listÃ¡t, tehÃ¡t a tools attribÃºtumÃ¡t.
+     * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
      *
-     * @return eszkÃ¶zÃ¶ket tartalmazÃ³ lista
+     * @return eszközöket tartalmazó lista
      */
     public List<Tool> getTools() {
         // TODO implement here

@@ -3,12 +3,12 @@ package skeleton;
 import java.util.*;
 
 /**
- * EszkimÃ³ karaktertÃ­pus esetÃ©n megadja a maximÃ¡lis testhÅ‘ mÃ©rtÃ©kÃ©t,
- * illetve kezeli az eszkimÃ³ kÃ¼lÃ¶nleges kÃ©pessÃ©gÃ©t, tehÃ¡t az igloo Ã©pÃ­tÃ©sÃ©nek menetÃ©t.
+ * Eszkimó karaktertípus esetén megadja a maximális testhõ mértékét,
+ * illetve kezeli az eszkimó különleges képességét, tehát az igloo építésének menetét.
  */
 public class Eskimo extends Player {
     /**
-     * Statikus attribÃºtum. Az eszkimÃ³ testhÅ‘ szintjÃ©nek maximÃ¡lis szÃ¡mÃ¡t adja meg.
+     * Statikus attribútum. Az eszkimó testhõ szintjének maximális számát adja meg.
      */
     private static int heatlimit = 5;
 
@@ -20,9 +20,9 @@ public class Eskimo extends Player {
     }
 
     /**
-     * A Player osztÃ¡lyban lÃ©vÅ‘ absztrakt fÃ¼ggvÃ©ny megvalÃ³sÃ­tÃ¡sa. MeghÃ­vja az actualfield attribÃºtumban eltÃ¡rolt
-     * Field-re a buildIgloo() fÃ¼ggvÃ©nyt, majd ennek visszatÃ©rÃ©si Ã©rtÃ©kÃ©vel (OK/ NOTHING) tÃ©r vissza
-     * ez a metÃ³dus is.
+     * A Player osztályban lévõ absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt
+     * Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
+     * ez a metódus is.
      */
     public Result specialSkill() {
         System.out.println(this.toString() + ".specialSkill()");

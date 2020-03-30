@@ -5,7 +5,7 @@ import java.util.*;
 import static skeleton.Result.OK;
 
 /**
- * Lyukak kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly. A vele kapcsolatos kimentÃ©si kÃ­sÃ©rletet is ez az osztÃ¡ly kezdi meg.
+ * Lyukak kezelésére szolgáló osztály. A vele kapcsolatos kimentési kísérletet is ez az osztály kezdi meg.
  */
 public class Hole extends Field {
 
@@ -16,8 +16,8 @@ public class Hole extends Field {
     }
 
     /**
-     * A Field osztÃ¡lyban lÃ©vÅ‘ absztrakt fÃ¼ggvÃ©ny megvalÃ³sÃ­tÃ¡sa. Az adott mezÅ‘ snow attribÃºtumÃ¡nak Ã©rtÃ©kÃ©t megnÃ¶veli eggyel.
-     * Mindig OK-kal tÃ©r vissza.
+     * A Field osztályban lévõ absztrakt függvény megvalósítása. Az adott mezõ snow attribútumának értékét megnöveli eggyel.
+     * Mindig OK-kal tér vissza.
      *
      * @return OK mindig
      */
@@ -28,12 +28,12 @@ public class Hole extends Field {
     }
 
     /**
-     * A Field osztÃ¡lyban lÃ©vÅ‘ absztrakt fÃ¼ggvÃ©ny megvalÃ³sÃ­tÃ¡sa.
-     * Az attribÃºtumkÃ©nt kapott Player pÃ©ldÃ¡ny helpMe() metÃ³dusÃ¡t hÃ­vja meg,
-     * majd ennek a visszatÃ©rÃ©si Ã©rtÃ©kÃ©vel tÃ©r vissza a stepOn(Player) fÃ¼ggvÃ©ny is.
+     * A Field osztályban lévõ absztrakt függvény megvalósítása.
+     * Az attribútumként kapott Player példány helpMe() metódusát hívja meg,
+     * majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
      *
-     * @param p erre a mezÅ‘re lÃ©pÅ‘ Player
-     * @return Result, hogy sikerÃ¼lt-e kimenteni a jÃ¡tÃ©kost.
+     * @param p erre a mezõre lépõ Player
+     * @return Result, hogy sikerült-e kimenteni a játékost.
      */
     public Result stepOn(Player p) {
         System.out.print(this.toString() + ".stepOn(Player p);\n");

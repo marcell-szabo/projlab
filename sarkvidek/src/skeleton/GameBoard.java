@@ -3,12 +3,12 @@ package skeleton;
 import java.util.*;
 
 /**
- * LÃ©trehozza, inicializÃ¡lja, Ã¶sszefogja s egyben tÃ¡rolja az Ã¶sszes mezÅ‘t. Ha az adott kÃ¶rben Ãºgy adta a gÃ©p,
- * hogy lesz hÃ³vihar, akkor az elÅ‘zÅ‘ek mellett kezeli azt is, hogy melyik mezÅ‘kre fog leesni egy rÃ©teg hÃ³.
+ * Létrehozza, inicializálja, összefogja s egyben tárolja az összes mezõt. Ha az adott körben úgy adta a gép,
+ * hogy lesz hóvihar, akkor az elõzõek mellett kezeli azt is, hogy melyik mezõkre fog leesni egy réteg hó.
  */
 public class GameBoard {
     /**
-     * A tÃ¡blÃ¡hoz tartozÃ³ mezÅ‘k tÃ¡rolÃ¡sÃ¡ra szolgÃ¡l.
+     * A táblához tartozó mezõk tárolására szolgál.
      */
     private List<Field> fields = new ArrayList<>();
 
@@ -25,16 +25,16 @@ public class GameBoard {
     }
 
     /**
-     * A mÃ¡r elkÃ©szÃ­tett Field-eknek beÃ¡llÃ­tja a szomszÃ©dait a fields tÃ¶mb alapjÃ¡n.
+     * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
     public void setNeighbours() {
         fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
     }
 
     /**
-     * VisszatÃ©r a bal felsÅ‘ sarokban lÃ©vÅ‘ Field referenciÃ¡jÃ¡val. (ErrÅ‘l a mezÅ‘rÅ‘l fognak elindulni a jÃ¡tÃ©kosok).
+     * Visszatér a bal felsõ sarokban lévõ Field referenciájával. (Errõl a mezõrõl fognak elindulni a játékosok).
      *
-     * @return Field-bal felsÅ‘
+     * @return Field-bal felsõ
      */
     public Field getStartField() {
         // TODO implement here
@@ -42,9 +42,9 @@ public class GameBoard {
     }
 
     /**
-     * EldÃ¶nti egy adott valÃ³szÃ­nÅ±sÃ©g alapjÃ¡n minden egyes mezÅ‘re, hogy ott jÃ¶n-e vihar.
-     * Ha jÃ¶n, akkor meghÃ­vja annak a mezÅ‘nek(Field) a storm() fÃ¼ggvÃ©nyÃ©t. FutÃ¡s vÃ©gÃ©n,
-     * ha legalÃ¡bb egy mezÅ‘ storm() fÃ¼ggvÃ©nye DIE-al tÃ©rt vissza, akkor Å‘ is DIE-al fog, kÃ¼lÃ¶nben pedig OK-kal.
+     * Eldönti egy adott valószínûség alapján minden egyes mezõre, hogy ott jön-e vihar.
+     * Ha jön, akkor meghívja annak a mezõnek(Field) a storm() függvényét. Futás végén,
+     * ha legalább egy mezõ storm() függvénye DIE-al tért vissza, akkor õ is DIE-al fog, különben pedig OK-kal.
      *
      * @return DIE or OK
      */

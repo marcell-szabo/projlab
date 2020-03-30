@@ -3,8 +3,8 @@ package skeleton;
 import java.util.*;
 
 /**
- * Enumeration osztÃ¡ly, amely a meghÃ­vott fÃ¼ggvÃ©nyek futÃ¡sa alatt bekÃ¶vetkezÅ‘ esemÃ©nyeket reprezentÃ¡lja.
- * A legtÃ¶bb fÃ¼ggvÃ©ny visszatÃ©rÃ©si Ã©rtÃ©ke ezen enumerÃ¡ciÃ³ Ã©rtÃ©kei kÃ¶zÃ¼l vesz fel egyet.
+ * Enumeration osztály, amely a meghívott függvények futása alatt bekövetkezõ eseményeket reprezentálja.
+ * A legtöbb függvény visszatérési értéke ezen enumeráció értékei közül vesz fel egyet.
  */
 enum Result {
     OK, WIN, DIE, NOTHING;

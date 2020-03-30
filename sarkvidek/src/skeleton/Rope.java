@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * A kÃ¶tÃ©l felvÃ©telÃ©re, illetve a kÃ¶teles kimentÃ©s kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
+ * A kötél felvételére, illetve a köteles kimentés kezelésére szolgáló osztály.
  */
 public class Rope extends Tool {
 
@@ -14,10 +14,10 @@ public class Rope extends Tool {
     }
 
     /**
-     * a paramÃ©terknt megadott player felvesz egy kÃ¶telet
+     * a paraméterknt megadott player felvesz egy kötelet
      *
-     * @param p a player aki felveszi az kÃ¶telet
-     * @return Result a felvÃ©tel sikeressÃ©gÃ©rÅ‘l
+     * @param p a player aki felveszi az kötelet
+     * @return Result a felvétel sikerességérõl
      */
     @Override
     public Result pickMeUp(Player p) {
@@ -28,10 +28,10 @@ public class Rope extends Tool {
     }
 
     /**
-     * Mindig TRUE Ã©rtÃ©kkel tÃ©r vissza (hiszen csak akkor hÃ­vÃ³dik meg, ha egy Rope pÃ©ldÃ¡ny
-     * szeretnÃ© magÃ¡t Ã¶sszehasonlÃ­tani vele).
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány
+     * szeretné magát összehasonlítani vele).
      *
-     * @param r rope pÃ©ldÃ¡ny
+     * @param r rope példány
      * @return true
      */
     public boolean isSame(Rope r) {
@@ -40,12 +40,12 @@ public class Rope extends Tool {
     }
 
     /**
-     * MeghÃ­vja a paramÃ©terkÃ©nt megkapott Player pÃ©ldÃ¡ny changeField(Field) metÃ³dusÃ¡t, Ã¡tadva neki a
-     * paramÃ©terkÃ©nt a kapott Field pÃ©ldÃ¡nyt.
-     * A changeField fÃ¼ggvÃ©ny visszatÃ©rÃ©si Ã©rtÃ©ke lesz a help fÃ¼ggvÃ©ny visszatÃ©rÃ©se is.
+     * Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a
+     * paraméterként a kapott Field példányt.
+     * A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
      *
-     * @param f az a field amire a player lÃ©pni akar
-     * @param p az a jÃ¡tÃ©kos amelyik a mÃ¡sik fieldre lÃ©pne
+     * @param f az a field amire a player lépni akar
+     * @param p az a játékos amelyik a másik fieldre lépne
      * @return
      */
     public Result help(Field f, Player p) {

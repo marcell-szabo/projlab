@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * Az Ã¡sÃ³ felvÃ©telÃ©nek, illetve az Ã¡sÃ³val rendelkezÅ‘ jÃ¡tÃ©kosok hÃ³rÃ©teg ellapÃ¡tolÃ¡sÃ¡nak kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
+ * Az ásó felvételének, illetve az ásóval rendelkezõ játékosok hóréteg ellapátolásának kezelésére szolgáló osztály.
  */
 public class Shovel extends Tool {
 
@@ -14,10 +14,10 @@ public class Shovel extends Tool {
     }
 
     /**
-     * a paramÃ©terknt megadott karakter felvesz egy Ã¡sÃ³t
+     * a paraméterknt megadott karakter felvesz egy ásót
      *
-     * @param p a karakter aki felveszi az Ã¡sÃ³t
-     * @return Result a felvÃ©tel sikeressÃ©gÃ©rÅ‘l
+     * @param p a karakter aki felveszi az ásót
+     * @return Result a felvétel sikerességérõl
      */
     @Override
     public Result pickMeUp(Player p) {
@@ -28,10 +28,10 @@ public class Shovel extends Tool {
     }
 
     /**
-     * Mindig TRUE Ã©rtÃ©kkel tÃ©r vissza (hiszen csak akkor hÃ­vÃ³dik meg, ha egy Shovel pÃ©ldÃ¡ny szeretnÃ© magÃ¡t
-     * Ã¶sszehasonlÃ­tani vele).
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
+     * összehasonlítani vele).
      *
-     * @param s shovel pÃ©ldÃ¡ny
+     * @param s shovel példány
      * @return true
      */
     public boolean isSame(Shovel s) {
@@ -40,9 +40,9 @@ public class Shovel extends Tool {
     }
 
     /**
-     * Akkor hÃ­vÃ³dik meg, ha az Ã¡sÃ¡st vÃ©gzÅ‘ jÃ¡tÃ©kosnÃ¡l van Ã¡sÃ³. Ekkor ez a fÃ¼ggvÃ©ny meghÃ­vja a
-     * Field clean() metÃ³dusÃ¡t, ezzel mÃ©g egy rÃ©teget ellapÃ¡tolva arrÃ³l (persze, ha ez lehetsÃ©ges).
-     * Void visszatÃ©rÃ©sÅ±, mivel nincs jelentÅ‘sÃ©ge, hogy ez a mÅ±velet sikerÃ¼lt-e vagy sem.
+     * Akkor hívódik meg, ha az ásást végzõ játékosnál van ásó. Ekkor ez a függvény meghívja a
+     * Field clean() metódusát, ezzel még egy réteget ellapátolva arról (persze, ha ez lehetséges).
+     * Void visszatérésû, mivel nincs jelentõsége, hogy ez a mûvelet sikerült-e vagy sem.
      *
      * @param f actualfield
      */

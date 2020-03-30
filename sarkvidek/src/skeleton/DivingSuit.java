@@ -5,7 +5,7 @@ import java.util.*;
 import static skeleton.Direction.*;
 
 /**
- * A bÃºvÃ¡rruha felvÃ©telÃ©nek, illetve hasznÃ¡latÃ¡nak kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
+ * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
  */
 public class DivingSuit extends Tool {
 
@@ -16,10 +16,10 @@ public class DivingSuit extends Tool {
     }
 
     /**
-     * a paramÃ©terknt megadott player felvesz egy bÃºvÃ¡rruhÃ¡t
+     * a paraméterknt megadott player felvesz egy búvárruhát
      *
-     * @param p a player aki felveszi az bÃºvÃ¡rruhÃ¡t
-     * @return Result a felvÃ©tel sikeressÃ©gÃ©rÅ‘l
+     * @param p a player aki felveszi az búvárruhát
+     * @return Result a felvétel sikerességérõl
      */
     @Override
     public Result pickMeUp(Player p) {
@@ -30,10 +30,10 @@ public class DivingSuit extends Tool {
     }
 
     /**
-     * Mindig TRUE Ã©rtÃ©kkel tÃ©r vissza (hiszen csak akkor hÃ­vÃ³dik meg, ha egy DivingSuit
-     * pÃ©ldÃ¡ny szeretnÃ© magÃ¡t Ã¶sszehasonlÃ­tani vele).
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit
+     * példány szeretné magát összehasonlítani vele).
      *
-     * @param d - egy olyan DivingSuit pÃ©ldÃ¡ny amivel Ã¶sszehasonlÃ­tja magÃ¡t a fÃ¼ggvÃ©ny hÃ­vÃ³ pÃ©ldÃ¡ny
+     * @param d - egy olyan DivingSuit példány amivel összehasonlítja magát a függvény hívó példány
      * @return true
      */
     public boolean isSame(DivingSuit d) {
@@ -42,21 +42,21 @@ public class DivingSuit extends Tool {
     }
 
     /**
-     * A Tool osztÃ¡ly swim(Field, Player) fÃ¼ggvÃ©nyÃ©nek felÃ¼ldefiniÃ¡lÃ¡sa.
-     * A jÃ¡tÃ©kos Ã¡ltal megadott irÃ¡nyt Ã¡tadva meghÃ­vja az actualfield checkNeighbour(Direction) fÃ¼ggvÃ©nyÃ©t,
-     * ami visszatÃ©r az ott talÃ¡lhatÃ³ mezÅ‘ referenciÃ¡jÃ¡val. Ha ez NULL Ã©rtÃ©k lenne (tehÃ¡t arra tenger van),
-     * akkor Ãºjra meg kell adni az irÃ¡nyt.Ha megkaptuk a vÃ¡lasztott szomszÃ©dos mezÅ‘ referenciÃ¡jÃ¡t,
-     * akkor ezt Ã¡tadva meghÃ­vÃ³dik a paramÃ©terben megkapott jÃ¡tÃ©kos changeField(Field) fÃ¼ggvÃ©nye.
-     * Ennek a metÃ³dusnak a visszatÃ©rÃ©si Ã©rtÃ©kÃ©vel tÃ©r vissza a swim(Field, Player) fÃ¼ggvÃ©ny is.
+     * A Tool osztály swim(Field, Player) függvényének felüldefiniálása.
+     * A játékos által megadott irányt átadva meghívja az actualfield checkNeighbour(Direction) függvényét,
+     * ami visszatér az ott található mezõ referenciájával. Ha ez NULL érték lenne (tehát arra tenger van),
+     * akkor újra meg kell adni az irányt.Ha megkaptuk a választott szomszédos mezõ referenciáját,
+     * akkor ezt átadva meghívódik a paraméterben megkapott játékos changeField(Field) függvénye.
+     * Ennek a metódusnak a visszatérési értékével tér vissza a swim(Field, Player) függvény is.
      *
-     * @param h - a lyuk amibe beleesett a player bÃºvÃ¡rruhÃ¡ban
-     * @param p - melyik jÃ¡tÃ©kos esett bele
-     * @return Result a kimÃ¡szÃ¡srÃ³l
+     * @param h - a lyuk amibe beleesett a player búvárruhában
+     * @param p - melyik játékos esett bele
+     * @return Result a kimászásról
      */
     private Result swim(Hole h, Player p) {
         System.out.print(this.toString() + ".swim(Hole h, Player p);\n");
-        System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segÃ­tsÃ©gÃ©vel vÃ¡lasszon," +
-                "mely irÃ¡nyba szeretne kimÃ¡szni.");
+        System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
+                "mely irányba szeretne kimászni.");
         Scanner sc = new Scanner(System.in);
         String c = sc.next();
         Direction d = UP;

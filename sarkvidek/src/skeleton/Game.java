@@ -4,32 +4,32 @@ import java.awt.desktop.SystemSleepEvent;
 import java.util.*;
 
 /**
- * A jÃ¡tÃ©k elkezdÃ©sÃ©re/inicializÃ¡lÃ¡sÃ¡ra, befejezÃ©sÃ©re, illetve a kÃ¶rÃ¶k kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
- * A viharok feltÃ¡madÃ¡snak valÃ³szÃ­nÅ±sÃ©geit, Ã©s annak lebonyolÃ­tÃ¡sÃ¡nak kezdetÃ©t is ez az osztÃ¡ly kezeli.
+ * A játék elkezdésére/inicializálására, befejezésére, illetve a körök kezelésére szolgáló osztály.
+ * A viharok feltámadásnak valószínûségeit, és annak lebonyolításának kezdetét is ez az osztály kezeli.
  */
 public class Game {
 
     /**
-     * A jÃ¡tÃ©ktÃ¡blÃ¡t tÃ¡rolja.
+     * A játéktáblát tárolja.
      */
     private GameBoard gameboard;
 
     /**
-     * Az adott jÃ¡tÃ©kosokat tÃ¡rolÃ¡sÃ¡ra szolgÃ¡lÃ³ tÃ¶mb, melynek nagysÃ¡ga 3 Ã©s 6 kÃ¶zÃ¶tt helyezkedik el
-     * (beleÃ©rtve a hatÃ¡rokat is).
+     * Az adott játékosokat tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el
+     * (beleértve a határokat is).
      */
     private List<Player> players = new ArrayList<>();
 
     /**
-     * A jelzÅ‘rakÃ©ta alkotÃ³elemeinek (GUN, FLARE, CHARGE) tÃ¡rolÃ¡sÃ¡ra szolgÃ¡l.
+     * A jelzõrakéta alkotóelemeinek (GUN, FLARE, CHARGE) tárolására szolgál.
      */
     private List<FlareGun> flare_gun = new ArrayList<>();
 
     /**
-     * A jÃ¡tÃ©k kezdetekor bekÃ©ri a jÃ¡tÃ©kosok szÃ¡mÃ¡t majd sorra azoknak a karaktertÃ­pusÃ¡t.
-     * LÃ©trehozza a GameBoard-ot, majd meghÃ­vja az osztÃ¡ly init(Player) metÃ³dusÃ¡t Ã¡tadva neki a jÃ¡tÃ©kosok szÃ¡mÃ¡t.
-     * Ezt kÃ¶vetÅ‘en a bekÃ©rt adatok alapjÃ¡n lÃ©trehozza az eszkimÃ³kat illetve a sarkkutatÃ³kat
-     * reprezentÃ¡lÃ³ osztÃ¡lyokat. VÃ©gÃ¼l meghÃ­vja a setActualFields() metÃ³dust.
+     * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
+     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát.
+     * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
+     * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
     public Game() {
         gameboard = new GameBoard(2);
@@ -38,30 +38,30 @@ public class Game {
     }
 
     /**
-     * A korÃ¡bban lÃ©trehozott Player pÃ©ldÃ¡nyoknak Ã¡llÃ­tja be az actualfield attribÃºtumÃ¡t.
-     * Ehhez lekÃ©ri a kezdÅ‘ mezÅ‘ referenciÃ¡jÃ¡t a GameBoard-tÃ³l a getStartField() fÃ¼ggvÃ©ny segÃ­tsÃ©gÃ©vel.
+     * A korábban létrehozott Player példányoknak állítja be az actualfield attribútumát.
+     * Ehhez lekéri a kezdõ mezõ referenciáját a GameBoard-tól a getStartField() függvény segítségével.
      */
     public void setActualFields() {
         // TODO implement here
     }
 
     /**
-     * Ciklusban hÃ­vogatja meg a jÃ¡tÃ©kosok kÃ¶reinek lezajlÃ¡sÃ¡Ã©rt felelÅ‘s fÃ¼ggvÃ©nyeket.
-     * A ciklus minden lefutÃ¡sa sorÃ¡n elÅ‘szÃ¶r egy adott valÃ³szÃ­nÅ±sÃ©g alapjÃ¡n eldÃ¶nti hogy jÃ¶n-e vihar.
-     * Ha jÃ¶n, akkor meghÃ­vja a Gameboard storm() fÃ¼ggvÃ©nyÃ©t (ellenkezÅ‘ esetben ez a fÃ¼ggvÃ©nyhÃ­vÃ¡s kimarad).
-     * Ha ez nem DIE-al tÃ©rt vissza, akkor meghÃ­vja a Player osztÃ¡ly round() metÃ³dusÃ¡t.
-     * Amennyiben ez bÃ¡rmikor DIE vagy WIN visszatÃ©rÃ©si Ã©rtÃ©ket ad, vagy mÃ¡r korÃ¡bban a storm() DIE-al tÃ©rt vissza,
-     * akkor kilÃ©p a ciklusbÃ³l. (Ciklusban maradÃ¡shoz OK visszatÃ©rÃ©si Ã©rtÃ©k kell. NOTHING-nak itt nincs szerepe.).
-     * VÃ©gezetÃ¼l az endGame(Result) fÃ¼ggvÃ©ny kerÃ¼l meghÃ­vÃ¡sra .
+     * Ciklusban hívogatja meg a játékosok köreinek lezajlásáért felelõs függvényeket.
+     * A ciklus minden lefutása során elõször egy adott valószínûség alapján eldönti hogy jön-e vihar.
+     * Ha jön, akkor meghívja a Gameboard storm() függvényét (ellenkezõ esetben ez a függvényhívás kimarad).
+     * Ha ez nem DIE-al tért vissza, akkor meghívja a Player osztály round() metódusát.
+     * Amennyiben ez bármikor DIE vagy WIN visszatérési értéket ad, vagy már korábban a storm() DIE-al tért vissza,
+     * akkor kilép a ciklusból. (Ciklusban maradáshoz OK visszatérési érték kell. NOTHING-nak itt nincs szerepe.).
+     * Végezetül az endGame(Result) függvény kerül meghívásra .
      */
     public void mainLoop() {
         // TODO implement here
     }
 
     /**
-     * A players attribÃºtumban tÃ¡rolt jÃ¡tÃ©kosok szÃ¡mÃ¡val tÃ©r vissza.
+     * A players attribútumban tárolt játékosok számával tér vissza.
      *
-     * @return int player szÃ¡ma
+     * @return int player száma
      */
     public int getPlayerNumber() {
         System.out.print(this.toString() + ".getPlayerNumber();\n");
@@ -70,18 +70,18 @@ public class Game {
     }
 
     /**
-     * A megkapott paramÃ©ter alapjÃ¡n eldÃ¶nti, hogy hogyan vÃ©gzÅ‘dik a jÃ¡tÃ©k, majd befejezi azt.
+     * A megkapott paraméter alapján eldönti, hogy hogyan végzõdik a játék, majd befejezi azt.
      *
-     * @param r Result kapott eredmÃ©ny, jÃ¡tÃ©k kimenetÃ©nek eldÃ¶ntÃ©sÃ©hez
+     * @param r Result kapott eredmény, játék kimenetének eldöntéséhez
      */
     public void endGame(Result r) {
         // TODO implement here
     }
 
     /**
-     * A flare_gun attribÃºtum Ã©rtÃ©kÃ©t vÃ¡ltoztatja meg, mÃ©gpedig Ãºgy, hogy hozzÃ¡ad egy Ãºj FlareGun pÃ©ldÃ¡nyt a listÃ¡hoz.
+     * A flare_gun attribútum értékét változtatja meg, mégpedig úgy, hogy hozzáad egy új FlareGun példányt a listához.
      *
-     * @param f hozzÃ¡adandÃ³ FlareGun rÃ©sz
+     * @param f hozzáadandó FlareGun rész
      */
     public void addPart(FlareGun f) {
         System.out.println(this.toString() + ".addPart(f);");
@@ -90,8 +90,8 @@ public class Game {
     }
 
     /**
-     * MegvizsgÃ¡lja, hogy a jÃ¡tÃ©kosok Ã¶sszegyÅ±jtÃ¶ttÃ©k-e a hÃ¡rom szÃ¼ksÃ©ges tÃ¡rgyat (GUN, FLARE, CHARGE),
-     * tehÃ¡t hÃ¡rom elemet tartalmaz-e a flare_gun lista. Ha igen, akkor TRUE, mÃ¡skÃ¼lÃ¶nben FALSE Ã©rtÃ©kkel fog visszatÃ©rni.
+     * Megvizsgálja, hogy a játékosok összegyûjtötték-e a három szükséges tárgyat (GUN, FLARE, CHARGE),
+     * tehát három elemet tartalmaz-e a flare_gun lista. Ha igen, akkor TRUE, máskülönben FALSE értékkel fog visszatérni.
      *
      * @return true or false
      */

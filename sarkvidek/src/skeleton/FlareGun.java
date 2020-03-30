@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * A jelzÅ‘pisztoly alkotÃ³elemeinek felvÃ©telÃ©vel foglalkozÃ³ osztÃ¡ly.
+ * A jelzõpisztoly alkotóelemeinek felvételével foglalkozó osztály.
  */
 public class FlareGun extends Item {
 
@@ -15,7 +15,7 @@ public class FlareGun extends Item {
 
 
     /**
-     * AttribÃºtumkÃ©nt Ã¡tadva Ã¶nmaga referenciÃ¡jÃ¡t meghÃ­vja a Player osztÃ¡ly addPart(FlareGun) fÃ¼ggvÃ©nyÃ©t.
+     * Attribútumként átadva önmaga referenciáját meghívja a Player osztály addPart(FlareGun) függvényét.
      *
      * @param p Player
      * @return Result

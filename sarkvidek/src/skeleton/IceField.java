@@ -7,14 +7,14 @@ import skeleton.Result;
 import static skeleton.Result.OK;
 
 /**
- * J√©gt√°bl√°k/J√©gmez≈ëk kezel√©s√©re szolg√°l√≥ oszt√°ly. Egyr√©szt a j√©gmez≈ëk teherb√≠r√°s√°nak vizsg√°lat√°t v√©gzi el, m√°sr√©szt
- * pedig vihar eset√©n kezeli, hogy ha az adott mez≈ën esik a h√≥, akkor az milyen krit√©riumok mellett
- * (van-e igloo vagy nincs) milyen k√∂vetkezm√©nyekkel j√°r (mez≈ën lev≈ë h√≥r√©tegek sz√°m√°t mindig n√∂velj√ºk, viszont a
- * testh≈ë cs√∂kkent√©se csak az iglooval v√©detlen mez≈ëk√∂n t√∂rt√©nik meg).
+ * JÈgt·bl·k/JÈgmezık kezelÈsÈre szolg·lÛ oszt·ly. EgyrÈszt a jÈgmezık teherbÌr·s·nak vizsg·lat·t vÈgzi el, m·srÈszt
+ * pedig vihar esetÈn kezeli, hogy ha az adott mezın esik a hÛ, akkor az milyen kritÈriumok mellett
+ * (van-e igloo vagy nincs) milyen kˆvetkezmÈnyekkel j·r (mezın levı hÛrÈtegek sz·m·t mindig nˆvelj¸k, viszont a
+ * testhı csˆkkentÈse csak az iglooval vÈdetlen mezıkˆn tˆrtÈnik meg).
  */
 public class IceField extends Field {
     /**
-     * Megadja, hogy adott mez≈ë tartalmaz-e igloot. (Ha tartalmaz, akkor TRUE az √©rt√©ke)
+     * Megadja, hogy adott mezı tartalmaz-e igloot. (Ha tartalmaz, akkor TRUE az ÈrtÈke)
      */
     private boolean igloo;
 
@@ -26,16 +26,16 @@ public class IceField extends Field {
     }
 
     /**
-     * A Field oszt√°lyban l√©v≈ë absztrakt f√ºggv√©ny megval√≥s√≠t√°sa. Az adott mez≈ë snow attrib√∫tum√°nak √©rt√©k√©t megn√∂veli
-     * eggyel. Amennyiben az adott mez≈ë nem tartalmaz igloo-t, akkor az ilyen mez≈ën √°ll√≥ j√°t√©kosokra megh√≠vja a
-     * decreaseHeat() met√≥dust. Amivel ez a f√ºggv√©ny visszat√©r, azzal t√©r vissza a storm() is.
+     * A Field oszt·lyban lÈvı absztrakt f¸ggvÈny megvalÛsÌt·sa. Az adott mezı snow attrib˙tum·nak ÈrtÈkÈt megnˆveli
+     * eggyel. Amennyiben az adott mezı nem tartalmaz igloo-t, akkor az ilyen mezın ·llÛ j·tÈkosokra meghÌvja a
+     * decreaseHeat() metÛdust. Amivel ez a f¸ggvÈny visszatÈr, azzal tÈr vissza a storm() is.
      *
      * @return
      */
     public Result storm() {
         Result r = Result.OK;
         System.out.print(this.toString() + ".storm();\n");
-        System.out.print("Van iglu a j√©gt√°bl√°n? i/n \n");
+        System.out.print("Van iglu a jegtablan? i/n \n");
         Scanner scan = new Scanner(System.in);
         char c = scan.next().charAt(0);
         if (c == 'n') {
@@ -53,8 +53,8 @@ public class IceField extends Field {
     }
 
     /**
-     * A Field oszt√°lyban l√©v≈ë absztrakt f√ºggv√©ny megval√≥s√≠t√°sa. OK √©rt√©kkel t√©r vissza, ha az adott mez≈ën l√©v≈ë
-     * j√°t√©kosok sz√°m√°t m√©g elb√≠rja a j√©gt√°bla. Ellenkez≈ë esetben pedig DIE √©rt√©kkel fog visszat√©rni.
+     * A Field oszt·lyban lÈvı absztrakt f¸ggvÈny megvalÛsÌt·sa. OK ÈrtÈkkel tÈr vissza, ha az adott mezın lÈvı
+     * j·tÈkosok sz·m·t mÈg elbÌrja a jÈgt·bla. Ellenkezı esetben pedig DIE ÈrtÈkkel fog visszatÈrni.
      *
      * @param p
      * @return Result
@@ -65,7 +65,7 @@ public class IceField extends Field {
     }
 
     /**
-     * Ha van igloo a mez≈ën, akkor TRUE-val t√©r vissza, ellenkez≈ë esetben pedig FALSE-szal.
+     * Ha van igloo a mezın, akkor TRUE-val tÈr vissza, ellenkezı esetben pedig FALSE-szal.
      *
      * @return
      */
@@ -75,10 +75,10 @@ public class IceField extends Field {
     }
 
     /**
-     * A Field oszt√°ly virtu√°lis buildIgloo() met√≥dus√°nak a fel√ºldefini√°l√°sa. Akkor h√≠v√≥dik meg, ha egy eszkim√≥
-     * igloot szeretne √©p√≠teni a j√©gt√°bl√°n. Ha m√©g nem volt igloo a mez≈ën, akkor az igloo attrib√∫tum √©rt√©k√©t
-     * TRUE-ra √°ll√≠tja, majd OK √©rt√©kkel t√©r vissza. Amennyiben volt igloo az adott, mez≈ën, akkor NOTHING lesz
-     * a visszat√©r√©si √©rt√©ke.
+     * A Field oszt·ly virtu·lis buildIgloo() metÛdus·nak a fel¸ldefini·l·sa. Akkor hÌvÛdik meg, ha egy eszkimÛ
+     * igloot szeretne ÈpÌteni a jÈgt·bl·n. Ha mÈg nem volt igloo a mezın, akkor az igloo attrib˙tum ÈrtÈkÈt
+     * TRUE-ra ·llÌtja, majd OK ÈrtÈkkel tÈr vissza. Amennyiben volt igloo az adott, mezın, akkor NOTHING lesz
+     * a visszatÈrÈsi ÈrtÈke.
      *
      * @return res Result
      */
@@ -89,36 +89,36 @@ public class IceField extends Field {
     }
 
     /**
-     * Megvizsg√°lja a rajta tal√°lhat√≥ h√≥ mennyis√©g√©t. Ha ez nulla, √©s tal√°lhat√≥ rajta j√©gbe fagyott t√°rgy,
-     * akkor megh√≠vja az Item oszt√°ly pickMeUp(Player) f√ºggv√©ny√©t.
-     * Sikeres t√°rgyfelv√©tel eset√©n OK-kal t√©r vissza, egy√©bk√©nt pedig NOTHING-gal.
+     * Megvizsg·lja a rajta tal·lhatÛ hÛ mennyisÈgÈt. Ha ez nulla, Ès tal·lhatÛ rajta jÈgbe fagyott t·rgy,
+     * akkor meghÌvja az Item oszt·ly pickMeUp(Player) f¸ggvÈnyÈt.
+     * Sikeres t·rgyfelvÈtel esetÈn OK-kal tÈr vissza, egyÈbkÈnt pedig NOTHING-gal.
      *
-     * @return REsult az eredm√©nnyel
+     * @return REsult az eredmÈnnyel
      */
     public Result pickUp(Player p) {
 
         List<Tool> tools;
         Result res;
         Scanner scan = new Scanner(System.in);
-        System.out.println("Adja meg a k√≠v√°nt k√≥dot\n" + "1. √Ås√≥ felv√©tele\n2. K√∂t√©l felv√©tele\n"
-                + "3. B√∫v√°rruha felv√©tele\n4. √âtel elfogyaszt√°sa\n5. Jelz≈ërak√©ta alkatr√©sz√©nek felv√©tele");
+        System.out.println("Adja meg a kivant kodot\n" + "1. Aso felvetele\n2. Kotel felvetele\n"
+                + "3. Buvarruha felvetele\n4. Etel elfogyasztasa\n5. Jelzoraketa alkatreszenek felvetele");
         int tool = scan.nextInt();
         System.out.println(tool);
         switch (tool) {
             case 1:
-                System.out.println("√Ås√≥ felv√©tele\n");
-                System.out.println("1. Van m√°r √°s√≥ja\n2. Nincs √°s√≥ja");
+                System.out.println("Aso felvetele\n");
+                System.out.println("1. Van mar asoja\n2. Nincs asoja");
                 int shovel = scan.nextInt();
                 System.out.println(shovel);
                 switch (shovel) {
                     case 1:
-                        System.out.println("Van m√°r √°s√≥ja");
+                        System.out.println("Van mar asoja");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     case 2:
-                        System.out.println("Nincs √°s√≥ja");
+                        System.out.println("Nincs asoja");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         item = new Shovel();
@@ -126,25 +126,25 @@ public class IceField extends Field {
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     default:
-                        System.out.println("Helytelen √©rt√©k\n");
+                        System.out.println("Helytelen ertek\n");
                         break;
 
                 }
                 break;
             case 2:
-                System.out.println("K√∂t√©l felv√©tele\n");
-                System.out.println("1. Van m√°r k√∂tele\n2. Nincs k√∂tele");
+                System.out.println("Kotel felvetele\n");
+                System.out.println("1. Van mar kotele\n2. Nincs kotele");
                 int rope = scan.nextInt();
                 System.out.println(rope);
                 switch (rope) {
                     case 1:
-                        System.out.println("Van m√°r k√∂tele");
+                        System.out.println("Van mar kotele");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     case 2:
-                        System.out.println("Nincs k√∂tele");
+                        System.out.println("Nincs kotele");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         item = new Rope();
@@ -152,24 +152,24 @@ public class IceField extends Field {
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     default:
-                        System.out.println("Helytelen √©rt√©k\n");
+                        System.out.println("Helytelen ertek\n");
                         break;
                 }
                 break;
             case 3:
-                System.out.println("B√∫v√°rruha felv√©tele\n");
-                System.out.println("1. Van m√°r b√∫v√°rruh√°ja\n2. Nincs b√∫v√°rruh√°ja");
+                System.out.println("Buvarruha felvetele\n");
+                System.out.println("1. Van mar buvarruhaja\n2. Nincs buvarruhaja");
                 int divingsuit = scan.nextInt();
                 System.out.println(divingsuit);
                 switch (divingsuit) {
                     case 1:
-                        System.out.println("Van m√°r b√∫v√°rruh√°ja");
+                        System.out.println("Van mar buvarruhaja");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     case 2:
-                        System.out.println("Nincs b√∫v√°rruh√°ja");
+                        System.out.println("Nincs buvarruhaja");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         item = new DivingSuit();
@@ -177,24 +177,24 @@ public class IceField extends Field {
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     default:
-                        System.out.println("Helytelen √©rt√©k\n");
+                        System.out.println("Helytelen ertek\n");
                         break;
                 }
                 break;
             case 4:
-                System.out.println("√âtel fogyaszt√°sa");
-                System.out.println("1. A test≈ëje maximumon van\n2. Nincs maximumon a testh≈ëje");
+                System.out.println("Etel fogyasztasa");
+                System.out.println("1. A testoje maximumon van\n2. Nincs maximumon a testhoje");
                 int food = scan.nextInt();
                 System.out.println(food);
                 switch (food) {
                     case 1:
-                        System.out.println("A test≈ëje maximumon van");
+                        System.out.println("A testoje maximumon van");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     case 2:
-                        System.out.println("Nincs maximumon a testh≈ëje");
+                        System.out.println("Nincs maximumon a testhoje");
                         System.out.println(this.toString() + ".pickUp(e);");
                         tools = p.getTools();
                         item = new Food();
@@ -202,12 +202,12 @@ public class IceField extends Field {
                         System.out.println("ice.pickUp(e) returned Result res;\n\n");
                         break;
                     default:
-                        System.out.println("Helytelen √©rt√©k\n");
+                        System.out.println("Helytelen ertek\n");
                         break;
                 }
                 break;
             case 5:
-                System.out.println("Jelz≈ërak√©ta alkatr√©sz√©nek felv√©tele");
+                System.out.println("Jelzoraketa alkatreszenek felvetele");
                 System.out.println(this.toString() + ".pickUp(e);");
                 tools = p.getTools();
                 item = new FlareGun();

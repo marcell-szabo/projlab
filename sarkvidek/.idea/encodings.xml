@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/skeleton/Direction.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/DivingSuit.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Eskimo.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Explorer.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Field.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/FlareGun.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Food.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Game.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/GameBoard.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Hole.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/IceField.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Item.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Main.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Player.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Result.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Rope.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Shovel.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Skeleton.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Tool.java" charset="windows-1250" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

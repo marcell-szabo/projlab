@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * Ã‰tel felvÃ©telÃ©nek kezelÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
+ * Étel felvételének kezelésére szolgáló osztály.
  */
 public class Food extends Item {
 
@@ -14,12 +14,12 @@ public class Food extends Item {
     }
 
     /**
-     * A felvett Ã©tellel nÃ¶veli a testhÅ‘t
-     * MeghÃ­vja a Player osztÃ¡ly increaseHeat() fÃ¼ggvÃ©nyÃ©t. Amivel az Ã¡ltala hÃ­vott metÃ³dus tÃ©r vissza,
-     * az lesz ennek a fÃ¼ggvÃ©nynek is a visszatÃ©rÃ©si Ã©rtÃ©ke.
+     * A felvett étellel növeli a testhõt
+     * Meghívja a Player osztály increaseHeat() függvényét. Amivel az általa hívott metódus tér vissza,
+     * az lesz ennek a függvénynek is a visszatérési értéke.
      *
-     * @param p az Ã©telt felvevÅ‘ jÃ¡tÃ©kos
-     * @return Result az eredmÃ©nnyl visszatÃ©r
+     * @param p az ételt felvevõ játékos
+     * @return Result az eredménnyl visszatér
      */
     public Result pickMeUp(Player p) {
         System.out.println(this.toString() + ".pickMeUp(p);");

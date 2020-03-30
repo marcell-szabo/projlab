@@ -9,9 +9,9 @@ import static skeleton.Direction.*;
 
 public class Skeleton {
     /**
-     * A Skeleton programot futtatja. A standard inputra kiírja a szöveges skeleton menüt majd a felhasználói interakció
-     * után az adott működést (a szekvenciadiagramokon definiált formában) lefuttatja. Az egyes függvényhívási láncok
-     * így láthatók a következő formátumban: skeleton.Class@objektum_címe.metódus(paraméterek)
+     * A Skeleton programot futtatja. A standard inputra ki�rja a sz�veges skeleton men�t majd a felhaszn�l�i interakci�
+     * ut�n az adott m�k�d�st (a szekvenciadiagramokon defini�lt form�ban) lefuttatja. Az egyes f�ggv�nyh�v�si l�ncok
+     * �gy l�that�k a k�vetkez� form�tumban: skeleton.Class@objektum_c�me.met�dus(param�terek)
      */
     public void runSkeleton() {
         Scanner scan = new Scanner(System.in);
@@ -20,15 +20,15 @@ public class Skeleton {
         Result res;
         boolean exit = false;
         while (exit != true) {
-            System.out.println("Sarkvidék Skeleton\nAdja meg a kívánt kódot\n" +
-                    "1. Helyzetváltoztatás\n2. Hó eltakaritása\n3. Tárgy felvétele, válassza ki mit akar felvenni" +
-                    "\n4. Speciális képesség használata\n5. Jelzőrakéta összeszerelése és elsütése\n6. Vihar\n7. Kilépés");
+            System.out.println("Sarkvidek Skeleton\nAdja meg a kivant kodot\n" +
+                    "1. Helyzetvaltoztatas\n2. Ho eltakaritasa\n3. Targy felvatele, valassza ki mit akar felvenni" +
+                    "\n4. Specialis kepesseg hasznalata\n5. Jelzoraketa osszeszerel�ese �s elsutese\n6. Vihar\n7. Kilepes");
             int command = scan.nextInt();
             System.out.println(command);
             switch (command) {
                 case 1:
-                    System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
-                            "mely irányba szeretne haladni.");
+                    System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segitsegevel valasszon," +
+                            "mely iranyba szeretne haladni.");
                     String c = scan.next();
                     Direction d = UP;
                     switch (c) {
@@ -58,21 +58,21 @@ public class Skeleton {
                     res = ice.pickUp(p1);
                     break;
                 case 4:
-                    System.out.println("Adja meg a kívánt kódot!\n" + "1. Eszkimó iglut épít\n"
-                            + "2. Sarkkutató teherbírást vizsgál\n");
+                    System.out.println("Adja meg a kivant kodot!\n" + "1. Eszkimo iglut epit\n"
+                            + "2. Sarkkutato teherbirast vizsgal\n");
                     int special = scan.nextInt();
                     System.out.println(special);
                     switch (special) {
                         case 1:
-                            System.out.println("Eszkimó iglut épít\n");
+                            System.out.println("Eszkimo iglut epit\n");
                             res = p1.specialSkill();
                             break;
                         case 2:
-                            System.out.println("Sarkkutató teherbírást vizsgál\n");
+                            System.out.println("Sarkkutato teherbirast vizsgal\n");
                             res = p2.specialSkill();
                             break;
                         default:
-                            System.out.println("Helytelen érték!\n");
+                            System.out.println("Helytelen ertek!\n");
                             break;
                     }
                     break;
@@ -87,7 +87,7 @@ public class Skeleton {
                     exit = true;
                     break;
                 default:
-                    System.out.println("Hibás válasz!\n");
+                    System.out.println("Hibas valasz!\n");
                     break;
             }
         }

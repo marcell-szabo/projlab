@@ -3,7 +3,7 @@ package skeleton;
 import java.util.*;
 
 /**
- * Enumeration osztÃ¡ly, amely a nÃ©gy irÃ¡ny kÃ¶zÃ¼l vehet fel egy Ã©rtÃ©ket.
+ * Enumeration osztály, amely a négy irány közül vehet fel egy értéket.
  */
 public enum Direction {
     UP, RIGHT, DOWN, LEFT;

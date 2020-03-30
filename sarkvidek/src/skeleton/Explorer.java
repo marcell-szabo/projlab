@@ -3,12 +3,12 @@ package skeleton;
 import java.util.*;
 
 /**
- * SarkkutatÃ³ karaktertÃ­pus esetÃ©n megadja a maximÃ¡lis testhÅ‘ mÃ©rtÃ©kÃ©t,
- * illetve kezeli a sarkkutatÃ³ kÃ¼lÃ¶nleges kÃ©pessÃ©gÃ©t, tehÃ¡t egy szomszÃ©dos mezÅ‘ teherbÃ­rÃ¡sÃ¡nak vizsgÃ¡latÃ¡t.
+ * Sarkkutató karaktertípus esetén megadja a maximális testhõ mértékét,
+ * illetve kezeli a sarkkutató különleges képességét, tehát egy szomszédos mezõ teherbírásának vizsgálatát.
  */
 public class Explorer extends Player {
     /**
-     * Statikus attribÃºtum. A sarkkutatÃ³ testhÅ‘ szintjÃ©nek maximÃ¡lis szÃ¡mÃ¡t adja meg.
+     * Statikus attribútum. A sarkkutató testhõ szintjének maximális számát adja meg.
      */
     private static int heatlimit = 4;
 
@@ -20,11 +20,11 @@ public class Explorer extends Player {
     }
 
     /**
-     * A Player osztÃ¡lyban lÃ©vÅ‘ absztrakt fÃ¼ggvÃ©ny megvalÃ³sÃ­tÃ¡sa.
-     * ElÅ‘szÃ¶r bekÃ©r egy irÃ¡nyt, majd erre meghÃ­vja a checkNeighbour(Direction) fÃ¼ggvÃ©nyt.
-     * Amennyiben ez NULL Ã©rtÃ©kkel tÃ©r vissza, akkor a jÃ¡tÃ©kosnak Ãºjra meg kell adnia egy irÃ¡nyt.
-     * Amikor sikerÃ¼l egy jÃ³ irÃ¡nyt megadni, tehÃ¡t nem NULL visszatÃ©rÃ©si Ã©rtÃ©ke lesz, akkor a visszakapott
-     * mezÅ‘re meghÃ­vja a getCapacity() fÃ¼ggvÃ©nyt. Minden esetben OK-al tÃ© vissza.
+     * A Player osztályban lévõ absztrakt függvény megvalósítása.
+     * Elõször bekér egy irányt, majd erre meghívja a checkNeighbour(Direction) függvényt.
+     * Amennyiben ez NULL értékkel tér vissza, akkor a játékosnak újra meg kell adnia egy irányt.
+     * Amikor sikerül egy jó irányt megadni, tehát nem NULL visszatérési értéke lesz, akkor a visszakapott
+     * mezõre meghívja a getCapacity() függvényt. Minden esetben OK-al té vissza.
      *
      * @return Result - minden esetben OK
      */

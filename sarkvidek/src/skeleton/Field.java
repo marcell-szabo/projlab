@@ -3,34 +3,34 @@ package skeleton;
 import java.util.*;
 
 /**
- * â—	MezÅ‘k kezelÃ©sÃ©re szolgÃ¡lÃ³ absztrakt osztÃ¡ly. SegÃ­tsÃ©gÃ©vel a jÃ¡tÃ©kosok, illetve
- * a vihar Ã¡ltal a mezÅ‘n vÃ©gzett tevÃ©kenysÃ©geket lehet megvalÃ³sÃ­tani.
+ * ?	Mezõk kezelésére szolgáló absztrakt osztály. Segítségével a játékosok, illetve
+ * a vihar által a mezõn végzett tevékenységeket lehet megvalósítani.
  */
 public abstract class Field {
 
     /**
-     * Az adott mezÅ‘n lÃ©vÅ‘ hÃ³rÃ©teg mennyisÃ©gÃ©t tÃ¡rolja.
+     * Az adott mezõn lévõ hóréteg mennyiségét tárolja.
      */
     private int snow;
 
     /**
-     * Az adott mezÅ‘ teherbÃ­rÃ³ kÃ©pessÃ©gÃ©t tÃ¡rolja el. Stabil jÃ©gtÃ¡bla esetÃ©n a max jÃ¡tÃ©kosok szÃ¡ma,
-     * lyuk esetÃ©n pedig nulla az Ã©rtÃ©ke.
+     * Az adott mezõ teherbíró képességét tárolja el. Stabil jégtábla esetén a max játékosok száma,
+     * lyuk esetén pedig nulla az értéke.
      */
     protected int capacity;
 
     /**
-     * TÃ¡rolja, hogy az adott mezÅ‘n melyik jÃ¡tÃ©kosok vannak rajta.
+     * Tárolja, hogy az adott mezõn melyik játékosok vannak rajta.
      */
     protected List<Player> players = new ArrayList<>();
 
     /**
-     * TÃ¡rolja a 4 irÃ¡nyban elhelyezkedÅ‘ mezÅ‘t.
+     * Tárolja a 4 irányban elhelyezkedõ mezõt.
      */
     private Map<Direction, Field> neighbours = new EnumMap<>(Direction.class);
 
     /**
-     * TÃ¡rolja, hogy a mezÅ‘n milyen tÃ¡rgyat lehet felvenni.
+     * Tárolja, hogy a mezõn milyen tárgyat lehet felvenni.
      */
     protected Item item;
 
@@ -41,26 +41,26 @@ public abstract class Field {
     }
 
     /**
-     * Absztrakt fÃ¼ggvÃ©ny. A Hole vagy az IceField osztÃ¡ly storm() fÃ¼ggvÃ©nye kerÃ¼l meghÃ­vÃ¡sra.
+     * Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.
      *
      * @return Result enum
      */
     public abstract Result storm();
 
     /**
-     * Absztrakt fÃ¼ggvÃ©ny. A Hole vagy az IceField osztÃ¡ly stepOn() fÃ¼ggvÃ©nye kerÃ¼l meghÃ­vÃ¡sra.
+     * Absztrakt függvény. A Hole vagy az IceField osztály stepOn() függvénye kerül meghívásra.
      *
-     * @param p : Player melyik jÃ¡tÃ©kos
+     * @param p : Player melyik játékos
      * @return Result enum
      */
     public abstract Result stepOn(Player p);
 
     /**
-     * Az Ã¡tadott irÃ¡ny alapjÃ¡n visszatÃ©r az abban az irÃ¡nyban levÅ‘ objektum referenciÃ¡jÃ¡val.
-     * Ha arra tenger van, akkor ez az Ã©rtÃ©k NULL lesz.
+     * Az átadott irány alapján visszatér az abban az irányban levõ objektum referenciájával.
+     * Ha arra tenger van, akkor ez az érték NULL lesz.
      *
-     * @param d - Direction, melyik irÃ¡ny
-     * @return Field, annak a mezÅ‘nek a referenciÃ¡jÃ¡val amire lÃ©pett
+     * @param d - Direction, melyik irány
+     * @return Field, annak a mezõnek a referenciájával amire lépett
      */
     public Field checkNeighbour(Direction d) {
         System.out.print(this.toString() + ".checkNeighbour(Direction d);\n" + d);
@@ -73,12 +73,12 @@ public abstract class Field {
     }
 
     /**
-     * Akkor tÃ©r vissza OK Ã©rtÃ©kkel, ha az adott mezÅ‘rÅ‘l megoldhatÃ³ a vÃ­zbe esett jÃ¡tÃ©kos vÃ­zbÅ‘l valÃ³ kimentÃ©se.
-     * Ennek eldÃ¶ntÃ©sÃ©hez meghÃ­vja sorra Ã¶sszes rajta Ã¡llÃ³ jÃ¡tÃ©kos getTools() fÃ¼ggvÃ©nyÃ©t,
-     * majd a megkapott Tool-okat tartalmazÃ³ listÃ¡kra meghÃ­vja a help metÃ³dust.
-     * Ha legalÃ¡bb egy OK Ã©rtÃ©kkel tÃ©r vissza, akkor Å‘ is, kÃ¼lÃ¶nben pedig DIE-al.
+     * Akkor tér vissza OK értékkel, ha az adott mezõrõl megoldható a vízbe esett játékos vízbõl való kimentése.
+     * Ennek eldöntéséhez meghívja sorra összes rajta álló játékos getTools() függvényét,
+     * majd a megkapott Tool-okat tartalmazó listákra meghívja a help metódust.
+     * Ha legalább egy OK értékkel tér vissza, akkor õ is, különben pedig DIE-al.
      *
-     * @return Result OK vagy DIE - attÃ³l fÃ¼ggÅ‘en, hogy ki lehet-e menteni a jÃ¡tÃ©kost
+     * @return Result OK vagy DIE - attól függõen, hogy ki lehet-e menteni a játékost
      */
     public Result canHelp() {
         System.out.print(this.toString() + ".canHelp();\n");
@@ -95,11 +95,11 @@ public abstract class Field {
     }
 
     /**
-     * MegvizsgÃ¡lja, hogy az adott mezÅ‘n Ã¡ll-e az Ã¶sszes jÃ¡tÃ©kos, tehÃ¡t Ã¶sszehasonlÃ­tja a
-     * megkapott allplayer attribÃºtumot a rajta Ã¡llÃ³k szÃ¡mÃ¡val. Ha ez megegyezik, akkor TRUE Ã©rtÃ©kkel,
-     * ellenkezÅ‘ esetben FALSE Ã©rtÃ©kkel tÃ©r vissza.
+     * Megvizsgálja, hogy az adott mezõn áll-e az összes játékos, tehát összehasonlítja a
+     * megkapott allplayer attribútumot a rajta állók számával. Ha ez megegyezik, akkor TRUE értékkel,
+     * ellenkezõ esetben FALSE értékkel tér vissza.
      *
-     * @param allplayer Ã¶sszes jÃ¡tÃ©kos szÃ¡ma
+     * @param allplayer összes játékos száma
      * @return boolean TRUE or FALSE
      */
     public boolean haveAllPlayer(int allplayer) {
@@ -109,8 +109,8 @@ public abstract class Field {
     }
 
     /**
-     * Ãœres virtuÃ¡lis fÃ¼ggvÃ©ny, nem csinÃ¡l semmit sem csak visszatÃ©r egy OK-al. Ez a fÃ¼ggvÃ©ny nem
-     * lesz meghÃ­vva a mÅ±kÃ¶dÃ©s sorÃ¡n, hanem ezen keresztÃ¼l az IceField osztÃ¡lyban felÃ¼lÃ­rt vÃ¡ltozata fog meghÃ­vÃ³dni.
+     * Üres virtuális függvény, nem csinál semmit sem csak visszatér egy OK-al. Ez a függvény nem
+     * lesz meghívva a mûködés során, hanem ezen keresztül az IceField osztályban felülírt változata fog meghívódni.
      *
      * @return OK
      */
@@ -119,9 +119,9 @@ public abstract class Field {
     }
 
     /**
-     * Az attribÃºtumban megkapott jÃ¡tÃ©kost kiveszi a players attribÃºtumban tÃ¡rolt jÃ¡tÃ©kosok referenciÃ¡i kÃ¶zÃ¼l (mivel a jÃ¡tÃ©kos elmozdult a mezÅ‘rÅ‘l).
+     * Az attribútumban megkapott játékost kiveszi a players attribútumban tárolt játékosok referenciái közül (mivel a játékos elmozdult a mezõrõl).
      *
-     * @param p mozgatni kÃ­vÃ¡nt Player
+     * @param p mozgatni kívánt Player
      */
     public void leaveField(Player p) {
         System.out.print(this.toString() + ".leaveField(Player p);\n");
@@ -129,10 +129,10 @@ public abstract class Field {
     }
 
     /**
-     * MegvizsgÃ¡lja a snow attribÃºtum Ã©rtÃ©kÃ©t. Amennyiben ez nem nulla, akkor eggyel csÃ¶kkenti az Ã©rtÃ©kÃ©t, majd pedig OK-kal tÃ©r vissza.
-     * EllenkezÅ‘ esetben nem tÃ¶rtÃ©nik meg a csÃ¶kkentÃ©s, Ã©s a visszatÃ©rÃ©si Ã©rtÃ©k NOTHING lesz.
+     * Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti az értékét, majd pedig OK-kal tér vissza.
+     * Ellenkezõ esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.
      *
-     * @return Result OK or NOTHING - attÃ³l fÃ¼ggÅ‘en, hogy van-e mÃ©g hÃ³rÃ©teg a mezÅ‘n
+     * @return Result OK or NOTHING - attól függõen, hogy van-e még hóréteg a mezõn
      */
     public Result clean() {
         System.out.print(this.toString() + ".clean();\n");
@@ -146,9 +146,9 @@ public abstract class Field {
     }
 
     /**
-     * MegvizsgÃ¡lja a rajta talÃ¡lhatÃ³ hÃ³ mennyisÃ©gÃ©t. Ha ez nulla, Ã©s talÃ¡lhatÃ³ rajta jÃ©gbe fagyott tÃ¡rgy, akkor meghÃ­vja az Item osztÃ¡ly pickMeUp(Player) fÃ¼ggvÃ©nyÃ©t. Sikeres tÃ¡rgyfelvÃ©tel esetÃ©n OK-kal tÃ©r vissza, egyÃ©bkÃ©nt pedig NOTHING-gal.
+     * Megvizsgálja a rajta található hó mennyiségét. Ha ez nulla, és található rajta jégbe fagyott tárgy, akkor meghívja az Item osztály pickMeUp(Player) függvényét. Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
      *
-     * @param p mezÅ‘n Ã¡llÃ³ Player
+     * @param p mezõn álló Player
      * @return OK or NOTHING
      */
     public Result pickUp(Player p) {
@@ -157,9 +157,9 @@ public abstract class Field {
     }
 
     /**
-     * Visszaadja az  mezÅ‘ teherbÃ­rÃ³ kÃ©pessÃ©gÃ©t. (Az elkÃ©szÃ¼lt jÃ¡tÃ©kban valÃ³szÃ­nÅ±leg ez a fÃ¼ggvÃ©ny nem fog visszatÃ©rni a teherbÃ­rÃ¡s Ã©rtÃ©kÃ©vel, hanem csak megjelenÃ­ti a kÃ©pernyÅ‘n azt. Most a grafikus elemek hiÃ¡nyÃ¡ban illetve a jobb Ã©rthetÅ‘sÃ©g kedvÃ©Ã©rt hasznÃ¡ljuk ezt a fÃ¼ggvÃ©nyt Ã­gy.)
+     * Visszaadja az  mezõ teherbíró képességét. (Az elkészült játékban valószínûleg ez a függvény nem fog visszatérni a teherbírás értékével, hanem csak megjeleníti a képernyõn azt. Most a grafikus elemek hiányában illetve a jobb érthetõség kedvéért használjuk ezt a függvényt így.)
      *
-     * @return kapacitÃ¡s
+     * @return kapacitás
      */
     public int getCapacity() {
         System.out.println(this.toString() + ".getCapacity();");
