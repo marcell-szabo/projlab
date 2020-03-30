@@ -100,12 +100,12 @@ public abstract class Player {
             game.haveAllParts();
             System.out.print("A játékos és csapata rendelkezik az összes alkatrésszel? i/n\n");
             char c2 = scan.next().charAt(0);
-            if (c2 == 'i') {
-                System.out.print(this.toString() + ".assemble() returned Result WIN;");
+            if(c2 == 'i') {
+                System.out.print(this.toString() + ".assemble() returned Result WIN;\n");
                 return Result.WIN;
             }
         }
-        System.out.print(this.toString() + "assemble() returned Result NOTHING\n\n");
+        System.out.print(this.toString() + "assemble() returned Result NOTHING\n");
         return Result.NOTHING;
     }
 

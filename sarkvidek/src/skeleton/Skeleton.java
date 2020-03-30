@@ -8,12 +8,11 @@ import java.util.Scanner;
 import static skeleton.Direction.*;
 
 public class Skeleton {
-    Game g;
-
-    Skeleton() {
-        g = new Game();
-    }
-
+    /**
+     * A Skeleton programot futtatja. A standard inputra kiírja a szöveges skeleton menüt majd a felhasználói interakció
+     * után az adott működést (a szekvenciadiagramokon definiált formában) lefuttatja. Az egyes függvényhívási láncok
+     * így láthatók a következő formátumban: skeleton.Class@objektum_címe.metódus(paraméterek)
+     */
     public void runSkeleton() {
         Scanner scan = new Scanner(System.in);
         Player p1 = new Eskimo(new Game(), new IceField());
@@ -28,7 +27,6 @@ public class Skeleton {
             System.out.println(command);
             switch (command) {
                 case 1:
-                    System.out.print("Helyzetváltoztatás\n");
                     System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
                             "mely irányba szeretne haladni.");
                     String c = scan.next();
@@ -53,16 +51,13 @@ public class Skeleton {
                     }
                     break;
                 case 2:
-                    System.out.print("Hó eltakaritása\n");
                     p1.clean();
                     break;
                 case 3:
-                    System.out.print("Tárgy felvétele\n");
                     IceField ice = new IceField();
                     res = ice.pickUp(p1);
                     break;
                 case 4:
-                    System.out.print("Speciális képesség használata");
                     System.out.println("Adja meg a kívánt kódot!\n" + "1. Eszkimó iglut épít\n"
                             + "2. Sarkkutató teherbírást vizsgál\n");
                     int special = scan.nextInt();
@@ -83,7 +78,6 @@ public class Skeleton {
                     break;
                 case 5:
                     p1.assemble();
-                    System.out.print("Jelzőrakéta összeszerelése\n");
                     break;
                 case 6:
                     GameBoard gb = new GameBoard(5);
