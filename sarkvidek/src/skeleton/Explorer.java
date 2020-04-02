@@ -32,6 +32,7 @@ public class Explorer extends Player {
         System.out.println(this.toString() + ".specialSkill()");
         actualfield.addNeighbour(new IceField(), Direction.RIGHT);
         for (Direction d : Direction.values()) {
+            // TODO átírni skeleton tervezése alapján
             Field i = actualfield.checkNeighbour(d);
             if (i != null) {
                 int capacity = i.getCapacity();
