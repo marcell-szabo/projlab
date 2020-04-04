@@ -28,23 +28,28 @@ public class Skeleton {
             switch (command) {
                 case 1:
                     System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segitsegevel valasszon," +
-                            "mely iranyba szeretne haladni.");
+                            "mely iranyba szeretne haladni.\nA tesztekben a jobbra lyuk található, " +
+                            "felfelé és balra egy stabil mezõ, lefelé pedig egy instabil mezõ.");
                     String c = scan.next();
                     Direction d = UP;
                     switch (c) {
-                        case "J":
-                            d = RIGHT;
-                            p1.move(d);
-                            break;
                         case "B":
+                            System.out.println("Balra lepes\nStabil mezore lepes.");
                             d = LEFT;
                             p1.move(d);
                             break;
                         case "F":
+                            System.out.println("Felfele lepes\nStabil mezore lepes.");
                             d = UP;
                             p1.move(d);
                             break;
+                        case "J":
+                            System.out.println("Jobbra lepes\nLyukba esett.");
+                            d = RIGHT;
+                            p1.move(d);
+                            break;
                         case "L":
+                            System.out.println("Lefele lepes\nInstabil mezore lepes");
                             d = DOWN;
                             p1.move(d);
                             break;

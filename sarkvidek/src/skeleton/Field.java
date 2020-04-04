@@ -63,8 +63,8 @@ public abstract class Field {
      * @return Field, annak a mezõnek a referenciájával amire lépett
      */
     public Field checkNeighbour(Direction d) {
-        System.out.print(this.toString() + ".checkNeighbour(Direction d);\n" + d);
-        System.out.print(this.toString() + ".checkNeighbour(Direction d) returned Field f;\n");
+        System.out.print(this.toString() + ".checkNeighbour(d);\n" + d);
+        System.out.print(this.toString() + ".checkNeighbour(d) returned Field field;\n");
         return neighbours.get(d);
     }
 
@@ -124,8 +124,9 @@ public abstract class Field {
      * @param p mozgatni kívánt Player
      */
     public void leaveField(Player p) {
-        System.out.print(this.toString() + ".leaveField(Player p);\n");
+        System.out.print(this.toString() + ".leaveField(p1);\n");
         players.remove(p);
+        System.out.print(this.toString() + ".leaveField(p1) returned;\n");
     }
 
     /**

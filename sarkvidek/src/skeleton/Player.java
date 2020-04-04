@@ -193,12 +193,89 @@ public abstract class Player {
      * @return Result a sikerességrõl
      */
     public Result move(Direction d) {
-        System.out.print(this.toString() + ".move();\n");
+        Field field;
+        Scanner scan = new Scanner(System.in);
         actualfield.addNeighbour(new Hole(), Direction.RIGHT);
-        Field field = actualfield.checkNeighbour(d);
-        if (field != null)
-            field.stepOn(this);
-        System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
+        actualfield.addNeighbour(new IceField(),Direction.LEFT);
+        actualfield.addNeighbour(new IceField(), Direction.DOWN);
+        actualfield.addNeighbour(new IceField(), Direction.UP);
+        switch (d){
+            case UP:
+            case LEFT:
+                System.out.print(this.toString() + ".move(d);\n");
+                field = actualfield.checkNeighbour(d);
+                if (field != null) {
+                    field.leaveField(this);
+                    field.stepOn(this);
+                }
+                System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
+                break;
+            case DOWN:
+                System.out.println("Elbirja a jatekost a jegtabla? i/n");
+                char icefield = scan.next().charAt(0);
+                switch (icefield) {
+                    case 'i':
+                        System.out.print(this.toString() + ".move(d);\n");
+                        field = actualfield.checkNeighbour(d);
+                        if (field != null) {
+                            field.leaveField(this);
+                            field.stepOn(this);
+                        }
+                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
+                        break;
+                    case 'n':
+                        System.out.print(this.toString() + ".move(d);\n");
+                        field = actualfield.checkNeighbour(d);
+                        if (field != null)
+                            //TODO beborulás?
+                            field.stepOn(this);
+                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case RIGHT:
+                System.out.println("Van buvarruhaja? i/n");
+                char divingsuit = scan.next().charAt(0);
+                switch (divingsuit) {
+                    case 'i':
+                        System.out.print(this.toString() + ".move(d);\n");
+                        field = actualfield.checkNeighbour(d);
+                        if (field != null)
+                            field.stepOn(this);
+                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
+                        break;
+
+                    case 'n':
+                        System.out.println("All mellette kotellel rendelkezo jatekos? i/n");
+                        char rope = scan.next().charAt(0);
+                        switch (rope) {
+                            case 'i':
+                                System.out.print(this.toString() + ".move(d);\n");
+                                field = actualfield.checkNeighbour(d);
+                                if (field != null)
+                                    field.stepOn(this);
+                                System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
+                                break;
+                            case 'n':
+                                System.out.print(this.toString() + ".move(d);\n");
+                                field = actualfield.checkNeighbour(d);
+                                if (field != null)
+                                    field.stepOn(this);
+                                System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
         return NOTHING;
     }
 

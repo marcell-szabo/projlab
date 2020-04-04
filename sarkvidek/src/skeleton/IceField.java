@@ -60,8 +60,9 @@ public class IceField extends Field {
      * @return Result
      */
     public Result stepOn(Player p) {
-        // TODO implement here
-        return null;
+        System.out.println(this.toString() + ".stepOn(p1);");
+        System.out.println(this.toString() + ".stepOn(p1) returned Result OK;");
+        return OK;
     }
 
     /**
@@ -84,8 +85,8 @@ public class IceField extends Field {
      */
     public Result buildIgloo() {
         System.out.println(this.toString() + ".buildIgloo();");
-        System.out.println(this.toString() + ".buildIgloo() returned Result res;");
-        return null;
+        System.out.println(this.toString() + ".buildIgloo() returned Result OK;");
+        return OK;
     }
 
     /**
