@@ -50,6 +50,7 @@ public class Skeleton {
                             break;
                         case "L":
                             System.out.println("Lefele lepes\nInstabil mezore lepes");
+                            System.out.println("Lefele lepes\nInstabil mezore lepes");
                             d = DOWN;
                             p1.move(d);
                             break;
