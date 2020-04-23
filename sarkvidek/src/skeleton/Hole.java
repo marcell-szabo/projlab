@@ -1,5 +1,5 @@
 package skeleton;
-//**push
+//**push**
 import java.util.*;
 
 import static skeleton.Result.OK;
