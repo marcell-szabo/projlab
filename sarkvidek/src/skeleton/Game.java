@@ -31,11 +31,7 @@ public class Game {
      * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game() {
-        gameboard = new GameBoard(2);
-        players.add(new Eskimo(this, gameboard.getStartField()));
-        players.add(new Explorer(this, gameboard.getStartField()));
-    }
+
 
     /**
      * A korábban létrehozott Player példányoknak állítja be az actualfield attribútumát.
