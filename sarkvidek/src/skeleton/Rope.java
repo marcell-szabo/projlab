@@ -14,29 +14,14 @@ public class Rope extends Tool {
     }
 
     /**
-     * a paraméterknt megadott player felvesz egy kötelet
-     *
-     * @param p a player aki felveszi az kötelet
-     * @return Result a felvétel sikerességérõl
-     */
-    @Override
-    public Result pickMeUp(Player p) {
-        System.out.println(this.toString() + ".pickMeUp(p);");
-        p.addTool(this);
-        System.out.println(this.toString() + ".pickMeUp(p) returned res;");
-        return null;
-    }
-
-    /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány
      * szeretné magát összehasonlítani vele).
      *
-     * @param r rope példány
+     * @param r az összehasonlításhoz szükséges Rope példány
      * @return true
      */
     public boolean isSame(Rope r) {
-        // TODO implement here
-        return false;
+        return true;
     }
 
     /**
@@ -44,13 +29,11 @@ public class Rope extends Tool {
      * paraméterként a kapott Field példányt.
      * A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
      *
-     * @param f az a field amire a player lépni akar
-     * @param p az a játékos amelyik a másik fieldre lépne
-     * @return
+     * @param f Az a field amire a player lépni akar
+     * @param p Az a játékos amelyik a másik fieldre lépne
+     * @return Result a segítségrõl
      */
     public Result help(Field f, Player p) {
-        System.out.print(this.toString() + ".help(Field f, Player p);\n");
-        System.out.print(this.toString() + ".help(Field f, Player p) returned Result r;\n");
         return p.changeField(f);
     }
 
