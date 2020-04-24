@@ -1,6 +1,5 @@
 package skeleton;
-
-import java.util.*;
+import static skeleton.Result.*;
 
 /**
  * Eszkimó karaktertípus esetén megadja a maximális testhõ mértékét,
@@ -15,20 +14,33 @@ public class Eskimo extends Player {
     /**
      * Default constructor
      */
-    public Eskimo(Game g, Field actual) {
-        super(g, actual);
+    public Eskimo(Game g, Field actual, char c) {
+        super(g, actual, c);
     }
 
+    @Override
+    /**
+     * Legelõször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e.
+     *      * Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad.
+     *      * Ellenkezõ esetben kimarad a növelés, és NOTHING értékkel tér vissza.
+     */
+    public Result increaseHeat() {
+        if(heat < heatlimit) {
+            heat++;
+            return OK;
+        }
+        return NOTHING;
+    }
+
+    @Override
     /**
      * A Player osztályban lévõ absztrakt függvény megvalósítása. Meghívja az actualfield attribútumban eltárolt
      * Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
      * ez a metódus is.
      */
     public Result specialSkill() {
-        System.out.println(this.toString() + ".specialSkill()");
-        actualfield.buildIgloo();
-        System.out.println(this.toString() + ".specialSkill() returned Result res\n\n");
-        return null;
+        Igloo igloo = new Igloo();
+        return actualfield.build(igloo);
     }
 
 }

@@ -40,6 +40,9 @@ public abstract class Field {
     public Field() {
     }
 
+    public int getSnow(){
+        return snow;
+    }
     /**
      * Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.
      *
@@ -168,4 +171,5 @@ public abstract class Field {
         return 0;
     }
 
+    public abstract Result build(Igloo igloo);
 }
