@@ -14,28 +14,24 @@ public class Shovel extends Tool {
     }
 
     /**
-     * a paraméterknt megadott karakter felvesz egy ásót
-     *
-     * @param p a karakter aki felveszi az ásót
-     * @return Result a felvétel sikerességérõl
-     */
-    @Override
-    public Result pickMeUp(Player p) {
-        System.out.println(this.toString() + ".pickMeUp(p);");
-        p.addTool(this);
-        System.out.println(this.toString() + ".pickMeUp(p) returned Return res;");
-        return null;
-    }
-
-    /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
      * összehasonlítani vele).
      *
-     * @param s shovel példány
+     * @param s az összehasonlításhoz szükséges Shovel példány
      * @return true
      */
     public boolean isSame(Shovel s) {
-        // TODO implement here
+        return false;
+    }
+
+    /**
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy BreakableShovel példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param bs az összehasonlításhoz szükséges BreakableShovel példány
+     * @return true
+     */
+    public boolean isSame(BreakableShovel bs) {
         return false;
     }
 
@@ -44,11 +40,12 @@ public class Shovel extends Tool {
      * Field clean() metódusát, ezzel még egy réteget ellapátolva arról (persze, ha ez lehetséges).
      * Void visszatérésû, mivel nincs jelentõsége, hogy ez a mûvelet sikerült-e vagy sem.
      *
-     * @param f actualfield
+     * @param f A mezõ, amin az ásást kell végrehajtani
+     * @return Result a lapátolásról
      */
-    public void clean(Field f) {
-        System.out.print(this.toString() + ".clean(Field f);\n");
+    public Result clean(Field f) {
         f.clean();
+        return Result.Ok;
     }
 
 }
