@@ -14,7 +14,7 @@ public class Shovel implements Tool {
     }
 
     /**
-     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Toolt implementáló példány szeretné magát
      * összehasonlítani vele).
      * @param s az összehasonlításhoz szükséges Shovel példány
      * @return true
@@ -63,7 +63,7 @@ public class Shovel implements Tool {
      * @return
      */
     public boolean isSame(Tool t) {
-        return false;
+        return true;
     }
 
     /**

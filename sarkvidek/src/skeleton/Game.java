@@ -77,7 +77,7 @@ public class Game {
         boolean hasSomeOneDiedOrWon = false;
         while(!hasSomeOneDiedOrWon && p_result == Result.OK) {
 
-            p_result = polarbear.move(bearmove.get(bearmove_idx++));
+            //p_result = polarbear.move(bearmove.get(bearmove_idx++));
 
             ListIterator<Player> i = players.listIterator();
             Result s_result = Result.OK, r_result = Result.OK;

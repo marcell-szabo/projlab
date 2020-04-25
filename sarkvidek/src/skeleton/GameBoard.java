@@ -28,7 +28,8 @@ public class GameBoard {
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
     public void setNeighbours() {
-        fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
+        //fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
+
     }
 
     /**
@@ -65,4 +66,12 @@ public class GameBoard {
         return null;
     }
 
+    public void aging() {
+        for(Field f: fields)
+            f.aging();
+    }
+
+    public Result storm(String[] fields) {
+        return null;
+    }
 }
