@@ -33,14 +33,14 @@ public class Hole extends Field {
      */
     public Result stepOn(Player p)
     {
-        if (this == polarbear.actualfield)
+        if (this == polarbear.getActualfield())
             return DIE;
         else
             return p.helpMe();
     }
 
     @Override
-    public Result stepOn(Polarbear pb)
+    public Result stepOn(PolarBear pb)
     {
         polarbear = pb;
         return  OK;

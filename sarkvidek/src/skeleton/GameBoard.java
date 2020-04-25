@@ -6,7 +6,8 @@ import java.util.*;
  * Létrehozza, inicializálja, összefogja s egyben tárolja az összes mezõt. Ha az adott körben úgy adta a gép,
  * hogy lesz hóvihar, akkor az elõzõek mellett kezeli azt is, hogy melyik mezõkre fog leesni egy réteg hó.
  */
-public class GameBoard {
+public class GameBoard
+{
     /**
      * A táblához tartozó mezõk tárolására szolgál.
      */
@@ -15,8 +16,8 @@ public class GameBoard {
     /**
      * Default constructor
      */
-    public GameBoard(int allplayer) {
-        //csak proba, majd sok objektum lesz
+    public GameBoard(int allplayer)
+    {
         Hole h = new Hole();
         fields.add(h);
         IceField icef = new IceField();
@@ -27,9 +28,9 @@ public class GameBoard {
     /**
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
-    public void setNeighbours() {
+    public void setNeighbours()
+    {
         //fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
-
     }
 
     /**
@@ -37,9 +38,9 @@ public class GameBoard {
      *
      * @return Field-bal felsõ
      */
-    public Field getStartField() {
-        // TODO implement here
-        return null;
+    public Field getStartField()
+    {
+        return fields.get(1);
     }
 
     /**
@@ -63,7 +64,8 @@ public class GameBoard {
     }
 
     public Field getRandomField(){
-        return null;
+        int rnd = new Random().nextInt(fields.size()-1);
+        return fields.get(rnd);
     }
 
     public void aging() {
