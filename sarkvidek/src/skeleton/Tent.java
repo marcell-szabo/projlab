@@ -30,7 +30,7 @@ public class Tent extends Igloo implements Tool {
         return false;
     }
 
-    @Override
+
     /**
      * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
      * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
@@ -42,41 +42,66 @@ public class Tent extends Igloo implements Tool {
      * @param p - A Játékos aki felvesz egy Toolt
      * @return Reasult a felvétel sikerességérõl
      */
+    @Override
     public Result pickMeUp(Player p) {
         List<Tool> tools = p.getTools();
         boolean can = true;
         for (int i = 0; i<tools.size(); i++){
-            if (tools.get(i).isSame(this) == true) can = false;
+            if (tools.get(i).isSame(this)) can = false;
         }
-        if(can == true) p.addTool(this);
+        if(can) p.addTool(this);
         return can? Result.OK : Result.NOTHING;
     }
 
-    @Override
     /**
-     * megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Tent-tõl különbözõ
+     * példány szeretné magát összehasonlítani vele).
+     *
      * @param t az összehasonlításhoz szükséges Tool példány
-     * @return
+     * @return true
      */
+    @Override
     public boolean isSame(Tool t) {
         return false;
     }
 
-    @Override
+    /**
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Toolt implementáló példány szeretné magát
+     * összehasonlítani vele).
+     * @param t az összehasonlításhoz szükséges Tent példány
+     * @return true
+     */
+    public boolean isSame(Tent t) {
+        return true;
+    }
+
     /**
      * NOTHING értékkel tér vissza .
      * @param f  A mezõ, amin az ásást kell végrehajtani
      * @return Result a lapátolásról
      */
+    @Override
     public Result clean(Field f) {
         return Result.NOTHING;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f a mezõ (lyuk), amibe beleesett a player
+     * @param p melyik játékos esett bele
+     * @return Result a kimászásról
+     */
     @Override
     public Result swim(Field f, Player p) {
         return Result.NOTHING;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f Az a field amire a player lépni akar
+     * @param p Az a játékos amelyik a másik fieldre lépne
+     * @return Result a segítségrõl
+     */
     @Override
     public Result help(Field f, Player p) {
         return Result.NOTHING;
@@ -90,6 +115,7 @@ public class Tent extends Igloo implements Tool {
      * @param f Field amelyre sátort akarunk építeni
      * @return DISAPPEAR or NOTHING
      */
+    @Override
     public Result build(Field f){
         Result r = f.build(this);
         if(r == Result.OK)

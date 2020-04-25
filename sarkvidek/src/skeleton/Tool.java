@@ -11,34 +11,28 @@ public interface Tool extends Item {
 
 
     /**
-	 * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
-     * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
-     * Ezt követõen meghívja a lista minden elemére a Tool osztály isSame(Tool) metódusát.
-     * Ezután ezeknek a visszatérési értékei kerülnek vizsgálat alá.
-     * Amennyiben minden függvény hívást követõen csak FALSE visszatérési értékeket kapunk,
-     * akkor meghívásra kerül a Player osztály addTool(Tool) metódusa, majd ezt követõen OK-kal tér vissza.
-     * Különben pedig NOTHING lesz a visszatérési érték.
+	 * Tool felvételéért felelõs függvény.
      * @param p - A Játékos aki felvesz egy Toolt
      * @return Reasult a felvétel sikerességérõl
      */
     Result pickMeUp(Player p);
 
     /**
-     * megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
      * @param t az összehasonlításhoz szükséges Tool példány
-     * @return
+     * @return Az összehasonlítás eredménye
      */
     boolean isSame(Tool t);
 
     /**
-	 * NOTHING értékkel tér vissza, kivéve ha a shovel vagy leszármazottjának a függvénye hívódik meg
+	 * Mezõ takarításáért felelõs függvény.
      * @param f  A mezõ, amin az ásást kell végrehajtani
      * @return Result a lapátolásról
      */
     Result clean(Field f);
 
     /**
-	* Virtuális függvény, ami NOTHING értékkel tér vissza.
+	 * Lyukból való kiúszásért felelõs függvény.
      * @param f a mezõ (lyuk), amibe beleesett a player
      * @param p melyik játékos esett bele
      * @return Result a kimászásról
@@ -47,7 +41,7 @@ public interface Tool extends Item {
 
 
     /**
-	* Virtuális függvény, ami NOTHING értékkel tér vissza.
+	 * Lyukból való kihúzásért felelõs függvény
      * @param f Az a field amire a player lépni akar
      * @param p Az a játékos amelyik a másik fieldre lépne
      * @return Result a segítségrõl
@@ -56,7 +50,7 @@ public interface Tool extends Item {
 
 
     /**
-     * Virtuális függvény, ami NOTHING értékkel tér vissza.
+     * Sátorépítésért felelõs függvény.
      * @param f A mezõ, amire sátrat kell építeni
      * @return Result az építésrõl
      */

@@ -14,13 +14,14 @@ public class Shovel implements Tool {
     }
 
     /**
-     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Toolt implementáló példány szeretné magát
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
      * összehasonlítani vele).
-     * @param s az összehasonlításhoz szükséges Shovel példány
+     *
+     * @param s az összehasonlításhoz szükséges BreakableShovel példány
      * @return true
      */
     public boolean isSame(Shovel s) {
-        return false;
+        return true;
     }
 
     /**
@@ -31,10 +32,21 @@ public class Shovel implements Tool {
      * @return true
      */
     public boolean isSame(BreakableShovel bs) {
+        return true;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel-tõl és BrakableShovel-tõl különbözõ
+     * példány szeretné magát összehasonlítani vele).
+     *
+     * @param t az összehasonlításhoz szükséges Tool példány
+     * @return true
+     */
+    @Override
+    public boolean isSame(Tool t) {
         return false;
     }
 
-    @Override
     /**
      * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
      * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
@@ -46,24 +58,15 @@ public class Shovel implements Tool {
      * @param p - A Játékos aki felvesz egy Toolt
      * @return Reasult a felvétel sikerességérõl
      */
+    @Override
     public Result pickMeUp(Player p) {
         List<Tool> tools = p.getTools();
         boolean can = true;
         for (int i = 0; i<tools.size(); i++){
-            if (tools.get(i).isSame(this) == true) can = false;
+            if (tools.get(i).isSame(this)) can = false;
         }
-        if(can == true) p.addTool(this);
+        if(can) p.addTool(this);
         return can? Result.OK : Result.NOTHING;
-    }
-
-    @Override
-    /**
-     * megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
-     * @param t az összehasonlításhoz szükséges Tool példány
-     * @return
-     */
-    public boolean isSame(Tool t) {
-        return true;
     }
 
     /**
@@ -74,21 +77,39 @@ public class Shovel implements Tool {
      * @param f A mezõ, amin az ásást kell végrehajtani
      * @return Result a lapátolásról
      */
+    @Override
     public Result clean(Field f) {
         f.clean();
         return Result.OK;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f a mezõ (lyuk), amibe beleesett a player
+     * @param p melyik játékos esett bele
+     * @return Result a kimászásról
+     */
     @Override
     public Result swim(Field f, Player p) {
         return Result.NOTHING;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f Az a field amire a player lépni akar
+     * @param p Az a játékos amelyik a másik fieldre lépne
+     * @return Result a segítségrõl
+     */
     @Override
     public Result help(Field f, Player p) {
         return Result.NOTHING;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f A mezõ, amire sátrat kell építeni
+     * @return Result az építésrõl
+     */
     @Override
     public Result build(Field f) {
         return Result.NOTHING;
