@@ -16,6 +16,18 @@ public class DivingSuit implements Tool {
     }
 
     /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit-tól különbözõ
+     * példány szeretné magát összehasonlítani vele).
+     *
+     * @param t az összehasonlításhoz szükséges Tool példány
+     * @return true
+     */
+    @Override
+    public boolean isSame(Tool t) {
+        return false;
+    }
+
+    /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit
      * példány szeretné magát összehasonlítani vele).
      *
@@ -26,7 +38,6 @@ public class DivingSuit implements Tool {
         return true;
     }
 
-    @Override
     /**
      * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
      * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
@@ -38,27 +49,23 @@ public class DivingSuit implements Tool {
      * @param p - A Játékos aki felvesz egy Toolt
      * @return Reasult a felvétel sikerességérõl
      */
+    @Override
     public Result pickMeUp(Player p) {
         List<Tool> tools = p.getTools();
         boolean can = true;
         for (int i = 0; i<tools.size(); i++){
-            if (tools.get(i).isSame(this) == true) can = false;
+            if (tools.get(i).isSame(this)) can = false;
         }
-        if(can == true) p.addTool(this);
+        if(can) p.addTool(this);
         return can? Result.OK : Result.NOTHING;
     }
 
-    @Override
-    public boolean isSame(Tool t) {
-        return false;
-    }
-
-    @Override
     /**
      * NOTHING értékkel tér vissza .
      * @param f  A mezõ, amin az ásást kell végrehajtani
      * @return Result a lapátolásról
      */
+    @Override
     public Result clean(Field f) {
         return Result.NOTHING;
     }
@@ -76,6 +83,7 @@ public class DivingSuit implements Tool {
      * @param p melyik játékos esett bele
      * @return Result a kimászásról
      */
+    @Override
     public Result swim(Field f, Player p) {
         System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
                 "mely irányba szeretne kimászni.");
@@ -101,11 +109,22 @@ public class DivingSuit implements Tool {
         return p.changeField(choosedField);
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f Az a field amire a player lépni akar
+     * @param p Az a játékos amelyik a másik fieldre lépne
+     * @return Result a segítségrõl
+     */
     @Override
     public Result help(Field f, Player p) {
         return Result.NOTHING;
     }
 
+    /**
+     * NOTHING értékkel tér vissza.
+     * @param f A mezõ, amire sátrat kell építeni
+     * @return Result az építésrõl
+     */
     @Override
     public Result build(Field f) {
         return Result.NOTHING;
