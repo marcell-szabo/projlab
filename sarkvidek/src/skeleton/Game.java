@@ -1,6 +1,5 @@
 package skeleton;
 
-import java.awt.desktop.SystemSleepEvent;
 import java.util.*;
 
 /**
@@ -25,24 +24,42 @@ public class Game {
      */
     private List<FlareGun> flare_gun = new ArrayList<>();
 
+    /*
+    * A jegesmedvét tárolja
+    * */
+    private PolarBear polarbear;
+
     /**
      * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
      * Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát.
      * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game() {
-        gameboard = new GameBoard(2);
-        players.add(new Eskimo(this, gameboard.getStartField()));
-        players.add(new Explorer(this, gameboard.getStartField()));
+    public Game(String[] s) {
+        init(s);
     }
 
-    /**
-     * A korábban létrehozott Player példányoknak állítja be az actualfield attribútumát.
-     * Ehhez lekéri a kezdõ mezõ referenciáját a GameBoard-tól a getStartField() függvény segítségével.
-     */
-    public void setActualFields() {
-        // TODO implement here
+    /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
+     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(int) metódusát átadva neki a játékosok számát.
+     * Ezt követõen a GameBoard getStartField() metódusának segítségével lekéri a játékosok kiindulási mezõjét (bal felsõ).
+     * Majd a bekért adatok alapján konstruktorukban átadva a kiindulási mezõjüket létrehozza az eszkimókat,
+     * illetve a sarkkutatókat reprezentáló osztályokat.
+     * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
+     * aminek az így kapott mezõ lesz az actualfield-je.
+    */
+    public void init(String[] playerdata, String bearstartfield) {  //szin tipus kezdomezo
+        gameboard.init(playerdata.length);
+        for (String i : playerdata) {
+            String[] player = i.split(" ");
+            if (player[1].equals("ex"))
+                players.add(new Explorer(this, player[2], player[0]));
+            else
+                players.add(new Eskimo(this, player[3], player[1]));
+        }
+        if(bearstartfield != null)
+            polarbear = new PolarBear(bearstartfield);
+        else
+            polarbear = new PolarBear(gameboard.getRandomField());
     }
 
     /**
@@ -54,9 +71,44 @@ public class Game {
      * akkor kilép a ciklusból. (Ciklusban maradáshoz OK visszatérési érték kell. NOTHING-nak itt nincs szerepe.).
      * Végezetül az endGame(Result) függvény kerül meghívásra .
      */
-    public void mainLoop() {
-        // TODO implement here
+    public void mainLoop(boolean randomstorm, List<String> bearmove, List<String> activities, String[] fields) {
+        Result p_result = Result.OK, quitresult = Result.OK;
+        int activity_idx = 0, bearmove_idx = 0;
+        boolean hasSomeOneDiedOrWon = false;
+        while(!hasSomeOneDiedOrWon && p_result == Result.OK) {
+
+            p_result = polarbear.move(bearmove.get(bearmove_idx++));
+
+            ListIterator<Player> i = players.listIterator();
+            Result s_result = Result.OK, r_result = Result.OK;
+            while(i.hasNext() &&  s_result == Result.OK && r_result == Result.OK) {
+                gameboard.aging();
+                if(randomstorm) {
+                    if(new Random().nextInt(101) < 33)
+                        s_result = gameboard.storm();
+                }else
+                    s_result = gameboard.storm(fields);
+
+                if(s_result != Result.DIE) {
+                    r_result = players.get(i.nextIndex()).round(activities.get(activity_idx++));
+                    i.next();
+                }
+            }
+            if(s_result != Result.OK) {
+                hasSomeOneDiedOrWon = true;
+                quitresult = s_result;
+            } else if(r_result != Result.OK) {
+                hasSomeOneDiedOrWon = true;
+                quitresult = r_result;
+            } else if(p_result != Result.OK) {
+                hasSomeOneDiedOrWon = true;
+                quitresult = p_result;
+            }
+        }
+        endGame(quitresult);
     }
+
+
 
     /**
      * A players attribútumban tárolt játékosok számával tér vissza.
@@ -64,9 +116,7 @@ public class Game {
      * @return int player száma
      */
     public int getPlayerNumber() {
-        System.out.print(this.toString() + ".getPlayerNumber();\n");
-        System.out.print(this.toString() + ".getPlayerNumber() returned int n;\n");
-        return 0;
+       return players.size();
     }
 
     /**
@@ -75,7 +125,12 @@ public class Game {
      * @param r Result kapott eredmény, játék kimenetének eldöntéséhez
      */
     public void endGame(Result r) {
-        // TODO implement here
+        switch (r) {
+            case WIN: System.out.print("Victory");
+                        break;
+            case DIE: System.out.print("Game Over");
+                        break;
+        }
     }
 
     /**
@@ -84,9 +139,7 @@ public class Game {
      * @param f hozzáadandó FlareGun rész
      */
     public void addPart(FlareGun f) {
-        System.out.println(this.toString() + ".addPart(f);");
-        System.out.println(this.toString() + ".addPart(f) returned;");
-        return;
+        flare_gun.add(f);
     }
 
     /**
@@ -96,9 +149,7 @@ public class Game {
      * @return true or false
      */
     public boolean haveAllParts() {
-        System.out.print(this.toString() + ".haveAllParts();\n");
-        System.out.print(this.toString() + "haveAllParts() returned boolean b;\n");
-        return false;
+        return (flare_gun.size() == 3) ? true : false;
     }
 
 }
