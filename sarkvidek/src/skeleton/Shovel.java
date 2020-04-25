@@ -16,7 +16,6 @@ public class Shovel implements Tool {
     /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel példány szeretné magát
      * összehasonlítani vele).
-     *
      * @param s az összehasonlításhoz szükséges Shovel példány
      * @return true
      */
