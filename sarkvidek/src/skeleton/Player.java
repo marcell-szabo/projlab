@@ -67,11 +67,10 @@ public abstract class Player {
      *
      * @return a körben történt-e win, die
      */
-    public Result round() {
-        Scanner scan = new Scanner(System.in);
+    public Result round(String string) {
         Result result = OK;
         while(work != 0 || result != WIN || result != DIE){
-            String  c = scan.next();
+            String  c = string;
             switch (c){
                 case "W":
                     result = this.move(Direction.UP);
