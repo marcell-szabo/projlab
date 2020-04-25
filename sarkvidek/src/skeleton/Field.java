@@ -26,7 +26,7 @@ public abstract class Field
     /**
      * Tárolja a 4 irányban elhelyezkedõ mezõt.
      */
-    protected List<Integer> neighbours = new ArrayList<>();
+    protected List<Field> neighbours = new ArrayList<>();
 
     /**
      * Tárolja, hogy az adott mezõn melyik játékosok vannak rajta.
@@ -36,7 +36,7 @@ public abstract class Field
     /**
      * A játékban szereplõ medvét tárolja el.
      */
-    protected Polarbear polarbear;
+    protected PolarBear polarbear;
 
     /**
      * Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.
@@ -57,18 +57,15 @@ public abstract class Field
      * Az átadott irány alapján visszatér az abban az irányban levõ objektum referenciájával.
      * Ha arra tenger van, akkor ez az érték NULL lesz.
      *
-     * @param d - Direction, melyik irány
+     * @param direction - Direction, melyik irány
      * @return Field, annak a mezõnek a referenciájával amire lépett
      */
-    public Field checkNeighbour(Direction d)
+    public Field checkNeighbour(int direction)
     {
-        return neighbours.get(d);
+        return neighbours.get(direction);
     }
 
-    public void addNeighbour(Field f, Direction d)
-    {
-        neighbours.put(d, f);
-    }
+    public void addNeighbour(Field f, int direction) { neighbours.add(direction, f); }
 
     /**
      * Akkor tér vissza OK értékkel, ha az adott mezõrõl megoldható a vízbe esett játékos vízbõl való kimentése.
@@ -125,6 +122,8 @@ public abstract class Field
         players.remove(p);
     }
 
+    public void leaveField() {polarbear.setActualfield(null);}
+
     /**
      * Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti, majd pedig OK-kal tér vissza.
      * Ellenkezõ esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.
@@ -164,7 +163,7 @@ public abstract class Field
         return capacity;
     }
 
-    public abstract Result stepOn(Polarbear pb);
+    public abstract Result stepOn(PolarBear pb);
 
     public void aging(){}
 

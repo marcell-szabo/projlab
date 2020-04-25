@@ -7,13 +7,8 @@ import java.util.*;
  * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés, sátorépítés)
  * kezelésére szolgáló osztály.
  */
-public abstract class Tool extends Item {
+public interface Tool extends Item {
 
-    /**
-     * Default constructor
-     */
-    public Tool() {
-    }
 
     /**
 	 * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
@@ -26,33 +21,21 @@ public abstract class Tool extends Item {
      * @param p - A Játékos aki felvesz egy Toolt
      * @return Reasult a felvétel sikerességérõl
      */
-    public Result pickMeUp(Player p) {
-        List<Tool> tools = p.getTools();
-        boolean can = true;
-        for (int i = 0; i<tools.size(); i++){
-            if (tools.get(i).isSame(this) == true) can = false;
-        }
-        if(can == true) p.addTool(this);
-        return can? Result.OK : Result.NOTHING;
-    }
+    Result pickMeUp(Player p);
 
     /**
-     * Virtuális függvény, amely megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
      * @param t az összehasonlításhoz szükséges Tool példány
      * @return
      */
-    public boolean isSame(Tool t) {
-        return false;
-    }
+    boolean isSame(Tool t);
 
     /**
-	* Virtuális függvény, amely NOTHING értékkel tér vissza.
+	 * NOTHING értékkel tér vissza, kivéve ha a shovel vagy leszármazottjának a függvénye hívódik meg
      * @param f  A mezõ, amin az ásást kell végrehajtani
      * @return Result a lapátolásról
      */
-    public Result clean(Field f){
-        return Result.NOTHING;
-    }
+    Result clean(Field f);
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -60,9 +43,8 @@ public abstract class Tool extends Item {
      * @param p melyik játékos esett bele
      * @return Result a kimászásról
      */
-    public Result swim(Field f, Player p){
-        return Result.NOTHING;
-    }
+    Result swim(Field f, Player p);
+
 
     /**
 	* Virtuális függvény, ami NOTHING értékkel tér vissza.
@@ -70,17 +52,15 @@ public abstract class Tool extends Item {
      * @param p Az a játékos amelyik a másik fieldre lépne
      * @return Result a segítségrõl
      */
-    public Result help(Field f, Player p){
-        return Result.NOTHING;
-    }
+    Result help(Field f, Player p);
+
 
     /**
      * Virtuális függvény, ami NOTHING értékkel tér vissza.
      * @param f A mezõ, amire sátrat kell építeni
      * @return Result az építésrõl
      */
-    public Result build(Field f){
-        return Result.NOTHING;
-    }
+    Result build(Field f);
+
 
 }

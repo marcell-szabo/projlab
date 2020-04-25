@@ -67,7 +67,7 @@ public class IceField extends Field
      */
     public Result stepOn(Player p)
     {
-        if (polarbear.actualfield == this && !protection.protectFromBear())
+        if (polarbear.getActualfield() == this && !protection.protectFromBear())
             return  DIE;
         if (players.size() > capacity)
             return  DIE;
@@ -114,14 +114,14 @@ public class IceField extends Field
     }
 
     @Override
-    public Result stepOn(Polarbear pb)
+    public Result stepOn(PolarBear pb)
     {
         polarbear = pb;
         if(players == null)
             return OK;
         else if (protection == null)
             return  DIE;
-        else if (protection.ProtectFromBear())
+        else if (protection.protectFromBear())
             return  OK;
         return DIE;
     }

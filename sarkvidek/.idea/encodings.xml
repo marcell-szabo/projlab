@@ -15,10 +15,12 @@
     <file url="file://$PROJECT_DIR$/src/skeleton/Item.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Main.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Player.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/PolarBear.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Result.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Rope.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Shovel.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Skeleton.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/skeleton/Tent.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Tool.java" charset="windows-1250" />
     <file url="PROJECT" charset="windows-1250" />
   </component>

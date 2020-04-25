@@ -7,7 +7,7 @@ import static skeleton.Direction.*;
 /**
  * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
  */
-public class DivingSuit extends Tool {
+public class DivingSuit implements Tool {
 
     /**
      * Default constructor
@@ -24,6 +24,43 @@ public class DivingSuit extends Tool {
      */
     public boolean isSame(DivingSuit d) {
         return true;
+    }
+
+    @Override
+    /**
+     * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
+     * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
+     * Ezt követõen meghívja a lista minden elemére a Tool osztály isSame(Tool) metódusát.
+     * Ezután ezeknek a visszatérési értékei kerülnek vizsgálat alá.
+     * Amennyiben minden függvény hívást követõen csak FALSE visszatérési értékeket kapunk,
+     * akkor meghívásra kerül a Player osztály addTool(Tool) metódusa, majd ezt követõen OK-kal tér vissza.
+     * Különben pedig NOTHING lesz a visszatérési érték.
+     * @param p - A Játékos aki felvesz egy Toolt
+     * @return Reasult a felvétel sikerességérõl
+     */
+    public Result pickMeUp(Player p) {
+        List<Tool> tools = p.getTools();
+        boolean can = true;
+        for (int i = 0; i<tools.size(); i++){
+            if (tools.get(i).isSame(this) == true) can = false;
+        }
+        if(can == true) p.addTool(this);
+        return can? Result.OK : Result.NOTHING;
+    }
+
+    @Override
+    public boolean isSame(Tool t) {
+        return false;
+    }
+
+    @Override
+    /**
+     * NOTHING értékkel tér vissza .
+     * @param f  A mezõ, amin az ásást kell végrehajtani
+     * @return Result a lapátolásról
+     */
+    public Result clean(Field f) {
+        return Result.NOTHING;
     }
 
     /**
@@ -62,5 +99,15 @@ public class DivingSuit extends Tool {
                 System.out.println("A választott irányban tenger található, adjon meg új irányt!");
         }
         return p.changeField(choosedField);
+    }
+
+    @Override
+    public Result help(Field f, Player p) {
+        return Result.NOTHING;
+    }
+
+    @Override
+    public Result build(Field f) {
+        return Result.NOTHING;
     }
 }

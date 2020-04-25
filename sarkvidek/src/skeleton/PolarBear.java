@@ -6,13 +6,23 @@ public class PolarBear {
     /**
      * Default constructor
      */
-    public PolarBear(){
+    public PolarBear(Field field){
+        actualfield = field;
     }
 
     /**
      * Tárolja, hogy a jegesmedve hol található.
      */
     private Field actualfield;
+
+    public Field getActualfield(){
+        return actualfield;
+    }
+
+    public void setActualfield(Field f){
+        actualfield = f;
+    }
+
 
     /**Elõször addig hívogatja meg átadva neki random generált irányokat a Field osztály
      * checkNeighbour(int) függvényét, amíg az nem NULL értékkel tér vissza. Ezt követõen
@@ -29,6 +39,7 @@ public class PolarBear {
             choosedField = actualfield.checkNeighbour(new Random().nextInt(3));
         }
         actualfield.leaveField();
-        Return actualfield.StepOn(this);
+
+        return actualfield.stepOn(this);
     }
 }
