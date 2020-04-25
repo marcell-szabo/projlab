@@ -57,4 +57,12 @@ public class GameBoard {
         return r;
     }
 
+    public void init(int allplayer){
+
+    }
+
+    public Field getRandomField(){
+        return null;
+    }
+
 }
