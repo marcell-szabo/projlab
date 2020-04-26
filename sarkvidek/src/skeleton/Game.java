@@ -35,8 +35,8 @@ public class Game {
      * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game(String[] s) {
-        init(s);
+    public Game(List<String[]> fields, List<String[]> playerdata, String bearstartfield) {
+        init(fields, playerdata, bearstartfield);
     }
 
     /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
@@ -47,8 +47,8 @@ public class Game {
      * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
-    public void init(String[] playerdata, String bearstartfield) {  //szin tipus kezdomezo
-        gameboard.init(playerdata.length);
+    public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield) {  //szin tipus kezdomezo
+        gameboard.init(playerdata.size(), fields, );
         for (String i : playerdata) {
             String[] player = i.split(" ");
             if (player[1].equals("ex"))

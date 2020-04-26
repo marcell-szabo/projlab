@@ -26,9 +26,9 @@ public class IceField extends Field
     /**
      * Default constructor
      */
-    public IceField()
-    {
-        super();
+    public IceField(int snow, int capacity, Item item) {
+        super(snow, capacity);
+        this.item = item;
     }
 
     /**

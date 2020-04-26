@@ -1,5 +1,6 @@
 package skeleton;
 
+import java.awt.image.renderable.RenderableImage;
 import java.util.*;
 
 /**
@@ -15,21 +16,21 @@ public class GameBoard {
     /**
      * Default constructor
      */
-    public GameBoard(int allplayer) {
-        //csak proba, majd sok objektum lesz
-        Hole h = new Hole();
-        fields.add(h);
-        IceField icef = new IceField();
-        fields.add(icef);
-        setNeighbours();
-    }
+    public GameBoard() { }
 
     /**
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
-    public void setNeighbours() {
-        //fields.get(0).addNeighbour(fields.get(1), Direction.DOWN);
-
+    public void setNeighbours(List<String[]> neighbours) {
+        for(String[] i : neighbours) {
+            int fieldidx = Integer.parseInt(i[1].substring(1)) - 1;
+            for(int j = 2; j < i.length; j++) {
+                if(i[j].equals(null))
+                    fields.get(fieldidx).addNeighbour(null, j - 2);
+                else
+                    fields.get(fieldidx).addNeighbour(fields.get(Integer.parseInt(i[j].substring(1)) - 1), j -2);
+            }
+        }
     }
 
     /**
@@ -38,40 +39,68 @@ public class GameBoard {
      * @return Field-bal felsõ
      */
     public Field getStartField() {
-        // TODO implement here
-        return null;
+        return fields.get(0);
     }
 
     /**
      * Eldönti egy adott valószínûség alapján minden egyes mezõre, hogy ott jön-e vihar.
      * Ha jön, akkor meghívja annak a mezõnek(Field) a storm() függvényét. Futás végén,
      * ha legalább egy mezõ storm() függvénye DIE-al tért vissza, akkor õ is DIE-al fog, különben pedig OK-kal.
-     *
      * @return DIE or OK
      */
-    public Result storm() {
-        System.out.print(this.toString() + ".storm()\n");
-        Result r = Result.OK;
-        for (Field f : fields)
-            r = f.storm();
-        System.out.print(this.toString() + ".storm() returned Result r;\n\n");
-        return r;
+    public Result storm(String[] fieldsHitByStorm) {
+        Result s_result = Result.OK;
+        if(fieldsHitByStorm == null) {
+            for(Field f : fields) {
+                if(new Random().nextInt(101) < 20) {
+                    if(f.storm() == Result.DIE)
+                        s_result = Result.DIE;
+                }
+            }
+        } else {
+            for(int i = 2; i < fieldsHitByStorm.length; i++) {
+                if(fields.get(Integer.parseInt(fieldsHitByStorm[i].substring(1)) - 1).storm() == Result.DIE)
+                    s_result = Result.DIE;
+            }
+        }
+        return s_result;
     }
 
-    public void init(int allplayer){
-
+    public void init(int allplayer, List<String[]> fieldsinput, List<String[]> neighbour){
+        int i = 0;
+        while(fieldsinput.get(i)[0].equals("setfield")){
+            if(Integer.parseInt(fieldsinput.get(i)[2]) == 0)
+                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2])));
+            else {
+                Item item = null;
+                switch (fieldsinput.get(i)[3]) {
+                    case "g": item = new FlareGun();
+                        break;
+                    case "f": item = new Food();
+                        break;
+                    case "s": item = new BreakableShovel();
+                        break;
+                    case "b": item = new Shovel();
+                            break;
+                    case "r": item = new Rope();
+                            break;
+                    case "d": item = new DivingSuit();
+                        break;
+                    case "t": item = new Tent();
+                            break;
+                }
+                 fields.add(new IceField(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), item));
+            }
+        }
+        setNeighbours(neighbour);
     }
 
     public Field getRandomField(){
-        return null;
+        return fields.get(new Random().nextInt(fields.size()));
     }
 
     public void aging() {
         for(Field f: fields)
             f.aging();
-    }
-
-    public Result storm(String[] fields) {
-        return null;
     }
 }

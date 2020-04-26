@@ -10,6 +10,10 @@ import static skeleton.Result.OK;
  */
 public class Hole extends Field {
 
+    public Hole(int snow, int capacity) {
+        super(snow, capacity);
+    }
+
     /**
      * A Field osztályban lévõ absztrakt függvény megvalósítása. Az adott mezõ snow attribútumának értékét megnöveli eggyel.
      * Mindig OK-kal tér vissza.

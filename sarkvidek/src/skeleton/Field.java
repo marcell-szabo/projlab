@@ -39,6 +39,11 @@ public abstract class Field
      */
     protected PolarBear polarbear;
 
+    public Field(int snow, int capacity) {
+        this.snow = snow;
+        this.capacity = snow;
+    }
+
     /**
      * Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.
      *
