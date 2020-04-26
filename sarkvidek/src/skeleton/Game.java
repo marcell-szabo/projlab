@@ -25,8 +25,8 @@ public class Game {
     private List<FlareGun> flare_gun = new ArrayList<>();
 
     /*
-    * A jegesmedvét tárolja
-    * */
+     * A jegesmedvét tárolja
+     * */
     private PolarBear polarbear;
 
     /**
@@ -46,7 +46,7 @@ public class Game {
      * illetve a sarkkutatókat reprezentáló osztályokat.
      * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
      * aminek az így kapott mezõ lesz az actualfield-je.
-    */
+     */
     public void init(String[] playerdata, String bearstartfield) {  //szin tipus kezdomezo
         gameboard.init(playerdata.length);
         for (String i : playerdata) {
@@ -77,7 +77,7 @@ public class Game {
         boolean hasSomeOneDiedOrWon = false;
         while(!hasSomeOneDiedOrWon && p_result == Result.OK) {
 
-            p_result = polarbear.move(bearmove.get(bearmove_idx++));
+            //p_result = polarbear.move(bearmove.get(bearmove_idx++));
 
             ListIterator<Player> i = players.listIterator();
             Result s_result = Result.OK, r_result = Result.OK;
@@ -116,7 +116,7 @@ public class Game {
      * @return int player száma
      */
     public int getPlayerNumber() {
-       return players.size();
+        return players.size();
     }
 
     /**
@@ -127,9 +127,9 @@ public class Game {
     public void endGame(Result r) {
         switch (r) {
             case WIN: System.out.print("Victory");
-                        break;
+                break;
             case DIE: System.out.print("Game Over");
-                        break;
+                break;
         }
     }
 

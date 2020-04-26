@@ -2,14 +2,14 @@ package skeleton;
 
 import java.util.*;
 
-import skeleton.Result;
-
-import static skeleton.Result.NOTHING;
+import static skeleton.Result.*;
 
 /**
  * Játékosok kezelésére szolgáló osztály. A játékosok munkájának és testhõjének vizsgálata mellett a körökben elvégezhetõ cselekvésekkel foglalkozik. Minden játékos köre addig tart, amíg a work attribútumának értéke nem csökken le nullára. Minden cselekvés, ami az adott esetben engedélyezett, az egy egység munkavégzéssel jár (például tárgy felvétele olyan mezõn, amin még van hóréteg nem engedélyezett, és ilyenkor ez nem is jár munkavégzéssel).
  */
 public abstract class Player {
+
+    protected char color;
     /**
      * Az adott játékos testhõ szintjének mennyiségét tárolja.
      */
@@ -38,9 +38,20 @@ public abstract class Player {
     /**
      * Default constructor
      */
-    public Player(Game g, Field actual) {
+    public Player(Game g, Field actual, char c) {
         game = g;
         actualfield = actual;
+        color = c;
+    }
+
+    /**
+     * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
+     *
+     * @return eszközöket tartalmazó lista
+     */
+    public List<Tool> getTools() {
+        // TODO implement here
+        return null;
     }
 
     /**
@@ -56,9 +67,96 @@ public abstract class Player {
      *
      * @return a körben történt-e win, die
      */
-    public Result round() {
-        // TODO implement here
+    public Result round(String string) {
+        Result result = OK;
+        while(work != 0 || result != WIN || result != DIE){
+            String  c = string;
+            switch (c){
+                case "W":
+                    result = this.move(0);
+                    break;
+                case "A":
+                    result = this.move(1);
+                    break;
+                case "S":
+                    result = this.move(2);
+                    break;
+                case "D":
+                    result = this.move(3);
+                    break;
+                case "J":
+                    result = this.clean();
+                    break;
+                case "K":
+                    result = actualfield.pickUp(this);
+                    break;
+                case "L":
+                    result = this.specialSkill();
+                    break;
+                case "I":
+                    result = this.assemble();
+                    break;
+                case "M":
+                    result = this.buildTent();
+                default:
+                    break;
+            }
+            if(result == DIE)
+                game.endGame(result);
+            if(result == WIN)
+                game.endGame(result);
+            if(result == OK)
+                work--;
+        }
         return null;
+    }
+
+    /**
+     * Meghívja a tools attribútumban tárolt összes Tool példányra a build(Field)
+     * függvényt. Amennyiben bármelyik DISAPPEAR-rel ré vissza, akkor az törlésre kerül a tools tömbbõl,
+     * majd a buildTent() metódus visszatérési értéke OK lesz. Abban az esetben viszont,
+     * ha egyik sem tér vissza DISAPPEAR-rel, akkor a buildTent() OK helyett NOTHING visszatérési értéket fog adni.
+     * @return OK or NOTHING
+     */
+    private Result buildTent() {
+        for(Tool t: tools){
+            if(t.build(actualfield) == DISAPPEAR){
+                tools.remove(t);
+                return OK;
+            }
+
+        }
+        return NOTHING;
+    }
+
+    /**
+     * Legelõször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
+     * Ezt követõen az elõbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
+     * Amivel ez visszatér, azzal fog a move(Direction) is.
+     *
+     * @param d mozgásnál preferált irány
+     * @return Result a sikerességrõl
+     */
+    public Result move(int d) {
+        Field field = actualfield.checkNeighbour(d);
+        if(field != null)
+            return this.changeField(field);
+        return NOTHING;
+    }
+
+    /**
+     * Meghívja az actualfieldben tárolt mezõre a Field osztály leaveField(Player) függvényét.
+     * Ezek után beállítja a jelenlegi játékos actualfield nevû attribútumának értékét a megkapott mezõre.
+     * Ezt követõen meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
+     * amivel az általa hívott metódus visszatért.
+     *
+     * @param f megkapja a mezõt amire lép, ez lesz az actualfield
+     * @return Result a sikerességrõl
+     */
+    public Result changeField(Field f) {
+        actualfield.leaveField(this);
+        actualfield = f;
+        return f.stepOn(this);
     }
 
     /**
@@ -69,14 +167,13 @@ public abstract class Player {
      * @return Result
      */
     public Result clean() {
-        System.out.print(this.toString() + ".clean();\n");
         Result r = actualfield.clean();
         if (r == Result.OK) {
             for (Tool t : tools) {
                 t.clean(actualfield);
             }
+            work--;
         }
-        System.out.print(this.toString() + ".clean() returned Result r;\n\n");
         return r;
     }
 
@@ -91,47 +188,10 @@ public abstract class Player {
      * @return az összeszerelés sikeressége
      */
     public Result assemble() {
-        System.out.print(this.toString() + ".assemble();\n");
-        actualfield.haveAllPlayer(game.getPlayerNumber());
-        System.out.print("Minden jatekos egy mezon tartozkodik? i/n\n");
-        Scanner scan = new Scanner(System.in);
-        char c1 = scan.next().charAt(0);
-        if (c1 == 'i') {
-            game.haveAllParts();
-            System.out.print("A jatekos es csapata rendelkezik az osszes alkatresszel? i/n\n");
-            char c2 = scan.next().charAt(0);
-            if(c2 == 'i') {
-                System.out.print(this.toString() + ".assemble() returned Result WIN;\n\n");
-                return Result.WIN;
-            }
+        if(actualfield.haveAllPlayer(game.getPlayerNumber()) && game.haveAllParts()){
+            return WIN;
         }
-        System.out.print(this.toString() + "assemble() returned Result NOTHING\n\n");
-        return Result.NOTHING;
-    }
-
-    /**
-     * Absztrakt függvény. Az Eskimo vagy az Explorer osztály specialSkill() függvénye hívódik meg.
-     *
-     * @return
-     */
-    public abstract Result specialSkill();
-
-    /**
-     * Meghívja az actualfieldben tárolt mezõre a Field osztály leaveField(Player) függvényét.
-     * Ezek után beállítja a jelenlegi játékos actualfield nevû attribútumának értékét a megkapott mezõre.
-     * Ezt követõen meghívja a Field osztály stepOn(Player) függvényét, és azzal fog visszatérni,
-     * amivel az általa hívott metódus visszatért.
-     *
-     * @param f megkapja a mezõt amire lép, ez lesz az actualfield
-     * @return Result a sikerességrõl
-     */
-    public Result changeField(Field f) {
-        System.out.print(this.toString() + ".changeField(Field f);\n");
-        actualfield.leaveField(this);
-        actualfield = f;
-        f.stepOn(this);
-        System.out.print(this.toString() + ".changeField(Field f) returned Result r;\n");
-        return NOTHING;
+        return OK;
     }
 
     /**
@@ -139,28 +199,24 @@ public abstract class Player {
      * Ezt követõen a visszatérési értékek kerülnek vizsgálatra.
      * Ha ezek közül bármelyik nem NOTHING értéket vesz fel, akkor azzal az értékkel tér vissza a helpMe() is.
      * Ha pedig mindegyik NOTHING-gal tér vissza, akkor minden irányt megvizsgál a checkNeighbour(Direction) metódussal.
-     * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára.
+     * Amennyiben a visszatérési érték nem NULL, akkor meghívódik a canHelp() függvény a megkapott referenciára vagy
+     * referenciákra, és ha van olyan mely OK-al tér vissza akkor nem hal meg a játékos
      * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
      *
      * @return Result a segítségkérés sikerességével
      */
     public Result helpMe() {
-        System.out.print(this.toString() + ".helpMe();\n");
-        for (Tool t : tools) {
-            if (t.swim(actualfield, this) != Result.NOTHING) {
-                System.out.print(this.toString() + ".helpMe() returned Result r;\n");
+        for(Tool t: tools){
+            if(t.swim(actualfield, this) != NOTHING)
                 return t.swim(actualfield, this);
-            }
         }
-        for (Direction d : Direction.values()) {
-            Field i = actualfield.checkNeighbour(d);
-            if (i != null) {
-                System.out.print(this.toString() + ".helpMe() returned Result r;\n");
-                return actualfield.checkNeighbour(d).canHelp();
-            }
+        for(int d = 0; d<= 3; d++) {
+            Field field = actualfield.checkNeighbour(d);
+            if(field != null)
+                if(actualfield.checkNeighbour(d).canHelp() == OK)
+                    return OK;
         }
-        System.out.print(this.toString() + ".helpMe() returned Result r;\n");
-        return NOTHING;
+        return DIE;
     }
 
     /**
@@ -170,9 +226,10 @@ public abstract class Player {
      * @return a testhõcsökkentés sikerességével tér vissza
      */
     public Result decreaseHeat() {
-        System.out.print(this.toString() + ".decreaseHeat();\n");
-        System.out.print(this.toString() + ".decreaseHeat() returned Result\n");
-        return Result.OK;
+        heat--;
+        if(heat == 0)
+            return DIE;
+        return OK;
     }
 
     /**
@@ -181,114 +238,8 @@ public abstract class Player {
      * @param t tool példány
      */
     public void addTool(Tool t) {
-        // TODO implement here
-    }
-
-    /**
-     * Legelõször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
-     * Ezt követõen az elõbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
-     * Amivel ez visszatér, azzal fog a move(Direction) is.
-     *
-     * @param d mozgásnál preferált irány
-     * @return Result a sikerességrõl
-     */
-    public Result move(Direction d) {
-        Field field;
-        Scanner scan = new Scanner(System.in);
-        actualfield.addNeighbour(new Hole(), Direction.RIGHT);
-        actualfield.addNeighbour(new IceField(),Direction.LEFT);
-        actualfield.addNeighbour(new IceField(), Direction.DOWN);
-        actualfield.addNeighbour(new IceField(), Direction.UP);
-        switch (d){
-            case UP:
-            case LEFT:
-                System.out.print(this.toString() + ".move(d);\n");
-                field = actualfield.checkNeighbour(d);
-                if (field != null) {
-                    field.leaveField(this);
-                    field.stepOn(this);
-                }
-                System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
-                break;
-            case DOWN:
-                System.out.println("Elbirja a jatekost a jegtabla? i/n");
-                char icefield = scan.next().charAt(0);
-                switch (icefield) {
-                    case 'i':
-                        System.out.print(this.toString() + ".move(d);\n");
-                        field = actualfield.checkNeighbour(d);
-                        if (field != null) {
-                            field.leaveField(this);
-                            field.stepOn(this);
-                        }
-                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
-                        break;
-                    case 'n':
-                        System.out.print(this.toString() + ".move(d);\n");
-                        field = actualfield.checkNeighbour(d);
-                        if (field != null)
-                            //TODO beborulás?
-                            field.stepOn(this);
-                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case RIGHT:
-                System.out.println("Van buvarruhaja? i/n");
-                char divingsuit = scan.next().charAt(0);
-                switch (divingsuit) {
-                    case 'i':
-                        System.out.print(this.toString() + ".move(d);\n");
-                        field = actualfield.checkNeighbour(d);
-                        if (field != null)
-                            field.stepOn(this);
-                        System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
-                        break;
-
-                    case 'n':
-                        System.out.println("All mellette kotellel rendelkezo jatekos? i/n");
-                        char rope = scan.next().charAt(0);
-                        switch (rope) {
-                            case 'i':
-                                System.out.print(this.toString() + ".move(d);\n");
-                                field = actualfield.checkNeighbour(d);
-                                if (field != null)
-                                    field.stepOn(this);
-                                System.out.print(this.toString() + ".move() returned Result r;\n\n\n");
-                                break;
-                            case 'n':
-                                System.out.print(this.toString() + ".move(d);\n");
-                                field = actualfield.checkNeighbour(d);
-                                if (field != null)
-                                    field.stepOn(this);
-                                System.out.print(this.toString() + ".move(d) returned Result r;\n\n\n");
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-        return NOTHING;
-    }
-
-    /**
-     * Legelõször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e.
-     * Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad.
-     * Ellenkezõ esetben kimarad a növelés, és NOTHING értékkel tér vissza.
-     *
-     * @return a testhõnöeléssel visszatér
-     */
-    public Result increaseHeat() {
-        // TODO implement here
-        return null;
+        tools.add(t);
+        return;
     }
 
     /**
@@ -297,20 +248,20 @@ public abstract class Player {
      * @param f jelzõrakéta elem
      */
     public void addPart(FlareGun f) {
-        System.out.println(this.toString() + ".addPart(f);");
         game.addPart(f);
-        System.out.println(this.toString() + ".addPart(f) returned;");
         return;
     }
 
     /**
-     * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
-     *
-     * @return eszközöket tartalmazó lista
+     * Abstract fv, vagy az eskimo vagy az explorer increaseHeat() fv-je hívódik meg
      */
-    public List<Tool> getTools() {
-        // TODO implement here
-        return null;
-    }
+    public abstract Result increaseHeat();
+
+    /**
+     * Absztrakt függvény. Az Eskimo vagy az Explorer osztály specialSkill() függvénye hívódik meg.
+     *
+     * @return
+     */
+    public abstract Result specialSkill();
 
 }

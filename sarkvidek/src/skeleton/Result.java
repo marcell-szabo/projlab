@@ -7,5 +7,5 @@ import java.util.*;
  * A legtöbb függvény visszatérési értéke ezen enumeráció értékei közül vesz fel egyet.
  */
 enum Result {
-    OK, WIN, DIE, NOTHING;
+    OK, WIN, DIE, NOTHING, DISAPPEAR;
 }

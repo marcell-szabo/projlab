@@ -2,16 +2,20 @@ package skeleton;
 
 import java.util.*;
 
+import static skeleton.Result.NOTHING;
+import static skeleton.Result.OK;
+
 /**
  * ?	Mezõk kezelésére szolgáló absztrakt osztály. Segítségével a játékosok, illetve
  * a vihar által a mezõn végzett tevékenységeket lehet megvalósítani.
  */
-public abstract class Field {
+public abstract class Field
+{
 
     /**
      * Az adott mezõn lévõ hóréteg mennyiségét tárolja.
      */
-    private int snow;
+    protected int snow;
 
     /**
      * Az adott mezõ teherbíró képességét tárolja el. Stabil jégtábla esetén a max játékosok száma,
@@ -19,26 +23,21 @@ public abstract class Field {
      */
     protected int capacity;
 
+
+    /**
+     * Tárolja a 4 irányban elhelyezkedõ mezõt.
+     */
+    protected List<Field> neighbours = new ArrayList<>();
+
     /**
      * Tárolja, hogy az adott mezõn melyik játékosok vannak rajta.
      */
     protected List<Player> players = new ArrayList<>();
 
     /**
-     * Tárolja a 4 irányban elhelyezkedõ mezõt.
+     * A játékban szereplõ medvét tárolja el.
      */
-    private Map<Direction, Field> neighbours = new EnumMap<>(Direction.class);
-
-    /**
-     * Tárolja, hogy a mezõn milyen tárgyat lehet felvenni.
-     */
-    protected Item item;
-
-    /**
-     * Default constructor
-     */
-    public Field() {
-    }
+    protected PolarBear polarbear;
 
     /**
      * Absztrakt függvény. A Hole vagy az IceField osztály storm() függvénye kerül meghívásra.
@@ -62,15 +61,12 @@ public abstract class Field {
      * @param d - Direction, melyik irány
      * @return Field, annak a mezõnek a referenciájával amire lépett
      */
-    public Field checkNeighbour(Direction d) {
-        System.out.print(this.toString() + ".checkNeighbour(d);\n" + d);
-        System.out.print(this.toString() + ".checkNeighbour(d) returned Field field;\n");
+    public Field checkNeighbour(int d)
+    {
         return neighbours.get(d);
     }
 
-    public void addNeighbour(Field f, Direction d) {
-        neighbours.put(d, f);
-    }
+    public void addNeighbour(Field f, int d) { neighbours.add(d, f); }
 
     /**
      * Akkor tér vissza OK értékkel, ha az adott mezõrõl megoldható a vízbe esett játékos vízbõl való kimentése.
@@ -80,17 +76,16 @@ public abstract class Field {
      *
      * @return Result OK vagy DIE - attól függõen, hogy ki lehet-e menteni a játékost
      */
-    public Result canHelp() {
-        System.out.print(this.toString() + ".canHelp();\n");
-        for (Player p : players) {
-            for (Tool t : p.getTools()) {
-                if (t.help(this, p) == Result.OK) {
-                    System.out.print(this.toString() + ".canHelp() returned Result r;\n");
-                    return Result.OK;
-                }
+    public Result canHelp()
+    {
+        for (Player p : players)
+        {
+            for (Tool t : p.getTools())
+            {
+                if (t.help(this, p) == OK)
+                    return OK;
             }
         }
-        System.out.print(this.toString() + ".canHelp() returned Result r;\n");
         return Result.DIE;
     }
 
@@ -102,10 +97,9 @@ public abstract class Field {
      * @param allplayer összes játékos száma
      * @return boolean TRUE or FALSE
      */
-    public boolean haveAllPlayer(int allplayer) {
-        System.out.print(this.toString() +".haveAllPlayers(allplayer);\n");
-        System.out.print(this.toString() +".haveAllPlayers(allplayer) returned boolean b;\n");
-        return false;
+    public boolean haveAllPlayer(int allplayer)
+    {
+        return players.size() == allplayer;
     }
 
     /**
@@ -114,8 +108,9 @@ public abstract class Field {
      *
      * @return OK
      */
-    public Result buildIgloo() {
-        return null;
+    public Result build(Igloo igloo)
+    {
+        return OK;
     }
 
     /**
@@ -123,49 +118,54 @@ public abstract class Field {
      *
      * @param p mozgatni kívánt Player
      */
-    public void leaveField(Player p) {
-        System.out.print(this.toString() + ".leaveField(p1);\n");
+    public void leaveField(Player p)
+    {
         players.remove(p);
-        System.out.print(this.toString() + ".leaveField(p1) returned;\n");
     }
 
+    public void leaveField() {polarbear.setActualfield(null);}
+
     /**
-     * Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti az értékét, majd pedig OK-kal tér vissza.
+     * Megvizsgálja a snow attribútum értékét. Amennyiben ez nem nulla, akkor eggyel csökkenti, majd pedig OK-kal tér vissza.
      * Ellenkezõ esetben nem történik meg a csökkentés, és a visszatérési érték NOTHING lesz.
      *
-     * @return Result OK or NOTHING - attól függõen, hogy van-e még hóréteg a mezõn
+     * @return Result OK or NOTHING
      */
-    public Result clean() {
-        System.out.print(this.toString() + ".clean();\n");
-        if (snow != 0) {
+    public Result clean()
+    {
+        if (snow != 0)
+        {
             snow--;
-            System.out.print(this.toString() + ".clean() returned Result r;\n");
-            return Result.OK;
+            return OK;
         }
-        System.out.print(this.toString() + ".clean() returned Result r;\n");
         return Result.NOTHING;
     }
 
     /**
-     * Megvizsgálja a rajta található hó mennyiségét. Ha ez nulla, és található rajta jégbe fagyott tárgy, akkor meghívja az Item osztály pickMeUp(Player) függvényét. Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
+     * Megvizsgálja a rajta található hó mennyiségét.
+     * Ha ez nulla, és található rajta jégbe fagyott tárgy, akkor meghívja az Item osztály pickMeUp(Player) függvényét.
+     * Sikeres tárgyfelvétel esetén OK-kal tér vissza, egyébként pedig NOTHING-gal.
      *
      * @param p mezõn álló Player
      * @return OK or NOTHING
      */
-    public Result pickUp(Player p) {
-        // TODO implement here
+    public Result pickUp(Player p)
+    {
         return null;
     }
 
     /**
-     * Visszaadja az  mezõ teherbíró képességét. (Az elkészült játékban valószínûleg ez a függvény nem fog visszatérni a teherbírás értékével, hanem csak megjeleníti a képernyõn azt. Most a grafikus elemek hiányában illetve a jobb érthetõség kedvéért használjuk ezt a függvényt így.)
+     * Visszaadja az  mezõ teherbíró képességét.
      *
-     * @return kapacitás
+     * @return capacity
      */
-    public int getCapacity() {
-        System.out.println(this.toString() + ".getCapacity();");
-        System.out.println(this.toString() + ".getCapacity() returned int capacity;");
-        return 0;
+    public int getCapacity()
+    {
+        return capacity;
     }
+
+    public abstract Result stepOn(PolarBear pb);
+
+    public void aging(){}
 
 }

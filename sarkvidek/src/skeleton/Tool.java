@@ -3,68 +3,58 @@ package skeleton;
 import java.util.*;
 
 /**
- * Az eszközök felvételének, illetve a velük kapcsolatos interakciók
- * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés) kezelésére szolgáló absztrakt osztály.
+ * Interfész, amely az eszközök felvételének, illetve a velük kapcsolatos interakciók
+ * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés, sátorépítés)
+ * kezelésére szolgáló osztály.
  */
-public abstract class Tool extends Item {
+public interface Tool extends Item {
+
 
     /**
-     * Default constructor
-     */
-    public Tool() {
-    }
-
-    /**
-	 * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
-     * mely a játékosnál lévõ eszközöket tartalmazó listával tér vissza.
-     * Ezt követõen meghívja a lista minden elemére a Tool osztály isSame(Item) metódusát.
-     * Ezután ezeknek a visszatérési értékei kerülnek vizsgálat alá.
-     * Amennyiben minden függvény hívást követõen csak FALSE visszatérési értékeket kapunk,
-     * akkor meghívásra kerül a Player osztály addItem(Item) metódusa, majd ezt követõen OK-kal tér vissza.
-     * Különben pedig NOTHING lesz a visszatérési érték.
+	 * Tool felvételéért felelõs függvény.
      * @param p - A Játékos aki felvesz egy Toolt
-     * @return
+     * @return Reasult a felvétel sikerességérõl
      */
-    public Result pickMeUp(Player p) {
-        // TODO implement here
-        return Result.NOTHING;
-    }
+    Result pickMeUp(Player p);
 
     /**
-	* Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
-     * @param t 
-     * @return
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * @param t az összehasonlításhoz szükséges Tool példány
+     * @return Az összehasonlítás eredménye
      */
-    public boolean isSame(Tool t) {
-        // TODO implement here
-        return false;
-    }
+    boolean isSame(Tool t);
 
     /**
-	* Virtuális, üres függvény.
-     * @param f
+	 * Mezõ takarításáért felelõs függvény.
+     * @param f  A mezõ, amin az ásást kell végrehajtani
+     * @return Result a lapátolásról
      */
-    public void clean(Field f){}
+    Result clean(Field f);
 
     /**
-	* Virtuális függvény, ami NOTHING értékkel tér vissza.
-     * @param f 
-     * @param p 
-     * @return
+	 * Lyukból való kiúszásért felelõs függvény.
+     * @param f a mezõ (lyuk), amibe beleesett a player
+     * @param p melyik játékos esett bele
+     * @return Result a kimászásról
      */
-    public Result swim(Field f, Player p){
-        return Result.NOTHING;
-    }
+    Result swim(Field f, Player p);
+
 
     /**
-	* Virtuális függvény, ami NOTHING értékkel tér vissza.
-     * @param f 
-     * @param p 
-     * @return
+	 * Lyukból való kihúzásért felelõs függvény
+     * @param f Az a field amire a player lépni akar
+     * @param p Az a játékos amelyik a másik fieldre lépne
+     * @return Result a segítségrõl
      */
-    public Result help(Field f, Player p){
-        return Result.NOTHING;
-    }
+    Result help(Field f, Player p);
+
+
+    /**
+     * Sátorépítésért felelõs függvény.
+     * @param f A mezõ, amire sátrat kell építeni
+     * @return Result az építésrõl
+     */
+    Result build(Field f);
 
 
 }

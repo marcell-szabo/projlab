@@ -1,6 +1,8 @@
 package skeleton;
 
 import java.util.*;
+import static skeleton.Result.*;
+
 
 /**
  * Sarkkutató karaktertípus esetén megadja a maximális testhõ mértékét,
@@ -15,10 +17,25 @@ public class Explorer extends Player {
     /**
      * Default constructor
      */
-    public Explorer(Game g, Field actual) {
-        super(g, actual);
+    public Explorer(Game g, Field actual, char c) {
+        super(g, actual, c);
     }
 
+    @Override
+    /**
+     * Legelõször megvizsgálja, hogy az adott játékos heat attribútumának értéke a maximális érték alatt van-e.
+     *      * Amennyiben igen, akkor megnöveli eggyel az értékét, majd OK visszatérési értéket ad.
+     *      * Ellenkezõ esetben kimarad a növelés, és NOTHING értékkel tér vissza.
+     */
+    public Result increaseHeat() {
+        if(heat < heatlimit) {
+            heat++;
+            return OK;
+        }
+        return NOTHING;
+    }
+
+    @Override
     /**
      * A Player osztályban lévõ absztrakt függvény megvalósítása.
      * Elõször bekér egy irányt, majd erre meghívja a checkNeighbour(Direction) függvényt.
@@ -29,19 +46,42 @@ public class Explorer extends Player {
      * @return Result - minden esetben OK
      */
     public Result specialSkill() {
-        System.out.println(this.toString() + ".specialSkill()");
-        actualfield.addNeighbour(new IceField(), Direction.RIGHT);
-        for (Direction d : Direction.values()) {
-            // TODO átírni skeleton tervezése alapján
-            Field i = actualfield.checkNeighbour(d);
-            if (i != null) {
-                int capacity = i.getCapacity();
-                System.out.println(this.toString() + ".specialSkill() returned Result res\n\n");
-                return Result.NOTHING;
+        Scanner scan = new Scanner(System.in);
+        Field field = null;
+        int capacity;
+        while(field == null){
+            String  c = scan.next();
+            switch(c){
+                case "W":
+                    if(actualfield.checkNeighbour(0) != null) {
+                        capacity = actualfield.checkNeighbour(0).getCapacity();
+                        return OK;
+                    }
+                    break;
+                case "A":
+                    if(actualfield.checkNeighbour(1) != null) {
+                        capacity = actualfield.checkNeighbour(1).getCapacity();
+                        return OK;
+                    }
+                    break;
+                case "S":
+                    if(actualfield.checkNeighbour(2) != null) {
+                        capacity = actualfield.checkNeighbour(2).getCapacity();
+                        return OK;
+                    }
+                    break;
+                case "D":
+                    if(actualfield.checkNeighbour(3) != null) {
+                        capacity = actualfield.checkNeighbour(3).getCapacity();
+                        return OK;
+                    }
+                    break;
             }
         }
-        System.out.println(this.toString() + ".specialSkill() returned Result res\n\n");
+
         return Result.NOTHING;
     }
+
+
 
 }

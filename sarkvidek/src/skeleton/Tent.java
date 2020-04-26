@@ -1,28 +1,35 @@
 package skeleton;
 
-import java.util.*;
+import java.util.List;
 
 /**
- * A kötél felvételére, illetve a köteles kimentés kezelésére szolgáló osztály.
+ * Sátor eltûnésének, illetve megépítésének kezelésére szolgáló osztály.
  */
-public class Rope implements Tool {
+public class Tent extends Igloo implements Tool {
+
+    /**
+     *  A sátor felállítása óta eltelt idõt reprezentálja.
+     *  Megépítéskor megegyezik az értéke a játékosok számával. Ha lecsökken nullára, akkor eltûnik.
+     */
+    private int timer;
 
     /**
      * Default constructor
      */
-    public Rope() {
+    public Tent(){
     }
 
+
     /**
-     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope példány
-     * szeretné magát összehasonlítani vele).
+     * FALSE értékkel tér vissza, mert nem védi meg
+     * a mezõn tartózkodó embereket a jegesmedvétõl.
      *
-     * @param r az összehasonlításhoz szükséges Rope példány
-     * @return true
+     * @return true or false
      */
-    public boolean isSame(Rope r) {
-        return true;
+    public boolean protectFromBear(){
+        return false;
     }
+
 
     /**
      * Legelõször a Player osztály getTools() függvénye kerül meghívásra,
@@ -47,15 +54,25 @@ public class Rope implements Tool {
     }
 
     /**
-     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope-tól különbözõ
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Tent-tõl különbözõ
      * példány szeretné magát összehasonlítani vele).
      *
      * @param t az összehasonlításhoz szükséges Tool példány
-     * @return true
+     * @return false
      */
     @Override
     public boolean isSame(Tool t) {
         return false;
+    }
+
+    /**
+     * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Toolt implementáló példány szeretné magát
+     * összehasonlítani vele).
+     * @param t az összehasonlításhoz szükséges Tent példány
+     * @return true
+     */
+    public boolean isSame(Tent t) {
+        return true;
     }
 
     /**
@@ -80,27 +97,44 @@ public class Rope implements Tool {
     }
 
     /**
-     * Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a
-     * paraméterként a kapott Field példányt.
-     * A changeField függvény visszatérési értéke lesz a help függvény visszatérése is.
-     *
+     * NOTHING értékkel tér vissza.
      * @param f Az a field amire a player lépni akar
      * @param p Az a játékos amelyik a másik fieldre lépne
      * @return Result a segítségrõl
      */
     @Override
     public Result help(Field f, Player p) {
-        return p.changeField(f);
+        return Result.NOTHING;
     }
 
     /**
-     * NOTHING értékkel tér vissza.
-     * @param f A mezõ, amire sátrat kell építeni
-     * @return Result az építésrõl
+     * Meghívja az attribútumként kapott Field osztály build(Igloo) metódusát,
+     * átadva neki önmagát. Ha ez OK-kal tér vissza, akkor a build(Field)
+     * DlSAPPEAR-rel, különben pedig NOTHING-gal fog visszatérni.
+     *
+     * @param f Field amelyre sátort akarunk építeni
+     * @return DISAPPEAR or NOTHING
      */
     @Override
-    public Result build(Field f) {
+    public Result build(Field f){
+        Result r = f.build(this);
+        if(r == Result.OK)
+            return Result.DISAPPEAR;
         return Result.NOTHING;
     }
+
+    /**
+     * Eggyel csökkenti a timer attribútumát. Ha így nullára csökken,
+     * akkor DISAPPEAR-rel tér vissza, különben pedig OK-kal.
+     *
+     * @return DISAPPEAR or OK
+     */
+    public Result aging(){
+        timer--;
+        if(timer == 0)
+            return Result.DISAPPEAR;
+        return Result.OK;
+    }
+
 
 }
