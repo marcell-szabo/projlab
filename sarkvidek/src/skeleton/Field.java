@@ -23,6 +23,7 @@ public abstract class Field
      */
     protected int capacity;
 
+
     /**
      * Tárolja a 4 irányban elhelyezkedõ mezõt.
      */
@@ -57,15 +58,15 @@ public abstract class Field
      * Az átadott irány alapján visszatér az abban az irányban levõ objektum referenciájával.
      * Ha arra tenger van, akkor ez az érték NULL lesz.
      *
-     * @param direction - Direction, melyik irány
+     * @param d - Direction, melyik irány
      * @return Field, annak a mezõnek a referenciájával amire lépett
      */
-    public Field checkNeighbour(int direction)
+    public Field checkNeighbour(int d)
     {
-        return neighbours.get(direction);
+        return neighbours.get(d);
     }
 
-    public void addNeighbour(Field f, int direction) { neighbours.add(direction, f); }
+    public void addNeighbour(Field f, int d) { neighbours.add(d, f); }
 
     /**
      * Akkor tér vissza OK értékkel, ha az adott mezõrõl megoldható a vízbe esett játékos vízbõl való kimentése.

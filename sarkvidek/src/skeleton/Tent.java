@@ -58,7 +58,7 @@ public class Tent extends Igloo implements Tool {
      * példány szeretné magát összehasonlítani vele).
      *
      * @param t az összehasonlításhoz szükséges Tool példány
-     * @return true
+     * @return false
      */
     @Override
     public boolean isSame(Tool t) {

@@ -53,26 +53,26 @@ public class Explorer extends Player {
             String  c = scan.next();
             switch(c){
                 case "W":
-                    if(actualfield.checkNeighbour(Direction.UP) != null) {
-                        capacity = actualfield.checkNeighbour(Direction.UP).getCapacity();
+                    if(actualfield.checkNeighbour(0) != null) {
+                        capacity = actualfield.checkNeighbour(0).getCapacity();
                         return OK;
                     }
                     break;
                 case "A":
-                    if(actualfield.checkNeighbour(Direction.LEFT) != null) {
-                        capacity = actualfield.checkNeighbour(Direction.LEFT).getCapacity();
+                    if(actualfield.checkNeighbour(1) != null) {
+                        capacity = actualfield.checkNeighbour(1).getCapacity();
                         return OK;
                     }
                     break;
                 case "S":
-                    if(actualfield.checkNeighbour(Direction.DOWN) != null) {
-                        capacity = actualfield.checkNeighbour(Direction.DOWN).getCapacity();
+                    if(actualfield.checkNeighbour(2) != null) {
+                        capacity = actualfield.checkNeighbour(2).getCapacity();
                         return OK;
                     }
                     break;
                 case "D":
-                    if(actualfield.checkNeighbour(Direction.RIGHT) != null) {
-                        capacity = actualfield.checkNeighbour(Direction.RIGHT).getCapacity();
+                    if(actualfield.checkNeighbour(3) != null) {
+                        capacity = actualfield.checkNeighbour(3).getCapacity();
                         return OK;
                     }
                     break;

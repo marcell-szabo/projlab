@@ -73,16 +73,16 @@ public abstract class Player {
             String  c = string;
             switch (c){
                 case "W":
-                    result = this.move(Direction.UP);
+                    result = this.move(0);
                     break;
                 case "A":
-                    result = this.move(Direction.LEFT);
+                    result = this.move(1);
                     break;
                 case "S":
-                    result = this.move(Direction.DOWN);
+                    result = this.move(2);
                     break;
                 case "D":
-                    result = this.move(Direction.RIGHT);
+                    result = this.move(3);
                     break;
                 case "J":
                     result = this.clean();
@@ -96,6 +96,8 @@ public abstract class Player {
                 case "I":
                     result = this.assemble();
                     break;
+                case "M":
+                    result = this.buildTent();
                 default:
                     break;
             }
@@ -110,6 +112,24 @@ public abstract class Player {
     }
 
     /**
+     * Meghívja a tools attribútumban tárolt összes Tool példányra a build(Field)
+     * függvényt. Amennyiben bármelyik DISAPPEAR-rel ré vissza, akkor az törlésre kerül a tools tömbbõl,
+     * majd a buildTent() metódus visszatérési értéke OK lesz. Abban az esetben viszont,
+     * ha egyik sem tér vissza DISAPPEAR-rel, akkor a buildTent() OK helyett NOTHING visszatérési értéket fog adni.
+     * @return OK or NOTHING
+     */
+    private Result buildTent() {
+        for(Tool t: tools){
+            if(t.build(actualfield) == DISAPPEAR){
+                tools.remove(t);
+                return OK;
+            }
+
+        }
+        return NOTHING;
+    }
+
+    /**
      * Legelõször a megkapott irányra meghívja a checkNeighbour(Direction) metódust.
      * Ezt követõen az elõbb hívott függvény visszatérési értékét átadva kerül a changeField(Field) meghívásra.
      * Amivel ez visszatér, azzal fog a move(Direction) is.
@@ -117,7 +137,7 @@ public abstract class Player {
      * @param d mozgásnál preferált irány
      * @return Result a sikerességrõl
      */
-    public Result move(Direction d) {
+    public Result move(int d) {
         Field field = actualfield.checkNeighbour(d);
         if(field != null)
             return this.changeField(field);
@@ -190,7 +210,7 @@ public abstract class Player {
             if(t.swim(actualfield, this) != NOTHING)
                 return t.swim(actualfield, this);
         }
-        for(Direction d: Direction.values()) {
+        for(int d = 0; d<= 3; d++) {
             Field field = actualfield.checkNeighbour(d);
             if(field != null)
                 if(actualfield.checkNeighbour(d).canHelp() == OK)
