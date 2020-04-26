@@ -109,6 +109,11 @@ public class DivingSuit implements Tool {
         return p.changeField(choosedField);
     }
 
+    @Override
+    public void state() {
+        System.out.println("Diving suit");
+    }
+
     /**
      * NOTHING értékkel tér vissza.
      * @param f Az a field amire a player lépni akar

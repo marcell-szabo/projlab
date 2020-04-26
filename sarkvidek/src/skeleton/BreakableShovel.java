@@ -20,6 +20,7 @@ public class BreakableShovel extends Shovel {
     public BreakableShovel() {
     }
 
+
     /**
      *Akkor hívódik meg, ha az ásást végzõ játékosnál van törékeny ásó.
      * Ekkor a függvény meghívja a Field osztály clean() metódusát,
@@ -39,5 +40,9 @@ public class BreakableShovel extends Shovel {
             if(used == 0) r = Result.DISAPPEAR;
         }
         return r;
+    }
+
+    public void state(){
+        System.out.println("Breakable shovel");
     }
 }

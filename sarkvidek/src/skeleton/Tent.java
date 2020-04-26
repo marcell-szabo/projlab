@@ -96,6 +96,11 @@ public class Tent extends Igloo implements Tool {
         return Result.NOTHING;
     }
 
+    @Override
+    public void state() {
+        System.out.println("Tent");
+    }
+
     /**
      * NOTHING értékkel tér vissza.
      * @param f Az a field amire a player lépni akar

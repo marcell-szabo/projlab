@@ -22,10 +22,6 @@ public class Food implements Item {
      * @return Result az eredménnyel visszatér
      */
     public Result pickMeUp(Player p) {
-        /*System.out.println(this.toString() + ".pickMeUp(p);");
-        Result r = p.increaseHeat();
-        System.out.println(this.toString() + ".pickMeUp(p) returned Return res;");
-        return Result.OK;*/
         return p.increaseHeat();
     }
 

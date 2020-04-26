@@ -94,6 +94,11 @@ public class Shovel implements Tool {
         return Result.NOTHING;
     }
 
+    @Override
+    public void state() {
+        System.out.println("Shovel");
+    }
+
     /**
      * NOTHING értékkel tér vissza.
      * @param f Az a field amire a player lépni akar

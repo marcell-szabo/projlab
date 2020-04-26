@@ -79,6 +79,11 @@ public class Rope implements Tool {
         return Result.NOTHING;
     }
 
+    @Override
+    public void state() {
+        System.out.println("Rope");
+    }
+
     /**
      * Meghívja a paraméterként megkapott Player példány changeField(Field) metódusát, átadva neki a
      * paraméterként a kapott Field példányt.

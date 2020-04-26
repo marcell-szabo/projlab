@@ -50,8 +50,7 @@ public abstract class Player {
      * @return eszközöket tartalmazó lista
      */
     public List<Tool> getTools() {
-        // TODO implement here
-        return null;
+        return tools;
     }
 
     /**
@@ -67,10 +66,10 @@ public abstract class Player {
      *
      * @return a körben történt-e win, die
      */
-    public Result round(String string) {
+    public Result round(String[] string) {
         Result result = OK;
         while(work != 0 || result != WIN || result != DIE){
-            String  c = string;
+            String  c = string[0];
             switch (c){
                 case "W":
                     result = this.move(0);
@@ -91,7 +90,7 @@ public abstract class Player {
                     result = actualfield.pickUp(this);
                     break;
                 case "L":
-                    result = this.specialSkill();
+                    result = this.specialSkill(string[2]);
                     break;
                 case "I":
                     result = this.assemble();
@@ -262,6 +261,6 @@ public abstract class Player {
      *
      * @return
      */
-    public abstract Result specialSkill();
+    public abstract Result specialSkill(String c);
 
 }

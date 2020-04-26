@@ -1,6 +1,7 @@
 package skeleton;
 
 import java.util.*;
+
 import static skeleton.Result.*;
 
 
@@ -28,7 +29,7 @@ public class Explorer extends Player {
      *      * Ellenkezõ esetben kimarad a növelés, és NOTHING értékkel tér vissza.
      */
     public Result increaseHeat() {
-        if(heat < heatlimit) {
+        if (heat < heatlimit) {
             heat++;
             return OK;
         }
@@ -39,49 +40,43 @@ public class Explorer extends Player {
     /**
      * A Player osztályban lévõ absztrakt függvény megvalósítása.
      * Elõször bekér egy irányt, majd erre meghívja a checkNeighbour(Direction) függvényt.
-     * Amennyiben ez NULL értékkel tér vissza, akkor a játékosnak újra meg kell adnia egy irányt.
-     * Amikor sikerül egy jó irányt megadni, tehát nem NULL visszatérési értéke lesz, akkor a visszakapott
-     * mezõre meghívja a getCapacity() függvényt. Minden esetben OK-al té vissza.
+     * A megkapott irányban lévõ szomszéd mezõre meghívja a getCapacity() függvényt.
+     * Minden esetben OK-al té vissza.
      *
      * @return Result - minden esetben OK
      */
-    public Result specialSkill() {
-        Scanner scan = new Scanner(System.in);
-        Field field = null;
+    public Result specialSkill(String c) {
         int capacity;
-        while(field == null){
-            String  c = scan.next();
-            switch(c){
-                case "W":
-                    if(actualfield.checkNeighbour(0) != null) {
-                        capacity = actualfield.checkNeighbour(0).getCapacity();
-                        return OK;
-                    }
-                    break;
-                case "A":
-                    if(actualfield.checkNeighbour(1) != null) {
-                        capacity = actualfield.checkNeighbour(1).getCapacity();
-                        return OK;
-                    }
-                    break;
-                case "S":
-                    if(actualfield.checkNeighbour(2) != null) {
-                        capacity = actualfield.checkNeighbour(2).getCapacity();
-                        return OK;
-                    }
-                    break;
-                case "D":
-                    if(actualfield.checkNeighbour(3) != null) {
-                        capacity = actualfield.checkNeighbour(3).getCapacity();
-                        return OK;
-                    }
-                    break;
-            }
+        switch (c) {
+            case "W":
+                if (actualfield.checkNeighbour(0) != null) {
+                    capacity = actualfield.checkNeighbour(0).getCapacity();
+                    return OK;
+                }
+                break;
+            case "A":
+                if (actualfield.checkNeighbour(1) != null) {
+                    capacity = actualfield.checkNeighbour(1).getCapacity();
+                    return OK;
+                }
+                break;
+            case "S":
+                if (actualfield.checkNeighbour(2) != null) {
+                    capacity = actualfield.checkNeighbour(2).getCapacity();
+                    return OK;
+                }
+                break;
+            case "D":
+                if (actualfield.checkNeighbour(3) != null) {
+                    capacity = actualfield.checkNeighbour(3).getCapacity();
+                    return OK;
+                }
+                break;
         }
-
-        return Result.NOTHING;
+        return OK;
     }
 
 
-
 }
+
+
