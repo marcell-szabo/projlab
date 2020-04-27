@@ -94,9 +94,11 @@ public class IceField extends Field
      */
     public Result build(Igloo i)
     {
-        if (protection == null)
-            return NOTHING;
-        return OK;
+        if (protection == null) {
+            protection = i;
+            return OK;
+        }
+        return NOTHING;
     }
 
     /**

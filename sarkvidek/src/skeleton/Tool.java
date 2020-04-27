@@ -1,6 +1,5 @@
 package skeleton;
 
-import java.util.*;
 
 /**
  * Interfész, amely az eszközök felvételének, illetve a velük kapcsolatos interakciók

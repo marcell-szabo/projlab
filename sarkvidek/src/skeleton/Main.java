@@ -63,17 +63,6 @@ public class Main {
                         line[0] = "L";
                     else if(line[0].equals("examine")){
                         line[0] = "L";
-                        switch (Integer.parseInt(line[2])){
-                            case 0:
-                                line[0] = "W"; break;
-                            case 1:
-                                line[0] = "D"; break;
-                            case 2:
-                                line[0] = "S"; break;
-                            case 3:
-                                line[0] = "A"; break;
-                            default: break;
-                        }
                     } else if(line[0].equals("buildtent"))
                         line[0] = "M";
                     else if(line[0].equals("assemble"))

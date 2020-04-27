@@ -45,34 +45,12 @@ public class Explorer extends Player {
      *
      * @return Result - minden esetben OK
      */
-    public Result specialSkill(String c) {
-        int capacity;
-        switch (c) {
-            case "W":
-                if (actualfield.checkNeighbour(0) != null) {
-                    capacity = actualfield.checkNeighbour(0).getCapacity();
-                    return OK;
-                }
-                break;
-            case "A":
-                if (actualfield.checkNeighbour(1) != null) {
-                    capacity = actualfield.checkNeighbour(1).getCapacity();
-                    return OK;
-                }
-                break;
-            case "S":
-                if (actualfield.checkNeighbour(2) != null) {
-                    capacity = actualfield.checkNeighbour(2).getCapacity();
-                    return OK;
-                }
-                break;
-            case "D":
-                if (actualfield.checkNeighbour(3) != null) {
-                    capacity = actualfield.checkNeighbour(3).getCapacity();
-                    return OK;
-                }
-                break;
-        }
+    public Result specialSkill(int i) {
+        if(actualfield.checkNeighbour(i) == null)
+            return NOTHING;
+        int capacity = actualfield.checkNeighbour(i).getCapacity();
+        System.out.println("field: " + actualfield.checkNeighbour(i).name);
+        System.out.println("capacity:: " + capacity);
         return OK;
     }
 

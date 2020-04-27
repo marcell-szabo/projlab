@@ -78,13 +78,17 @@ public class GameBoard {
             else {
                 Item item = null;
                 switch (s[3]) {
-                    case "g": item = new FlareGun();
+                    case "c": item = new Charge();
+                        break;
+                    case "fl": item = new Flare();
+                        break;
+                    case "g": item = new Gun();
                         break;
                     case "f": item = new Food();
                         break;
-                    case "s": item = new BreakableShovel();
+                    case "b": item = new BreakableShovel();
                         break;
-                    case "b": item = new Shovel();
+                    case "s": item = new Shovel();
                             break;
                     case "r": item = new Rope();
                             break;

@@ -91,9 +91,9 @@ public abstract class Player {
                 break;
             case "L":
                 if(string.length == 2)
-                    result = this.specialSkill(string[1]);
+                    result = this.specialSkill(1);
                 else
-                    result = this.specialSkill(string[2]);
+                    result = this.specialSkill(Integer.parseInt(string[2]));
                 break;
             case "I":
                 result = this.assemble();
@@ -168,9 +168,12 @@ public abstract class Player {
         Result r = actualfield.clean();
         if (r == Result.OK) {
             for (Tool t : tools) {
-                t.clean(actualfield);
+                if(t.clean(actualfield) == DISAPPEAR) {
+                    tools.remove(t);
+                    return r;
+                }
+
             }
-            work--;
         }
         return r;
     }
@@ -261,7 +264,7 @@ public abstract class Player {
      *
      * @return
      */
-    public abstract Result specialSkill(String c);
+    public abstract Result specialSkill(int i);
 
     public abstract void state();
 

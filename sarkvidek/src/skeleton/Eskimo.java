@@ -38,7 +38,7 @@ public class Eskimo extends Player {
      * Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
      * ez a metódus is.
      */
-    public Result specialSkill(String c) {
+    public Result specialSkill(int i) {
         Igloo igloo = new Igloo();
         return actualfield.build(igloo);
     }
