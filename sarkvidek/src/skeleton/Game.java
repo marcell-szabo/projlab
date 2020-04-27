@@ -24,9 +24,9 @@ public class Game {
      */
     private List<FlareGun> flare_gun = new ArrayList<>();
 
-    /*
+    /**
      * A jegesmedvét tárolja
-     * */
+     */
     private PolarBear polarbear;
 
     /**
@@ -47,14 +47,15 @@ public class Game {
      * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
-    public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield) {  //szin tipus kezdomezo
-        gameboard.init(playerdata.size(), fields, );
-        for (String i : playerdata) {
-            String[] player = i.split(" ");
+    public void init(List<String[]> setfields, List<String[]> addfields, List<String[]> playerdata, String bearstartfield) {  //szin tipus kezdomezo
+        gameboard.init(playerdata.size(), setfields, addfields);
+        int j = 0;
+        for (String[] i : playerdata) {
+            String[] player = i[j].split(" ");
             if (player[1].equals("ex"))
-                players.add(new Explorer(this, player[2], player[0]));
+                players.add(new Explorer(this, player[2], player[0].charAt(0)));
             else
-                players.add(new Eskimo(this, player[3], player[1]));
+                players.add(new Eskimo(this, player[3], player[1].charAt(0)));
         }
         if(bearstartfield != null)
             polarbear = new PolarBear(bearstartfield);

@@ -13,6 +13,10 @@ public class GameBoard {
      */
     private List<Field> fields = new ArrayList<>();
 
+    public List<Field> getFields() {
+        return fields;
+    }
+
     /**
      * Default constructor
      */
@@ -68,9 +72,10 @@ public class GameBoard {
 
     public void init(int allplayer, List<String[]> fieldsinput, List<String[]> neighbour){
         int i = 0;
-        while(fieldsinput.get(i)[0].equals("setfield")){
-            if(Integer.parseInt(fieldsinput.get(i)[2]) == 0)
-                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2])));
+        while(fieldsinput.get(i)[0].equals("setfield"))
+        {
+            if(Integer.parseInt(fieldsinput.get(i)[2]) == 0) //teherbírása 0
+                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]))); //hó, teherbírás
             else {
                 Item item = null;
                 switch (fieldsinput.get(i)[3]) {

@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<String[]> fields = new ArrayList<>();
+        ArrayList<String[]> setfields = new ArrayList<>();
+        ArrayList<String[]> addfields = new ArrayList<>();
         ArrayList<String[]> players = new ArrayList<>();
         ArrayList<String[]> commands = new ArrayList<>();
-        String[] bearStart = new String[0];
+        String bearStart = "";
         /*
         setfield, addfield game->gameboard
         0-fel, 1-jobbra, 2-le, 3-balra
@@ -24,12 +25,14 @@ public class Main {
             currentLine = br.readLine();
             while (!(currentLine == null) && (!currentLine.equals("")) ) {
                 String[] line = currentLine.split(" ");
-                if(line[0].equals("setfield") || line[0].equals("addfield"))
-                    fields.add(line);
+                if(line[0].equals("fieldnumber") || line[0].equals("setfield"))
+                    setfields.add(line);
+                else if (line[0].equals("addfield"))
+                    addfields.add(line);
                 else if(line[0].equals("addplayer"))
                     players.add(line);
                 else if(line[0].equals("setbear"))
-                    bearStart = line;
+                    bearStart = line[2];
                 else if(line[0].equals("state")){
                     commands.add(line);
                 }
@@ -77,7 +80,7 @@ public class Main {
                 e.printStackTrace();
         }
 
-        Game game = new Game(fields, players, bearStart);
+        Game game = new Game(setfields, addfields, players, bearStart);
         game.mainLoop(commands);
     }
 

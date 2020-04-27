@@ -12,6 +12,11 @@ import static skeleton.Result.OK;
 public abstract class Field
 {
 
+    protected String fieldname;
+    public String getField(String name) {
+        for(int i = 0; i < GameBoard.
+    }
+
     /**
      * Az adott mezõn lévõ hóréteg mennyiségét tárolja.
      */
@@ -38,6 +43,10 @@ public abstract class Field
      * A játékban szereplõ medvét tárolja el.
      */
     protected PolarBear polarbear;
+
+    public void addPolarbear(String string){
+        for(int i = 0; i < fiel)
+    }
 
     public Field(int snow, int capacity) {
         this.snow = snow;
