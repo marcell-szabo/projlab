@@ -29,7 +29,7 @@ public class GameBoard {
         for(String[] i : neighbours) {
             int fieldidx = Integer.parseInt(i[1].substring(1)) - 1;
             for(int j = 2; j < i.length; j++) {
-                if(i[j].equals(null))
+                if(i[j].equals("null"))
                     fields.get(fieldidx).addNeighbour(null, j - 2);
                 else
                     fields.get(fieldidx).addNeighbour(fields.get(Integer.parseInt(i[j].substring(1)) - 1), j -2);

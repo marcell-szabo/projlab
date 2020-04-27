@@ -73,7 +73,7 @@ public abstract class Field
         return neighbours.get(d);
     }
 
-    public void addNeighbour(Field f, int d) { neighbours.add(d, f); }
+    public void addNeighbour(Field f, int d) { neighbours.put(d, f); }
 
     /**
      * Akkor tér vissza OK értékkel, ha az adott mezõrõl megoldható a vízbe esett játékos vízbõl való kimentése.
