@@ -14,8 +14,8 @@ public class Eskimo extends Player {
     /**
      * Default constructor
      */
-    public Eskimo(Game g, Field actual, char c) {
-        super(g, actual, c);
+    public Eskimo(Game g, Field actual, char c, int h) {
+        super(g, actual, c, h);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class PolarBear {
     /**
      * Tárolja, hogy a jegesmedve hol található.
      */
-    private Field actualfield;
+    protected Field actualfield;
 
     public Field getActualfield(){
         return actualfield;

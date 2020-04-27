@@ -28,7 +28,7 @@ public abstract class Field
     /**
      * Tárolja a 4 irányban elhelyezkedõ mezõt.
      */
-    protected List<Field> neighbours = new ArrayList<>();
+    protected Map<Integer, Field> neighbours = new HashMap<>();
 
     /**
      * Tárolja, hogy az adott mezõn melyik játékosok vannak rajta.
@@ -38,7 +38,7 @@ public abstract class Field
     /**
      * A játékban szereplõ medvét tárolja el.
      */
-    protected PolarBear polarbear;
+    protected static PolarBear polarbear;
 
     public Field(int snow, int capacity, String name) {
         this.snow = snow;
