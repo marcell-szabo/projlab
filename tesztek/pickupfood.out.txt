@@ -1,0 +1,29 @@
+Eskimo:
+color: p
+heat: 4
+work: 2
+tools: 
+actualfield: f1
+
+IceField:
+snow: 0
+capacity: 6
+protection: false
+item: food
+players: p, 
+polarbear: false
+
+Eskimo:
+color: p
+heat: 5
+work: 1
+tools: 
+actualfield: f1
+
+IceField:
+snow: 0
+capacity: 6
+protection: false
+item: 
+players: p, 
+polarbear: false

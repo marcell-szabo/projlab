@@ -1,0 +1,13 @@
+Explorer:
+color: b
+heat: 4
+work: 4
+tools: 
+actualfield: f1
+
+Explorer:
+color: b
+heat: 4
+work: 3
+tools: tent, 
+actualfield: f1

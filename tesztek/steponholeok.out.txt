@@ -1,0 +1,22 @@
+Eskimo:
+color: g
+heat: 5
+work: 3
+tools: rope, 
+actualfield: f1
+
+Eskimo:
+color: p
+heat: 5
+work: 4
+tools: 
+actualfield: f1
+
+Eskimo:
+color: p
+heat: 4
+work: 3
+tools: 
+actualfield: f1
+
+OK
