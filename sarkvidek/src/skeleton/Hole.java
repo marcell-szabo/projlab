@@ -66,7 +66,8 @@ public class Hole extends Field {
             System.out.print(", ");
         }
         System.out.print("\n");
-        if (polarbear == null) System.out.println("polarbear: false");
+        if (polarbear .getActualfield() != this) System.out.println("polarbear: false");
         else System.out.println("polarbear: true");
+        System.out.print("\n");
     }
 }

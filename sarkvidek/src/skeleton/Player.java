@@ -48,7 +48,6 @@ public abstract class Player {
     /**
      * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
      *
-     *
      * @return eszközöket tartalmazó lista
      */
     public List<Tool> getTools() {
@@ -91,7 +90,10 @@ public abstract class Player {
                 result = actualfield.pickUp(this);
                 break;
             case "L":
-                result = this.specialSkill(string[2]);
+                if(string.length == 2)
+                    result = this.specialSkill(string[1]);
+                else
+                    result = this.specialSkill(string[2]);
                 break;
             case "I":
                 result = this.assemble();

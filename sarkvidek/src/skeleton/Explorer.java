@@ -95,7 +95,7 @@ public class Explorer extends Player {
         System.out.print("\n");
         System.out.print("actualfield: " );
         actualfield.namestate();
-        System.out.print("\n");
+        System.out.println("\n");
     }
 
 

@@ -11,7 +11,7 @@ interface Item {
      *
      * @param p Tárgyat felvenni kívánó személy
      */
-    public abstract Result pickMeUp(Player p);
+    Result pickMeUp(Player p);
 
     /**
      *Az Item nevének kiírásáért felelõs függvény

@@ -110,7 +110,10 @@ public class IceField extends Field
     {
         if(snow == 0 && item != null)
         {
-            return item.pickMeUp(p);
+            Result result = item.pickMeUp(p);
+            if(result == OK)
+                item = null;
+            return result;
         }
         return NOTHING;
     }
@@ -151,7 +154,8 @@ public class IceField extends Field
         if (protection == null) System.out.println("protection: false");
         else System.out.println("protection: true");
         System.out.print("item: ");
-        this.item.namestate();
+        if(this.item != null)
+            this.item.namestate();
         System.out.print("\n");
         System.out.print("players: ");
         for (Player p : players) {
@@ -159,7 +163,8 @@ public class IceField extends Field
             System.out.print(", ");
         }
         System.out.print("\n");
-        if (polarbear == null) System.out.println("polarbear: false");
+        if (polarbear.getActualfield() != this) System.out.println("polarbear: false");
         else System.out.println("polarbear: true");
+        System.out.print("\n");
     }
 }

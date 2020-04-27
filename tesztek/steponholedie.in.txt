@@ -27,3 +27,4 @@ addplayer p es f1
 state p
 move p 1
 lastresult
+

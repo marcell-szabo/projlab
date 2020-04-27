@@ -31,3 +31,4 @@ state p
 move p 1
 state p
 lastresult
+

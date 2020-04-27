@@ -62,7 +62,7 @@ public class Tent extends Igloo implements Tool {
      */
     @Override
     public boolean isSame(Tool t) {
-        return false;
+        return this.isSame(this);
     }
 
     /**

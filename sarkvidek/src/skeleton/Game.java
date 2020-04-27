@@ -251,6 +251,6 @@ public class Game {
             p.namestate();
             System.out.print(", ");
         }
-        System.out.print("\n");
+        System.out.println("\n");
     }
 }

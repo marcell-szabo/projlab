@@ -1,10 +1,8 @@
 package skeleton;
 
 import java.util.*;
-
-import static skeleton.Direction.*;
 import static skeleton.Result.DIE;
-import static skeleton.Result.OK;
+
 
 /**
  * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
@@ -26,7 +24,7 @@ public class DivingSuit implements Tool {
      */
     @Override
     public boolean isSame(Tool t) {
-        return false;
+        return this.isSame(this);
     }
 
     /**
