@@ -27,4 +27,10 @@ public class FlareGun implements Item {
         return Result.OK;
     }
 
+    /**
+     *A FlareGun nevének kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){ }
+
 }

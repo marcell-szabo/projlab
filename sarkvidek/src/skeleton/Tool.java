@@ -40,7 +40,6 @@ public interface Tool extends Item {
     Result swim(Field f, Player p);
 
 
-    void state();
     /**
 	 * Lyukból való kihúzásért felelõs függvény
      * @param f Az a field amire a player lépni akar
@@ -57,5 +56,9 @@ public interface Tool extends Item {
      */
     Result build(Field f);
 
-
+    /**
+     *A Tool nevének kiírásáért felelõs függvény
+     */
+    @Override
+    void namestate();
 }

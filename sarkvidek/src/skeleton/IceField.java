@@ -135,4 +135,29 @@ public class IceField extends Field
         }
     }
 
+    /**
+     * Az IceField adatainak kiírásáért felelõs függvény.
+     * Megjeleníti a jégmezõn található hórétegek számát, a jégmezõ teherbírását,
+     * hogy jégmezõn található-e valamilyen védelem, a jégmezõbe fagyott tárgy nevét,
+     * a jégmezõn álló játékosok nevét és hogy található-e jegesmedve a jégmezõn
+     */
+    @Override
+    public void state() {
+        System.out.println("IceField:");
+        System.out.println("snow: " + this.snow);
+        System.out.println("capacity: " + this.capacity);
+        if (protection == null) System.out.println("protection: false");
+        else System.out.println("protection: true");
+        System.out.print("item: ");
+        this.item.namestate();
+        System.out.print("\n");
+        System.out.print("players: ");
+        for (Player p : players) {
+            p.namestate();
+            System.out.print(", ");
+        }
+        System.out.print("\n");
+        if (polarbear == null) System.out.println("polarbear: false");
+        else System.out.println("polarbear: true");
+    }
 }

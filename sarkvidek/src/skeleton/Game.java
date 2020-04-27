@@ -215,4 +215,23 @@ public class Game {
         return (flare_gun.size() == 3) ? true : false;
     }
 
+    /**
+     * A Game adatainak kiírásáért felelõs függvény.
+     * Megjeleníti a játék során már összegyûjtött FlareGun részeket és a játék összes játékosának nevét.
+     */
+    public void state(){
+        System.out.println("Game:");
+        System.out.print("flaregun: ");
+        for(FlareGun f: flare_gun) {
+            f.namestate();
+            System.out.print(", ");
+        }
+        System.out.print("\n");
+        System.out.print("players: ");
+        for (Player p : players) {
+            p.namestate();
+            System.out.print(", ");
+        }
+        System.out.print("\n");
+    }
 }
