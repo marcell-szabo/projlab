@@ -5,18 +5,19 @@ work: 4
 tools: 
 actualfield: f1
 
+Eskimo:
+color: p
+heat: 5
+work: 3
+tools: 
+actualfield: f5
+
 IceField:
-snow: 2
+snow: 0
 capacity: 6
 protection: false
-item: divingsuit
+item: shovel
 players: p, 
 polarbear: false
 
-IceField:
-snow: 1
-capacity: 6
-protection: false
-item: divingsuit
-players: p, 
-polarbear: false
+OK

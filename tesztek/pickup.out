@@ -15,15 +15,16 @@ polarbear: false
 
 Eskimo:
 color: p
-heat: 4
-work: 4
-tools: 
+heat: 5
+work: 3
+tools: divingsuit, 
 actualfield: f1
 
 IceField:
-snow: 1
+snow: 0
 capacity: 6
 protection: false
-item: divingsuit
+item: 
 players: p, 
 polarbear: false
+

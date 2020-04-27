@@ -2,14 +2,14 @@ function test([string]$testfile, [string]$expectedfile) {
     $expResult = cat $expectedfile
 
     $input = cat $testfile
-    $output = echo $input | java -cp .\class\ sarkvidek.Main
+    $output = echo $input | java -cp .\class\ skeleton.Main
 
     $diff = compare $output $expResult
 
     if ($diff.Length -eq 0) {
-        echo "Test with test file $testfile passed."
+        echo "Test with input $testfile passed."
     } else {
-        echo "Test with test file $testfile FAILED!"
+        echo "Test with input $testfile FAILED!"
         echo "Got:"
         echo "-------------------------------------"
         echo $output

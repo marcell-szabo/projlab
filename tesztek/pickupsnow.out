@@ -5,19 +5,26 @@ work: 4
 tools: 
 actualfield: f1
 
-Eskimo:
-color: p
-heat: 5
-work: 3
-tools: 
-actualfield: f5
-
 IceField:
-snow: 0
+snow: 2
 capacity: 6
 protection: false
-item: breakableshovel(used: 3)
+item: divingsuit
 players: p, 
 polarbear: false
 
-OK
+Eskimo:
+color: p
+heat: 5
+work: 4
+tools: 
+actualfield: f1
+
+IceField:
+snow: 2
+capacity: 6
+protection: false
+item: divingsuit
+players: p, 
+polarbear: false
+

@@ -2,7 +2,7 @@ IceField:
 snow: 0
 capacity: 1
 protection: false
-item: breakableshovel(used: 3)
+item: shovel
 players: r, 
 polarbear: false
 

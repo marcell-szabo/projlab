@@ -1,17 +1,24 @@
 Eskimo:
 color: p
-heat: 3
+heat: 4
 work: 3
-tools: shovel, 
+tools: 
 actualfield: f1
 
 IceField:
-snow: 2
+snow: 0
 capacity: 6
 protection: false
-item: 
+item: food
 players: p, 
 polarbear: false
+
+Eskimo:
+color: p
+heat: 5
+work: 2
+tools: 
+actualfield: f1
 
 IceField:
 snow: 0
@@ -20,3 +27,4 @@ protection: false
 item: 
 players: p, 
 polarbear: false
+
