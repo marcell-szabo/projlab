@@ -52,7 +52,7 @@ public class GameBoard {
      * ha legalább egy mezõ storm() függvénye DIE-al tért vissza, akkor õ is DIE-al fog, különben pedig OK-kal.
      * @return DIE or OK
      */
-    public Result storm(String[] fieldsHitByStorm) {
+    public Result storm(ArrayList<String> fieldsHitByStorm) {
         Result s_result = Result.OK;
         if(fieldsHitByStorm == null) {
             for(Field f : fields) {
@@ -62,15 +62,15 @@ public class GameBoard {
                 }
             }
         } else {
-            for(int i = 2; i < fieldsHitByStorm.length; i++) {
-                if(fields.get(Integer.parseInt(fieldsHitByStorm[i].substring(1)) - 1).storm() == Result.DIE)
+            for(int i = 0; i < fieldsHitByStorm.size(); i++) {
+                if(fields.get(Integer.parseInt(fieldsHitByStorm.get(i).substring(1)) - 1).storm() == Result.DIE)
                     s_result = Result.DIE;
             }
         }
         return s_result;
     }
 
-    public void init(int allplayer, List<String[]> fieldsinput, List<String[]> neighbour){
+    public void init(List<String[]> fieldsinput, List<String[]> neighbour){
         int i = 0;
         while(fieldsinput.get(i)[0].equals("setfield")){
             if(Integer.parseInt(fieldsinput.get(i)[2]) == 0)

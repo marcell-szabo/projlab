@@ -48,16 +48,16 @@ public class Game {
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
     public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
-        gameboard.init(playerdata.size(), fields, neighbours);
+        gameboard.init(fields, neighbours);
         for (String[] i : playerdata) {
             String[] player = i;
-            if (player[2].equals("ex")){
+            if (player[2].equals("ex")) {
                 Field field = null;
-                for(Field f : gameboard.getFields())
-                    if(f.name.equals(player[3]))
+                for (Field f : gameboard.getFields())
+                    if (f.name.equals(player[3]))
                         field = f;
-                players.add(new Explorer(this, field , player[1].charAt(0)));
-            }else {
+                players.add(new Explorer(this, field, player[1].charAt(0)));
+            } else {
                 Field field = null;
                 for (Field f : gameboard.getFields())
                     if (f.name.equals(player[3]))
@@ -65,7 +65,7 @@ public class Game {
                 players.add(new Eskimo(this, field, player[1].charAt(0)));
             }
         }
-        if(bearstartfield != null){
+        if (bearstartfield != null) {
             Field field = null;
             for (Field f : gameboard.getFields())
                 if (f.name.equals(bearstartfield))
@@ -86,40 +86,71 @@ public class Game {
      */
     public void mainLoop(ArrayList<String[]> activities) {
         int i = 0;
-        while(!activities.get(i).equals("")){
-            String[] string = activities.get(i);
-            switch(string[0]){
+        while (!activities.get(i).equals("")) {
+            String[] command = activities.get(i);
+            Player player;
+            switch (command[0]) {
                 case "state":
-                    switch (string[1]){
+                    switch (command[1]) {
                         case "p":
-                            for(Player p : players)
-                                if(p.color == 'p')
-                                    p.state();
+                            player = which('p');
+                            player.state();
+                            break;
                         case "b":
-                            for(Player p : players)
-                                if(p.color == 'b')
-                                    p.state();
+                            player = which('b');
+                            player.state();
+                            break;
                         case "g":
-                            for(Player p : players)
-                                if(p.color == 'g')
-                                    p.state();
+                            player = which('g');
+                            player.state();
+                            break;
                         case "y":
-                            for(Player p : players)
-                                if(p.color == 'y')
-                                    p.state();
+                            player = which('y');
+                            player.state();
+                            break;
                         case "o":
-                            for(Player p : players)
-                                if(p.color == 'o')
-                                    p.state();
+                            player = which('o');
+                            player.state();
+                            break;
                         case "r":
-                            for(Player p : players)
-                                if(p.color == 'r')
-                                    p.state();
+                            player = which('r');
+                            player.state();
+                            break;
+                        default:
+                            if (command[1].charAt(0) == 'f') {
+                                for (Field f : gameboard.getFields()) {
+                                    if (f.name.equals(command[1])) {
+                                        f.state();
+                                        break;
+                                    }
+                                }
+                                break;
+                            } else if (command[1].equals("polarbear"))
+                                polarbear.state();
+                            break;
                     }
                 case "bear":
-                    polarbear.state();
+                    if (command[1].equals("r")) {
+                        polarbear.move();
+                        break;
+                    } else {
+                        polarbear.move(Integer.parseInt(command[2]));
+                        break;
+                    }
                 case "storm":
+                    if (command[1].equals("r")) {
+                        gameboard.storm(null);
+                        break;
+                    } else {
+                        ArrayList<String> stormfield = new ArrayList<>();
+                        for (String s : command)
+                            if (s.charAt(0) == 'f')
+                                stormfield.add(s);
+                        gameboard.storm(stormfield);
+                        break;
+                    }
                 case "W":
+
                 case "D":
                 case "S":
                 case "A":
@@ -132,38 +163,35 @@ public class Game {
         }
 
 
-
-
-
         Result p_result = Result.OK, quitresult = Result.OK;
         int activity_idx = 0, bearmove_idx = 0;
         boolean hasSomeOneDiedOrWon = false;
-        while(!hasSomeOneDiedOrWon && p_result == Result.OK) {
+        while (!hasSomeOneDiedOrWon && p_result == Result.OK) {
 
             p_result = polarbear.move(bearmove.get(bearmove_idx++));
 
             ListIterator<Player> i = players.listIterator();
             Result s_result = Result.OK, r_result = Result.OK;
-            while(i.hasNext() &&  s_result == Result.OK && r_result == Result.OK) {
+            while (i.hasNext() && s_result == Result.OK && r_result == Result.OK) {
                 gameboard.aging();
-                if(randomstorm) {
-                    if(new Random().nextInt(101) < 33)
+                if (randomstorm) {
+                    if (new Random().nextInt(101) < 33)
                         s_result = gameboard.storm(null);
-                }else
+                } else
                     s_result = gameboard.storm(fields);
 
-                if(s_result != Result.DIE) {
+                if (s_result != Result.DIE) {
                     r_result = players.get(i.nextIndex()).round(activities.get(activity_idx++));
                     i.next();
                 }
             }
-            if(s_result != Result.OK) {
+            if (s_result != Result.OK) {
                 hasSomeOneDiedOrWon = true;
                 quitresult = s_result;
-            } else if(r_result != Result.OK) {
+            } else if (r_result != Result.OK) {
                 hasSomeOneDiedOrWon = true;
                 quitresult = r_result;
-            } else if(p_result != Result.OK) {
+            } else if (p_result != Result.OK) {
                 hasSomeOneDiedOrWon = true;
                 quitresult = p_result;
             }
@@ -171,7 +199,12 @@ public class Game {
         endGame(quitresult);
     }
 
-
+    public Player which(char c) {
+        for (Player p : players)
+            if (p.color == c)
+                return p;
+        return null;
+    }
 
     /**
      * A players attribútumban tárolt játékosok számával tér vissza.
@@ -189,9 +222,11 @@ public class Game {
      */
     public void endGame(Result r) {
         switch (r) {
-            case WIN: System.out.print("Victory");
+            case WIN:
+                System.out.print("Victory");
                 break;
-            case DIE: System.out.print("Game Over");
+            case DIE:
+                System.out.print("Game Over");
                 break;
         }
     }

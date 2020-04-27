@@ -175,4 +175,5 @@ public abstract class Field
 
     public void aging(){}
 
+    public abstract void state();
 }

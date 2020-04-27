@@ -40,7 +40,12 @@ public class PolarBear {
         }
         actualfield.leaveField();
 
-        return actualfield.stepOn(this);
+        return choosedField.stepOn(this);
+    }
+    public Result move(int i){
+        Field choosedField = actualfield.checkNeighbour(i);
+        actualfield.leaveField();
+        return choosedField.stepOn(this);
     }
 
     public void state() {
