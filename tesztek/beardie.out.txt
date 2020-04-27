@@ -1,23 +1,16 @@
 Eskimo:
-color: p
+color: g
 heat: 5
 work: 4
 tools: 
 actualfield: f1
 
-Eskimo:
-color: p
-heat: 5
-work: 3
-tools: 
-actualfield: f5
-
 IceField:
 snow: 0
 capacity: 6
 protection: false
-item: breakableshovel(used: 3)
-players: p, 
+item: tent
+players: g, 
 polarbear: false
 
-OK
+Game Over

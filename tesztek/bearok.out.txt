@@ -1,0 +1,27 @@
+Eskimo:
+color: g
+heat: 5
+work: 3
+tools: 
+actualfield: f1
+
+IceField:
+snow: 0
+capacity: 6
+protection: true
+item: tent
+players: g, 
+polarbear: false
+
+Polarbear:
+actualfield: f1
+
+IceField:
+snow: 0
+capacity: 6
+protection: true
+item: tent
+players: g, 
+polarbear: true
+
+OK

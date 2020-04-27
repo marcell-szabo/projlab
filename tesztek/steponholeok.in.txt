@@ -22,7 +22,7 @@ addfield f9 f5 f10 null null
 addfield f10 f6 f11 null f9
 addfield f11 f7 f12 null f10
 addfield f12 f8 null null f11
-setbear r
+setbear -r f12
 addplayer p es f1
 addplayer g es f1
 pickup g
