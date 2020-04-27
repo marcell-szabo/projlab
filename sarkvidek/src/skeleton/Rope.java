@@ -91,6 +91,7 @@ public class Rope implements Tool {
      */
     @Override
     public Result help(Field f, Player p) {
+        p.decreaseHeat();
         return p.changeField(f);
     }
 

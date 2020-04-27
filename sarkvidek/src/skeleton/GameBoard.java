@@ -95,7 +95,6 @@ public class GameBoard {
                  fields.add(new IceField(Integer.parseInt(s[4]), Integer.parseInt(s[2]), item, s[1]));
             }
         }
-        System.out.println("kaki");
         setNeighbours(neighbour);
     }
 

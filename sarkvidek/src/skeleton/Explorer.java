@@ -93,7 +93,7 @@ public class Explorer extends Player {
             System.out.print(", ");
         }
         System.out.print("\n");
-        System.out.print("Actualfield: " );
+        System.out.print("actualfield: " );
         actualfield.namestate();
         System.out.print("\n");
     }

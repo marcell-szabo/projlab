@@ -3,6 +3,8 @@ package skeleton;
 import java.util.*;
 
 import static skeleton.Direction.*;
+import static skeleton.Result.DIE;
+import static skeleton.Result.OK;
 
 /**
  * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
@@ -85,28 +87,12 @@ public class DivingSuit implements Tool {
      */
     @Override
     public Result swim(Field f, Player p) {
-        System.out.println("A J(jobbra), B(balra), F(fel), L(le) karakterek segítségével válasszon," +
-                "mely irányba szeretne kimászni.");
-        Field choosedField = null;
-        while (choosedField == null) {
-            Scanner sc = new Scanner(System.in);
-            String c = sc.next();
-            int d = 0;
-            switch (c) {
-                case "J":
-                    d = 0;
-                case "B":
-                    d = 1;
-                case "F":
-                    d = 2;
-                case "L":
-                    d = 3;
-            }
-            choosedField = f.checkNeighbour(d);
-            if (choosedField == null)
-                System.out.println("A választott irányban tenger található, adjon meg új irányt!");
+        for (int d = 0; d <= 3; d++) {
+            Field field = f.checkNeighbour(d);
+            if (field != null)
+                return p.changeField(field);
         }
-        return p.changeField(choosedField);
+        return DIE;
     }
 
 
