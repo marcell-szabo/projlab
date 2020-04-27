@@ -50,4 +50,23 @@ public class Hole extends Field {
         return  OK;
     }
 
+    /**
+     * A Hole adatainak kiírásáért felelõs függvény.
+     * Megjeleníti a lyukon található hórétegek számát, a lyuk teherbírását (ami mindig 0),
+     * a lyukba esett játékosok nevét és hogy található-e jegesmedve a lyukon.
+     */
+    @Override
+    public void state() {
+        System.out.println("Hole:");
+        System.out.println("snow: " + this.snow);
+        System.out.println("capacity: " + this.capacity);
+        System.out.print("players: ");
+        for (Player p : players) {
+            p.namestate();
+            System.out.print(", ");
+        }
+        System.out.print("\n");
+        if (polarbear == null) System.out.println("polarbear: false");
+        else System.out.println("polarbear: true");
+    }
 }

@@ -94,10 +94,6 @@ public class Shovel implements Tool {
         return Result.NOTHING;
     }
 
-    @Override
-    public void state() {
-        System.out.println("Shovel");
-    }
 
     /**
      * NOTHING értékkel tér vissza.
@@ -120,4 +116,11 @@ public class Shovel implements Tool {
         return Result.NOTHING;
     }
 
+    /**
+     *A Shovel nevének kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){
+        System.out.print("shovel");
+    }
 }

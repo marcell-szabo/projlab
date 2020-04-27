@@ -48,7 +48,14 @@ public class PolarBear {
         return choosedField.stepOn(this);
     }
 
-    public void state() {
-        //TODO STATE
+    /**
+     * A PolarBear adatainak kiírásáért felelõs függvény.
+     * Megjeleníti annak a mezõnek a nevét, amelyen éppen a jegesmedve áll.
+     */
+    public void state(){
+        System.out.println("Polarbear:");
+        System.out.print("actualfield: ");
+        actualfield.namestate();
+        System.out.print("\n");
     }
 }

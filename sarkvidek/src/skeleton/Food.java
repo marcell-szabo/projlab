@@ -25,4 +25,12 @@ public class Food implements Item {
         return p.increaseHeat();
     }
 
+    /**
+     *A Food nevének kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){
+        System.out.print("food");
+    }
+
 }
