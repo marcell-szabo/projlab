@@ -69,46 +69,40 @@ public abstract class Player {
      */
     public Result round(String[] string) {
         Result result = OK;
-        while(work != 0 || result != WIN || result != DIE){
-            String  c = string[0];
-            switch (c){
-                case "W":
-                    result = this.move(0);
-                    break;
-                case "A":
-                    result = this.move(1);
-                    break;
-                case "S":
-                    result = this.move(2);
-                    break;
-                case "D":
-                    result = this.move(3);
-                    break;
-                case "J":
-                    result = this.clean();
-                    break;
-                case "K":
-                    result = actualfield.pickUp(this);
-                    break;
-                case "L":
-                    result = this.specialSkill(string[2]);
-                    break;
-                case "I":
-                    result = this.assemble();
-                    break;
-                case "M":
-                    result = this.buildTent();
-                default:
-                    break;
-            }
-            if(result == DIE)
-                game.endGame(result);
-            if(result == WIN)
-                game.endGame(result);
-            if(result == OK)
-                work--;
+        String c = string[0];
+        switch (c) {
+            case "W":
+                result = this.move(0);
+                break;
+            case "D":
+                result = this.move(1);
+                break;
+            case "S":
+                result = this.move(2);
+                break;
+            case "A":
+                result = this.move(3);
+                break;
+            case "J":
+                result = this.clean();
+                break;
+            case "K":
+                result = actualfield.pickUp(this);
+                break;
+            case "L":
+                result = this.specialSkill(string[2]);
+                break;
+            case "I":
+                result = this.assemble();
+                break;
+            case "M":
+                result = this.buildTent();
+            default:
+                break;
         }
-        return null;
+        if(result == OK)
+            work--;
+        return result;
     }
 
     /**
@@ -116,11 +110,12 @@ public abstract class Player {
      * függvényt. Amennyiben bármelyik DISAPPEAR-rel ré vissza, akkor az törlésre kerül a tools tömbbõl,
      * majd a buildTent() metódus visszatérési értéke OK lesz. Abban az esetben viszont,
      * ha egyik sem tér vissza DISAPPEAR-rel, akkor a buildTent() OK helyett NOTHING visszatérési értéket fog adni.
+     *
      * @return OK or NOTHING
      */
     private Result buildTent() {
-        for(Tool t: tools){
-            if(t.build(actualfield) == DISAPPEAR){
+        for (Tool t : tools) {
+            if (t.build(actualfield) == DISAPPEAR) {
                 tools.remove(t);
                 return OK;
             }
@@ -139,7 +134,7 @@ public abstract class Player {
      */
     public Result move(int d) {
         Field field = actualfield.checkNeighbour(d);
-        if(field != null)
+        if (field != null)
             return this.changeField(field);
         return NOTHING;
     }
@@ -188,7 +183,7 @@ public abstract class Player {
      * @return az összeszerelés sikeressége
      */
     public Result assemble() {
-        if(actualfield.haveAllPlayer(game.getPlayerNumber()) && game.haveAllParts()){
+        if (actualfield.haveAllPlayer(game.getPlayerNumber()) && game.haveAllParts()) {
             return WIN;
         }
         return OK;
@@ -206,14 +201,15 @@ public abstract class Player {
      * @return Result a segítségkérés sikerességével
      */
     public Result helpMe() {
-        for(Tool t: tools){
-            if(t.swim(actualfield, this) != NOTHING)
-                return t.swim(actualfield, this);
+        for (Tool t : tools) {
+            Result res = t.swim(actualfield, this);
+            if (res != NOTHING)
+                return res;
         }
-        for(int d = 0; d<= 3; d++) {
+        for (int d = 0; d <= 3; d++) {
             Field field = actualfield.checkNeighbour(d);
-            if(field != null)
-                if(actualfield.checkNeighbour(d).canHelp() == OK)
+            if (field != null)
+                if (actualfield.checkNeighbour(d).canHelp(this) == OK)
                     return OK;
         }
         return DIE;
@@ -227,7 +223,7 @@ public abstract class Player {
      */
     public Result decreaseHeat() {
         heat--;
-        if(heat == 0)
+        if (heat == 0)
             return DIE;
         return OK;
     }
@@ -269,7 +265,7 @@ public abstract class Player {
     /**
      * A játékos nevének kiírásáért felelõs függvény.
      */
-    public void namestate(){
+    public void namestate() {
         System.out.print(color);
     }
 

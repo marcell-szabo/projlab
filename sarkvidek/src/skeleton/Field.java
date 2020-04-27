@@ -83,17 +83,17 @@ public abstract class Field
      *
      * @return Result OK vagy DIE - attól függõen, hogy ki lehet-e menteni a játékost
      */
-    public Result canHelp()
+    public Result canHelp(Player player)
     {
         for (Player p : players)
         {
             for (Tool t : p.getTools())
             {
-                if (t.help(this, p) == OK)
+                if (t.help(this, player) == OK)
                     return OK;
             }
         }
-        return Result.DIE;
+        return NOTHING;
     }
 
     /**

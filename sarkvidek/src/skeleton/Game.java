@@ -1,6 +1,9 @@
 package skeleton;
 
+import javax.print.DocFlavor;
 import java.util.*;
+
+import static skeleton.Result.*;
 
 /**
  * A játék elkezdésére/inicializálására, befejezésére, illetve a körök kezelésére szolgáló osztály.
@@ -48,24 +51,8 @@ public class Game {
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
     public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
-        System.out.println("kaki");
         gameboard.init(fields, neighbours);
-        System.out.println("kaki");
         Field field = null;
-        for (String[] i : playerdata) {
-            String[] player = i;
-            if (player[2].equals("ex")) {
-                for (Field f : gameboard.getFields())
-                    if (f.name.equals(player[3]))
-                        field = f;
-                players.add(new Explorer(this, field, player[1].charAt(0), 4));
-            } else {
-                for (Field f : gameboard.getFields())
-                    if (f.name.equals(player[3]))
-                        field = f;
-                players.add(new Eskimo(this, field, player[1].charAt(0), 5));
-            }
-        }
         if (bearstartfield != null) {
             for (Field f : gameboard.getFields())
                 if (f.name.equals(bearstartfield))
@@ -77,6 +64,23 @@ public class Game {
             polarbear = new PolarBear(field);
             field.stepOn(polarbear);
         }
+        for (String[] i : playerdata) {
+            String[] player = i;
+            if (player[2].equals("ex")) {
+                for (Field f : gameboard.getFields())
+                    if (f.name.equals(player[3]))
+                        field = f;
+                players.add(new Explorer(this, field, player[1].charAt(0), 4));
+                field.stepOn(players.get(players.size()-1));
+            } else {
+                for (Field f : gameboard.getFields())
+                    if (f.name.equals(player[3]))
+                        field = f;
+                players.add(new Eskimo(this, field, player[1].charAt(0), 5));
+                field.stepOn(players.get(players.size()-1));
+            }
+        }
+
     }
 
     /**
@@ -89,6 +93,7 @@ public class Game {
      * Végezetül az endGame(Result) függvény kerül meghívásra .
      */
     public void mainLoop(ArrayList<String[]> activities) {
+        Result lastResult = NOTHING;
         for(int i = 0; i < activities.size(); i++) {
             String[] command = activities.get(i);
             Player player;
@@ -140,30 +145,42 @@ public class Game {
                     } break;
                 case "bear":
                     if (command[1].equals("r")) {
-                        polarbear.move();
+                        lastResult = polarbear.move();
                         break;
                     } else {
-                        polarbear.move(Integer.parseInt(command[2]));
+                        lastResult = polarbear.move(Integer.parseInt(command[2]));
                         break;
                     }
                 case "storm":
                     if (command[1].equals("r")) {
-                        gameboard.storm(null);
+                        lastResult = gameboard.storm(null);
                         break;
                     } else {
                         ArrayList<String> stormfield = new ArrayList<>();
                         for (String s : command)
                             if (s.charAt(0) == 'f')
                                 stormfield.add(s);
-                        gameboard.storm(stormfield);
+                        lastResult = gameboard.storm(stormfield);
                         break;
                     }
+                case "lastresult":
+                    System.out.println(lastResult);
+                    break;
                 default:
                     player = which(command[1].charAt(0));
-                    player.round(command);
+                    lastResult = player.round(command);
                     break;
             }
+            if(lastResult == DIE) {
+                this.endGame(lastResult);
+                break;
+            }
+            else if(lastResult == WIN) {
+                this.endGame(lastResult);
+                break;
+            }
         }
+
     }
 
     public Player which(char c) {

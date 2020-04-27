@@ -54,13 +54,13 @@ public class Eskimo extends Player {
         System.out.println("color: " + this.color);
         System.out.println("heat: " + this.heat);
         System.out.println("work: " + this.work);
-        System.out.println("tools: ");
+        System.out.print("tools: ");
         for(Tool t: getTools()) {
             t.namestate();
             System.out.print(", ");
         }
         System.out.print("\n");
-        System.out.print("Actualfield: " );
+        System.out.print("actualfield: " );
         actualfield.namestate();
         System.out.print("\n");
     }
