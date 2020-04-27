@@ -18,8 +18,8 @@ public class Explorer extends Player {
     /**
      * Default constructor
      */
-    public Explorer(Game g, Field actual, char c) {
-        super(g, actual, c);
+    public Explorer(Game g, Field actual, char c, int h) {
+        super(g, actual, c, h);
     }
 
     @Override

@@ -11,7 +11,6 @@ public class Main {
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> players = new ArrayList<>();
         ArrayList<String[]> commands = new ArrayList<>();
-        ArrayList<String[]> bearmoves = new ArrayList<>();
         ArrayList<String[]> neighbours = new ArrayList<>();
         String bearStart = "";
         /*
@@ -33,7 +32,10 @@ public class Main {
                 else if(line[0].equals("addplayer"))
                     players.add(line);
                 else if(line[0].equals("setbear"))
-                    bearStart = line[2];
+                    if(line[1].equals("r"))
+                        bearStart = null;
+                    else
+                        bearStart = line[2];
                 else if(line[0].equals("state")){
                     commands.add(line);
                 }else if(line[0].equals("bear"))
@@ -78,7 +80,7 @@ public class Main {
                         line[0] = "I";
                     commands.add(line);
                 }
-
+                currentLine = br.readLine();
             }
         }catch(IOException e){
                 e.printStackTrace();

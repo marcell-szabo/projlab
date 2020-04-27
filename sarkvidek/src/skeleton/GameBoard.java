@@ -71,13 +71,12 @@ public class GameBoard {
     }
 
     public void init(List<String[]> fieldsinput, List<String[]> neighbour){
-        int i = 0;
-        while(fieldsinput.get(i)[0].equals("setfield")){
-            if(Integer.parseInt(fieldsinput.get(i)[2]) == 0)
-                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), fieldsinput.get(i)[1]));
+        for(String[] s: fieldsinput){
+            if(Integer.parseInt(s[2]) == 0)
+                fields.add(new Hole(Integer.parseInt(s[4]), Integer.parseInt(s[2]), s[1]));
             else {
                 Item item = null;
-                switch (fieldsinput.get(i)[3]) {
+                switch (s[3]) {
                     case "g": item = new FlareGun();
                         break;
                     case "f": item = new Food();
@@ -93,9 +92,10 @@ public class GameBoard {
                     case "t": item = new Tent();
                             break;
                 }
-                 fields.add(new IceField(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), item, fieldsinput.get(i)[1]));
+                 fields.add(new IceField(Integer.parseInt(s[4]), Integer.parseInt(s[2]), item, s[1]));
             }
         }
+        System.out.println("kaki");
         setNeighbours(neighbour);
     }
 

@@ -11,7 +11,7 @@ public class Game {
     /**
      * A játéktáblát tárolja.
      */
-    private GameBoard gameboard;
+    private GameBoard gameboard = new GameBoard();
 
     /**
      * Az adott játékosokat tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el
@@ -48,31 +48,35 @@ public class Game {
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
     public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
+        System.out.println("kaki");
         gameboard.init(fields, neighbours);
+        System.out.println("kaki");
+        Field field = null;
         for (String[] i : playerdata) {
             String[] player = i;
             if (player[2].equals("ex")) {
-                Field field = null;
                 for (Field f : gameboard.getFields())
                     if (f.name.equals(player[3]))
                         field = f;
-                players.add(new Explorer(this, field, player[1].charAt(0)));
+                players.add(new Explorer(this, field, player[1].charAt(0), 4));
             } else {
-                Field field = null;
                 for (Field f : gameboard.getFields())
                     if (f.name.equals(player[3]))
                         field = f;
-                players.add(new Eskimo(this, field, player[1].charAt(0)));
+                players.add(new Eskimo(this, field, player[1].charAt(0), 5));
             }
         }
         if (bearstartfield != null) {
-            Field field = null;
             for (Field f : gameboard.getFields())
                 if (f.name.equals(bearstartfield))
                     field = f;
             polarbear = new PolarBear(field);
-        } else
-            polarbear = new PolarBear(gameboard.getRandomField());
+            field.stepOn(polarbear);
+        } else {
+            field = gameboard.getRandomField();
+            polarbear = new PolarBear(field);
+            field.stepOn(polarbear);
+        }
     }
 
     /**
@@ -85,8 +89,7 @@ public class Game {
      * Végezetül az endGame(Result) függvény kerül meghívásra .
      */
     public void mainLoop(ArrayList<String[]> activities) {
-        int i = 0;
-        while (!activities.get(i).equals("")) {
+        for(int i = 0; i < activities.size(); i++) {
             String[] command = activities.get(i);
             Player player;
             switch (command[0]) {
@@ -125,10 +128,16 @@ public class Game {
                                     }
                                 }
                                 break;
-                            } else if (command[1].equals("polarbear"))
+                            } else if (command[1].equals("polarbear")) {
                                 polarbear.state();
+                                break;
+                            } else if (command[1].equals("game")) {
+                                this.state();
+                                break;
+                            }
                             break;
-                    }
+
+                    } break;
                 case "bear":
                     if (command[1].equals("r")) {
                         polarbear.move();
@@ -149,54 +158,12 @@ public class Game {
                         gameboard.storm(stormfield);
                         break;
                     }
-                case "W":
-
-                case "D":
-                case "S":
-                case "A":
-                case "J":
-                case "K":
-                case "L":
-                case "M":
-                case "I":
+                default:
+                    player = which(command[1].charAt(0));
+                    player.round(command);
+                    break;
             }
         }
-
-
-        Result p_result = Result.OK, quitresult = Result.OK;
-        int activity_idx = 0, bearmove_idx = 0;
-        boolean hasSomeOneDiedOrWon = false;
-        while (!hasSomeOneDiedOrWon && p_result == Result.OK) {
-
-            p_result = polarbear.move(bearmove.get(bearmove_idx++));
-
-            ListIterator<Player> i = players.listIterator();
-            Result s_result = Result.OK, r_result = Result.OK;
-            while (i.hasNext() && s_result == Result.OK && r_result == Result.OK) {
-                gameboard.aging();
-                if (randomstorm) {
-                    if (new Random().nextInt(101) < 33)
-                        s_result = gameboard.storm(null);
-                } else
-                    s_result = gameboard.storm(fields);
-
-                if (s_result != Result.DIE) {
-                    r_result = players.get(i.nextIndex()).round(activities.get(activity_idx++));
-                    i.next();
-                }
-            }
-            if (s_result != Result.OK) {
-                hasSomeOneDiedOrWon = true;
-                quitresult = s_result;
-            } else if (r_result != Result.OK) {
-                hasSomeOneDiedOrWon = true;
-                quitresult = r_result;
-            } else if (p_result != Result.OK) {
-                hasSomeOneDiedOrWon = true;
-                quitresult = p_result;
-            }
-        }
-        endGame(quitresult);
     }
 
     public Player which(char c) {
@@ -247,7 +214,7 @@ public class Game {
      * @return true or false
      */
     public boolean haveAllParts() {
-        return (flare_gun.size() == 3) ? true : false;
+        return flare_gun.size() == 3;
     }
 
     /**

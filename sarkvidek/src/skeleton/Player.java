@@ -18,7 +18,7 @@ public abstract class Player {
     /**
      * Az adott játékos munkájának (szebben megfogalmazva: munkára fordítható energiájának) egységeit tárolja.
      */
-    protected int work;
+    protected int work = 4;
 
     /**
      * Tárolja az aktuális játékot.
@@ -38,10 +38,11 @@ public abstract class Player {
     /**
      * Default constructor
      */
-    public Player(Game g, Field actual, char c) {
+    public Player(Game g, Field actual, char c, int h) {
         game = g;
         actualfield = actual;
         color = c;
+        heat = h;
     }
 
     /**
