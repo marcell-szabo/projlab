@@ -199,6 +199,7 @@ public abstract class Player {
      * Ebben az esetben amivel ez a metódus tér vissza, azzal fog a helpMe() is.
      *
      * @return Result a segítségkérés sikerességével
+     *
      */
     public Result helpMe() {
         for (Tool t : tools) {
