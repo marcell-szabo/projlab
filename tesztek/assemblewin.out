@@ -1,0 +1,13 @@
+Game:
+flaregun: flare, gun, charge, 
+players: b, r, p, 
+
+IceField:
+snow: 0
+capacity: 6
+protection: false
+item: tent
+players: b, r, p, 
+polarbear: false
+
+Victory

@@ -1,8 +1,0 @@
-Eskimo:
-color: p
-heat: 5
-work: 4
-tools: 
-actualfield: f1
-
-Game Over

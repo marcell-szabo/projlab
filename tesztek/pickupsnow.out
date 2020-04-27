@@ -1,0 +1,30 @@
+Eskimo:
+color: p
+heat: 5
+work: 4
+tools: 
+actualfield: f1
+
+IceField:
+snow: 2
+capacity: 6
+protection: false
+item: divingsuit
+players: p, 
+polarbear: false
+
+Eskimo:
+color: p
+heat: 5
+work: 4
+tools: 
+actualfield: f1
+
+IceField:
+snow: 2
+capacity: 6
+protection: false
+item: divingsuit
+players: p, 
+polarbear: false
+
