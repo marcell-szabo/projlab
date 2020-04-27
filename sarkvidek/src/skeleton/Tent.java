@@ -68,6 +68,7 @@ public class Tent extends Igloo implements Tool {
     /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Toolt implementáló példány szeretné magát
      * összehasonlítani vele).
+     *
      * @param t az összehasonlításhoz szükséges Tent példány
      * @return true
      */
