@@ -48,6 +48,7 @@ public abstract class Player {
     /**
      * Visszaadja az eszközöket tartalmazó listát, tehát a tools attribútumát.
      *
+     *
      * @return eszközöket tartalmazó lista
      */
     public List<Tool> getTools() {
