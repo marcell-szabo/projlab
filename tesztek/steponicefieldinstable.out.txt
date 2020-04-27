@@ -1,9 +1,0 @@
-IceField:
-snow: 0
-capacity: 1
-protection: false
-item: breakableshovel(used: 3)
-players: r, 
-polarbear: false
-
-Game Over
