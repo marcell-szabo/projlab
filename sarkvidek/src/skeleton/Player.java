@@ -263,4 +263,6 @@ public abstract class Player {
      */
     public abstract Result specialSkill(String c);
 
+    public abstract void state();
+
 }

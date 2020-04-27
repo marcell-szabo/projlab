@@ -10,8 +10,8 @@ import static skeleton.Result.OK;
  */
 public class Hole extends Field {
 
-    public Hole(int snow, int capacity) {
-        super(snow, capacity);
+    public Hole(int snow, int capacity, String name) {
+        super(snow, capacity, name);
     }
 
     /**

@@ -11,7 +11,9 @@ public class Main {
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> players = new ArrayList<>();
         ArrayList<String[]> commands = new ArrayList<>();
-        String[] bearStart = new String[0];
+        ArrayList<String[]> bearmoves = new ArrayList<>();
+        ArrayList<String[]> neighbours = new ArrayList<>();
+        String bearStart = "";
         /*
         setfield, addfield game->gameboard
         0-fel, 1-jobbra, 2-le, 3-balra
@@ -24,15 +26,20 @@ public class Main {
             currentLine = br.readLine();
             while (!(currentLine == null) && (!currentLine.equals("")) ) {
                 String[] line = currentLine.split(" ");
-                if(line[0].equals("setfield") || line[0].equals("addfield"))
+                if(line[0].equals("setfield"))
                     fields.add(line);
+                else if(line[0].equals("addfield"))
+                    neighbours.add((line));
                 else if(line[0].equals("addplayer"))
                     players.add(line);
                 else if(line[0].equals("setbear"))
-                    bearStart = line;
+                    bearStart = line[2];
                 else if(line[0].equals("state")){
                     commands.add(line);
-                }
+                }else if(line[0].equals("bear"))
+                    commands.add(line);
+                else if(line[0].equals("storm"))
+                    commands.add(line);
                 else{
                     if(line[0].equals("move")){
                         switch (Integer.parseInt(line[2])){
@@ -77,7 +84,7 @@ public class Main {
                 e.printStackTrace();
         }
 
-        Game game = new Game(fields, players, bearStart);
+        Game game = new Game(fields, players, bearStart, neighbours);
         game.mainLoop(commands);
     }
 

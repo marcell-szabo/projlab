@@ -18,6 +18,10 @@ public class GameBoard {
      */
     public GameBoard() { }
 
+    public List<Field> getFields(){
+        return fields;
+    }
+
     /**
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
@@ -70,7 +74,7 @@ public class GameBoard {
         int i = 0;
         while(fieldsinput.get(i)[0].equals("setfield")){
             if(Integer.parseInt(fieldsinput.get(i)[2]) == 0)
-                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2])));
+                fields.add(new Hole(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), fieldsinput.get(i)[1]));
             else {
                 Item item = null;
                 switch (fieldsinput.get(i)[3]) {
@@ -89,7 +93,7 @@ public class GameBoard {
                     case "t": item = new Tent();
                             break;
                 }
-                 fields.add(new IceField(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), item));
+                 fields.add(new IceField(Integer.parseInt(fieldsinput.get(i)[4]), Integer.parseInt(fieldsinput.get(i)[2]), item, fieldsinput.get(i)[1]));
             }
         }
         setNeighbours(neighbour);

@@ -42,4 +42,8 @@ public class PolarBear {
 
         return actualfield.stepOn(this);
     }
+
+    public void state() {
+        //TODO STATE
+    }
 }

@@ -43,6 +43,7 @@ public class Eskimo extends Player {
         return actualfield.build(igloo);
     }
 
+    @Override
     public void state(){
         System.out.println("Eskimo:");
         System.out.println("color: " + this.color);
@@ -52,10 +53,7 @@ public class Eskimo extends Player {
         for(Tool t: getTools())
             t.state();
         System.out.println("Actualfield: ");
-
-
-
-
+        //TODO FIELD STATE ÉS TOOLS STATE
     }
 
 }

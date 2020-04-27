@@ -11,6 +11,7 @@ import static skeleton.Result.OK;
  */
 public abstract class Field
 {
+    protected String name;
 
     /**
      * Az adott mezõn lévõ hóréteg mennyiségét tárolja.
@@ -39,9 +40,10 @@ public abstract class Field
      */
     protected PolarBear polarbear;
 
-    public Field(int snow, int capacity) {
+    public Field(int snow, int capacity, String name) {
         this.snow = snow;
-        this.capacity = snow;
+        this.capacity = capacity;
+        this.name = name;
     }
 
     /**

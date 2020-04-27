@@ -76,6 +76,19 @@ public class Explorer extends Player {
         return OK;
     }
 
+    @Override
+    public void state() {
+        System.out.println("Explorer:");
+        System.out.println("color: " + this.color);
+        System.out.println("heat: " + this.heat);
+        System.out.println("work: " + this.work);
+        System.out.println("tools: ");
+        for(Tool t: getTools())
+            t.state();
+        System.out.println("Actualfield: ");
+        //TODO FIELD STATE ÉS TOOLS STATE
+    }
+
 
 }
 
