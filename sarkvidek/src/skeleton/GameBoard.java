@@ -6,6 +6,7 @@ import java.util.*;
 /**
  * Létrehozza, inicializálja, összefogja s egyben tárolja az összes mezõt. Ha az adott körben úgy adta a gép,
  * hogy lesz hóvihar, akkor az elõzõek mellett kezeli azt is, hogy melyik mezõkre fog leesni egy réteg hó.
+ *
  */
 public class GameBoard {
     /**
