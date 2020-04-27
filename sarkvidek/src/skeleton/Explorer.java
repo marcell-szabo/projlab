@@ -76,17 +76,26 @@ public class Explorer extends Player {
         return OK;
     }
 
+    /**
+     * Az Explorer adatainak kiírásáért felelõs függvény.
+     * Megjeleníti a sarkkutató nevét, testhõmérsékletét, maradék munkáját,
+     * a nála lévõ eszközöket és annak a mezõnek a nevét amelyiken áll.
+     */
     @Override
     public void state() {
         System.out.println("Explorer:");
         System.out.println("color: " + this.color);
         System.out.println("heat: " + this.heat);
         System.out.println("work: " + this.work);
-        System.out.println("tools: ");
-        for(Tool t: getTools())
-            t.state();
-        System.out.println("Actualfield: ");
-        //TODO FIELD STATE ÉS TOOLS STATE
+        System.out.print("tools: ");
+        for(Tool t: getTools()) {
+            t.namestate();
+            System.out.print(", ");
+        }
+        System.out.print("\n");
+        System.out.print("Actualfield: " );
+        actualfield.namestate();
+        System.out.print("\n");
     }
 
 

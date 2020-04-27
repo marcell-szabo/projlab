@@ -265,4 +265,12 @@ public abstract class Player {
 
     public abstract void state();
 
+    /**
+     * A játékos nevének kiírásáért felelõs függvény.
+     */
+    public void namestate(){
+        System.out.print(color);
+    }
+
+
 }

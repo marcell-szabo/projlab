@@ -176,4 +176,11 @@ public abstract class Field
     public void aging(){}
 
     public abstract void state();
+
+    /**
+     *A mezõ nevének kiírásáért felelõs függvény
+     */
+    public void namestate(){
+        System.out.print(name);
+    }
 }

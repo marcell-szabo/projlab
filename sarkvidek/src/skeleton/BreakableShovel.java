@@ -42,7 +42,11 @@ public class BreakableShovel extends Shovel {
         return r;
     }
 
-    public void state(){
-        System.out.println("Breakable shovel");
+    /**
+     *A Breakablehovel nevének és annak használtságának kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){
+        System.out.print("breakableshovel(used: "+ this.used + ")");
     }
 }

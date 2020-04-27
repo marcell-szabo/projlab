@@ -96,10 +96,6 @@ public class Tent extends Igloo implements Tool {
         return Result.NOTHING;
     }
 
-    @Override
-    public void state() {
-        System.out.println("Tent");
-    }
 
     /**
      * NOTHING értékkel tér vissza.
@@ -141,5 +137,11 @@ public class Tent extends Igloo implements Tool {
         return Result.OK;
     }
 
-
+    /**
+     *A Tent nevének kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){
+        System.out.print("tent");
+    }
 }

@@ -109,10 +109,6 @@ public class DivingSuit implements Tool {
         return p.changeField(choosedField);
     }
 
-    @Override
-    public void state() {
-        System.out.println("Diving suit");
-    }
 
     /**
      * NOTHING értékkel tér vissza.
@@ -133,5 +129,13 @@ public class DivingSuit implements Tool {
     @Override
     public Result build(Field f) {
         return Result.NOTHING;
+    }
+
+    /**
+     *A Divingsuit nevének kiírásáért felelõs függvény
+     */
+    @Override
+    public void namestate(){
+        System.out.print("divingsuit");
     }
 }
