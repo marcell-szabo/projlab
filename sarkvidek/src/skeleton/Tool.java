@@ -19,10 +19,38 @@ public interface Tool extends Item {
 
     /**
      * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
-     * @param t az összehasonlításhoz szükséges Tool példány
+     * @param d az összehasonlításhoz szükséges DivingSuit példány
      * @return Az összehasonlítás eredménye
      */
-    boolean isSame(Tool t);
+    boolean isSame(DivingSuit d);
+
+    /**
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * @param s az összehasonlításhoz szükséges Shovel példány
+     * @return Az összehasonlítás eredménye
+     */
+    boolean isSame(Shovel s);
+
+    /**
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * @param bs az összehasonlításhoz szükséges BreakableShovel példány
+     * @return Az összehasonlítás eredménye
+     */
+    boolean isSame(BreakableShovel bs);
+
+    /**
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * @param t az összehasonlításhoz szükséges Tent példány
+     * @return Az összehasonlítás eredménye
+     */
+    boolean isSame(Tent t);
+
+    /**
+     * Megvizsgálja a megkapott eszközre, hogy az adott játékos rendelkezik-e már vele.
+     * @param r az összehasonlításhoz szükséges Rope példány
+     * @return Az összehasonlítás eredménye
+     */
+    boolean isSame(Rope r);
 
     /**
 	 * Mezõ takarításáért felelõs függvény.

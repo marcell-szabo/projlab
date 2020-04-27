@@ -36,15 +36,40 @@ public class Shovel implements Tool {
     }
 
     /**
-     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Shovel-tõl és BrakableShovel-tõl különbözõ
-     * példány szeretné magát összehasonlítani vele).
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
      *
-     * @param t az összehasonlításhoz szükséges Tool példány
+     * @param t az összehasonlításhoz szükséges Tent példány
      * @return false
      */
     @Override
-    public boolean isSame(Tool t) {
-        return this.isSame(this);
+    public boolean isSame(Tent t) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param r az összehasonlításhoz szükséges Rope példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Rope r) {
+        return false;
+    }
+
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param d az összehasonlításhoz szükséges DivingSuit példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(DivingSuit d) {
+        return false;
     }
 
     /**
@@ -68,6 +93,8 @@ public class Shovel implements Tool {
         if(can) p.addTool(this);
         return can? Result.OK : Result.NOTHING;
     }
+
+
 
     /**
      * Akkor hívódik meg, ha az ásást végzõ játékosnál van ásó. Ekkor ez a függvény meghívja a

@@ -47,14 +47,50 @@ public class Rope implements Tool {
     }
 
     /**
-     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Rope-tól különbözõ
-     * példány szeretné magát összehasonlítani vele).
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
      *
-     * @param t az összehasonlításhoz szükséges Tool példány
-     * @return true
+     * @param d az összehasonlításhoz szükséges DivingSuit példány
+     * @return false
      */
     @Override
-    public boolean isSame(Tool t) {
+    public boolean isSame(DivingSuit d) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param s az összehasonlításhoz szükséges Shovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Shovel s) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param bs az összehasonlításhoz szükséges BreakableShovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(BreakableShovel bs) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param t az összehasonlításhoz szükséges Tent példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Tent t) {
         return false;
     }
 

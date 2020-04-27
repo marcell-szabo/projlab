@@ -54,15 +54,39 @@ public class Tent extends Igloo implements Tool {
     }
 
     /**
-     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy Tent-tõl különbözõ
-     * példány szeretné magát összehasonlítani vele).
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
      *
-     * @param t az összehasonlításhoz szükséges Tool példány
+     * @param d az összehasonlításhoz szükséges DivingSuit példány
      * @return false
      */
     @Override
-    public boolean isSame(Tool t) {
-        return this.isSame(this);
+    public boolean isSame(DivingSuit d) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param s az összehasonlításhoz szükséges Shovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Shovel s) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param bs az összehasonlításhoz szükséges BreakableShovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(BreakableShovel bs) {
+        return false;
     }
 
     /**
@@ -74,6 +98,18 @@ public class Tent extends Igloo implements Tool {
      */
     public boolean isSame(Tent t) {
         return true;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param r az összehasonlításhoz szükséges Rope példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Rope r) {
+        return false;
     }
 
     /**

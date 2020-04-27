@@ -16,18 +16,6 @@ public class DivingSuit implements Tool {
     }
 
     /**
-     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit-tól különbözõ
-     * példány szeretné magát összehasonlítani vele).
-     *
-     * @param t az összehasonlításhoz szükséges Tool példány
-     * @return false
-     */
-    @Override
-    public boolean isSame(Tool t) {
-        return this.isSame(this);
-    }
-
-    /**
      * Mindig TRUE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy DivingSuit
      * példány szeretné magát összehasonlítani vele).
      *
@@ -36,6 +24,54 @@ public class DivingSuit implements Tool {
      */
     public boolean isSame(DivingSuit d) {
         return true;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param s az összehasonlításhoz szükséges Shovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Shovel s) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param bs az összehasonlításhoz szükséges BreakableShovel példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(BreakableShovel bs) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param t az összehasonlításhoz szükséges Tent példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Tent t) {
+        return false;
+    }
+
+    /**
+     * Mindig FALSE értékkel tér vissza (hiszen csak akkor hívódik meg, ha egy másmilyen példány szeretné magát
+     * összehasonlítani vele).
+     *
+     * @param r az összehasonlításhoz szükséges Rope példány
+     * @return false
+     */
+    @Override
+    public boolean isSame(Rope r) {
+        return false;
     }
 
     /**
