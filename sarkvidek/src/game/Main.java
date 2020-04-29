@@ -7,17 +7,14 @@ import java.util.ArrayList;
 
 public class Main {
 
+
+    /*kjhgfdsdfghjklélkjhgfdfghjklé*/
     public static void main(String[] args) {
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> players = new ArrayList<>();
         ArrayList<String[]> commands = new ArrayList<>();
         ArrayList<String[]> neighbours = new ArrayList<>();
         String bearStart = "";
-        /*
-        setfield, addfield game->gameboard
-        0-fel, 1-jobbra, 2-le, 3-balra
-        move-clean-pickup-build billentyûre átalakítás
-         */
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String currentLine;
