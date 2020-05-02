@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class Main {
 
-
-    /*kjhgfdsdfghjklélkjhgfdfghjklé*/
     public static void main(String[] args) {
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> players = new ArrayList<>();
@@ -72,8 +70,6 @@ public class Main {
                 e.printStackTrace();
         }
 
-        Game game = new Game(fields, players, bearStart, neighbours);
-        game.mainLoop(commands);
     }
 
 }

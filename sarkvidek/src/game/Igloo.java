@@ -12,7 +12,7 @@ public class Igloo {
     }
 
     /**
-     * Virtu�lis �res f�ggv�ny, ami csak visszat�r OK-kal.
+     * Virtuális üres függvény, ami csak visszatér OK-kal.
      *
      * @return OK
      */

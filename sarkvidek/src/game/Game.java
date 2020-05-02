@@ -1,6 +1,6 @@
 package game;
 
-import javax.print.DocFlavor;
+import java.io.*;
 import java.util.*;
 
 import static game.Result.*;
@@ -27,6 +27,8 @@ public class Game {
      */
     private List<FlareGun> flare_gun = new ArrayList<>();
 
+    private Field startField;
+
     /*
      * A jegesmedvét tárolja
      * */
@@ -38,8 +40,24 @@ public class Game {
      * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game(List<String[]> fields, List<String[]> playerdata, String bearstartfield, ArrayList<String[]> neighbours) {
-        init(fields, playerdata, bearstartfield, neighbours);
+    public Game(int n) throws IOException {
+        String file = "/Users/kinga/projlab/sarkvidek/src/game/pickupsame.txt";
+        FileReader fr = new FileReader(file);
+        ArrayList<String[]> fields = new ArrayList<>();
+        ArrayList<String[]> neighbours = new ArrayList<>();
+        BufferedReader br = new BufferedReader(fr);
+        String currentLine = br.readLine();
+        while (currentLine != null) {
+            String[] line = currentLine.split(" ");
+            if (line[0].equals("setfield"))
+                fields.add(line);
+            else if (line[0].equals("addfield"))
+                neighbours.add((line));
+            currentLine = br.readLine();
+        }
+        br.close();
+        init(fields, neighbours);
+
     }
 
     /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
@@ -50,38 +68,23 @@ public class Game {
      * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
-    public void init(List<String[]> fields, List<String[]> playerdata, String bearstartfield, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
+    public void init(List<String[]> fields, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
         gameboard.init(fields, neighbours);
-        Field field = null;
-        if (bearstartfield != null) {
-            for (Field f : gameboard.getFields())
-                if (f.name.equals(bearstartfield))
-                    field = f;
-            polarbear = new PolarBear(field);
-            field.stepOn(polarbear);
-        } else {
-            field = gameboard.getRandomField();
-            polarbear = new PolarBear(field);
-            field.stepOn(polarbear);
-        }
-        for (String[] i : playerdata) {
-            String[] player = i;
-            if (player[2].equals("ex")) {
-                for (Field f : gameboard.getFields())
-                    if (f.name.equals(player[3]))
-                        field = f;
-                players.add(new Explorer(this, field, player[1].charAt(0), 4));
-                field.stepOn(players.get(players.size()-1));
-            } else {
-                for (Field f : gameboard.getFields())
-                    if (f.name.equals(player[3]))
-                        field = f;
-                players.add(new Eskimo(this, field, player[1].charAt(0), 5));
-                field.stepOn(players.get(players.size()-1));
-            }
-        }
-
+        Field field;
+        startField = gameboard.getStartField();
+        field = gameboard.getRandomField();
+        polarbear = new PolarBear(field);
+        field.stepOn(polarbear);
     }
+
+    public void addPlayer(Player p) {
+        players.add(p);
+    }
+
+    public Field getStartField() {
+        return startField;
+    }
+
 
     /**
      * Ciklusban hívogatja meg a játékosok köreinek lezajlásáért felelõs függvényeket.
@@ -94,7 +97,7 @@ public class Game {
      */
     public void mainLoop(ArrayList<String[]> activities) {
         Result lastResult = NOTHING;
-        for(int i = 0; i < activities.size(); i++) {
+        for (int i = 0; i < activities.size(); i++) {
             String[] command = activities.get(i);
             Player player;
             switch (command[0]) {
@@ -142,7 +145,8 @@ public class Game {
                             }
                             break;
 
-                    } break;
+                    }
+                    break;
                 case "bear":
                     if (command[1].equals("r")) {
                         lastResult = polarbear.move();
@@ -171,11 +175,10 @@ public class Game {
                     lastResult = player.round(command);
                     break;
             }
-            if(lastResult == DIE) {
+            if (lastResult == DIE) {
                 this.endGame(lastResult);
                 break;
-            }
-            else if(lastResult == WIN) {
+            } else if (lastResult == WIN) {
                 this.endGame(lastResult);
                 break;
             }
@@ -238,10 +241,10 @@ public class Game {
      * A Game adatainak kiírásáért felelõs függvény.
      * Megjeleníti a játék során már összegyûjtött FlareGun részeket és a játék összes játékosának nevét.
      */
-    public void state(){
+    public void state() {
         System.out.println("Game:");
         System.out.print("flaregun: ");
-        for(FlareGun f: flare_gun) {
+        for (FlareGun f : flare_gun) {
             f.namestate();
             System.out.print(", ");
         }
