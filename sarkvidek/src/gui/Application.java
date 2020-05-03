@@ -12,11 +12,11 @@ import java.io.IOException;
 public class Application {
     private JFrame frame;
     ImageResoucres imageResoucres = new ImageResoucres();
-    Game game;
+    Game game = new Game();
 
-    public Application(Game game){
-        this.game = game;
+    public Application(){
         initalize();
+        MainScreen mainScreen = new MainScreen(game);
     }
 
     private void initalize() {

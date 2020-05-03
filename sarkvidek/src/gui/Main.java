@@ -6,11 +6,10 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game();
+
         EventQueue.invokeLater(() -> {
             try {
-                Application application = new Application(game);
-                MainScreen mainScreen = new MainScreen(game);
+                Application application = new Application();
             } catch (Exception e) {
                 e.printStackTrace();
             }
