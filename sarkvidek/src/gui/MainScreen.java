@@ -12,34 +12,32 @@ import java.awt.event.WindowEvent;
 
 public class MainScreen {
 
-    protected JFrame dialog;
+    protected JDialog frame;
     private Game game;
+    private Application application;
 
-    public MainScreen(Game game){
+    public MainScreen(Application application, Game game){
+        this.application = application;
         this.game = game;
-        initalize();
+        initialize();
+
     }
 
-    private void initalize() {
-        dialog = new JFrame();
-        dialog.setResizable(false);
-        dialog.setBounds(220, 200, 600, 400);
+    private void initialize() {
+        frame = new JDialog();
+        frame.setResizable(false);
+        frame.setBounds(220, 200, 600, 400);
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         JPanel settings = new JPanel();
         settings.setLayout(new BoxLayout(settings, BoxLayout.PAGE_AXIS));
 
-        JPanel players = new JPanel();
-        players.setLayout(new BoxLayout(players, BoxLayout.PAGE_AXIS));
         String[] numbers = {"3 játékos", "4 játékos", "5 játékos", "6 játékos"};
         JComboBox number = new JComboBox(numbers);
 
-        players.add(number);
-        settings.add(players);
+        settings.add(number);
 
-        JPanel colors = new JPanel();
-        colors.setLayout(new BoxLayout(colors, BoxLayout.PAGE_AXIS));
         String[] characters = {"Eszkimó", "Sarkkutató"};
         JComboBox first = new JComboBox(characters);
         first.setBackground(Color.magenta);
@@ -55,11 +53,14 @@ public class MainScreen {
         sixth.setBackground(Color.blue);
 
 
-
         JButton next = new JButton("Következõ");
         next.setAlignmentX(Component.CENTER_ALIGNMENT);
+        settings.add(next);
+
         JButton start = new JButton("Játék indítása");
         start.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
         final int[] n = {0};
         next.addActionListener(new ActionListener() {
             @Override
@@ -69,54 +70,46 @@ public class MainScreen {
 
                 switch (n[0]){
                     case 3:
-                        colors.add(first);
-                        colors.add(second);
-                        colors.add(third);
+                        settings.add(first);
+                        settings.add(second);
+                        settings.add(third);
                         break;
                     case 4:
-                        colors.add(first);
-                        colors.add(second);
-                        colors.add(third);
-                        colors.add(fourth);
+                        settings.add(first);
+                        settings.add(second);
+                        settings.add(third);
+                        settings.add(fourth);
                         break;
                     case 5:
-                        colors.add(first);
-                        colors.add(second);
-                        colors.add(third);
-                        colors.add(fourth);
-                        colors.add(fifth);
+                        settings.add(first);
+                        settings.add(second);
+                        settings.add(third);
+                        settings.add(fourth);
+                        settings.add(fifth);
                         break;
                     case 6:
-                        colors.add(first);
-                        colors.add(second);
-                        colors.add(third);
-                        colors.add(fourth);
-                        colors.add(fifth);
-                        colors.add(sixth);
+                        settings.add(first);
+                        settings.add(second);
+                        settings.add(third);
+                        settings.add(fourth);
+                        settings.add(fifth);
+                        settings.add(sixth);
                         break;
                     default:
                         break;
                 }
-                settings.add(colors);
+
                 settings.add(start);
-                panel.add(settings);
-                dialog.add(panel);
-                dialog.repaint();
-                dialog.revalidate();
+                settings.repaint();
+                settings.revalidate();
             }
         });
 
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Game game = null;
                 switch (n[0]){
                     case 3:
-                        try {
-                            game = new Game();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
                             game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
@@ -131,11 +124,6 @@ public class MainScreen {
                             game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
                         break;
                     case 4:
-                        try {
-                            game = new Game();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
                             game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
@@ -154,11 +142,6 @@ public class MainScreen {
                             game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
                         break;
                     case 5:
-                        try {
-                            game = new Game();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
                             game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
@@ -181,11 +164,7 @@ public class MainScreen {
                             game.addPlayer(new Explorer(game,game.getStartField(), 'r', 4));
                         break;
                     case 6:
-                        try {
-                            game = new Game();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
                             game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
@@ -214,16 +193,17 @@ public class MainScreen {
                     default:
                         break;
                 }
-
-                dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING));
+                game.init(n[0]);
+                application.draw();
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
 
-        settings.add(next);
+
 
         panel.add(settings);
-        dialog.add(panel);
-        dialog.setVisible(true);
+        frame.add(panel);
+        frame.setVisible(true);
 
     }
 }

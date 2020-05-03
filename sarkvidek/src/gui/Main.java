@@ -1,7 +1,5 @@
 package gui;
 
-import game.Game;
-
 import java.awt.*;
 
 public class Main {

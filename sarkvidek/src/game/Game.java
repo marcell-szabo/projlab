@@ -41,6 +41,18 @@ public class Game {
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
     public Game() {
+    }
+
+    /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
+     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(int) metódusát átadva neki a játékosok számát.
+     * Ezt követõen a GameBoard getStartField() metódusának segítségével lekéri a játékosok kiindulási mezõjét (bal felsõ).
+     * Majd a bekért adatok alapján konstruktorukban átadva a kiindulási mezõjüket létrehozza az eszkimókat,
+     * illetve a sarkkutatókat reprezentáló osztályokat.
+     * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
+     * aminek az így kapott mezõ lesz az actualfield-je.
+     */
+    public void init(int n) {  //szin tipus kezdomezo
+        System.out.println(n);
         String file = "/Users/kinga/projlab/sarkvidek/src/game/pickupsame.txt";
         FileReader fr = null;
         BufferedReader br = null;
@@ -64,25 +76,13 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        init(fields, neighbours);
-
-    }
-
-    /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
-     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(int) metódusát átadva neki a játékosok számát.
-     * Ezt követõen a GameBoard getStartField() metódusának segítségével lekéri a játékosok kiindulási mezõjét (bal felsõ).
-     * Majd a bekért adatok alapján konstruktorukban átadva a kiindulási mezõjüket létrehozza az eszkimókat,
-     * illetve a sarkkutatókat reprezentáló osztályokat.
-     * Végül a GameBoard osztály getRandomField() függvényének visszatérését átadva konstruktorban létrehozza a Jegesmedvét,
-     * aminek az így kapott mezõ lesz az actualfield-je.
-     */
-    public void init(List<String[]> fields, ArrayList<String[]> neighbours) {  //szin tipus kezdomezo
         gameboard.init(fields, neighbours);
         Field field;
         startField = gameboard.getStartField();
         field = gameboard.getRandomField();
         polarbear = new PolarBear(field);
         field.stepOn(polarbear);
+        System.out.println("asdf");
     }
 
     public void addPlayer(Player p) {
