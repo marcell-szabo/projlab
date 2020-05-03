@@ -1,5 +1,6 @@
 package gui;
 
+import game.Game;
 import gui.MainScreen;
 
 import javax.imageio.ImageIO;
@@ -10,9 +11,11 @@ import java.io.IOException;
 
 public class Application {
     private JFrame frame;
-    ImageIcon sea = new ImageIcon("/Users/kinga/projlab/sarkvidek/src/textures/sea.png");
+    ImageResoucres imageResoucres = new ImageResoucres();
+    Game game;
 
-    public Application(){
+    public Application(Game game){
+        this.game = game;
         initalize();
     }
 
@@ -29,7 +32,7 @@ public class Application {
         JLabel[] seaArray = new JLabel[140];
 
         for(int i = 0; i < 10; i++){
-            seaArray[i] = new JLabel(sea);
+            seaArray[i] = new JLabel(imageResoucres.sea);
             panel.add(seaArray[i]);
         }
 

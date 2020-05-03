@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.*;
 import game.*;
+import game.Eskimo;
+import game.Explorer;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,18 +12,18 @@ import java.awt.event.WindowEvent;
 
 public class MainScreen {
 
-    protected JDialog dialog;
+    protected JFrame dialog;
+    private Game game;
 
-    public MainScreen(){
+    public MainScreen(Game game){
+        this.game = game;
         initalize();
     }
 
     private void initalize() {
-        dialog = new JDialog();
+        dialog = new JFrame();
         dialog.setResizable(false);
         dialog.setBounds(220, 200, 600, 400);
-        dialog.setVisible(true);
-
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -32,6 +34,9 @@ public class MainScreen {
         players.setLayout(new BoxLayout(players, BoxLayout.PAGE_AXIS));
         String[] numbers = {"3 játékos", "4 játékos", "5 játékos", "6 játékos"};
         JComboBox number = new JComboBox(numbers);
+
+        players.add(number);
+        settings.add(players);
 
         JPanel colors = new JPanel();
         colors.setLayout(new BoxLayout(colors, BoxLayout.PAGE_AXIS));
@@ -50,8 +55,6 @@ public class MainScreen {
         sixth.setBackground(Color.blue);
 
 
-        players.add(number);
-        settings.add(players);
 
         JButton next = new JButton("Következõ");
         next.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -63,6 +66,7 @@ public class MainScreen {
             public void actionPerformed(ActionEvent actionEvent) {
                 n[0] = number.getSelectedIndex() + 3;
                 settings.removeAll();
+
                 switch (n[0]){
                     case 3:
                         colors.add(first);
@@ -97,7 +101,8 @@ public class MainScreen {
                 settings.add(start);
                 panel.add(settings);
                 dialog.add(panel);
-                dialog.setVisible(true);
+                dialog.repaint();
+                dialog.revalidate();
             }
         });
 
@@ -108,103 +113,103 @@ public class MainScreen {
                 switch (n[0]){
                     case 3:
                         try {
-                            game = new Game(n[0]);
+                            game = new Game();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'p', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'p', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
                         if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'g', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'g', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
                         if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'y', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'y', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
                         break;
                     case 4:
                         try {
-                            game = new Game(n[0]);
+                            game = new Game();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'p', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'p', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
                         if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'g', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'g', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
                         if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'y', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'y', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
                         if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'o', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'o', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
                         break;
                     case 5:
                         try {
-                            game = new Game(n[0]);
+                            game = new Game();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'p', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'p', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
                         if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'g', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'g', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
                         if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'y', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'y', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
                         if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'o', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'o', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
                         if(String.valueOf(fifth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'r', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'r', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'r', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'r', 4));
                         break;
                     case 6:
                         try {
-                            game = new Game(n[0]);
+                            game = new Game();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'p', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'p', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
                         if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'g', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'g', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
                         if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'y', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'y', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
                         if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'o', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'o', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
                         if(String.valueOf(fifth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'r', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'r', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'r', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'r', 4));
                         if(String.valueOf(sixth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new game.Eskimo(game, game.getStartField(), 'b', 5));
+                            game.addPlayer(new Eskimo(game, game.getStartField(), 'b', 5));
                         else
-                            game.addPlayer(new game.Explorer(game,game.getStartField(), 'b', 4));
+                            game.addPlayer(new Explorer(game,game.getStartField(), 'b', 4));
                         break;
                     default:
                         break;

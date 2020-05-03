@@ -40,22 +40,30 @@ public class Game {
      * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game(int n) throws IOException {
+    public Game() {
         String file = "/Users/kinga/projlab/sarkvidek/src/game/pickupsame.txt";
-        FileReader fr = new FileReader(file);
+        FileReader fr = null;
+        BufferedReader br = null;
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> neighbours = new ArrayList<>();
-        BufferedReader br = new BufferedReader(fr);
-        String currentLine = br.readLine();
-        while (currentLine != null) {
-            String[] line = currentLine.split(" ");
-            if (line[0].equals("setfield"))
-                fields.add(line);
-            else if (line[0].equals("addfield"))
-                neighbours.add((line));
-            currentLine = br.readLine();
+        try {
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+            String currentLine = br.readLine();
+            while (currentLine != null) {
+                String[] line = currentLine.split(" ");
+                if (line[0].equals("setfield"))
+                    fields.add(line);
+                else if (line[0].equals("addfield"))
+                    neighbours.add((line));
+                currentLine = br.readLine();
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        br.close();
         init(fields, neighbours);
 
     }

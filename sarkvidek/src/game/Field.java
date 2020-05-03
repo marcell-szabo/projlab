@@ -120,6 +120,10 @@ public abstract class Field
         return OK;
     }
 
+    public int getSnow(){
+        return snow;
+    }
+
     /**
      * Az attribútumban megkapott játékost kiveszi a players attribútumban tárolt játékosok referenciái közül (mivel a játékos elmozdult a mezõrõl).
      *
