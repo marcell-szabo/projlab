@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Application {
     private JFrame frame;
-    JLabel sea = new JLabel(new ImageIcon("/Users/kinga/projlab/sarkvidek/src/textures/sea.png"));
+    ImageIcon sea = new ImageIcon("/Users/kinga/projlab/sarkvidek/src/textures/sea.png");
 
     public Application(){
         initalize();
@@ -26,9 +26,14 @@ public class Application {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(10, 14));
 
-        panel.add(sea);
-        panel.add(sea);
-        panel.add(sea);
+        JLabel[] seaArray = new JLabel[140];
+
+        for(int i = 0; i < 10; i++){
+            seaArray[i] = new JLabel(sea);
+            panel.add(seaArray[i]);
+        }
+
+
 
         frame.add(panel);
     }
