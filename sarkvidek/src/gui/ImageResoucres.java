@@ -28,7 +28,6 @@ public class ImageResoucres {
     public final ImageIcon esp = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esp.png");
     public final ImageIcon esr = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esr.png");
     public final ImageIcon esy = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esy.png");
-
     public ImageResoucres(){
     }
 }
