@@ -1,9 +1,12 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 /**
- * Igloo �s s�tor megk�l�nb�ztet�s�re szolg�l� oszt�ly.
+ * Igloo és sátor megkülönböztetésére szolgáló osztály.
  */
-public class Igloo {
+public class Igloo implements Drawable {
 
     /**
      * Default constructor
@@ -27,5 +30,10 @@ public class Igloo {
      */
     public boolean protectFromBear(){
         return true;
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+        draw.tentDraw(x,y);
     }
 }

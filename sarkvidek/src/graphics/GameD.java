@@ -1,8 +1,7 @@
-package Faszom;
+package graphics;
 
 import Display.Display;
 import game.Game;
-import graphics.Assets;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;

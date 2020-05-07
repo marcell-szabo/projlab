@@ -1,11 +1,14 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
 
 /**
  * Az ásó felvételének, illetve az ásóval rendelkezõ játékosok hóréteg ellapátolásának kezelésére szolgáló osztály.
  */
-public class Shovel implements Tool {
+public class Shovel implements Tool, Drawable {
 
     /**
      * Default constructor
@@ -149,5 +152,10 @@ public class Shovel implements Tool {
     @Override
     public void namestate(){
         System.out.print("shovel");
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
     }
 }

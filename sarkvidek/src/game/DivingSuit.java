@@ -1,5 +1,8 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
 import static game.Result.DIE;
 
@@ -7,7 +10,7 @@ import static game.Result.DIE;
 /**
  * A búvárruha felvételének, illetve használatának kezelésére szolgáló osztály.
  */
-public class DivingSuit implements Tool {
+public class DivingSuit implements Tool, Drawable {
 
     /**
      * Default constructor
@@ -157,5 +160,10 @@ public class DivingSuit implements Tool {
     @Override
     public void namestate(){
         System.out.print("divingsuit");
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
     }
 }

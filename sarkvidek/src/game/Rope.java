@@ -1,11 +1,14 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
 
 /**
  * A kötél felvételére, illetve a köteles kimentés kezelésére szolgáló osztály.
  */
-public class Rope implements Tool {
+public class Rope implements Tool, Drawable {
 
     /**
      * Default constructor
@@ -147,5 +150,10 @@ public class Rope implements Tool {
     @Override
     public void namestate(){
         System.out.print("rope");
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
     }
 }

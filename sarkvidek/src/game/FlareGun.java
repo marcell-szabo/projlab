@@ -1,11 +1,14 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
 
 /**
  * A jelzõpisztoly alkotóelemeinek felvételével foglalkozó osztály.
  */
-public class FlareGun implements Item {
+public class FlareGun implements Item, Drawable {
     /**
      * Default constructor
      */
@@ -33,4 +36,8 @@ public class FlareGun implements Item {
     @Override
     public void namestate(){ }
 
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
+    }
 }

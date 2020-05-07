@@ -1,6 +1,10 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
+import java.util.List;
 
 import static game.Result.NOTHING;
 import static game.Result.OK;
@@ -9,8 +13,7 @@ import static game.Result.OK;
  * ?	Mezõk kezelésére szolgáló absztrakt osztály. Segítségével a játékosok, illetve
  * a vihar által a mezõn végzett tevékenységeket lehet megvalósítani.
  */
-public abstract class Field
-{
+public abstract class Field implements Drawable {
     protected String name;
 
     /**
@@ -196,4 +199,7 @@ public abstract class Field
     public void namestate(){
         System.out.print(name);
     }
+
+    public abstract void draw(Draw draw, int x, int y);
+
 }

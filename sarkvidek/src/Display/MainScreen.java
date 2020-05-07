@@ -2,8 +2,7 @@ package Display;
 
 import javax.swing.*;
 
-import Display.Display;
-import Faszom.GameD;
+import graphics.GameD;
 import game.*;
 import game.Eskimo;
 import game.Explorer;

@@ -1,11 +1,13 @@
 package game;
 
-import java.util.*;
+import graphics.Draw;
+import graphics.Drawable;
+
 
 /**
  * Étel felvételének kezelésére szolgáló osztály.
  */
-public class Food implements Item {
+public class Food implements Item, Drawable {
 
     /**
      * Default constructor
@@ -33,4 +35,8 @@ public class Food implements Item {
         System.out.print("food");
     }
 
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
+    }
 }

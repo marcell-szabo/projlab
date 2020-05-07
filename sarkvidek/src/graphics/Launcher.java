@@ -1,6 +1,5 @@
-package Faszom;
+package graphics;
 
-import Display.MainScreen;
 import game.Game;
 
 

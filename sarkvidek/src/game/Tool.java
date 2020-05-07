@@ -1,12 +1,15 @@
 package game;
 
 
+import graphics.Draw;
+import graphics.Drawable;
+
 /**
  * Interfész, amely az eszközök felvételének, illetve a velük kapcsolatos interakciók
  * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés, sátorépítés)
  * kezelésére szolgáló osztály.
  */
-public interface Tool extends Item {
+public interface Tool<abstarct> extends Item, Drawable {
 
 
     /**
@@ -88,4 +91,5 @@ public interface Tool extends Item {
      */
     @Override
     void namestate();
+
 }

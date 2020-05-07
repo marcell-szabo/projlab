@@ -1,5 +1,7 @@
 package game;
 
+import graphics.Drawable;
+
 import java.util.*;
 
 import static game.Result.*;
@@ -7,7 +9,7 @@ import static game.Result.*;
 /**
  * J?t?kosok kezel?s?re szolg?l? oszt?ly. A j?t?kosok munk?j?nak ?s testh?j?nek vizsg?lata mellett a k?r?kben elv?gezhet? cselekv?sekkel foglalkozik. Minden j?t?kos k?re addig tart, am?g a work attrib?tum?nak ?rt?ke nem cs?kken le null?ra. Minden cselekv?s, ami az adott esetben enged?lyezett, az egy egys?g munkav?gz?ssel j?r (p?ld?ul t?rgy felv?tele olyan mez?n, amin m?g van h?r?teg nem enged?lyezett, ?s ilyenkor ez nem is j?r munkav?gz?ssel).
  */
-public abstract class Player {
+public abstract class Player implements Drawable {
 
     protected char color;
     /**

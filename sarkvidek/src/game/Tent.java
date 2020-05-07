@@ -1,11 +1,14 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.List;
 
 /**
  * Sátor eltûnésének, illetve megépítésének kezelésére szolgáló osztály.
  */
-public class Tent extends Igloo implements Tool {
+public class Tent extends Igloo implements Tool, Drawable {
 
     /**
      *  A sátor felállítása óta eltelt idõt reprezentálja.
@@ -180,5 +183,10 @@ public class Tent extends Igloo implements Tool {
     @Override
     public void namestate(){
         System.out.print("tent");
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
     }
 }

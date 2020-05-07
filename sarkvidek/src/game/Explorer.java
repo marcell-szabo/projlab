@@ -1,6 +1,9 @@
 package game;
 
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import static game.Result.*;
 
 
@@ -8,7 +11,7 @@ import static game.Result.*;
  * Sarkkutató karaktertípus esetén megadja a maximális testhõ mértékét,
  * illetve kezeli a sarkkutató különleges képességét, tehát egy szomszédos mezõ teherbírásának vizsgálatát.
  */
-public class Explorer extends Player {
+public class Explorer extends Player implements Drawable {
     /**
      * Statikus attribútum. A sarkkutató testhõ szintjének maximális számát adja meg.
      */
@@ -76,6 +79,10 @@ public class Explorer extends Player {
     }
 
 
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
+    }
 }
 
 

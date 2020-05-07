@@ -1,4 +1,8 @@
 package game;
+
+import graphics.Draw;
+import graphics.Drawable;
+
 import static game.Result.*;
 
 /**
@@ -7,8 +11,7 @@ import static game.Result.*;
  * (van-e igloo vagy nincs) milyen következményekkel jár (mezõn levõ hórétegek számát mindig növeljük, viszont a
  * testhõ csökkentése csak az iglooval védetlen mezõkön történik meg).
  */
-public class IceField extends Field
-{
+public class IceField extends Field implements Drawable {
     /**
      * Megadja, hogy adott jégmezõre (icefield-re) van-e építve bármi.
      */
@@ -17,6 +20,7 @@ public class IceField extends Field
      * Tárolja, hogy a mezõn milyen tárgyat lehet felvenni.
      */
     protected Item item;
+
 
     /**
      * Default constructor
@@ -120,6 +124,18 @@ public class IceField extends Field
     }
 
     public Item getItem(){return item; }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+        if(this.getSnow() != 0) {
+            if (this.getProtection() == null) {
+                draw.IceFieldDraw(x, y);
+                return;
+            }else {
+                this.getProtection().draw(draw, x, y);
+            }
+        }
+    }
 
     @Override
     public Result stepOn(PolarBear pb)

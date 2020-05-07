@@ -209,6 +209,10 @@ public class Game {
         return players.size();
     }
 
+    public GameBoard getGameboard(){
+        return gameboard;
+    }
+
     /**
      * A megkapott paraméter alapján eldönti, hogy hogyan végzõdik a játék, majd befejezi azt.
      *

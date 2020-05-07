@@ -1,8 +1,11 @@
 package game;
 
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.Random;
 
-public class PolarBear {
+public class PolarBear implements Drawable {
     /**
      * Default constructor
      */
@@ -58,5 +61,10 @@ public class PolarBear {
         System.out.print("actualfield: ");
         actualfield.namestate();
         System.out.println("\n");
+    }
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
     }
 }

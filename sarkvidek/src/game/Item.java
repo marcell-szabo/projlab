@@ -1,11 +1,13 @@
 package game;
 
+import graphics.Drawable;
+
 import java.util.*;
 
 /**
  * Interfész, amely a tárgyak egységes kezelését biztosítja, ez szolgál a tárgyak felvételének kezelésére.
  */
-interface Item {
+public interface Item extends Drawable {
     /**
      * Absztrakt függvény. A FlareGun, a Food vagy a Tool osztály pickMeUp(Player) függvénye kerül meghívásra.
      *

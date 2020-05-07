@@ -1,11 +1,14 @@
 package game;
+import graphics.Draw;
+import graphics.Drawable;
+
 import static game.Result.*;
 
 /**
  * Eszkimó karaktertípus esetén megadja a maximális testhõ mértékét,
  * illetve kezeli az eszkimó különleges képességét, tehát az igloo építésének menetét.
  */
-public class Eskimo extends Player {
+public class Eskimo extends Player implements Drawable {
     /**
      * Statikus attribútum. Az eszkimó testhõ szintjének maximális számát adja meg.
      */
@@ -65,4 +68,8 @@ public class Eskimo extends Player {
         System.out.println("\n");
     }
 
+    @Override
+    public void draw(Draw draw, int x, int y) {
+
+    }
 }

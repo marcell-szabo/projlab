@@ -1,5 +1,8 @@
 package game;
 //**push**
+import graphics.Draw;
+import graphics.Drawable;
+
 import java.util.*;
 
 import static game.Result.DIE;
@@ -8,7 +11,7 @@ import static game.Result.OK;
 /**
  * Lyukak kezelésére szolgáló osztály. A vele kapcsolatos kimentési kísérletet is ez az osztály kezdi meg.
  */
-public class Hole extends Field {
+public class Hole extends Field implements Drawable {
 
     public Hole(int snow, int capacity, String name) {
         super(snow, capacity, name);
@@ -30,6 +33,11 @@ public class Hole extends Field {
     }
 
     public Item getItem(){return null;}
+
+    @Override
+    public void draw(Draw draw, int x, int y) {
+        draw.holeDraw(x, y);
+    }
 
     /**
      * A Field osztályban lévõ absztrakt függvény megvalósítása.
