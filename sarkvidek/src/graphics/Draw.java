@@ -46,9 +46,12 @@ public class Draw {
         g.drawImage(Assets.texture.get("hole"), x, y, null);
     }
 
-    //Todo
-    public void tentDraw(int x, int y) {
-        g.drawImage(Assets.texture.get("tent"), x, y, null);
+    public void iceDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("ice"), x, y, null);
+    }
+
+    public void tentOpenDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("tentopen"), x, y, null);
     }
 
     public void iglooDraw(int x, int y) {
@@ -63,12 +66,8 @@ public class Draw {
         g.drawImage(Assets.texture.get("holepb"), x, y, null);
     }
 
-    public void iceDraw(int x, int y) {
-        g.drawImage(Assets.texture.get("ice"), x, y, null);
-    }
-
-    public void divingSuitDraw(int x, int y) {
-        g.drawImage(Assets.texture.get("divingsuit"), x, y, null);
+    public void polarbearDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("bear"), x, y, null);
     }
 
     public void esbDraw(int x, int y) {
@@ -139,11 +138,16 @@ public class Draw {
         g.drawImage(Assets.texture.get("rope"), x, y, null);
     }
 
+    public void tentDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("tent"), x, y, null);
+    }
+
     public void chargeDraw(int x, int y) {
         g.drawImage(Assets.texture.get("charge"), x, y, null);
     }
 
-    public void polarbearDraw(int x, int y) {
-        g.drawImage(Assets.texture.get("bear"), x, y, null);
+    public void divingSuitDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("divingsuit"), x, y, null);
     }
+
 }
