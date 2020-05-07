@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/game/Field.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/game/Game.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/game/GameBoard.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/game/Hole.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/src/game/Player.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Direction.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/DivingSuit.java" charset="windows-1250" />
     <file url="file://$PROJECT_DIR$/src/skeleton/Eskimo.java" charset="windows-1250" />
