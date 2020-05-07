@@ -148,7 +148,10 @@ public class IceField extends Field implements Drawable {
                 draw.iceDraw(x,y);
             }else {
                 draw.iceDraw(x,y);
-                this.getProtection().draw(draw, x, y);
+                if(this.getProtection().protectFromBear())
+                    draw.iglooDraw(x, y);
+                else
+                    draw.tentOpenDraw(x, y);
             }
             if(polarbear.actualfield == this)
                 polarbear.draw(draw, x, y);
