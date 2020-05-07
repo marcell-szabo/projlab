@@ -156,6 +156,6 @@ public class Shovel implements Tool, Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.shovelDraw(x, y);
     }
 }

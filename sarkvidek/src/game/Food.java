@@ -37,6 +37,6 @@ public class Food implements Item, Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.foodDraw(x, y);
     }
 }

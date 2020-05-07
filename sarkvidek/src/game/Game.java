@@ -86,6 +86,7 @@ public class Game {
 
     public void addPlayer(Player p) {
         players.add(p);
+        startField.stepOn(p);
     }
 
     public Field getStartField() {

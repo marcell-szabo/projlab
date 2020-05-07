@@ -8,9 +8,9 @@ public class Assets {
 
     public static Map<String, BufferedImage> texture = new HashMap<>();
 
-    private static String[] png = {"bear", "breakableshovel", "charge", "divingsuit", "esb", "esg", "eso", "esp", "esr", "esy", "exb", "exg",
-            "exo", "exp", "exr", "exy", "flare", "food", "gun", "hole", "holepb", "ice", "iglooice", "igloosnow", "rope", "sea", "shovel",
-            "snow", "tent", "tentice", "tentsnow"};
+    private static String[] png = {"bear", "charge", "divingsuit", "esb", "esg", "eso", "esp", "esr", "esy",
+            "exb", "exg", "exo", "exp", "exr", "exy", "flare", "food", "gun", "hole", "holepb",
+            "ice", "igloo", "rope", "sea", "shovel", "snow", "tent", "tentopen"};
 
 
     public static void init(){

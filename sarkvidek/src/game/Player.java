@@ -1,5 +1,6 @@
 package game;
 
+import graphics.Draw;
 import graphics.Drawable;
 
 import java.util.*;
@@ -269,6 +270,12 @@ public abstract class Player implements Drawable {
     public abstract Result specialSkill(int i);
 
     public abstract void state();
+
+    public char getColor(){
+        return color;
+    }
+
+    public abstract void draw(Draw draw, int x, int y);
 
     /**
      * A j?t?kos nev?nek ki?r?s??rt felel?s f?ggv?ny.

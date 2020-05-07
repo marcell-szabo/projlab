@@ -2,7 +2,7 @@ package Display;
 
 import javax.swing.*;
 
-import graphics.GameD;
+
 import game.*;
 import game.Eskimo;
 import game.Explorer;
@@ -44,6 +44,7 @@ public class MainScreen {
         String[] characters = {"Eszkimó", "Sarkkutató"};
         List<JComboBox> cbl = new ArrayList<>();
         Color c[] = {Color.magenta, Color.green, new Color(1f,0.9f,0.1f ), Color.orange, Color.red, Color.blue};
+        char[] chars = {'p', 'g', 'y', 'o', 'r', 'b'};
         for(int i = 1; i <= 6; i++) {
             cbl.add(new JComboBox(characters));
             cbl.get(cbl.size() - 1).setForeground(c[i - 1]);
@@ -69,22 +70,23 @@ public class MainScreen {
                 settings.add(start);
                 settings.repaint();
                 settings.revalidate();
+                
             }
         });
 
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                game.init(n[0]);
                 for(int i = 0; i < n[0]; i++) {
                     if(String.valueOf(cbl.get(i).getSelectedItem()) == "Eszkimó")
-                        game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
+                        game.addPlayer(new Eskimo(game, game.getStartField(), chars[i], 5));
                     else
-                        game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
+                        game.addPlayer(new Explorer(game,game.getStartField(), chars[i], 4));
                 }
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                new Frame(game);
 
-                game.init(n[0]);
-                GameD gameD = new GameD("Jégmezõ", 840, 600, game);
-                gameD.start();
 
             }
         });

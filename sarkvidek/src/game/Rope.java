@@ -154,6 +154,6 @@ public class Rope implements Tool, Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.ropeDraw(x, y);
     }
 }

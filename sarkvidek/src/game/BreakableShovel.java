@@ -55,6 +55,6 @@ public class BreakableShovel extends Shovel implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.shovelDraw(x, y);
     }
 }

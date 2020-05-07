@@ -70,6 +70,27 @@ public class Eskimo extends Player implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        switch(this.getColor()){
+            case 'b':
+                draw.esbDraw(x,y);
+                break;
+            case 'g':
+                draw.esgDraw(x,y);
+                break;
+            case 'o':
+                draw.esoDraw(x,y);
+                break;
+            case 'p':
+                draw.espDraw(x,y);
+                break;
+            case 'r':
+                draw.esrDraw(x,y);
+                break;
+            case 'y':
+                draw.esyDraw(x,y);
+                break;
+            default:
+                break;
+        }
     }
 }
