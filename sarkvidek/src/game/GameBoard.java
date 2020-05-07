@@ -19,6 +19,13 @@ public class GameBoard {
      */
     public GameBoard() { }
 
+    public void asdf(){
+        for( int i = 0; i < fields.size(); i++){
+            System.out.print("teherbírás: " + fields.get(i).getCapacity());
+            System.out.println("hó: " + fields.get(i).getSnow());
+        }
+    }
+
     public List<Field> getFields(){
         return fields;
     }

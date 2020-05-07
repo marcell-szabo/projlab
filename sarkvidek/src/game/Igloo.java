@@ -21,7 +21,7 @@ public class Igloo {
     }
 
     /**
-     * TRUE �rt�kkel t�r vissza, mert megv�di a mez�n tart�zkod� embereket a jegesmedv�t�l.
+     * TRUE értékkel tér vissza, mert megvédi a mezőn tartozkodó embereket a jegesmedvétől.
      *
      * @return true
      */

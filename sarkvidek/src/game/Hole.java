@@ -25,6 +25,12 @@ public class Hole extends Field {
         return OK;
     }
 
+    public Igloo getProtection(){
+        return null;
+    }
+
+    public Item getItem(){return null;}
+
     /**
      * A Field osztályban lévõ absztrakt függvény megvalósítása.
      * Legelõször megnézi, hogy tartózkodik-e az adott mezõn jegesmedve, mivel ha igen, akkor a függvény

@@ -115,6 +115,12 @@ public class IceField extends Field
         return NOTHING;
     }
 
+    public Igloo getProtection(){
+        return protection;
+    }
+
+    public Item getItem(){return item; }
+
     @Override
     public Result stepOn(PolarBear pb)
     {
