@@ -12,7 +12,7 @@ public class GameD implements Runnable {
     private Display display;
     public int width, height;
     public String title;
-    private FieldsDraw fieldsDraw;
+    private Draw draw;
     private Game game;
 
     private boolean running = false;
@@ -45,11 +45,11 @@ public class GameD implements Runnable {
             return;
         }
         g = bs.getDrawGraphics();
-        g.clearRect(0,0,width,height);
-        fieldsDraw = new FieldsDraw(g, game);
+        draw = new Draw(g, game);
 
-        seaDraw();
-        fieldsDraw.MapDraw();
+        g.clearRect(0,0,width,height);
+
+        draw.MapDraw();
 
         bs.show();
         g.dispose();
@@ -87,19 +87,6 @@ public class GameD implements Runnable {
         }
     }
 
-    public void seaDraw(){
-        for(int x = 0; x < 14; x++)
-            g.drawImage(Assets.texture.get("sea"), x*60, 0,null);
 
-        for(int x = 0; x < 14; x++)
-            g.drawImage(Assets.texture.get("sea"), x*60, 540,null);
-
-        for(int y = 0; y < 8; y++)
-            g.drawImage(Assets.texture.get("sea"), 0, (y+1)*60,null);
-
-        for(int y = 0; y < 8; y++)
-            g.drawImage(Assets.texture.get("sea"), 780, (y+1)*60,null);
-
-    }
 
 }

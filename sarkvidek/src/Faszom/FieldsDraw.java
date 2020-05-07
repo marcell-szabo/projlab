@@ -16,6 +16,7 @@ public class FieldsDraw {
     }
 
     public void MapDraw(){
+        seaDraw();
         int y = 60;
         Field first = game.getStartField();
         Field field = game.getStartField();
@@ -32,8 +33,6 @@ public class FieldsDraw {
             field = first;
             y += 60;
         }
-        g.drawImage(Assets.texture.get("iglooice"), 180, 60, null);
-        g.drawImage(Assets.texture.get("exp"), 60, 60, null);
     }
 
     private void FieldDraw(Field field, int x, int y){
@@ -52,6 +51,21 @@ public class FieldsDraw {
                 else g.drawImage(Assets.texture.get("snow"), x, y, null);
             }
         }
+
+    }
+
+    public void seaDraw(){
+        for(int x = 0; x < 14; x++)
+            g.drawImage(Assets.texture.get("sea"), x*60, 0,null);
+
+        for(int x = 0; x < 14; x++)
+            g.drawImage(Assets.texture.get("sea"), x*60, 540,null);
+
+        for(int y = 0; y < 8; y++)
+            g.drawImage(Assets.texture.get("sea"), 0, (y+1)*60,null);
+
+        for(int y = 0; y < 8; y++)
+            g.drawImage(Assets.texture.get("sea"), 780, (y+1)*60,null);
 
     }
 }
