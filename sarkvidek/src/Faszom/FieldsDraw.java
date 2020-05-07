@@ -32,6 +32,8 @@ public class FieldsDraw {
             field = first;
             y += 60;
         }
+        g.drawImage(Assets.texture.get("iglooice"), 180, 60, null);
+        g.drawImage(Assets.texture.get("exp"), 60, 60, null);
     }
 
     private void FieldDraw(Field field, int x, int y){

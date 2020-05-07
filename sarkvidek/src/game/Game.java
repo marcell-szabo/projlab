@@ -52,6 +52,7 @@ public class Game {
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
     public void init(int n) {  //szin tipus kezdomezo
+
         String file = "/Users/kinga/IdeaProjects/projlab/sarkvidek/src/game/pickupsame.txt";
         FileReader fr = null;
         BufferedReader br = null;
