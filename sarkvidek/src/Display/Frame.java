@@ -15,6 +15,7 @@ public class Frame extends JFrame {
 
         this.game = game;
         setSize(840,600);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         init();
@@ -24,9 +25,9 @@ public class Frame extends JFrame {
 
     private void init() {
         setLocationRelativeTo(null);
-         s = new Screen(game);
-         add(s);
+        s = new Screen(game);
+        add(s);
 
-         setVisible(true);
+        setVisible(true);
     }
 }
