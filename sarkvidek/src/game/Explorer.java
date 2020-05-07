@@ -81,7 +81,28 @@ public class Explorer extends Player implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        switch(this.getColor()){
+            case 'b':
+                draw.exbDraw(x,y);
+                break;
+            case 'g':
+                draw.exgDraw(x,y);
+                break;
+            case 'o':
+                draw.exoDraw(x,y);
+                break;
+            case 'p':
+                draw.expDraw(x,y);
+                break;
+            case 'r':
+                draw.exrDraw(x,y);
+                break;
+            case 'y':
+                draw.exyDraw(x,y);
+                break;
+            default:
+                break;
+        }
     }
 }
 

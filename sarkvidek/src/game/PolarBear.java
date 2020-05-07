@@ -65,6 +65,6 @@ public class PolarBear implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.polarbearDraw(x, y);
     }
 }

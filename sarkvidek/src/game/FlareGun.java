@@ -22,10 +22,6 @@ public class FlareGun implements Item, Drawable {
      * @return OK
      */
     public Result pickMeUp(Player p) {
-        /*System.out.println(this.toString() + ".pickMeUp(p);");
-        p.addPart(this);
-        System.out.println(this.toString() + ".pickMeUp(p) returned Result res;");
-        return null;*/
         p.addPart(this);
         return Result.OK;
     }

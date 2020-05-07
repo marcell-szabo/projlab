@@ -129,10 +129,32 @@ public class IceField extends Field implements Drawable {
     public void draw(Draw draw, int x, int y) {
         if(this.getSnow() != 0) {
             if (this.getProtection() == null) {
-                draw.IceFieldDraw(x, y);
-                return;
+                draw.snowDraw(x,y);
             }else {
+                draw.snowDraw(x,y);
                 this.getProtection().draw(draw, x, y);
+            }
+            if(polarbear.actualfield == this)
+                polarbear.draw(draw, x, y);
+            if(this.players != null){
+                for(int i = 0; i < this.players.size(); i++)
+                    this.players.get(i).draw(draw, x, y);
+            }
+        } else {
+            if(this.getItem() != null){
+                this.getItem().draw(draw, x, y);
+            }
+            else if (this.getProtection() == null) {
+                draw.iceDraw(x,y);
+            }else {
+                draw.iceDraw(x,y);
+                this.getProtection().draw(draw, x, y);
+            }
+            if(polarbear.actualfield == this)
+                polarbear.draw(draw, x, y);
+            if(this.players != null){
+                for(int i = 0; i < this.players.size(); i++)
+                    this.players.get(i).draw(draw, x, y);
             }
         }
     }

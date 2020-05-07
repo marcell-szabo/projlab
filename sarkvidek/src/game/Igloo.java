@@ -34,6 +34,6 @@ public class Igloo implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-        draw.tentDraw(x,y);
+        draw.iglooDraw(x,y);
     }
 }

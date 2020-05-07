@@ -3,8 +3,6 @@ package game;
 import graphics.Draw;
 import graphics.Drawable;
 
-import java.util.*;
-
 import static game.Result.DIE;
 import static game.Result.OK;
 
@@ -36,7 +34,14 @@ public class Hole extends Field implements Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-        draw.holeDraw(x, y);
+        if(this.getSnow() != 0) {
+            draw.snowDraw(x, y);
+            if(polarbear.actualfield == this)
+                polarbear.draw(draw, x, y);
+        }else if(polarbear.actualfield == this)
+            draw.polarbearHoleDraw(x, y);
+        else
+            draw.holeDraw(x, y);
     }
 
     /**

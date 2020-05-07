@@ -164,6 +164,6 @@ public class DivingSuit implements Tool, Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.divingSuitDraw(x, y);
     }
 }

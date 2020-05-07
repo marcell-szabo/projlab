@@ -187,6 +187,6 @@ public class Tent extends Igloo implements Tool, Drawable {
 
     @Override
     public void draw(Draw draw, int x, int y) {
-
+        draw.tentDraw(x,y);
     }
 }
