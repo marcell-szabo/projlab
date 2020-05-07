@@ -2,7 +2,7 @@ package Display;
 
 import javax.swing.*;
 
-import graphics.GameD;
+
 import game.*;
 import game.Eskimo;
 import game.Explorer;
@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainScreen {
 
@@ -40,21 +42,15 @@ public class MainScreen {
         settings.add(number);
 
         String[] characters = {"Eszkimó", "Sarkkutató"};
-        JComboBox first = new JComboBox(characters);
-        first.setForeground(Color.magenta);
-        JComboBox second = new JComboBox(characters);
-        second.setForeground(Color.green);
-        JComboBox third = new JComboBox(characters);
-        third.setForeground(new Color(1f,0.9f,0.1f ));
-        JComboBox fourth = new JComboBox(characters);
-        fourth.setForeground(Color.orange);
-        JComboBox fifth = new JComboBox(characters);
-        fifth.setForeground(Color.red);
-        JComboBox sixth = new JComboBox(characters);
-        sixth.setForeground(Color.blue);
+        List<JComboBox> cbl = new ArrayList<>();
+        Color c[] = {Color.magenta, Color.green, new Color(1f,0.9f,0.1f ), Color.orange, Color.red, Color.blue};
+        char[] chars = {'p', 'g', 'y', 'o', 'r', 'b'};
+        for(int i = 1; i <= 6; i++) {
+            cbl.add(new JComboBox(characters));
+            cbl.get(cbl.size() - 1).setForeground(c[i - 1]);
+        }
 
-
-        JButton next = new JButton("Következ?");
+        JButton next = new JButton("Következõ");
         next.setAlignmentX(Component.CENTER_ALIGNMENT);
         settings.add(next);
 
@@ -68,136 +64,30 @@ public class MainScreen {
             public void actionPerformed(ActionEvent actionEvent) {
                 n[0] = number.getSelectedIndex() + 3;
                 settings.removeAll();
-
-                switch (n[0]){
-                    case 3:
-                        settings.add(first);
-                        settings.add(second);
-                        settings.add(third);
-                        break;
-                    case 4:
-                        settings.add(first);
-                        settings.add(second);
-                        settings.add(third);
-                        settings.add(fourth);
-                        break;
-                    case 5:
-                        settings.add(first);
-                        settings.add(second);
-                        settings.add(third);
-                        settings.add(fourth);
-                        settings.add(fifth);
-                        break;
-                    case 6:
-                        settings.add(first);
-                        settings.add(second);
-                        settings.add(third);
-                        settings.add(fourth);
-                        settings.add(fifth);
-                        settings.add(sixth);
-                        break;
-                    default:
-                        break;
+                for(int i = 0; i < n[0]; i++) {
+                    settings.add(cbl.get(i));
                 }
-
                 settings.add(start);
                 settings.repaint();
                 settings.revalidate();
+                
             }
         });
 
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                switch (n[0]){
-                    case 3:
-                        if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
-                        if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
-                        if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
-                        break;
-                    case 4:
-                        if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
-                        if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
-                        if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
-                        if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
-                        break;
-                    case 5:
-                        if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
-                        if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
-                        if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
-                        if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
-                        if(String.valueOf(fifth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'r', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'r', 4));
-                        break;
-                    case 6:
-
-                        if(String.valueOf(first.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'p', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'p', 4));
-                        if(String.valueOf(second.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'g', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'g', 4));
-                        if(String.valueOf(third.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'y', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'y', 4));
-                        if(String.valueOf(fourth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'o', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'o', 4));
-                        if(String.valueOf(fifth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'r', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'r', 4));
-                        if(String.valueOf(sixth.getSelectedItem()) == "Eszkimó")
-                            game.addPlayer(new Eskimo(game, game.getStartField(), 'b', 5));
-                        else
-                            game.addPlayer(new Explorer(game,game.getStartField(), 'b', 4));
-                        break;
-                    default:
-                        break;
-                }
                 game.init(n[0]);
-                GameD gameD = new GameD("Jégmez?", 840, 600, game);
-                gameD.start();
+                for(int i = 0; i < n[0]; i++) {
+                    if(String.valueOf(cbl.get(i).getSelectedItem()) == "Eszkimó")
+                        game.addPlayer(new Eskimo(game, game.getStartField(), chars[i], 5));
+                    else
+                        game.addPlayer(new Explorer(game,game.getStartField(), chars[i], 4));
+                }
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                new Frame(game);
+
+
             }
         });
 
