@@ -11,10 +11,11 @@ public class Screen extends JPanel {
     Game game;
 
     public Screen(Game game){
-        setSize(840,600);
+        setPreferredSize(new Dimension(840,600));
         this.game = game;
         Assets.init();
         repaint();
+
     }
 
     public void paint(Graphics g){
