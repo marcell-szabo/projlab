@@ -1,6 +1,9 @@
-package gui;
+package Display;
 
 import javax.swing.*;
+
+import Display.Display;
+import Faszom.GameD;
 import game.*;
 import game.Eskimo;
 import game.Explorer;
@@ -14,19 +17,18 @@ public class MainScreen {
 
     protected JDialog frame;
     private Game game;
-    private Application application;
 
-    public MainScreen(Application application, Game game){
-        this.application = application;
+    public MainScreen(Game game){
         this.game = game;
         initialize();
-
     }
 
     private void initialize() {
         frame = new JDialog();
         frame.setResizable(false);
-        frame.setBounds(220, 200, 600, 400);
+        frame.setSize(600, 400);
+        frame.setLocationRelativeTo(null);
+
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -40,17 +42,17 @@ public class MainScreen {
 
         String[] characters = {"Eszkimó", "Sarkkutató"};
         JComboBox first = new JComboBox(characters);
-        first.setBackground(Color.magenta);
+        first.setForeground(Color.magenta);
         JComboBox second = new JComboBox(characters);
-        second.setBackground(Color.green);
+        second.setForeground(Color.green);
         JComboBox third = new JComboBox(characters);
-        third.setBackground(Color.yellow);
+        third.setForeground(new Color(1f,0.9f,0.1f ));
         JComboBox fourth = new JComboBox(characters);
-        fourth.setBackground(Color.orange);
+        fourth.setForeground(Color.orange);
         JComboBox fifth = new JComboBox(characters);
-        fifth.setBackground(Color.red);
+        fifth.setForeground(Color.red);
         JComboBox sixth = new JComboBox(characters);
-        sixth.setBackground(Color.blue);
+        sixth.setForeground(Color.blue);
 
 
         JButton next = new JButton("Következõ");
@@ -194,16 +196,14 @@ public class MainScreen {
                         break;
                 }
                 game.init(n[0]);
-                application.draw();
+                GameD gameD = new GameD("Jégmezõ", 840, 600, game);
+                gameD.start();
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
 
-
-
         panel.add(settings);
         frame.add(panel);
         frame.setVisible(true);
-
     }
 }

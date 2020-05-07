@@ -52,8 +52,7 @@ public class Game {
      * aminek az így kapott mezõ lesz az actualfield-je.
      */
     public void init(int n) {  //szin tipus kezdomezo
-        System.out.println(n);
-        String file = "/Users/kinga/projlab/sarkvidek/src/game/pickupsame.txt";
+        String file = "/Users/kinga/IdeaProjects/projlab/sarkvidek/src/game/pickupsame.txt";
         FileReader fr = null;
         BufferedReader br = null;
         ArrayList<String[]> fields = new ArrayList<>();
@@ -82,7 +81,6 @@ public class Game {
         field = gameboard.getRandomField();
         polarbear = new PolarBear(field);
         field.stepOn(polarbear);
-        System.out.println("asdf");
     }
 
     public void addPlayer(Player p) {

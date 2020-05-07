@@ -18,6 +18,10 @@ public abstract class Field
      */
     protected int snow;
 
+    private Item item;
+
+
+
     /**
      * Az adott mezõ teherbíró képességét tárolja el. Stabil jégtábla esetén a max játékosok száma,
      * lyuk esetén pedig nulla az értéke.
@@ -180,6 +184,11 @@ public abstract class Field
     public void aging(){}
 
     public abstract void state();
+
+    public Igloo getProtection(){return null;}
+
+    public Item getItem(){return null;}
+
 
     /**
      *A mezõ nevének kiírásáért felelõs függvény

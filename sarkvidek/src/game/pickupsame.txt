@@ -1,26 +1,196 @@
-setfield f1 6 d 0
+setfield f1 6 d 3
 setfield f2 0 n 0
 setfield f3 1 f 0
-setfield f4 6 fl 0
+setfield f4 6 n 4
 setfield f5 3 d 0
-setfield f6 6 c 0
-setfield f7 2 b 0
+setfield f6 0 n 0
+setfield f7 2 b 3
 setfield f8 0 n 2
 setfield f9 0 n 3
-setfield f10 3 t 4
+setfield f10 3 t 0
 setfield f11 0 n 5
-setfield f12 5 g 2
-addfield f1 null f2 f5 null
-addfield f2 null f3 f6 f1
-addfield f3 null f4 f7 f2
-addfield f4 null null f8 f3
-addfield f5 f1 f6 f9 null
-addfield f6 f2 f7 f10 f5
-addfield f7 f3 f8 f11 f6
-addfield f8 f4 null f12 f7
-addfield f9 f5 f10 null null
-addfield f10 f6 f11 null f9
-addfield f11 f7 f12 null f10
-addfield f12 f8 null null f11
+setfield f12 5 fl 2
+setfield f13 6 d 0
+setfield f14 0 n 3
+setfield f15 1 f 2
+setfield f16 0 n 0
+setfield f17 3 d 0
+setfield f18 6 r 3
+setfield f19 2 b 0
+setfield f20 0 n 0
+setfield f21 0 n 0
+setfield f22 3 t 4
+setfield f23 2 n 0
+setfield f24 5 f 2
+setfield f25 6 d 2
+setfield f26 0 n 0
+setfield f27 1 f 3
+setfield f28 6 d 0
+setfield f29 3 d 0
+setfield f30 6 r 4
+setfield f31 2 b 3
+setfield f32 2 n 0
+setfield f33 0 n 3
+setfield f34 3 t 0
+setfield f35 0 n 5
+setfield f36 5 b 2
+setfield f37 6 d 4
+setfield f38 0 n 2
+setfield f39 1 f 4
+setfield f40 6 s 3
+setfield f41 3 d 0
+setfield f42 6 g 3
+setfield f43 2 b 0
+setfield f44 0 n 2
+setfield f45 0 n 3
+setfield f46 3 t 0
+setfield f47 0 n 0
+setfield f48 5 n 2
+setfield f49 6 d 0
+setfield f50 0 n 0
+setfield f51 1 f 2
+setfield f52 6 n 0
+setfield f53 3 d 4
+setfield f54 6 n 2
+setfield f55 2 b 3
+setfield f56 0 n 2
+setfield f57 0 n 0
+setfield f58 3 t 0
+setfield f59 0 n 5
+setfield f60 5 n 2
+setfield f61 6 d 0
+setfield f62 0 n 1
+setfield f63 1 f 0
+setfield f64 6 r 2
+setfield f65 3 d 0
+setfield f66 6 n 0
+setfield f67 2 b 0
+setfield f68 0 n 2
+setfield f69 0 n 0
+setfield f70 3 t 4
+setfield f71 0 n 0
+setfield f72 5 f 2
+setfield f73 6 d 2
+setfield f74 0 n 0
+setfield f75 1 f 3
+setfield f76 6 n 3
+setfield f77 3 d 0
+setfield f78 6 s 3
+setfield f79 2 b 3
+setfield f80 0 n 0
+setfield f81 0 n 3
+setfield f82 3 t 0
+setfield f83 0 n 5
+setfield f84 5 f 0
+setfield f85 6 d 3
+setfield f86 0 n 3
+setfield f87 1 f 0
+setfield f88 6 d 6
+setfield f89 3 d 0
+setfield f90 6 n 2
+setfield f91 2 b 0
+setfield f92 2 n 0
+setfield f93 0 n 0
+setfield f94 3 t 0
+setfield f95 0 n 5
+setfield f96 5 c 2
+addfield f1 null f2 f13 null
+addfield f2 null f3 f14 f1
+addfield f3 null f4 f15 f2
+addfield f4 null f5 f16 f3
+addfield f5 null f6 f17 f4
+addfield f6 null f7 f18 f5
+addfield f7 null f8 f19 f6
+addfield f8 null f9 f20 f7
+addfield f9 null f10 f21 f8
+addfield f10 null f11 f22 f9
+addfield f11 null f12 f23 f10
+addfield f12 null null f24 f11
+addfield f13 f1 f14 f25 null
+addfield f14 f2 f15 f26 f13
+addfield f15 f3 f16 f27 f14
+addfield f16 f4 f17 f28 f15
+addfield f17 f5 f18 f29 f16
+addfield f18 f6 f19 f30 f17
+addfield f19 f7 f20 f31 f18
+addfield f20 f8 f21 f32 f19
+addfield f21 f9 f22 f33 f20
+addfield f22 f10 f23 f34 f21
+addfield f23 f11 f24 f35 f22
+addfield f24 f12 null f36 f23
+addfield f25 f13 f26 f37 null
+addfield f26 f14 f27 f38 f25
+addfield f27 f15 f28 f39 f26
+addfield f28 f16 f29 f40 f27
+addfield f29 f17 f30 f41 f28
+addfield f30 f18 f31 f42 f29
+addfield f31 f19 f32 f43 f30
+addfield f32 f20 f33 f44 f31
+addfield f33 f21 f34 f45 f32
+addfield f34 f22 f35 f46 f33
+addfield f35 f23 f36 f47 f34
+addfield f36 f24 null f48 f35
+addfield f37 f25 f38 f49 null
+addfield f38 f26 f39 f50 f37
+addfield f39 f27 f40 f51 f38
+addfield f40 f28 f41 f52 f39
+addfield f41 f29 f42 f53 f40
+addfield f42 f30 f43 f54 f41
+addfield f43 f31 f44 f55 f42
+addfield f44 f32 f45 f56 f43
+addfield f45 f33 f46 f57 f44
+addfield f46 f34 f47 f58 f45
+addfield f47 f35 f48 f59 f46
+addfield f48 f36 null f60 f47
+addfield f49 f37 f50 f61 null
+addfield f50 f38 f51 f62 f49
+addfield f51 f39 f52 f63 f50
+addfield f52 f40 f53 f64 f51
+addfield f53 f41 f54 f65 f52
+addfield f54 f42 f55 f66 f53
+addfield f55 f43 f56 f67 f54
+addfield f56 f44 f57 f68 f55
+addfield f57 f45 f58 f69 f56
+addfield f58 f46 f59 f70 f57
+addfield f59 f47 f60 f71 f58
+addfield f60 f48 null f72 f59
+addfield f61 f49 f62 f73 null
+addfield f62 f50 f63 f74 f61
+addfield f63 f51 f64 f75 f62
+addfield f64 f52 f65 f76 f63
+addfield f65 f53 f66 f77 f64
+addfield f66 f54 f67 f78 f65
+addfield f67 f55 f68 f79 f66
+addfield f68 f56 f69 f80 f67
+addfield f69 f57 f70 f81 f68
+addfield f70 f58 f71 f82 f69
+addfield f71 f59 f72 f83 f70
+addfield f72 f60 null f84 f71
+addfield f73 f61 f74 f85 null
+addfield f74 f62 f75 f86 f73
+addfield f75 f63 f76 f87 f74
+addfield f76 f64 f77 f88 f75
+addfield f77 f65 f78 f89 f76
+addfield f78 f66 f79 f90 f77
+addfield f79 f67 f80 f91 f78
+addfield f80 f68 f81 f92 f79
+addfield f81 f69 f82 f93 f80
+addfield f82 f70 f83 f94 f81
+addfield f83 f71 f84 f95 f82
+addfield f84 f72 null f96 f83
+addfield f85 f73 f86 null null
+addfield f86 f74 f87 null f85
+addfield f87 f75 f88 null f86
+addfield f88 f76 f89 null f87
+addfield f89 f77 f90 null f88
+addfield f90 f78 f91 null f89
+addfield f91 f79 f92 null f90
+addfield f92 f80 f93 null f91
+addfield f93 f81 f94 null f92
+addfield f94 f82 f95 null f93
+addfield f95 f83 f96 null f94
+addfield f96 f84 null null f95
+
+
 
 
