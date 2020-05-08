@@ -12,9 +12,7 @@ public class KeyboardEventHandler implements KeyListener
         if (e.getKeyChar() == 'w' || e.getKeyChar() == 'd' || e.getKeyChar() == 's' ||
                 e.getKeyChar() == 'a' || e.getKeyChar() == 'j' || e.getKeyChar() == 'k' ||
                 e.getKeyChar() == 'l' || e.getKeyChar() == 'i' || e.getKeyChar() == 'm')
-        { Controller.Instance.setC(e.getKeyChar());
-            Controller.f.removeKeyListener(this);
-        }
+        { Controller.f.removeKeyListener(this); Controller.Instance.setC(e.getKeyChar()); }
     }
     @Override
     public void keyReleased(KeyEvent e) {}

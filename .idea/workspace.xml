@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="009245e2-0bc1-4e89-9844-487246400180" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/git_projlab.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sarkvidek/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/sarkvidek/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sarkvidek/src/controller/KeyboardEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/sarkvidek/src/controller/KeyboardEventHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bOVWiGQSnUxpaPH9I12Hmmt2jb" />
   <component name="ProjectViewState">
@@ -19,6 +24,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ctrl" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="Frame" />
+    </option>
+  </component>
+  <component name="RunAnythingContextRecentDirectoryCache">
+    <option name="paths">
+      <recentPaths value="$PROJECT_DIR$/sarkvidek/src/Display" />
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -31,10 +48,25 @@
       <option name="presentableId" value="Default" />
       <updated>1588503160720</updated>
       <workItem from="1588503169325" duration="37000" />
+      <workItem from="1588962525406" duration="1821000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588963214822">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1588963214822" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1588964058546">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588964058546" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1588963178490">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1588963178490" />
   </component>
 </project>

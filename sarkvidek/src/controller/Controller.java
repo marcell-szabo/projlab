@@ -7,10 +7,11 @@ public class Controller
     public Controller(Frame f)
     {
         this.f = f;
+        f.addKeyListener(new KeyboardEventHandler());
         Instance = this;
     }
 
-    public static Frame f; // ez attól függ hol van a frame-ünk
+    public static Frame f;
     public volatile char c;
     public static Controller Instance;
 
@@ -18,7 +19,6 @@ public class Controller
     {
         c = cb;
         this.notify();
-
     }
 
     public synchronized char EventHandler()
