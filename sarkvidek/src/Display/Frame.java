@@ -29,8 +29,7 @@ public class Frame extends JFrame {
         setLocationRelativeTo(null);
         s = new Screen(game);
         add(s);
-        game.mainLoop();
-
+        //game.mainLoop();
         setVisible(true);
     }
 
