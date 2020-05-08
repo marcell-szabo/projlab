@@ -1,5 +1,7 @@
 package game;
 
+import controller.Controller;
+
 import java.util.*;
 
 import static game.Result.*;
@@ -35,6 +37,12 @@ public abstract class Player {
      */
     private List<Tool> tools = new ArrayList<>();
 
+
+
+    protected Controller CTRL;
+
+
+
     /**
      * Default constructor
      */
@@ -43,6 +51,7 @@ public abstract class Player {
         actualfield = actual;
         color = c;
         heat = h;
+        CTRL = new Controller(/*ide kell a tábla*/); // hozzárendelés
     }
 
     /**
@@ -69,36 +78,36 @@ public abstract class Player {
      */
     public Result round(String[] string) {
         Result result = OK;
-        String c = string[0];
+        char c = CTRL.eventHandler();
         switch (c) {
-            case "W":
+            case 'w':
                 result = this.move(0);
                 break;
-            case "D":
+            case 'd':
                 result = this.move(1);
                 break;
-            case "S":
+            case 's':
                 result = this.move(2);
                 break;
-            case "A":
+            case 'a':
                 result = this.move(3);
                 break;
-            case "J":
+            case 'j':
                 result = this.clean();
                 break;
-            case "K":
+            case 'k':
                 result = actualfield.pickUp(this);
                 break;
-            case "L":
+            case 'l':
                 if(string.length == 2)
                     result = this.specialSkill(1);
                 else
                     result = this.specialSkill(Integer.parseInt(string[2]));
                 break;
-            case "I":
+            case 'i':
                 result = this.assemble();
                 break;
-            case "M":
+            case 'm':
                 result = this.buildTent();
             default:
                 break;
