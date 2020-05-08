@@ -10,8 +10,12 @@ public class PolarBear implements Drawable {
      * Default constructor
      */
     public PolarBear(Field field){
-        actualfield = field;
+        setActualfield(field);
     }
+    public PolarBear(String field){
+        setActualfield(field);
+    }
+
 
     /**
      * Tárolja, hogy a jegesmedve hol található.
