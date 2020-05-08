@@ -6,7 +6,6 @@ import java.util.*;
 /**
  * Létrehozza, inicializálja, összefogja s egyben tárolja az összes mezõt. Ha az adott körben úgy adta a gép,
  * hogy lesz hóvihar, akkor az elõzõek mellett kezeli azt is, hogy melyik mezõkre fog leesni egy réteg hó.
- *
  */
 public class GameBoard {
     /**
@@ -17,16 +16,17 @@ public class GameBoard {
     /**
      * Default constructor
      */
-    public GameBoard() { }
+    public GameBoard() {
+    }
 
-    public void asdf(){
-        for( int i = 0; i < fields.size(); i++){
+    public void asdf() {
+        for (int i = 0; i < fields.size(); i++) {
             System.out.print("teherbírás: " + fields.get(i).getCapacity());
             System.out.println("hó: " + fields.get(i).getSnow());
         }
     }
 
-    public List<Field> getFields(){
+    public List<Field> getFields() {
         return fields;
     }
 
@@ -34,13 +34,13 @@ public class GameBoard {
      * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
      */
     public void setNeighbours(List<String[]> neighbours) {
-        for(String[] i : neighbours) {
+        for (String[] i : neighbours) {
             int fieldidx = Integer.parseInt(i[1].substring(1)) - 1;
-            for(int j = 2; j < i.length; j++) {
-                if(i[j].equals("null"))
+            for (int j = 2; j < i.length; j++) {
+                if (i[j].equals("null"))
                     fields.get(fieldidx).addNeighbour(null, j - 2);
                 else
-                    fields.get(fieldidx).addNeighbour(fields.get(Integer.parseInt(i[j].substring(1)) - 1), j -2);
+                    fields.get(fieldidx).addNeighbour(fields.get(Integer.parseInt(i[j].substring(1)) - 1), j - 2);
             }
         }
     }
@@ -58,64 +58,68 @@ public class GameBoard {
      * Eldönti egy adott valószínûség alapján minden egyes mezõre, hogy ott jön-e vihar.
      * Ha jön, akkor meghívja annak a mezõnek(Field) a storm() függvényét. Futás végén,
      * ha legalább egy mezõ storm() függvénye DIE-al tért vissza, akkor õ is DIE-al fog, különben pedig OK-kal.
+     *
      * @return DIE or OK
      */
-    public Result storm(ArrayList<String> fieldsHitByStorm) {
+    public Result storm() {
         Result s_result = Result.OK;
-        if(fieldsHitByStorm == null) {
-            for(Field f : fields) {
-                if(new Random().nextInt(101) < 20) {
-                    if(f.storm() == Result.DIE)
-                        s_result = Result.DIE;
-                }
-            }
-        } else {
-            for(int i = 0; i < fieldsHitByStorm.size(); i++) {
-                if(fields.get(Integer.parseInt(fieldsHitByStorm.get(i).substring(1)) - 1).storm() == Result.DIE)
+        for (Field f : fields) {
+            if (new Random().nextInt(4) < 1) {
+                if (f.storm() == Result.DIE)
                     s_result = Result.DIE;
             }
         }
+
         return s_result;
     }
 
-    public void init(List<String[]> fieldsinput, List<String[]> neighbour){
-        for(String[] s: fieldsinput){
-            if(Integer.parseInt(s[2]) == 0)
+    public void init(List<String[]> fieldsinput, List<String[]> neighbour) {
+        for (String[] s : fieldsinput) {
+            if (Integer.parseInt(s[2]) == 0)
                 fields.add(new Hole(Integer.parseInt(s[4]), Integer.parseInt(s[2]), s[1]));
             else {
                 Item item = null;
                 switch (s[3]) {
-                    case "c": item = new Charge();
+                    case "c":
+                        item = new Charge();
                         break;
-                    case "fl": item = new Flare();
+                    case "fl":
+                        item = new Flare();
                         break;
-                    case "g": item = new Gun();
+                    case "g":
+                        item = new Gun();
                         break;
-                    case "f": item = new Food();
+                    case "f":
+                        item = new Food();
                         break;
-                    case "b": item = new BreakableShovel();
+                    case "b":
+                        item = new BreakableShovel();
                         break;
-                    case "s": item = new Shovel();
-                            break;
-                    case "r": item = new Rope();
-                            break;
-                    case "d": item = new DivingSuit();
+                    case "s":
+                        item = new Shovel();
                         break;
-                    case "t": item = new Tent();
-                            break;
+                    case "r":
+                        item = new Rope();
+                        break;
+                    case "d":
+                        item = new DivingSuit();
+                        break;
+                    case "t":
+                        item = new Tent();
+                        break;
                 }
-                 fields.add(new IceField(Integer.parseInt(s[4]), Integer.parseInt(s[2]), item, s[1]));
+                fields.add(new IceField(Integer.parseInt(s[4]), Integer.parseInt(s[2]), item, s[1]));
             }
         }
         setNeighbours(neighbour);
     }
 
-    public Field getRandomField(){
+    public Field getRandomField() {
         return fields.get(new Random().nextInt(fields.size()));
     }
 
     public void aging() {
-        for(Field f: fields)
+        for (Field f : fields)
             f.aging();
     }
 }

@@ -1,5 +1,8 @@
 package game;
 
+import Display.Screen;
+import controller.Controller;
+
 import java.io.*;
 import java.util.*;
 
@@ -29,6 +32,8 @@ public class Game {
 
     private Field startField;
 
+    public Controller controller;
+
     /*
      * A jegesmedvét tárolja
      * */
@@ -41,6 +46,10 @@ public class Game {
      * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
     public Game() {
+    }
+
+    public void addController(Controller c){
+        controller = c;
     }
 
     /*A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
@@ -79,7 +88,11 @@ public class Game {
         gameboard.init(fields, neighbours);
         Field field;
         startField = gameboard.getStartField();
+
         field = gameboard.getRandomField();
+        while(field == startField){
+            field = gameboard.getRandomField();
+        }
         polarbear = new PolarBear(field);
         field.stepOn(polarbear);
     }
@@ -103,95 +116,29 @@ public class Game {
      * akkor kilép a ciklusból. (Ciklusban maradáshoz OK visszatérési érték kell. NOTHING-nak itt nincs szerepe.).
      * Végezetül az endGame(Result) függvény kerül meghívásra .
      */
-    public void mainLoop(ArrayList<String[]> activities) {
+    public void mainLoop() {
         Result lastResult = NOTHING;
-        for (int i = 0; i < activities.size(); i++) {
-            String[] command = activities.get(i);
-            Player player;
-            switch (command[0]) {
-                case "state":
-                    switch (command[1]) {
-                        case "p":
-                            player = which('p');
-                            player.state();
-                            break;
-                        case "b":
-                            player = which('b');
-                            player.state();
-                            break;
-                        case "g":
-                            player = which('g');
-                            player.state();
-                            break;
-                        case "y":
-                            player = which('y');
-                            player.state();
-                            break;
-                        case "o":
-                            player = which('o');
-                            player.state();
-                            break;
-                        case "r":
-                            player = which('r');
-                            player.state();
-                            break;
-                        default:
-                            if (command[1].charAt(0) == 'f') {
-                                for (Field f : gameboard.getFields()) {
-                                    if (f.name.equals(command[1])) {
-                                        f.state();
-                                        break;
-                                    }
-                                }
-                                break;
-                            } else if (command[1].equals("polarbear")) {
-                                polarbear.state();
-                                break;
-                            } else if (command[1].equals("game")) {
-                                this.state();
-                                break;
-                            }
-                            break;
-
-                    }
-                    break;
-                case "bear":
-                    if (command[1].equals("r")) {
-                        lastResult = polarbear.move();
-                        break;
-                    } else {
-                        lastResult = polarbear.move(Integer.parseInt(command[2]));
-                        break;
-                    }
-                case "storm":
-                    if (command[1].equals("r")) {
-                        lastResult = gameboard.storm(null);
-                        break;
-                    } else {
-                        ArrayList<String> stormfield = new ArrayList<>();
-                        for (String s : command)
-                            if (s.charAt(0) == 'f')
-                                stormfield.add(s);
-                        lastResult = gameboard.storm(stormfield);
-                        break;
-                    }
-                case "lastresult":
-                    System.out.println(lastResult);
-                    break;
-                default:
-                    player = which(command[1].charAt(0));
-                    lastResult = player.round(command);
-                    break;
-            }
-            if (lastResult == DIE) {
-                this.endGame(lastResult);
-                break;
-            } else if (lastResult == WIN) {
-                this.endGame(lastResult);
-                break;
+        while(lastResult != DIE && lastResult != WIN) {
+            lastResult = polarbear.move();
+            this.controller.update();
+            for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
+                gameboard.aging();
+                this.controller.f.update();
+                if (new Random().nextInt(2) < 1) {
+                   lastResult = gameboard.storm();
+                    this.controller.f.update();
+                }
+                if(lastResult != DIE && lastResult != WIN) {
+                    lastResult = players.get(i).round();
+                    this.controller.f.update();
+                }
             }
         }
-
+        if (lastResult == DIE) {
+            this.endGame(lastResult);
+        }else if (lastResult == WIN) {
+            this.endGame(lastResult);
+        }
     }
 
     public Player which(char c) {
@@ -223,6 +170,7 @@ public class Game {
         switch (r) {
             case WIN:
                 System.out.print("Victory");
+
                 break;
             case DIE:
                 System.out.print("Game Over");

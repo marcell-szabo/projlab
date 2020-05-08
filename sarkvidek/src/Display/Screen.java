@@ -13,7 +13,7 @@ public class Screen extends JPanel {
     public Screen(Game game){
         setPreferredSize(new Dimension(840,600));
         this.game = game;
-        Assets.init();
+
         repaint();
 
     }

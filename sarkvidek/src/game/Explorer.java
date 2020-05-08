@@ -47,7 +47,25 @@ public class Explorer extends Player implements Drawable {
      *
      * @return Result - minden esetben OK
      */
-    public Result specialSkill(int i) {
+    public Result specialSkill() {
+        char c = game.controller.EventHandler();
+        int i = 0;
+        switch (c){
+            case 'w':
+                i = 0;
+                break;
+            case 'd':
+                i = 1;
+                break;
+            case 's':
+                i = 2;
+                break;
+            case 'a':
+                i = 3;
+                break;
+            default:
+                break;
+        }
         if(actualfield.checkNeighbour(i) == null)
             return NOTHING;
         int capacity = actualfield.checkNeighbour(i).getCapacity();

@@ -1,5 +1,7 @@
 package game;
 
+import Display.Screen;
+import controller.Controller;
 import graphics.Draw;
 import graphics.Drawable;
 
@@ -26,7 +28,7 @@ public abstract class Player implements Drawable {
     /**
      * T?rolja az aktu?lis j?t?kot.
      */
-    private Game game;
+    protected Game game;
 
     /**
      * T?rolja, hogy az adott j?t?kos melyik mez?n ?ll.
@@ -70,44 +72,50 @@ public abstract class Player implements Drawable {
      *
      * @return a k?rben t?rt?nt-e win, die
      */
-    public Result round(String[] string) {
+    public Result round() {
+        this.work = 4;
         Result result = OK;
-        String c = string[0];
-        switch (c) {
-            case "W":
-                result = this.move(0);
-                break;
-            case "D":
-                result = this.move(1);
-                break;
-            case "S":
-                result = this.move(2);
-                break;
-            case "A":
-                result = this.move(3);
-                break;
-            case "J":
-                result = this.clean();
-                break;
-            case "K":
-                result = actualfield.pickUp(this);
-                break;
-            case "L":
-                if(string.length == 2)
-                    result = this.specialSkill(1);
-                else
-                    result = this.specialSkill(Integer.parseInt(string[2]));
-                break;
-            case "I":
-                result = this.assemble();
-                break;
-            case "M":
-                result = this.buildTent();
-            default:
-                break;
+        System.out.println("kaki");
+        game.controller.update();
+        while(work != 0 && result != DIE && result != WIN) {
+            char c = game.controller.EventHandler();
+            System.out.println("kaki");
+            switch (c) {
+                case 'w':
+                    result = this.move(0);
+                    System.out.println("kaki");
+                    break;
+                case 'd':
+                    result = this.move(1);
+                    break;
+                case 's':
+                    result = this.move(2);
+                    break;
+                case 'a':
+                    result = this.move(3);
+                    break;
+                case 'j':
+                    result = this.clean();
+                    break;
+                case 'k':
+                    result = actualfield.pickUp(this);
+                    break;
+                case 'l':
+                    result = this.specialSkill();
+                    break;
+                case 'i':
+                    result = this.assemble();
+                    break;
+                case 'm':
+                    result = this.buildTent();
+                default:
+                    break;
+            }
+            if (result == OK) {
+                work--;
+                game.controller.update();
+            }
         }
-        if(result == OK)
-            work--;
         return result;
     }
 
@@ -146,7 +154,7 @@ public abstract class Player implements Drawable {
     }
 
     /**
-     * Megh?vja az actualfieldben t?rolt mez?re a Field oszt?ly leaveField(Player) f?ggv?ny?t.
+     * Meghívja az actualfieldben t?rolt mez?re a Field oszt?ly leaveField(Player) f?ggv?ny?t.
      * Ezek ut?n be?ll?tja a jelenlegi j?t?kos actualfield nev? attrib?tum?nak ?rt?k?t a megkapott mez?re.
      * Ezt k?vet?en megh?vja a Field oszt?ly stepOn(Player) f?ggv?ny?t, ?s azzal fog visszat?rni,
      * amivel az ?ltala h?vott met?dus visszat?rt.
@@ -267,7 +275,7 @@ public abstract class Player implements Drawable {
      *
      * @return
      */
-    public abstract Result specialSkill(int i);
+    public abstract Result specialSkill();
 
     public abstract void state();
 

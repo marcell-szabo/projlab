@@ -1,15 +1,15 @@
 package Display;
 
+import controller.Controller;
 import game.Game;
+import graphics.Assets;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Frame extends JFrame {
 
     Screen s;
     Game game;
-    Canvas canvas;
 
     public Frame(Game game) {
 
@@ -18,6 +18,8 @@ public class Frame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        Assets.init();
+        game.addController(new Controller(this));
         init();
         pack();
         setLocationRelativeTo(null);
@@ -27,7 +29,12 @@ public class Frame extends JFrame {
         setLocationRelativeTo(null);
         s = new Screen(game);
         add(s);
+        game.mainLoop();
 
         setVisible(true);
+    }
+
+    public void update(){
+        s.repaint();
     }
 }
