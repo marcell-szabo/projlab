@@ -30,9 +30,6 @@ public class MainScreen {
         frame.setSize(600, 400);
         frame.setLocationRelativeTo(null);
 
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         JPanel settings = new JPanel();
         settings.setLayout(new BoxLayout(settings, BoxLayout.PAGE_AXIS));
 
@@ -91,8 +88,7 @@ public class MainScreen {
             }
         });
 
-        panel.add(settings);
-        frame.add(panel);
+        frame.add(settings);
         frame.setVisible(true);
     }
 }
