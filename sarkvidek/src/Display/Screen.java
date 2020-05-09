@@ -13,12 +13,14 @@ public class Screen extends JPanel {
     public Screen(Game game){
         setPreferredSize(new Dimension(840,600));
         this.game = game;
-        Assets.init();
+
         repaint();
 
     }
 
+    @Override
     public void paint(Graphics g){
+        System.out.println("fing");
         Draw draw = new Draw(g, game);
 
         draw.MapDraw();

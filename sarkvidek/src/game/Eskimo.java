@@ -41,7 +41,7 @@ public class Eskimo extends Player implements Drawable {
      * Field-re a buildIgloo() függvényt, majd ennek visszatérési értékével (OK/ NOTHING) tér vissza
      * ez a metódus is.
      */
-    public Result specialSkill(int i) {
+    public Result specialSkill() {
         Igloo igloo = new Igloo();
         return actualfield.build(igloo);
     }

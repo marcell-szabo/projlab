@@ -137,8 +137,8 @@ public class IceField extends Field implements Drawable {
             if(polarbear.actualfield == this)
                 polarbear.draw(draw, x, y);
             if(this.players.size() > 0){
-                for(int i = 0; i < this.players.size(); i++)
-                    this.players.get(i).draw(draw, x, y);
+                for(Player p : players)
+                    p.draw(draw, x, y);
             }
         } else {
             if(this.getItem() != null){
@@ -156,8 +156,8 @@ public class IceField extends Field implements Drawable {
             if(polarbear.actualfield == this)
                 polarbear.draw(draw, x, y);
             if(this.players.size() > 0){
-                for(int i = 0; i < this.players.size(); i++)
-                    this.players.get(i).draw(draw, x, y);
+                for(Player p : players)
+                    p.draw(draw, x, y);
             }
         }
     }
@@ -166,7 +166,7 @@ public class IceField extends Field implements Drawable {
     public Result stepOn(PolarBear pb)
     {
         polarbear = pb;
-        if(players == null)
+        if(players.size() == 0)
             return OK;
         else if (protection == null)
             return  DIE;

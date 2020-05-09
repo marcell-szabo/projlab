@@ -10,8 +10,9 @@ public class PolarBear implements Drawable {
      * Default constructor
      */
     public PolarBear(Field field){
-        actualfield = field;
+        setActualfield(field);
     }
+
 
     /**
      * Tárolja, hogy a jegesmedve hol található.
@@ -42,26 +43,13 @@ public class PolarBear implements Drawable {
             choosedField = actualfield.checkNeighbour(new Random().nextInt(3));
         }
         actualfield.leaveField();
+        this.setActualfield(choosedField);
+        Result res = choosedField.stepOn(this);
 
-        return choosedField.stepOn(this);
-    }
-    public Result move(int i){
-        Field choosedField = actualfield.checkNeighbour(i);
-        actualfield.leaveField();
-        actualfield = choosedField;
-        return choosedField.stepOn(this);
+        return res;
     }
 
-    /**
-     * A PolarBear adatainak kiírásáért felelõs függvény.
-     * Megjeleníti annak a mezõnek a nevét, amelyen éppen a jegesmedve áll.
-     */
-    public void state(){
-        System.out.println("Polarbear:");
-        System.out.print("actualfield: ");
-        actualfield.namestate();
-        System.out.println("\n");
-    }
+
 
     @Override
     public void draw(Draw draw, int x, int y) {
