@@ -37,9 +37,9 @@ public class Hole extends Field implements Drawable {
         if(this.getSnow() != 0) {
             if(this.getSnow() > 3)
                 draw.snowMuchDraw(x, y);
-            else
+            else if(this.getSnow() <= 3)
                 draw.snowDraw(x, y);
-            if(polarbear.actualfield == this)
+            else if(polarbear.actualfield == this)
                 polarbear.draw(draw, x, y);
         }else if(polarbear.actualfield == this)
             draw.polarbearHoleDraw(x, y);

@@ -132,7 +132,7 @@ public class Game {
             }
             frame.paintComponents(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
-                //actualPlayer = which(players.get(i));
+                actualPlayer = which(players.get(i));
                 lastResult = players.get(i).round(frame);
             }
         }

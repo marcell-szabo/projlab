@@ -68,9 +68,9 @@ public class Explorer extends Player implements Drawable {
         }
         if(actualfield.checkNeighbour(i) == null)
             return NOTHING;
-        //int capacity = actualfield.checkNeighbour(i).getCapacity();
-        //game.examinedField = actualfield.checkNeighbour(i).name;
-        //game.examinedCapacity = Integer.toString(capacity);
+        int capacity = actualfield.checkNeighbour(i).getCapacity();
+        game.examinedField = actualfield.checkNeighbour(i).name;
+        game.examinedCapacity = Integer.toString(capacity);
         return OK;
     }
 

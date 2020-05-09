@@ -21,27 +21,27 @@ public class Draw {
                 fields.get(12*y + x).draw(this, (x+1) * 60, ((y+1)*60));
             }
         }
-        //stateDraw();
+        stateDraw();
     }
 
     public void stateDraw(){
-        g.drawString("Aktuális játékos: ", 60, 620);
+        g.drawString("Current player: ", 150, 620);
         if(game.actualPlayer != null)
-            g.drawString(game.actualPlayer, 210, 620);
-        g.drawString("Work: ", 60, 640);
+            g.drawString(game.actualPlayer, 300, 620);
+        g.drawString("Work: ", 150, 640);
         if(game.actualWork != null)
-            g.drawString(game.actualWork,210, 640);
-        g.drawString("Heat: ", 280, 620);
+            g.drawString(game.actualWork,300, 640);
+        g.drawString("Heat: ", 370, 620);
         if(game.actualWork != null)
-            g.drawString(game.actualHeat,410, 620);
-        g.drawString("Snow: ", 280, 640);
+            g.drawString(game.actualHeat,500, 620);
+        g.drawString("Snow: ", 370, 640);
         if(game.actualSnow != null)
-            g.drawString(game.actualSnow, 410, 640);
+            g.drawString(game.actualSnow, 500, 640);
         if(game.examinedField != null){
-            g.drawString("Examined Field: ", 460, 620);
-            g.drawString(game.examinedField, 580, 620);
-            g.drawString("Capacity: ", 460, 640);
-            g.drawString(game.examinedCapacity, 580, 640);
+            g.drawString("Examined Field: ", 550, 620);
+            g.drawString(game.examinedField, 670, 620);
+            g.drawString("Capacity: ", 550, 640);
+            g.drawString(game.examinedCapacity, 670, 640);
         }
 
     }

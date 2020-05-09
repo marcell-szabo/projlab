@@ -101,7 +101,7 @@ public class Frame extends JFrame implements Runnable{
             JLabel Lose = new JLabel();
             Lose.setHorizontalAlignment(JLabel.CENTER);
             Lose.setIcon(lose);
-            this.removeAll();
+            this.remove(s);
             this.add(Lose);
             setVisible(true);
         }
