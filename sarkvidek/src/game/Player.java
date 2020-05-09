@@ -1,5 +1,6 @@
 package game;
 
+import Display.Frame;
 import Display.Screen;
 import controller.Controller;
 import graphics.Draw;
@@ -72,11 +73,9 @@ public abstract class Player implements Drawable {
      *
      * @return a k?rben t?rt?nt-e win, die
      */
-    public Result round() {
+    public Result round(Frame frame) {
         this.work = 4;
         Result result = OK;
-        System.out.println("kaki");
-        //game.controller.update();
         while(work != 0 && result != DIE && result != WIN) {
             char c = game.controller.EventHandler();
             System.out.println("kaki");
@@ -113,7 +112,7 @@ public abstract class Player implements Drawable {
             }
             if (result == OK) {
                 work--;
-                //game.controller.update(this.game);
+                frame.update(frame.getGraphics());
             }
         }
         return result;

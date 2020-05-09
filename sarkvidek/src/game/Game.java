@@ -119,22 +119,23 @@ public class Game {
      */
     public void mainLoop(Frame frame) {
         Result lastResult = NOTHING;
-        System.out.println("kaki");
-        //while(lastResult != DIE && lastResult != WIN) {
-        for(int i = 0; i < 3; i++){
+        while(lastResult != DIE && lastResult != WIN) {
             System.out.println("kaki");
             lastResult = polarbear.move();
-            frame.repaint();
+
+            frame.update(frame.getGraphics());
+            lastResult = gameboard.storm();
+            frame.update(frame.getGraphics());
             /*for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 gameboard.aging();
-                //this.controller.f.update();
+                frame.update(frame.getGraphics());
                 if (new Random().nextInt(2) < 1) {
-                   lastResult = gameboard.storm();
-                    this.controller.f.update();
+                    lastResult = gameboard.storm();
+                    frame.update(frame.getGraphics());
                 }
-                if(lastResult != DIE && lastResult != WIN) {
-                    lastResult = players.get(i).round();
-                    //this.controller.f.update();
+                if (lastResult != DIE && lastResult != WIN) {
+                    lastResult = players.get(i).round(frame);
+                    frame.update(frame.getGraphics());
                 }
             }*/
         }
@@ -145,12 +146,6 @@ public class Game {
         }
     }
 
-    public Player which(char c) {
-        for (Player p : players)
-            if (p.color == c)
-                return p;
-        return null;
-    }
 
     /**
      * A players attrib�tumban t�rolt j�t�kosok sz�m�val t�r vissza.
