@@ -144,13 +144,6 @@ public class Rope implements Tool, Drawable {
         return Result.NOTHING;
     }
 
-    /**
-     *A Rope nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("rope");
-    }
 
     @Override
     public void draw(Draw draw, int x, int y) {

@@ -64,8 +64,8 @@ public class GameBoard {
     public Result storm() {
         Result s_result = Result.OK;
         for (Field f : fields) {
-            if (new Random().nextInt(4) < 1) {
-                if (f. storm() == Result.DIE)
+            if (new Random().nextInt(6) < 1) {
+                if (f.storm() == Result.DIE)
                     s_result = Result.DIE;
             }
         }

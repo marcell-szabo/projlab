@@ -15,8 +15,4 @@ public interface Item extends Drawable {
      */
     Result pickMeUp(Player p);
 
-    /**
-     *Az Item nevének kiírásáért felelõs függvény
-     */
-    void namestate();
 }

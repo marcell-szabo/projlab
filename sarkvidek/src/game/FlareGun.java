@@ -26,11 +26,6 @@ public class FlareGun implements Item, Drawable {
         return Result.OK;
     }
 
-    /**
-     *A FlareGun nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){ }
 
     @Override
     public void draw(Draw draw, int x, int y) {

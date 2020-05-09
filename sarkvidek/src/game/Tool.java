@@ -86,10 +86,5 @@ public interface Tool<abstarct> extends Item, Drawable {
      */
     Result build(Field f);
 
-    /**
-     *A Tool nevének kiírásáért felelõs függvény
-     */
-    @Override
-    void namestate();
 
 }

@@ -10,7 +10,7 @@ public class Assets {
 
     private static String[] png = {"bear", "charge", "divingsuit", "esb", "esg", "eso", "esp", "esr", "esy",
             "exb", "exg", "exo", "exp", "exr", "exy", "flare", "food", "gun", "hole", "holepb",
-            "ice", "igloo", "rope", "sea", "shovel", "snow", "tent", "tentopen"};
+            "ice", "igloo", "rope", "sea", "shovel", "snow", "tent", "tentopen", "muchsnow"};
 
 
     public static void init(){

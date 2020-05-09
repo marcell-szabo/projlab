@@ -150,4 +150,7 @@ public class Draw {
         g.drawImage(Assets.texture.get("divingsuit"), x, y, null);
     }
 
+    public void snowMuchDraw(int x, int y) {
+        g.drawImage(Assets.texture.get("muchsnow"), x, y, null);
+    }
 }

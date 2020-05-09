@@ -1,4 +1,4 @@
-setfield f1 6 d 3
+setfield f1 6 c 3
 setfield f2 0 n 0
 setfield f3 1 f 0
 setfield f4 6 n 4
@@ -10,7 +10,7 @@ setfield f9 0 n 3
 setfield f10 3 t 0
 setfield f11 0 n 5
 setfield f12 5 fl 2
-setfield f13 6 d 0
+setfield f13 6 g 0
 setfield f14 0 n 3
 setfield f15 1 f 2
 setfield f16 0 n 0
@@ -22,7 +22,7 @@ setfield f21 0 n 0
 setfield f22 3 t 4
 setfield f23 2 n 0
 setfield f24 5 f 2
-setfield f25 6 d 2
+setfield f25 6 fl 2
 setfield f26 0 n 0
 setfield f27 1 f 3
 setfield f28 6 d 0

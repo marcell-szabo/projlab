@@ -74,29 +74,6 @@ public class Explorer extends Player implements Drawable {
         return OK;
     }
 
-    /**
-     * Az Explorer adatainak kiírásáért felelõs függvény.
-     * Megjeleníti a sarkkutató nevét, testhõmérsékletét, maradék munkáját,
-     * a nála lévõ eszközöket és annak a mezõnek a nevét amelyiken áll.
-     */
-    @Override
-    public void state() {
-        System.out.println("Explorer:");
-        System.out.println("color: " + this.color);
-        System.out.println("heat: " + this.heat);
-        System.out.println("work: " + this.work);
-        System.out.print("tools: ");
-        for(Tool t: getTools()) {
-            t.namestate();
-            System.out.print(", ");
-        }
-        System.out.print("\n");
-        System.out.print("actualfield: " );
-        actualfield.namestate();
-        System.out.println("\n");
-    }
-
-
     @Override
     public void draw(Draw draw, int x, int y) {
         switch(this.getColor()){

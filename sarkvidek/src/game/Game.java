@@ -64,7 +64,7 @@ public class Game {
      */
     public void init(int n) {  //szin tipus kezdomezo
 
-        String file = "./res/pickupsame.txt";
+        String  file = getClass().getClassLoader().getResource("pickupsame.txt").getPath();
         FileReader fr = null;
         BufferedReader br = null;
         ArrayList<String[]> fields = new ArrayList<>();
@@ -122,24 +122,20 @@ public class Game {
         Result lastResult = NOTHING;
         while(lastResult != DIE && lastResult != WIN) {
             lastResult = polarbear.move();
+            gameboard.aging();
+            frame.paintComponents(frame.getGraphics());
+            if (new Random().nextInt(5) < 1) {
+                lastResult = gameboard.storm();
+            }
             frame.paintComponents(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
-                gameboard.aging();
-                frame.paintComponents(frame.getGraphics());
-                if (new Random().nextInt(5) < 1) {
-                    lastResult = gameboard.storm();
-                    frame.paintComponents(frame.getGraphics());
-                }
-                if (lastResult != DIE && lastResult != WIN) {
                     lastResult = players.get(i).round(frame);
-                    frame.paintComponents(frame.getGraphics());
-                }
             }
         }
         if (lastResult == DIE) {
             return DIE;
         }else if (lastResult == WIN) {
-            return DIE;
+            return WIN;
         }
         return NOTHING;
     }

@@ -76,16 +76,6 @@ public class IceField extends Field implements Drawable {
     }
 
     /**
-     * Ha van igloo a mezõn, akkor TRUE-val tér vissza, ellenkezõ esetben pedig FALSE-szal.
-     *
-     * @return
-     */
-    public boolean haveIgloo()
-    {
-        return protection != null;
-    }
-
-    /**
      * A Field osztály virtuális build(Igloo) metódusának a felüldefiniálása. Megvizsgálja, hogy a mezõn, található-e építmény(sátor vagy igloo).
      * Ha igen, akkor visszatér NOTHING-gal, különben pedig OK-kal
      *
@@ -129,7 +119,10 @@ public class IceField extends Field implements Drawable {
     public void draw(Draw draw, int x, int y) {
         if(this.getSnow() != 0) {
             if (this.getProtection() == null) {
-                draw.snowDraw(x,y);
+                if(this.getSnow() > 3)
+                    draw.snowMuchDraw(x,y);
+                else
+                    draw.snowDraw(x,y);
             }else {
                 draw.snowDraw(x,y);
                 this.getProtection().draw(draw, x, y);
@@ -182,33 +175,5 @@ public class IceField extends Field implements Drawable {
             if (protection.aging() == DISAPPEAR)
                 protection = null;
         }
-    }
-
-    /**
-     * Az IceField adatainak kiírásáért felelõs függvény.
-     * Megjeleníti a jégmezõn található hórétegek számát, a jégmezõ teherbírását,
-     * hogy jégmezõn található-e valamilyen védelem, a jégmezõbe fagyott tárgy nevét,
-     * a jégmezõn álló játékosok nevét és hogy található-e jegesmedve a jégmezõn
-     */
-    @Override
-    public void state() {
-        System.out.println("IceField:");
-        System.out.println("snow: " + this.snow);
-        System.out.println("capacity: " + this.capacity);
-        if (protection == null) System.out.println("protection: false");
-        else System.out.println("protection: true");
-        System.out.print("item: ");
-        if(this.item != null)
-            this.item.namestate();
-        System.out.print("\n");
-        System.out.print("players: ");
-        for (Player p : players) {
-            p.namestate();
-            System.out.print(", ");
-        }
-        System.out.print("\n");
-        if (polarbear.getActualfield() != this) System.out.println("polarbear: false");
-        else System.out.println("polarbear: true");
-        System.out.print("\n");
     }
 }

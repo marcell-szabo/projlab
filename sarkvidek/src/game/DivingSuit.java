@@ -124,12 +124,10 @@ public class DivingSuit implements Tool, Drawable {
      */
     @Override
     public Result swim(Field f, Player p) {
-        for (int d = 0; d <= 3; d++) {
-            Field field = f.checkNeighbour(d);
-            if (field != null)
-                return p.changeField(field);
-        }
-        return DIE;
+        Field field = null;
+        while(field == null)
+            field = f.checkNeighbour(new Random().nextInt(3));
+        return p.changeField(field);
     }
 
 
@@ -154,13 +152,6 @@ public class DivingSuit implements Tool, Drawable {
         return Result.NOTHING;
     }
 
-    /**
-     *A Divingsuit nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("divingsuit");
-    }
 
     @Override
     public void draw(Draw draw, int x, int y) {

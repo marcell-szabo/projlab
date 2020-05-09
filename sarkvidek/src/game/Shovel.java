@@ -146,13 +146,6 @@ public class Shovel implements Tool, Drawable {
         return Result.NOTHING;
     }
 
-    /**
-     *A Shovel nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("shovel");
-    }
 
     @Override
     public void draw(Draw draw, int x, int y) {

@@ -27,14 +27,6 @@ public class Food implements Item, Drawable {
         return p.increaseHeat();
     }
 
-    /**
-     *A Food nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("food");
-    }
-
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.foodDraw(x, y);

@@ -177,14 +177,6 @@ public class Tent extends Igloo implements Tool, Drawable {
         return Result.OK;
     }
 
-    /**
-     *A Tent nevének kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("tent");
-    }
-
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.tentDraw(x,y);

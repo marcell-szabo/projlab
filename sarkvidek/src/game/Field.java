@@ -186,19 +186,9 @@ public abstract class Field implements Drawable {
 
     public void aging(){}
 
-    public abstract void state();
-
     public Igloo getProtection(){return null;}
 
     public Item getItem(){return null;}
-
-
-    /**
-     *A mezõ nevének kiírásáért felelõs függvény
-     */
-    public void namestate(){
-        System.out.print(name);
-    }
 
     public abstract void draw(Draw draw, int x, int y);
 

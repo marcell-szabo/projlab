@@ -45,14 +45,6 @@ public class BreakableShovel extends Shovel implements Drawable {
         return r;
     }
 
-    /**
-     *A Breakablehovel nevének és annak használtságának kiírásáért felelõs függvény
-     */
-    @Override
-    public void namestate(){
-        System.out.print("breakableshovel(used: "+ this.used + ")");
-    }
-
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.shovelDraw(x, y);

@@ -49,8 +49,6 @@ public class PolarBear implements Drawable {
         return res;
     }
 
-
-
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.polarbearDraw(x, y);
