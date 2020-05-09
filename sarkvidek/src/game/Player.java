@@ -78,7 +78,6 @@ public abstract class Player implements Drawable {
         Result result = OK;
         while(work != 0 && result != DIE && result != WIN) {
             char c = game.controller.EventHandler();
-            System.out.println("kaki");
             switch (c) {
                 case 'w':
                     result = this.move(0);

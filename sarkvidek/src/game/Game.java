@@ -120,7 +120,6 @@ public class Game {
     public void mainLoop(Frame frame) {
         Result lastResult = NOTHING;
         while(lastResult != DIE && lastResult != WIN) {
-            System.out.println("kaki");
             lastResult = polarbear.move();
 
             frame.update(frame.getGraphics());
