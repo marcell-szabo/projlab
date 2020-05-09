@@ -46,7 +46,7 @@ public class MainScreen {
         c.gridx = 0;
         c.gridy = 0;
         gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
-        gamename.setForeground(Color.black);
+        gamename.setForeground(Color.white);
         //gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
         gamename.setBorder(new EmptyBorder(0,0,100,0));
 
@@ -87,13 +87,13 @@ public class MainScreen {
         aboutpanel.setSize(600, 400);
 
         aboutpanel.setLayout(new BoxLayout(aboutpanel, BoxLayout.PAGE_AXIS));
-        JLabel text = new JLabel("<html>Designers and Developers:<br><br>Fábián Csenge<br>Gutai Auguszta<br>Ilosvay Viktoria" +
-                "<br>Szabó Kinga<br>Szabó Marcell<br><br>The game is about a small group, which is trapped on the North Pole " +
-                "and wants to return home. In order to do this they have to find all 3 components of a flaregun so they can be rescued." +
-                " However there are several threats that can kill them (e.g.: storm, polar bear, holes...), so you have to be careful. Their survival is your responsibility." +
+        JLabel text = new JLabel("<html>Designers and Developers:<br>Fábián Csenge<br>Gutai Auguszta<br>Ilosvay Viktória" +
+                "<br>Szabó Kinga<br>Szabó Marcell<br><br>Huge Thanks to Berczik Anna for the graphical design<br><br>The game is about a small group, which is trapped on the North Pole, " +
+                "and wants to return home. In order to do this, they have to find all 3 components of a flaregun, so they can be rescued." +
+                " However, there are several threats that can kill them (e.g.: storm, polar bear, holes...), so you have to be careful. Their survival is your responsibility." +
                 "<br>The characters can be eskimos or explorers. Each of them has some kind of special skill. Also, several items can be found" +
-                " on the map, to make your job easier.<br><br>Bring home the group safely and enjoy this game.<br>Huge thanks to " +
-                "Berczik Anna for the graphical design.<br><br>2020. May</html>");
+                " on the map, to make your job easier.<br>Bring home the group safely and enjoy this game. Controls can be checked, if you" +
+                " press and hold CTRL button.<br><br>2020. Feb-May</html>");
         aboutpanel.add(text);
         JButton back = new JButton("Back");
         back.setAlignmentX(Component.CENTER_ALIGNMENT);
