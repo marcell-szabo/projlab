@@ -2,7 +2,9 @@ package Display;
 
 import controller.Controller;
 import game.Game;
+import game.Result;
 import graphics.Assets;
+import graphics.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,6 @@ public class Frame extends JFrame implements Runnable{
 
     Screen s;
     Game game;
-    boolean run = false;
 
     public Frame(Game game) {
         this.game = game;
@@ -90,6 +91,23 @@ public class Frame extends JFrame implements Runnable{
 
     @Override
     public void run() {
-        game.mainLoop(this);
+        Result endgame = game.mainLoop(this);
+        if(endgame == Result.WIN) {
+            ImageIcon win = new ImageIcon(this.getClass().getResource("/textures/win.gif"));
+            JLabel Win = new JLabel();
+            Win.setHorizontalAlignment(JLabel.CENTER);
+            Win.setIcon(win);
+            this.remove(s);
+            this.add(Win);
+            setVisible(true);
+        }else if(endgame == Result.DIE) {
+            ImageIcon lose = new ImageIcon(this.getClass().getResource("/textures/lose.gif"));
+            JLabel Lose = new JLabel();
+            Lose.setHorizontalAlignment(JLabel.CENTER);
+            Lose.setIcon(lose);
+            this.remove(s);
+            this.add(Lose);
+            setVisible(true);
+        }
     }
 }

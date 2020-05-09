@@ -3,6 +3,7 @@ package game;
 import Display.Frame;
 import Display.Screen;
 import controller.Controller;
+import graphics.Draw;
 
 import java.io.*;
 import java.util.*;
@@ -117,13 +118,10 @@ public class Game {
      * akkor kil�p a ciklusb�l. (Ciklusban marad�shoz OK visszat�r�si �rt�k kell. NOTHING-nak itt nincs szerepe.).
      * V�gezet�l az endGame(Result) f�ggv�ny ker�l megh�v�sra .
      */
-    public void mainLoop(Frame frame) {
+    public Result mainLoop(Frame frame) {
         Result lastResult = NOTHING;
         while(lastResult != DIE && lastResult != WIN) {
             lastResult = polarbear.move();
-
-            frame.update(frame.getGraphics());
-            lastResult = gameboard.storm();
             frame.update(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 gameboard.aging();
@@ -139,10 +137,11 @@ public class Game {
             }
         }
         if (lastResult == DIE) {
-            this.endGame(lastResult);
+            return DIE;
         }else if (lastResult == WIN) {
-            this.endGame(lastResult);
+            return DIE;
         }
+        return NOTHING;
     }
 
 
@@ -168,7 +167,6 @@ public class Game {
         switch (r) {
             case WIN:
                 System.out.print("Victory");
-
                 break;
             case DIE:
                 System.out.print("Game Over");
@@ -195,23 +193,4 @@ public class Game {
         return flare_gun.size() == 3;
     }
 
-    /**
-     * A Game adatainak ki�r�s��rt felel�s f�ggv�ny.
-     * Megjelen�ti a j�t�k sor�n m�r �sszegy�jt�tt FlareGun r�szeket �s a j�t�k �sszes j�t�kos�nak nev�t.
-     */
-    public void state() {
-        System.out.println("Game:");
-        System.out.print("flaregun: ");
-        for (FlareGun f : flare_gun) {
-            f.namestate();
-            System.out.print(", ");
-        }
-        System.out.print("\n");
-        System.out.print("players: ");
-        for (Player p : players) {
-            p.namestate();
-            System.out.print(", ");
-        }
-        System.out.println("\n");
-    }
 }
