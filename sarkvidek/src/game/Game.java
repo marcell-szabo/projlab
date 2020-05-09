@@ -126,7 +126,7 @@ public class Game {
             frame.update(frame.getGraphics());
             lastResult = gameboard.storm();
             frame.update(frame.getGraphics());
-            /*for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
+            for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 gameboard.aging();
                 frame.update(frame.getGraphics());
                 if (new Random().nextInt(2) < 1) {
@@ -137,7 +137,7 @@ public class Game {
                     lastResult = players.get(i).round(frame);
                     frame.update(frame.getGraphics());
                 }
-            }*/
+            }
         }
         if (lastResult == DIE) {
             this.endGame(lastResult);

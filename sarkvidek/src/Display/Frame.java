@@ -7,7 +7,7 @@ import graphics.Assets;
 import javax.swing.*;
 import java.awt.*;
 
-public class Frame extends JFrame {
+public class Frame extends JFrame implements Runnable{
 
     Screen s;
     Game game;
@@ -42,7 +42,13 @@ public class Frame extends JFrame {
 
     public void start(){
         this.update(this.getGraphics());
-        game.mainLoop(this);
+        Thread t = new Thread(this);
+        t.start();
+
     }
 
+    @Override
+    public void run() {
+        game.mainLoop(this);
+    }
 }
