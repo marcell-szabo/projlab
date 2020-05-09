@@ -13,7 +13,7 @@ public class Main {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MainScreen(game);
+                MainScreen mainScreen = new MainScreen(game);
             }
         });
 

@@ -21,10 +21,10 @@ public class Draw {
                 fields.get(12*y + x).draw(this, (x+1) * 60, ((y+1)*60));
             }
         }
-        stateDraw();
+
     }
 
-    public void stateDraw(){
+    public void stateDraw() {
         g.drawString("Current player: ", 150, 620);
         if(game.actualPlayer != null)
             g.drawString(game.actualPlayer, 300, 620);

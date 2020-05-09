@@ -13,6 +13,7 @@ import static game.Result.*;
  * A viharok felt�mad�snak val�sz�n�s�geit, �s annak lebonyol�t�s�nak kezdet�t is ez az oszt�ly kezeli.
  */
 public class Game {
+
     /**
      * A j�t�kt�bl�t t�rolja.
      */
@@ -67,7 +68,7 @@ public class Game {
      */
     public void init(int n) {  //szin tipus kezdomezo
 
-        String file = Objects.requireNonNull(getClass().getClassLoader().getResource("pickupsame.txt")).getFile();
+        String file = "./res/pickupsame.txt";
         FileReader fr = null;
         BufferedReader br = null;
         ArrayList<String[]> fields = new ArrayList<>();
@@ -126,11 +127,11 @@ public class Game {
         while(lastResult != DIE && lastResult != WIN) {
             lastResult = polarbear.move();
             gameboard.aging();
-            frame.paintComponents(frame.getGraphics());
+            frame.update(frame.getGraphics());
             if (new Random().nextInt(5) < 1) {
                 lastResult = gameboard.storm();
             }
-            frame.paintComponents(frame.getGraphics());
+            frame.update(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 actualPlayer = which(players.get(i));
                 lastResult = players.get(i).round(frame);

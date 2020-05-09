@@ -1,6 +1,7 @@
 package Display;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import game.*;
 import game.Eskimo;
@@ -29,12 +30,32 @@ public class MainScreen {
         frame.setSize(600, 400);
         frame.setLocationRelativeTo(null);
 
+        JPanel startpanel = new JPanel();
         JPanel settings = new JPanel();
-        settings.setLayout(new BoxLayout(settings, BoxLayout.PAGE_AXIS));
+        startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
+        startpanel.setBorder(new EmptyBorder(70,20,20,20));
+        JLabel gamename = new JLabel("S a r k v i d é k");
+        gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
+        gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
+        gamename.setBorder(new EmptyBorder(0,0,50,0));
+        startpanel.add(gamename);
+        JButton startbutton = new JButton("Start New Game");
+        startbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.remove(startpanel);
+                frame.add(settings);
+                frame.setVisible(true);
+            }
+        });
+        startbutton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startpanel.add(startbutton);
+        frame.add(startpanel);
 
+
+        settings.setLayout(new BoxLayout(settings, BoxLayout.Y_AXIS));
         String[] numbers = {"3 játékos", "4 játékos", "5 játékos", "6 játékos"};
         JComboBox number = new JComboBox(numbers);
-
         settings.add(number);
 
         String[] characters = {"Eszkimó", "Sarkkutató"};
@@ -87,7 +108,6 @@ public class MainScreen {
             }
         });
 
-        frame.add(settings);
         frame.setVisible(true);
     }
 }

@@ -83,6 +83,7 @@ public abstract class Player implements Drawable {
                     result = this.move(0);
                     break;
                 case 'd':
+                    System.out.print("D");
                     result = this.move(1);
                     break;
                 case 's':
@@ -113,7 +114,7 @@ public abstract class Player implements Drawable {
                 work--;
                 game.actualWork = Integer.toString(work);
                 game.actualHeat = Integer.toString(heat);
-                frame.paintComponents(frame.getGraphics());
+                frame.update(frame.getGraphics());
             }
         }
         return result;
