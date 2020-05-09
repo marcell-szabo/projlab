@@ -21,6 +21,7 @@ public class Screen extends JPanel {
 
     @Override
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         draw = new Draw(g, game);
         draw.MapDraw();
         draw.stateDraw();

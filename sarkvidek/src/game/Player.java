@@ -83,7 +83,6 @@ public abstract class Player implements Drawable {
                     result = this.move(0);
                     break;
                 case 'd':
-                    System.out.print("D");
                     result = this.move(1);
                     break;
                 case 's':

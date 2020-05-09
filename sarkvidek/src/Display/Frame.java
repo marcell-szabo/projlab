@@ -76,7 +76,8 @@ public class Frame extends JFrame implements Runnable{
                     JPanel panel = new JPanel();
                     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                     panel.add(new JLabel("<html>Moving <br><br>  W - Up <br>  S - Down <br>  A - Left <br>  D - Right" +
-                            "<br><br>Actions <br><br>  J - Clean <br>  K - Pickup Item <br>  L - Special Skill <br>  I - Assemble Flaregun" +
+                            "<br><br>Actions <br><br>  J - Clean <br>  K - Pickup Item <br>  L - Special Skill (Eskimo)" +
+                            "<br> L + Direction - Special skill (Explorer)<br>  I - Assemble Flaregun" +
                             "<br>  M - BuildTent </html>"));
                     controlsdialog.getContentPane().add(panel);
                     controlsdialog.pack();

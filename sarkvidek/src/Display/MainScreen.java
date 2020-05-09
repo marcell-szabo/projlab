@@ -35,7 +35,7 @@ public class MainScreen {
         JPanel settings = new JPanel();
         startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
         startpanel.setBorder(new EmptyBorder(70,20,20,20));
-        JLabel gamename = new JLabel("S a r k v i d é k");
+        JLabel gamename = new JLabel("B l o o d y  T e d d y");
         gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
         gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
         gamename.setBorder(new EmptyBorder(0,0,50,0));
@@ -51,7 +51,40 @@ public class MainScreen {
         });
         startbutton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startpanel.add(startbutton);
+        JPanel aboutpanel = new JPanel();
+        JButton about = new JButton("About");
+        about.setAlignmentX(Component.CENTER_ALIGNMENT);
+        about.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.remove(startpanel);
+                frame.add(aboutpanel);
+                frame.setVisible(true);
+            }
+        });
+        startpanel.add(about);
         frame.add(startpanel);
+
+        aboutpanel.setLayout(new BoxLayout(aboutpanel, BoxLayout.PAGE_AXIS));
+        JLabel text = new JLabel("<html>Designers and Developers:<br><br>Fábián Csenge<br>Gutai Auguszta<br>Ilosvay Viktoria" +
+                "<br>Szabó Kinga<br>Szabó Marcell<br><br>The game is about a small group, which is trapped on the North Pole " +
+                "and wants to return home. In order to do this they have to find all 3 components of a flaregun so they can be rescued." +
+                " However there are several threats that can kill them (e.g.: storm, polar bear, holes...), so you have to be careful. Their survival is your responsibility." +
+                "<br>The characters can be eskimos or explorers. Each of them has some kind of special skill. Also, several items can be found" +
+                " on the map, to make your job easier.<br><br>Bring home the group safely and enjoy this game.<br>Huge thanks to " +
+                "Berczik Anna for the graphical design.<br><br>2020. May</html>");
+        aboutpanel.add(text);
+        JButton back = new JButton("Back");
+        back.setAlignmentX(Component.CENTER_ALIGNMENT);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.remove(aboutpanel);
+                frame.add(startpanel);
+                frame.repaint();
+            }
+        });
+        aboutpanel.add(back);
 
 
         settings.setLayout(new BoxLayout(settings, BoxLayout.Y_AXIS));
