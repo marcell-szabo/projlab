@@ -1,6 +1,7 @@
 package controller;
 
 import Display.Frame;
+import game.Game;
 
 public class Controller
 {
@@ -29,10 +30,6 @@ public class Controller
             e.printStackTrace();
         }
         return c;
-    }
-
-    public void update(){
-        f.update();
     }
 
 }

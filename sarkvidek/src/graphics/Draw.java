@@ -1,6 +1,5 @@
 package graphics;
 
-import game.Field;
 import game.Game;
 
 import java.awt.*;

@@ -11,7 +11,7 @@ public class Main {
         Game game = new Game();
         //game.init(3);
         MainScreen mainScreen = new MainScreen(game);
-        //GameD gameD = new GameD("J�gmez�", 840, 600, game);
+        //GameD gameD = new GameD("Jégmező", 840, 600, game);
         //gameD.start();
     }
 }

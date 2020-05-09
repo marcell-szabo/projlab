@@ -76,7 +76,7 @@ public abstract class Player implements Drawable {
         this.work = 4;
         Result result = OK;
         System.out.println("kaki");
-        game.controller.update();
+        //game.controller.update();
         while(work != 0 && result != DIE && result != WIN) {
             char c = game.controller.EventHandler();
             System.out.println("kaki");
@@ -113,7 +113,7 @@ public abstract class Player implements Drawable {
             }
             if (result == OK) {
                 work--;
-                game.controller.update();
+                //game.controller.update(this.game);
             }
         }
         return result;

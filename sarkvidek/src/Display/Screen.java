@@ -18,7 +18,9 @@ public class Screen extends JPanel {
 
     }
 
+    @Override
     public void paint(Graphics g){
+        System.out.println("fing");
         Draw draw = new Draw(g, game);
 
         draw.MapDraw();

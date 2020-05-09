@@ -1,5 +1,6 @@
 package game;
 
+import Display.Frame;
 import Display.Screen;
 import controller.Controller;
 
@@ -116,23 +117,26 @@ public class Game {
      * akkor kil�p a ciklusb�l. (Ciklusban marad�shoz OK visszat�r�si �rt�k kell. NOTHING-nak itt nincs szerepe.).
      * V�gezet�l az endGame(Result) f�ggv�ny ker�l megh�v�sra .
      */
-    public void mainLoop() {
+    public void mainLoop(Frame frame) {
         Result lastResult = NOTHING;
-        while(lastResult != DIE && lastResult != WIN) {
+        System.out.println("kaki");
+        //while(lastResult != DIE && lastResult != WIN) {
+        for(int i = 0; i < 3; i++){
+            System.out.println("kaki");
             lastResult = polarbear.move();
-            this.controller.update();
-            for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
+            frame.repaint();
+            /*for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 gameboard.aging();
-                this.controller.f.update();
+                //this.controller.f.update();
                 if (new Random().nextInt(2) < 1) {
                    lastResult = gameboard.storm();
                     this.controller.f.update();
                 }
                 if(lastResult != DIE && lastResult != WIN) {
                     lastResult = players.get(i).round();
-                    this.controller.f.update();
+                    //this.controller.f.update();
                 }
-            }
+            }*/
         }
         if (lastResult == DIE) {
             this.endGame(lastResult);
