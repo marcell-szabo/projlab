@@ -1,8 +1,6 @@
 package game;
 
 import Display.Frame;
-import Display.Screen;
-import controller.Controller;
 import graphics.Draw;
 import graphics.Drawable;
 
@@ -109,6 +107,8 @@ public abstract class Player implements Drawable {
                     break;
             }
             if (result == OK) {
+                Integer snow = this.actualfield.getSnow();
+                game.actualSnow = snow.toString();
                 work--;
                 frame.paintComponents(frame.getGraphics());
             }

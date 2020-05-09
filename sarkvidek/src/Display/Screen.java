@@ -12,9 +12,9 @@ public class Screen extends JPanel {
     Draw draw;
 
     public Screen(Game game){
-        setPreferredSize(new Dimension(840,600));
-        setMinimumSize(new Dimension(840,600));
-        setMaximumSize(new Dimension(640,600));
+        setPreferredSize(new Dimension(840,660));
+        setMinimumSize(new Dimension(840,660));
+        setMaximumSize(new Dimension(840,660));
         this.game = game;
         this.repaint();
     }

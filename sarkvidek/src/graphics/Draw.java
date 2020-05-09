@@ -21,9 +21,24 @@ public class Draw {
                 fields.get(12*y + x).draw(this, (x+1) * 60, ((y+1)*60));
             }
         }
+        stateDraw();
+
+
     }
 
+    public void stateDraw(){
+        g.drawString("Aktuális játékos: ", 0, 620);
+        if(game.actualPlayer != null)
+            g.drawString(game.actualPlayer, 150, 620);
+        g.drawString("Hómennyiség a mezõn: ", 0, 640);
+        if(game.actualSnow != null)
+            g.drawString(game.actualSnow, 150, 640);
+        //if(field != null){
+            g.drawString("Vizsgált mezõ: ", 350, 620);
+            g.drawString("Hó mennyisége: ", 350, 640);
+        //}
 
+    }
 
 
     public void seaDraw(){

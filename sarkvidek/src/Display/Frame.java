@@ -4,7 +4,6 @@ import controller.Controller;
 import game.Game;
 import game.Result;
 import graphics.Assets;
-import graphics.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,17 +11,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.lang.invoke.ConstantBootstraps;
-import java.sql.JDBCType;
 
 public class Frame extends JFrame implements Runnable{
 
-    Screen s;
+    Screen gameMap;
+    StatePanel statePanel;
     Game game;
 
     public Frame(Game game) {
         this.game = game;
-        setSize(840, 600);
+        setSize(840, 660);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -33,8 +31,12 @@ public class Frame extends JFrame implements Runnable{
     }
 
     private void init() {
-        s = new Screen(game);
-        add(s);
+        gameMap = new Screen(game);
+        //add(gameMap, BorderLayout.CENTER);
+        //statePanel = new StatePanel(game);
+        //add(statePanel, BorderLayout.PAGE_END);
+        add(gameMap);
+
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -43,7 +45,8 @@ public class Frame extends JFrame implements Runnable{
 
 
     public void paint(Graphics g) {
-        s.paintComponents(this.getGraphics());
+        gameMap.paintComponents(this.getGraphics());
+        //statePanel.paintComponents(this.getGraphics());
     }
 
     public void start(){
@@ -57,7 +60,6 @@ public class Frame extends JFrame implements Runnable{
                 if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
                     controlsdialog = new JDialog();
                     controlsdialog.setModal(true);
-                    //controlsdialog.setLocationRelativeTo(null);
 
                     controlsdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                     controlsdialog.addWindowListener(new WindowAdapter() {
@@ -96,7 +98,7 @@ public class Frame extends JFrame implements Runnable{
             JLabel Win = new JLabel();
             Win.setHorizontalAlignment(JLabel.CENTER);
             Win.setIcon(win);
-            this.remove(s);
+            this.removeAll();
             this.add(Win);
             setVisible(true);
         }else if(endgame == Result.DIE) {
@@ -104,7 +106,7 @@ public class Frame extends JFrame implements Runnable{
             JLabel Lose = new JLabel();
             Lose.setHorizontalAlignment(JLabel.CENTER);
             Lose.setIcon(lose);
-            this.remove(s);
+            this.removeAll();
             this.add(Lose);
             setVisible(true);
         }

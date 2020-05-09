@@ -1,9 +1,7 @@
 package game;
 
 import Display.Frame;
-import Display.Screen;
 import controller.Controller;
-import graphics.Draw;
 
 import java.io.*;
 import java.util.*;
@@ -41,6 +39,8 @@ public class Game {
      * */
     private PolarBear polarbear;
 
+    public String actualPlayer = null;
+    public String actualSnow  = null;
     /**
      * A j�t�k kezdetekor bek�ri a j�t�kosok sz�m�t majd sorra azoknak a karaktert�pus�t.
      * L�trehozza a GameBoard-ot, majd megh�vja az oszt�ly init(Player) met�dus�t �tadva neki a j�t�kosok sz�m�t.
@@ -129,7 +129,8 @@ public class Game {
             }
             frame.paintComponents(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
-                    lastResult = players.get(i).round(frame);
+                actualPlayer = which(players.get(i));
+                lastResult = players.get(i).round(frame);
             }
         }
         if (lastResult == DIE) {
@@ -140,6 +141,25 @@ public class Game {
         return NOTHING;
     }
 
+    public String which(Player p) {
+        switch (p.getColor()){
+            case 'p':
+                return "Purple";
+            case 'b':
+                return "Blue";
+            case 'g':
+                return "Green";
+            case 'o':
+                return "Orange";
+            case 'y':
+                return "Yellow";
+            case 'r':
+                return "Red";
+            default:
+                return null;
+        }
+
+    }
 
     /**
      * A players attrib�tumban t�rolt j�t�kosok sz�m�val t�r vissza.
