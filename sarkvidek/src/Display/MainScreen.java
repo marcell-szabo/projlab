@@ -27,6 +27,7 @@ public class MainScreen {
         frame = new JDialog();
         frame.setResizable(false);
         frame.setSize(600, 400);
+        frame.setTitle("beállítások");
         frame.setLocationRelativeTo(null);
 
         JPanel settings = new JPanel();

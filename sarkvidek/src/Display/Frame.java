@@ -7,10 +7,7 @@ import graphics.Assets;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class Frame extends JFrame implements Runnable{
 
@@ -20,13 +17,13 @@ public class Frame extends JFrame implements Runnable{
     public Frame(Game game) {
         this.game = game;
         setSize(840, 660);
+        setTitle("Sarkvidék");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         game.addController(new Controller(this));
         Assets.init();
         init();
-
     }
 
     private void init() {
@@ -88,6 +85,20 @@ public class Frame extends JFrame implements Runnable{
     @Override
     public void run() {
         Result endgame = game.mainLoop(this);
+        /*JButton newgame = new JButton("new game");
+        newgame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game = new Game();
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new MainScreen(game);
+                    }
+                });
+                dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+        });*/
         if(endgame == Result.WIN) {
             ImageIcon win = new ImageIcon(this.getClass().getResource("/textures/win.gif"));
             JLabel Win = new JLabel();
@@ -95,6 +106,7 @@ public class Frame extends JFrame implements Runnable{
             Win.setIcon(win);
             this.removeAll();
             this.add(Win);
+            //this.add(newgame, BorderLayout.PAGE_END);
             setVisible(true);
         }else if(endgame == Result.DIE) {
             ImageIcon lose = new ImageIcon(this.getClass().getResource("/textures/lose.gif"));
@@ -103,6 +115,7 @@ public class Frame extends JFrame implements Runnable{
             Lose.setIcon(lose);
             this.remove(s);
             this.add(Lose);
+            //this.add(newgame, BorderLayout.PAGE_END);
             setVisible(true);
         }
     }
