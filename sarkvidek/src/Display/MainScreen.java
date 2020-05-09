@@ -26,7 +26,7 @@ public class MainScreen {
     }
 
     private void initialize() {
-        ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/lol.gif"));
+        ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/background.jpg"));
         JLabel background = new JLabel(backgr);
         frame.setResizable(false);
         frame.setSize(600, 400);

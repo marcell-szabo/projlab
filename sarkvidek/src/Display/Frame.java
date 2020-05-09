@@ -100,7 +100,7 @@ public class Frame extends JFrame implements Runnable{
             JLabel Win = new JLabel();
             Win.setHorizontalAlignment(JLabel.CENTER);
             Win.setIcon(win);
-            this.removeAll();
+            this.remove(s);
             this.add(Win);
             this.add(exit, BorderLayout.PAGE_END);
             setVisible(true);
