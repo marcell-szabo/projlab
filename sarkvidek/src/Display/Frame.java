@@ -28,6 +28,9 @@ public class Frame extends JFrame implements Runnable{
 
     private void init() {
         s = new Screen(game);
+        //add(gameMap, BorderLayout.CENTER);
+        //statePanel = new StatePanel(game);
+        //add(statePanel, BorderLayout.PAGE_END);
         add(s);
 
         pack();
@@ -38,7 +41,7 @@ public class Frame extends JFrame implements Runnable{
 
 
     public void paint(Graphics g) {
-        s.paintComponents(this.getGraphics());
+        s.repaint();
     }
 
     public void start(){
@@ -52,6 +55,8 @@ public class Frame extends JFrame implements Runnable{
                 if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
                     controlsdialog = new JDialog();
                     controlsdialog.setModal(true);
+                    controlsdialog.setResizable(false);
+                    //controlsdialog.setLocationRelativeTo(null);
 
                     controlsdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                     controlsdialog.addWindowListener(new WindowAdapter() {
