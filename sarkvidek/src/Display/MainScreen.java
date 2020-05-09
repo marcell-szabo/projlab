@@ -2,8 +2,6 @@ package Display;
 
 import javax.swing.*;
 
-
-import controller.Controller;
 import game.*;
 import game.Eskimo;
 import game.Explorer;

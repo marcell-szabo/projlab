@@ -18,7 +18,7 @@ public class Draw {
         var fields = game.getGameboard().getFields();
         for(int y = 0; y < 8; y++ ) {
             for (int x = 0; x < 12; x++) {
-                fields.get(12*y + x).draw(this, (x+1) * 60, (y+1)*60);
+                fields.get(12*y + x).draw(this, (x+1) * 60, ((y+1)*60));
             }
         }
     }
@@ -34,12 +34,13 @@ public class Draw {
             g.drawImage(Assets.texture.get("sea"), x*60, 540,null);
 
         for(int y = 0; y < 8; y++)
-            g.drawImage(Assets.texture.get("sea"), 0, (y+1)*60,null);
+            g.drawImage(Assets.texture.get("sea"), 0, ((y+1)*60),null);
 
         for(int y = 0; y < 8; y++)
-            g.drawImage(Assets.texture.get("sea"), 780, (y+1)*60,null);
+            g.drawImage(Assets.texture.get("sea"), 780, ((y+1)*60),null);
 
     }
+
 
     public void holeDraw(int x, int y) {
         g.drawImage(Assets.texture.get("hole"), x, y, null);
