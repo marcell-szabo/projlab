@@ -40,7 +40,7 @@ public class MainScreen {
         JPanel settings = new JPanel();
         //startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
         //startpanel.setBorder(new EmptyBorder(70,20,20,20));
-        JLabel gamename = new JLabel("B l o o d y  T e d d y");
+        JLabel gamename = new JLabel("N o r t h  P o l e");
         c.fill = GridBagConstraints.VERTICAL;
         c.ipady = 40;
         c.gridx = 0;

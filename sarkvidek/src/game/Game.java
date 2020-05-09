@@ -90,9 +90,9 @@ public class Game {
             e.printStackTrace();
         }
         gameboard.init(fields, neighbours);
-        Field field;
         startField = gameboard.getStartField();
 
+        Field field;
         field = gameboard.getRandomField();
         while(field == startField){
             field = gameboard.getRandomField();
@@ -124,6 +124,8 @@ public class Game {
         Result lastResult = NOTHING;
         while(lastResult != DIE && lastResult != WIN) {
             lastResult = polarbear.move();
+            if(lastResult == DIE)
+                return DIE;
             gameboard.aging();
             frame.update(frame.getGraphics());
             if (new Random().nextInt(5) < 1) {

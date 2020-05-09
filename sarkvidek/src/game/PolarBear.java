@@ -41,6 +41,7 @@ public class PolarBear implements Drawable {
         while(choosedField == null)
         {
             choosedField = actualfield.checkNeighbour(new Random().nextInt(3));
+
         }
         actualfield.leaveField();
         this.setActualfield(choosedField);

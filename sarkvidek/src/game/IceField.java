@@ -70,6 +70,8 @@ public class IceField extends Field implements Drawable {
         if(protection != null)
             if (polarbear.getActualfield() == this && !protection.protectFromBear())
                 return  DIE;
+       else if(protection == null)
+           return DIE;
         if (players.size() > capacity)
             return  DIE;
         return OK;
@@ -123,8 +125,11 @@ public class IceField extends Field implements Drawable {
                     draw.snowMuchDraw(x,y);
                 else
                     draw.snowDraw(x,y);
-            }else {
-                draw.snowDraw(x,y);
+            }else if(this.getProtection() != null) {
+                if(this.getSnow() > 3)
+                    draw.snowMuchDraw(x,y);
+                else
+                    draw.snowDraw(x,y);
                 this.getProtection().draw(draw, x, y);
             }
             if(polarbear.actualfield == this)
@@ -136,10 +141,17 @@ public class IceField extends Field implements Drawable {
         } else {
             if(this.getItem() != null){
                 this.getItem().draw(draw, x, y);
+                if(this.getProtection() != null) {
+                    draw.iceDraw(x, y);
+                    if (this.getProtection().protectFromBear())
+                        draw.iglooDraw(x, y);
+                    else
+                        draw.tentOpenDraw(x, y);
+                }
             }
             else if (this.getProtection() == null) {
                 draw.iceDraw(x,y);
-            }else {
+            }else if(this.getProtection() != null){
                 draw.iceDraw(x,y);
                 if(this.getProtection().protectFromBear())
                     draw.iglooDraw(x, y);
