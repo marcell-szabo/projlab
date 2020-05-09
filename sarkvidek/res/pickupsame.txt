@@ -1,5 +1,5 @@
 setfield f1 6 c 3
-setfield f2 4 n 0
+setfield f2 1 n 0
 setfield f3 1 f 0
 setfield f4 6 n 4
 setfield f5 3 d 0

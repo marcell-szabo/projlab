@@ -21,49 +21,70 @@ public class MainScreen {
 
     public MainScreen(Game game){
         this.game = game;
+        frame = new JDialog();
         initialize();
     }
 
     private void initialize() {
-        frame = new JDialog();
+        ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/background.jpg"));
+        JLabel background = new JLabel(backgr);
         frame.setResizable(false);
         frame.setSize(600, 400);
-        frame.setTitle("beállítások");
+        frame.setTitle("Settings");
         frame.setLocationRelativeTo(null);
+        frame.setContentPane(background);
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
-        JPanel startpanel = new JPanel();
+
         JPanel settings = new JPanel();
-        startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
-        startpanel.setBorder(new EmptyBorder(70,20,20,20));
+        //startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
+        //startpanel.setBorder(new EmptyBorder(70,20,20,20));
         JLabel gamename = new JLabel("B l o o d y  T e d d y");
+        c.fill = GridBagConstraints.VERTICAL;
+        c.ipady = 40;
+        c.gridx = 0;
+        c.gridy = 0;
         gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
-        gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
-        gamename.setBorder(new EmptyBorder(0,0,50,0));
-        startpanel.add(gamename);
+        gamename.setForeground(Color.white);
+        //gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
+        gamename.setBorder(new EmptyBorder(0,0,100,0));
+
+        frame.getContentPane().add(gamename, c);
+
         JButton startbutton = new JButton("Start New Game");
+        c.fill = GridBagConstraints.VERTICAL;
+        c.weightx = 0.5;
+        c.ipady = 0;
+        c.gridx = 0;
+        c.gridy = 1;
         startbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(startpanel);
-                frame.add(settings);
+                frame.setContentPane(settings);
                 frame.setVisible(true);
             }
         });
         startbutton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startpanel.add(startbutton);
+
+        frame.add(startbutton, c);
+
         JPanel aboutpanel = new JPanel();
         JButton about = new JButton("About");
+        c.fill = GridBagConstraints.VERTICAL;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 2;
         about.setAlignmentX(Component.CENTER_ALIGNMENT);
         about.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(startpanel);
-                frame.add(aboutpanel);
+                frame.setContentPane(aboutpanel);
                 frame.setVisible(true);
             }
         });
-        startpanel.add(about);
-        frame.add(startpanel);
+        frame.add(about, c);
+        aboutpanel.setSize(600, 400);
 
         aboutpanel.setLayout(new BoxLayout(aboutpanel, BoxLayout.PAGE_AXIS));
         JLabel text = new JLabel("<html>Designers and Developers:<br><br>Fábián Csenge<br>Gutai Auguszta<br>Ilosvay Viktoria" +
@@ -79,33 +100,31 @@ public class MainScreen {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.remove(aboutpanel);
-                frame.add(startpanel);
-                frame.repaint();
+                initialize();
             }
         });
         aboutpanel.add(back);
 
 
         settings.setLayout(new BoxLayout(settings, BoxLayout.Y_AXIS));
-        String[] numbers = {"3 játékos", "4 játékos", "5 játékos", "6 játékos"};
+        String[] numbers = {"3 players", "4 players", "5 players", "6 players"};
         JComboBox number = new JComboBox(numbers);
         settings.add(number);
 
-        String[] characters = {"Eszkimó", "Sarkkutató"};
+        String[] characters = {"Eskimo", "Explorer"};
         List<JComboBox> cbl = new ArrayList<>();
-        Color c[] = {Color.magenta, Color.green, new Color(1f,0.9f,0.1f ), Color.orange, Color.red, Color.blue};
+        Color ch[] = {Color.magenta, Color.green, new Color(1f,0.9f,0.1f ), Color.orange, Color.red, Color.blue};
         char[] chars = {'p', 'g', 'y', 'o', 'r', 'b'};
         for(int i = 1; i <= 6; i++) {
             cbl.add(new JComboBox(characters));
-            cbl.get(cbl.size() - 1).setForeground(c[i - 1]);
+            cbl.get(cbl.size() - 1).setForeground(ch[i - 1]);
         }
 
-        JButton next = new JButton("Következõ");
+        JButton next = new JButton("Next");
         next.setAlignmentX(Component.CENTER_ALIGNMENT);
         settings.add(next);
 
-        JButton start = new JButton("Játék indítása");
+        JButton start = new JButton("Start Game");
         start.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
@@ -130,7 +149,7 @@ public class MainScreen {
             public void actionPerformed(ActionEvent actionEvent) {
                 game.init(n[0]);
                 for(int i = 0; i < n[0]; i++) {
-                    if(String.valueOf(cbl.get(i).getSelectedItem()) == "Eszkimó")
+                    if(String.valueOf(cbl.get(i).getSelectedItem()) == "Eskimo")
                         game.addPlayer(new Eskimo(game, game.getStartField(), chars[i], 5));
                     else
                         game.addPlayer(new Explorer(game,game.getStartField(), chars[i], 4));

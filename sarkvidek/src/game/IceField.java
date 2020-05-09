@@ -66,12 +66,12 @@ public class IceField extends Field implements Drawable {
      */
     public Result stepOn(Player p)
     {
+        players.add(p);
         if(protection != null)
             if (polarbear.getActualfield() == this && !protection.protectFromBear())
                 return  DIE;
         if (players.size() > capacity)
             return  DIE;
-        players.add(p);
         return OK;
     }
 

@@ -13,11 +13,12 @@ public class Frame extends JFrame implements Runnable{
 
     Screen s;
     Game game;
+    Frame frame = this;
 
     public Frame(Game game) {
         this.game = game;
         setSize(840, 660);
-        setTitle("Sarkvidék");
+        setTitle("Icefield");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -28,9 +29,6 @@ public class Frame extends JFrame implements Runnable{
 
     private void init() {
         s = new Screen(game);
-        //add(gameMap, BorderLayout.CENTER);
-        //statePanel = new StatePanel(game);
-        //add(statePanel, BorderLayout.PAGE_END);
         add(s);
 
         pack();
@@ -56,7 +54,6 @@ public class Frame extends JFrame implements Runnable{
                     controlsdialog = new JDialog();
                     controlsdialog.setModal(true);
                     controlsdialog.setResizable(false);
-                    //controlsdialog.setLocationRelativeTo(null);
 
                     controlsdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                     controlsdialog.addWindowListener(new WindowAdapter() {
@@ -91,20 +88,13 @@ public class Frame extends JFrame implements Runnable{
     @Override
     public void run() {
         Result endgame = game.mainLoop(this);
-        /*JButton newgame = new JButton("new game");
-        newgame.addActionListener(new ActionListener() {
+        JButton exit = new JButton("Exit");
+        exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game = new Game();
-                javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        new MainScreen(game);
-                    }
-                });
                 dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
-        });*/
+        });
         if(endgame == Result.WIN) {
             ImageIcon win = new ImageIcon(this.getClass().getResource("/textures/win.gif"));
             JLabel Win = new JLabel();
@@ -112,7 +102,7 @@ public class Frame extends JFrame implements Runnable{
             Win.setIcon(win);
             this.removeAll();
             this.add(Win);
-            //this.add(newgame, BorderLayout.PAGE_END);
+            this.add(exit, BorderLayout.PAGE_END);
             setVisible(true);
         }else if(endgame == Result.DIE) {
             ImageIcon lose = new ImageIcon(this.getClass().getResource("/textures/lose.gif"));
@@ -121,7 +111,7 @@ public class Frame extends JFrame implements Runnable{
             Lose.setIcon(lose);
             this.remove(s);
             this.add(Lose);
-            //this.add(newgame, BorderLayout.PAGE_END);
+            this.add(exit, BorderLayout.PAGE_END);
             setVisible(true);
         }
     }
