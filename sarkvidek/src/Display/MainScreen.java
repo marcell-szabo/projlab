@@ -26,7 +26,7 @@ public class MainScreen {
     }
 
     private void initialize() {
-        ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/background.jpg"));
+        ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/lol.gif"));
         JLabel background = new JLabel(backgr);
         frame.setResizable(false);
         frame.setSize(600, 400);
@@ -46,7 +46,7 @@ public class MainScreen {
         c.gridx = 0;
         c.gridy = 0;
         gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
-        gamename.setForeground(Color.white);
+        gamename.setForeground(Color.black);
         //gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
         gamename.setBorder(new EmptyBorder(0,0,100,0));
 

@@ -68,24 +68,22 @@ public class Game {
      */
     public void init(int n) {  //szin tipus kezdomezo
 
-        String file = "./res/pickupsame.txt";
-        FileReader fr = null;
-        BufferedReader br = null;
+
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> neighbours = new ArrayList<>();
         try {
-            fr = new FileReader(file);
-            br = new BufferedReader(fr);
-            String currentLine = br.readLine();
+            InputStream in = getClass().getResourceAsStream("/pickupsame.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String currentLine = reader.readLine();
             while (currentLine != null) {
                 String[] line = currentLine.split(" ");
                 if (line[0].equals("setfield"))
                     fields.add(line);
                 else if (line[0].equals("addfield"))
                     neighbours.add((line));
-                currentLine = br.readLine();
+                currentLine = reader.readLine();
             }
-            br.close();
+            reader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
