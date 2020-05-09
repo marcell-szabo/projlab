@@ -81,7 +81,6 @@ public abstract class Player implements Drawable {
             switch (c) {
                 case 'w':
                     result = this.move(0);
-                    System.out.println("kaki");
                     break;
                 case 'd':
                     result = this.move(1);
@@ -111,7 +110,7 @@ public abstract class Player implements Drawable {
             }
             if (result == OK) {
                 work--;
-                frame.update(frame.getGraphics());
+                frame.paintComponents(frame.getGraphics());
             }
         }
         return result;

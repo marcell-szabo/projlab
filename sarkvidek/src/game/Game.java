@@ -122,17 +122,17 @@ public class Game {
         Result lastResult = NOTHING;
         while(lastResult != DIE && lastResult != WIN) {
             lastResult = polarbear.move();
-            frame.update(frame.getGraphics());
+            frame.paintComponents(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
                 gameboard.aging();
-                frame.update(frame.getGraphics());
-                if (new Random().nextInt(2) < 1) {
+                frame.paintComponents(frame.getGraphics());
+                if (new Random().nextInt(5) < 1) {
                     lastResult = gameboard.storm();
-                    frame.update(frame.getGraphics());
+                    frame.paintComponents(frame.getGraphics());
                 }
                 if (lastResult != DIE && lastResult != WIN) {
                     lastResult = players.get(i).round(frame);
-                    frame.update(frame.getGraphics());
+                    frame.paintComponents(frame.getGraphics());
                 }
             }
         }

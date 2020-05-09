@@ -27,16 +27,15 @@ public class Frame extends JFrame implements Runnable{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         game.addController(new Controller(this));
-
         Assets.init();
         init();
-        pack();
-        setLocationRelativeTo(null);
+
     }
 
     private void init() {
         s = new Screen(game);
         add(s);
+        pack();
         setLocationRelativeTo(null);
         setVisible(true);
         start();
@@ -44,11 +43,11 @@ public class Frame extends JFrame implements Runnable{
 
 
     public void paint(Graphics g) {
-        s.update(this.getGraphics());
+        s.paintComponents(this.getGraphics());
     }
 
     public void start(){
-        this.update(this.getGraphics());
+        this.paintComponents(this.getGraphics());
         Thread t = new Thread(this);
         t.start();
         this.addKeyListener(new KeyAdapter() {
