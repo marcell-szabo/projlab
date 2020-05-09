@@ -76,6 +76,8 @@ public abstract class Player implements Drawable {
         Result result = OK;
         while(work != 0 && result != DIE && result != WIN) {
             char c = game.controller.EventHandler();
+            //game.examinedField = null;
+            //game.examinedCapacity = null;
             switch (c) {
                 case 'w':
                     result = this.move(0);
@@ -107,9 +109,10 @@ public abstract class Player implements Drawable {
                     break;
             }
             if (result == OK) {
-                Integer snow = this.actualfield.getSnow();
-                game.actualSnow = snow.toString();
+                //game.actualSnow = Integer.toString(this.actualfield.getSnow());
                 work--;
+                //game.actualWork = Integer.toString(work);
+                //game.actualHeat = Integer.toString(heat);
                 frame.paintComponents(frame.getGraphics());
             }
         }

@@ -14,8 +14,7 @@ import java.awt.event.WindowEvent;
 
 public class Frame extends JFrame implements Runnable{
 
-    Screen gameMap;
-    StatePanel statePanel;
+    Screen s;
     Game game;
 
     public Frame(Game game) {
@@ -31,11 +30,8 @@ public class Frame extends JFrame implements Runnable{
     }
 
     private void init() {
-        gameMap = new Screen(game);
-        //add(gameMap, BorderLayout.CENTER);
-        //statePanel = new StatePanel(game);
-        //add(statePanel, BorderLayout.PAGE_END);
-        add(gameMap);
+        s = new Screen(game);
+        add(s);
 
         pack();
         setLocationRelativeTo(null);
@@ -45,8 +41,7 @@ public class Frame extends JFrame implements Runnable{
 
 
     public void paint(Graphics g) {
-        gameMap.paintComponents(this.getGraphics());
-        //statePanel.paintComponents(this.getGraphics());
+        s.paintComponents(this.getGraphics());
     }
 
     public void start(){

@@ -21,22 +21,28 @@ public class Draw {
                 fields.get(12*y + x).draw(this, (x+1) * 60, ((y+1)*60));
             }
         }
-        stateDraw();
-
-
+        //stateDraw();
     }
 
     public void stateDraw(){
-        g.drawString("Aktuális játékos: ", 0, 620);
+        g.drawString("Aktuális játékos: ", 60, 620);
         if(game.actualPlayer != null)
-            g.drawString(game.actualPlayer, 150, 620);
-        g.drawString("Hómennyiség a mezõn: ", 0, 640);
+            g.drawString(game.actualPlayer, 210, 620);
+        g.drawString("Work: ", 60, 640);
+        if(game.actualWork != null)
+            g.drawString(game.actualWork,210, 640);
+        g.drawString("Heat: ", 280, 620);
+        if(game.actualWork != null)
+            g.drawString(game.actualHeat,410, 620);
+        g.drawString("Snow: ", 280, 640);
         if(game.actualSnow != null)
-            g.drawString(game.actualSnow, 150, 640);
-        //if(field != null){
-            g.drawString("Vizsgált mezõ: ", 350, 620);
-            g.drawString("Hó mennyisége: ", 350, 640);
-        //}
+            g.drawString(game.actualSnow, 410, 640);
+        if(game.examinedField != null){
+            g.drawString("Examined Field: ", 460, 620);
+            g.drawString(game.examinedField, 580, 620);
+            g.drawString("Capacity: ", 460, 640);
+            g.drawString(game.examinedCapacity, 580, 640);
+        }
 
     }
 

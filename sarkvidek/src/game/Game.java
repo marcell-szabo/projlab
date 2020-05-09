@@ -13,7 +13,6 @@ import static game.Result.*;
  * A viharok felt�mad�snak val�sz�n�s�geit, �s annak lebonyol�t�s�nak kezdet�t is ez az oszt�ly kezeli.
  */
 public class Game {
-
     /**
      * A j�t�kt�bl�t t�rolja.
      */
@@ -41,6 +40,10 @@ public class Game {
 
     public String actualPlayer = null;
     public String actualSnow  = null;
+    public String actualWork = null;
+    public String actualHeat = null;
+    public String examinedField = null;
+    public String examinedCapacity = null;
     /**
      * A j�t�k kezdetekor bek�ri a j�t�kosok sz�m�t majd sorra azoknak a karaktert�pus�t.
      * L�trehozza a GameBoard-ot, majd megh�vja az oszt�ly init(Player) met�dus�t �tadva neki a j�t�kosok sz�m�t.
@@ -64,7 +67,7 @@ public class Game {
      */
     public void init(int n) {  //szin tipus kezdomezo
 
-        String  file = getClass().getClassLoader().getResource("pickupsame.txt").getPath();
+        String file = Objects.requireNonNull(getClass().getClassLoader().getResource("pickupsame.txt")).getFile();
         FileReader fr = null;
         BufferedReader br = null;
         ArrayList<String[]> fields = new ArrayList<>();
@@ -129,7 +132,7 @@ public class Game {
             }
             frame.paintComponents(frame.getGraphics());
             for (int i = 0; i < players.size() && lastResult != DIE && lastResult != WIN; i++) {
-                actualPlayer = which(players.get(i));
+                //actualPlayer = which(players.get(i));
                 lastResult = players.get(i).round(frame);
             }
         }
@@ -174,21 +177,6 @@ public class Game {
         return gameboard;
     }
 
-    /**
-     * A megkapott param�ter alapj�n eld�nti, hogy hogyan v�gz�dik a j�t�k, majd befejezi azt.
-     *
-     * @param r Result kapott eredm�ny, j�t�k kimenet�nek eld�nt�s�hez
-     */
-    public void endGame(Result r) {
-        switch (r) {
-            case WIN:
-                System.out.print("Victory");
-                break;
-            case DIE:
-                System.out.print("Game Over");
-                break;
-        }
-    }
 
     /**
      * A flare_gun attrib�tum �rt�k�t v�ltoztatja meg, m�gpedig �gy, hogy hozz�ad egy �j FlareGun p�ld�nyt a list�hoz.
