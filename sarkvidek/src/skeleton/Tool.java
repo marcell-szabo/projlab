@@ -76,6 +76,7 @@ public interface Tool extends Item {
     Result help(Field f, Player p);
 
 
+
     /**
      * Sátorépítésért felelõs függvény.
      * @param f A mezõ, amire sátrat kell építeni
