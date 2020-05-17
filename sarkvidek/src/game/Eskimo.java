@@ -8,7 +8,7 @@ import static game.Result.*;
  * Eszkimó karaktertípus esetén megadja a maximális testhõ mértékét,
  * illetve kezeli az eszkimó különleges képességét, tehát az igloo építésének menetét.
  */
-public class Eskimo extends Player implements Drawable {
+public class Eskimo extends Player {
     /**
      * Statikus attribútum. Az eszkimó testhõ szintjének maximális számát adja meg.
      */

@@ -11,7 +11,7 @@ import static game.Result.*;
  * Sarkkutató karaktertípus esetén megadja a maximális testhõ mértékét,
  * illetve kezeli a sarkkutató különleges képességét, tehát egy szomszédos mezõ teherbírásának vizsgálatát.
  */
-public class Explorer extends Player implements Drawable {
+public class Explorer extends Player  {
     /**
      * Statikus attribútum. A sarkkutató testhõ szintjének maximális számát adja meg.
      */

@@ -9,12 +9,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * magát a játék ablakot megvalósító osztály, amely a JFramebõl származik le
+ */
 public class Frame extends JFrame implements Runnable{
 
+    /**
+     * A JPanel amin a megjelenítés történik.(a screen a jpanelbõl származik le)
+     */
     Screen s;
-    Game game;
-    Frame frame = this;
 
+    /**
+     * Az aktuális játékot tárolja
+     */
+    Game game;
+
+    /**
+     * konstruktor, beállítja az ablak méretét, címét, az Assets osztály inicializálja, a controllert
+     * hozzáadja a játékhoz és önmagát is inicializálja
+     * @param game - paraméterként kapott játék
+     */
     public Frame(Game game) {
         this.game = game;
         setSize(840, 660);
@@ -27,6 +41,9 @@ public class Frame extends JFrame implements Runnable{
         init();
     }
 
+    /**
+     * létrehoz egy Screent(ami a JPanelbõl származik le) és hozzáadja önmagához
+     */
     private void init() {
         s = new Screen(game);
         add(s);
@@ -38,10 +55,18 @@ public class Frame extends JFrame implements Runnable{
     }
 
 
+    /**
+     * újra rajzolja a screen s -en lévõ dolgokat(egész pályát)
+     * @param g - Graphics példány
+     */
     public void paint(Graphics g) {
         s.repaint();
     }
 
+    /**
+     * A bal control billenytû lenyomásakor megjelenít egy ablakot,
+     * amely egy súgó az irányításhoz. a ctrl felengedésekor eltûnik az ablak
+     */
     public void start(){
         this.paintComponents(this.getGraphics());
         Thread t = new Thread(this);
@@ -86,9 +111,14 @@ public class Frame extends JFrame implements Runnable{
     }
 
     @Override
+    /**
+     * A szálon futó játék köreiért felelõs függvény, amely a játék végekor a megfelelõ képet jelenití
+     * meg
+     */
     public void run() {
         Result endgame = game.mainLoop(this);
         JButton exit = new JButton("Exit");
+        Frame frame = this;
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

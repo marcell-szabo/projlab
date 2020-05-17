@@ -4,15 +4,33 @@ import game.Game;
 
 import java.awt.*;
 
+/**
+ * a kirajzolást végzõ osztály
+ */
 public class Draw {
+    /**
+     * Graphics objektum
+     */
     Graphics g;
+
+    /**
+     * A játékot tároló objektum
+     */
     Game game;
 
+    /**
+     * konstruktor
+     * @param g - Graphics objektum, melyet az osztály graphicsának fog beállítani
+     * @param game - az aktuális játékot tárolja
+     */
     public Draw(Graphics g, Game game){
         this.g = g;
         this.game = game;
     }
 
+    /**
+     * kirajzolja a tengert a pálya szélére, majd a mezõket
+     */
     public void MapDraw(){
         seaDraw();
         var fields = game.getGameboard().getFields();

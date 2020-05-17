@@ -126,7 +126,7 @@ public class DivingSuit implements Tool, Drawable {
     public Result swim(Field f, Player p) {
         Field field = null;
         while(field == null)
-            field = f.checkNeighbour(new Random().nextInt(3));
+            field = f.checkNeighbour(new Random().nextInt(4));
         return p.changeField(field);
     }
 

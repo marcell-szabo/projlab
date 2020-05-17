@@ -14,17 +14,36 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * a kezdõképernyõt megvalósító osztály
+ */
 public class MainScreen {
 
-    protected JDialog frame;
+    /**
+     * JFrame objektum
+     */
+    protected JFrame frame;
+
+    /**
+     * az aktuális játékot tárolja
+     */
     private Game game;
 
+    /**
+     * konstruktor, létrehozza a JFramet majd inicializálja
+     * @param game - az aktuális játékot kapja meg
+     */
     public MainScreen(Game game){
         this.game = game;
-        frame = new JDialog();
+        frame = new JFrame();
         initialize();
     }
 
+    /**
+     * A kezdõképernyõt valósítja meg és a játék beállításait,
+     * inicializájlja a játékot a játékosok számának függvényében,
+     * majd elindítja magát a játékot.
+     */
     private void initialize() {
         ImageIcon backgr = new ImageIcon(this.getClass().getResource("/textures/background.jpg"));
         JLabel background = new JLabel(backgr);
@@ -38,8 +57,6 @@ public class MainScreen {
 
 
         JPanel settings = new JPanel();
-        //startpanel.setLayout(new BoxLayout(startpanel, BoxLayout.Y_AXIS));
-        //startpanel.setBorder(new EmptyBorder(70,20,20,20));
         JLabel gamename = new JLabel("N o r t h  P o l e");
         c.fill = GridBagConstraints.VERTICAL;
         c.ipady = 40;
@@ -47,7 +64,6 @@ public class MainScreen {
         c.gridy = 0;
         gamename.setFont(new Font("TimesRoman", Font.BOLD, 40));
         gamename.setForeground(Color.white);
-        //gamename.setAlignmentX(Component.CENTER_ALIGNMENT);
         gamename.setBorder(new EmptyBorder(0,0,100,0));
 
         frame.getContentPane().add(gamename, c);
