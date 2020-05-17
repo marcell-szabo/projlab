@@ -111,12 +111,27 @@ public class IceField extends Field implements Drawable {
         return NOTHING;
     }
 
+    /**
+     * Visszaadja a mezõn lévõ esetleges védelmet (iglu vagy sátor).
+     * @return iglu vagy sátor
+     */
     public Igloo getProtection(){
         return protection;
     }
 
+    /**
+     * Getter függvény, visszaadja az esetlegesen a mezõn lévõ tárgyat.
+     * @return tárgy
+     */
     public Item getItem(){return item; }
 
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban, és
+     * továbbhívja az esetlegesen rajta lévõ objektumok kirajzoló függvényeit.
+     * @param draw - Draw osztály példánya amelyben implementálva van a IceField-t kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         if(this.getSnow() != 0) {
@@ -167,6 +182,12 @@ public class IceField extends Field implements Drawable {
         }
     }
 
+    /**
+     * Field osztályban lévõ absztrakt függvény megvalósítása. A jegesmedve mezõre lépését végzi. Ha nincs védelem és játékos
+     * tartózkodik a mezõn akkor vége a játéknak, ekkor DIE-al tér vissza, különben OK-al.
+     * @param pb - jegesmedve referenciája
+     * @return a jegesmedve mezõre lépésének végeredménye
+     */
     @Override
     public Result stepOn(PolarBear pb)
     {
@@ -180,6 +201,9 @@ public class IceField extends Field implements Drawable {
         return DIE;
     }
 
+    /**
+     * A mezõn esetlegesen lévõ sátor öregítése.
+     */
     public void aging()
     {
         if (protection != null)

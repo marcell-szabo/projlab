@@ -6,11 +6,11 @@ import graphics.Drawable;
 import java.util.*;
 
 /**
- *Törékeny ásó kezelésére szolgáló osztály.
+ * Törékeny ásó kezelésére szolgáló osztály.
  * A törékeny ásó 3 használat után széttörik,
  * így ennek és az ásásnak a lekezelésére szolgáló osztály.
  */
-public class BreakableShovel extends Shovel implements Drawable {
+public class BreakableShovel extends Shovel {
     /**
      * Reprezentálja, hogy hányszor használták már az ásót.
      * Alapértéke mindig 3, és amennyiben 0-ra csökken az értéke, akkor eltörik és megsemmisül.
@@ -20,8 +20,7 @@ public class BreakableShovel extends Shovel implements Drawable {
     /**
      * Default constructor
      */
-    public BreakableShovel() {
-    }
+    public BreakableShovel() {}
 
 
     /**
@@ -43,10 +42,5 @@ public class BreakableShovel extends Shovel implements Drawable {
             if(used == 0) r = Result.DISAPPEAR;
         }
         return r;
-    }
-
-    @Override
-    public void draw(Draw draw, int x, int y) {
-        draw.shovelDraw(x, y);
     }
 }

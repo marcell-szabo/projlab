@@ -163,7 +163,7 @@ public class MainScreen {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                game.init(n[0]);
+                game.init();
                 for(int i = 0; i < n[0]; i++) {
                     if(String.valueOf(cbl.get(i).getSelectedItem()) == "Eskimo")
                         game.addPlayer(new Eskimo(game, game.getStartField(), chars[i], 5));

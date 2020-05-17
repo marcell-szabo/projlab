@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * A kötél felvételére, illetve a köteles kimentés kezelésére szolgáló osztály.
  */
-public class Rope implements Tool, Drawable {
+public class Rope implements Tool {
 
     /**
      * Default constructor
@@ -144,7 +144,12 @@ public class Rope implements Tool, Drawable {
         return Result.NOTHING;
     }
 
-
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban.
+     * @param draw - Draw osztály példánya amelyben implementálva van a kötelet kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.ropeDraw(x, y);

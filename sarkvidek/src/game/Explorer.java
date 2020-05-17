@@ -74,6 +74,12 @@ public class Explorer extends Player  {
         return OK;
     }
 
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban.
+     * @param draw - Draw osztály példánya amelyben implementálva van az adott színû Sarkkutatót kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         switch(this.getColor()){

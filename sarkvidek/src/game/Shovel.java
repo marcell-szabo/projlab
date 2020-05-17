@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Az ásó felvételének, illetve az ásóval rendelkezõ játékosok hóréteg ellapátolásának kezelésére szolgáló osztály.
  */
-public class Shovel implements Tool, Drawable {
+public class Shovel implements Tool {
 
     /**
      * Default constructor
@@ -146,7 +146,12 @@ public class Shovel implements Tool, Drawable {
         return Result.NOTHING;
     }
 
-
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban.
+     * @param draw - Draw osztály példánya amelyben implementálva van az ásót kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.shovelDraw(x, y);

@@ -9,7 +9,7 @@ import graphics.Drawable;
  * (ásás, köteles kimentés, búvárruha használatával történõ kimenekülés, sátorépítés)
  * kezelésére szolgáló osztály.
  */
-public interface Tool<abstarct> extends Item, Drawable {
+public interface Tool extends Item, Drawable {
 
 
     /**

@@ -19,10 +19,18 @@ public class PolarBear implements Drawable {
      */
     protected Field actualfield;
 
+    /**
+     * Getter függvény, visszaadja a jegesmedve jelenlegi mezejét.
+     * @return jelenlegi mezõ
+     */
     public Field getActualfield(){
         return actualfield;
     }
 
+    /**
+     * Setter függvény, beállítja a jegesmedve mezejét a paraméterként kapott mezõre.
+     * @param f - a beállítandó mezõ
+     */
     public void setActualfield(Field f){
         actualfield = f;
     }
@@ -32,7 +40,6 @@ public class PolarBear implements Drawable {
      * checkNeighbour(int) függvényét, amíg az nem NULL értékkel tér vissza. Ezt követõen
      * szintén a Field osztály, bár most a leaveField() függvénye kerül meghívásra. Végül
      * pedig a stepOn(PolarBear) metódusa hívódik meg. Amivel visszatér, azzal fog a move() is.
-     *
      * @return Result
      */
     public Result move()
@@ -50,6 +57,12 @@ public class PolarBear implements Drawable {
         return res;
     }
 
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban.
+     * @param draw - Draw osztály példánya amelyben implementálva van a jegesmedvét kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.polarbearDraw(x, y);

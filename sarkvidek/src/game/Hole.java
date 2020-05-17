@@ -26,12 +26,13 @@ public class Hole extends Field implements Drawable {
         return OK;
     }
 
-    public Igloo getProtection(){
-        return null;
-    }
-
-    public Item getItem(){return null;}
-
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban, és
+     * továbbhívja az esetlegesen rajta lévõ objektumok kirajzoló függvényeit.
+     * @param draw - Draw osztály példánya amelyben implementálva van a Hole-t kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         if(this.getSnow() != 0) {
@@ -53,7 +54,6 @@ public class Hole extends Field implements Drawable {
      * DIE-al tér vissza (Az általunk kitalált játékban a jegesmedve állhat lukon is).
      * Ha ezt a vizsgálatot követõen nem keletkezett visszatérési érték, akkor az attribútumként kapott Player példány helpMe()
      * metódusát hívja meg, majd ennek a visszatérési értékével tér vissza a stepOn(Player) függvény is.
-     *
      * @param p erre a mezõre lépõ Player
      * @return Result, hogy sikerült-e kimenteni a játékost.
      */
@@ -65,6 +65,11 @@ public class Hole extends Field implements Drawable {
             return p.helpMe();
     }
 
+    /**
+     * A Field osztályban lévõ absztrakt függvényt valósítja meg. A jegesmedve lyukra lépését végzi.
+     * @param pb - jegesmedve referenciája
+     * @return OK
+     */
     @Override
     public Result stepOn(PolarBear pb)
     {

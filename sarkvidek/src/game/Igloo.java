@@ -4,7 +4,7 @@ import graphics.Draw;
 import graphics.Drawable;
 
 /**
- * Igloo Ã©s sÃ¡tor megkÃ¼lÃ¶nbÃ¶ztetÃ©sÃ©re szolgÃ¡lÃ³ osztÃ¡ly.
+ * Igloo és sátor megkülönböztetésére szolgáló osztály.
  */
 public class Igloo implements Drawable {
 
@@ -15,7 +15,7 @@ public class Igloo implements Drawable {
     }
 
     /**
-     * VirtuÃ¡lis Ã¼res fÃ¼ggvÃ©ny, ami csak visszatÃ©r OK-kal.
+     * Virtuális üres függvény, ami csak visszatér OK-kal.
      *
      * @return OK
      */
@@ -24,7 +24,7 @@ public class Igloo implements Drawable {
     }
 
     /**
-     * TRUE Ã©rtÃ©kkel tÃ©r vissza, mert megvÃ©di a mezÅ‘n tartozkodÃ³ embereket a jegesmedvÃ©tÅ‘l.
+     * TRUE értékkel tér vissza, mert megvédi a mezõn tartozkodó embereket a jegesmedvétõl.
      *
      * @return true
      */
@@ -32,6 +32,12 @@ public class Igloo implements Drawable {
         return true;
     }
 
+    /**
+     * A Drawable interfészbõl implementált függvény. Meghívja a saját magát kirajzoló függvényt a Draw osztályban.
+     * @param draw - Draw osztály példánya amelyben implementálva van az iglut kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     @Override
     public void draw(Draw draw, int x, int y) {
         draw.iglooDraw(x,y);

@@ -9,36 +9,43 @@ import java.util.*;
 import static game.Result.*;
 
 /**
- * A j?t?k elkezd?s?re/inicializ?l?s?ra, befejez?s?re, illetve a k?r?k kezel?s?re szolg?l? oszt?ly.
- * A viharok felt?mad?snak val?sz?n?s?geit, ?s annak lebonyol?t?s?nak kezdet?t is ez az oszt?ly kezeli.
+ * A játék elkezdésére/inicializálására, befejezésére, illetve a körök kezelésére szolgáló osztály.
+ * A viharok feltámadásnak valószínûségeit, és annak lebonyolításának kezdetét is ez az osztály kezeli.
  */
 public class Game {
 
     /**
-     * A j?t?kt?bl?t t?rolja.
+     * A játéktáblát tárolja.
      */
     private GameBoard gameboard = new GameBoard();
 
     /**
-     * Az adott j?t?kosokat t?rol?s?ra szolg?l? t?mb, melynek nagys?ga 3 ?s 6 k?z?tt helyezkedik el
-     * (bele?rtve a hat?rokat is).
+     * Az adott játékosok tárolására szolgáló tömb, melynek nagysága 3 és 6 között helyezkedik el
+     * (beleértve a határokat is).
      */
     private List<Player> players = new ArrayList<>();
 
     /**
-     * A jelz?rak?ta alkot?elemeinek (GUN, FLARE, CHARGE) t?rol?s?ra szolg?l.
+     * A jelzõrakéta alkotóelemeinek (GUN, FLARE, CHARGE) tárolására szolgál.
      */
     private List<FlareGun> flare_gun = new ArrayList<>();
 
+    /**
+     * A játék kezdetén a játékosok kezdõmezeje.
+     */
     private Field startField;
 
+    /**
+     * Kontroller, ami a lenyomott billentyûkkel való vezérlést végzi
+     */
     public Controller controller;
 
     /*
-     * A jegesmedv?t t?rolja
+     * A jegesmedvét tárolja
      * */
     private PolarBear polarbear;
 
+    //Az értesítési sáv értékeit tárolja.
     public String actualPlayer = null;
     public String actualSnow  = null;
     public String actualWork = null;
@@ -46,29 +53,26 @@ public class Game {
     public String examinedField = null;
     public String examinedCapacity = null;
     /**
-     * A j?t?k kezdetekor bek?ri a j?t?kosok sz?m?t majd sorra azoknak a karaktert?pus?t.
-     * L?trehozza a GameBoard-ot, majd megh?vja az oszt?ly init(Player) met?dus?t ?tadva neki a j?t?kosok sz?m?t.
-     * Ezt k?vet?en a bek?rt adatok alapj?n l?trehozza az eszkim?kat illetve a sarkkutat?kat
-     * reprezent?l? oszt?lyokat. V?g?l megh?vja a setActualFields() met?dust.
+     * A játék kezdetekor bekéri a játékosok számát majd sorra azoknak a karaktertípusát.
+     * Létrehozza a GameBoard-ot, majd meghívja az osztály init(Player) metódusát átadva neki a játékosok számát.
+     * Ezt követõen a bekért adatok alapján létrehozza az eszkimókat illetve a sarkkutatókat
+     * reprezentáló osztályokat. Végül meghívja a setActualFields() metódust.
      */
-    public Game() {
-    }
+    public Game() {}
 
+    /**
+     * Setter függvény, beállítja a kapott kontroller példányra az osztály kontrollerét.
+     * @param c - Controller példány
+     */
     public void addController(Controller c){
         controller = c;
     }
 
-    /*A j?t?k kezdetekor bek?ri a j?t?kosok sz?m?t majd sorra azoknak a karaktert?pus?t.
-     * L?trehozza a GameBoard-ot, majd megh?vja az oszt?ly init(int) met?dus?t ?tadva neki a j?t?kosok sz?m?t.
-     * Ezt k?vet?en a GameBoard getStartField() met?dus?nak seg?ts?g?vel lek?ri a j?t?kosok kiindul?si mez?j?t (bal fels?).
-     * Majd a bek?rt adatok alapj?n konstruktorukban ?tadva a kiindul?si mez?j?ket l?trehozza az eszkim?kat,
-     * illetve a sarkkutat?kat reprezent?l? oszt?lyokat.
-     * V?g?l a GameBoard oszt?ly getRandomField() f?ggv?ny?nek visszat?r?s?t ?tadva konstruktorban l?trehozza a Jegesmedv?t,
-     * aminek az ?gy kapott mez? lesz az actualfield-je.
+    /**
+     * Beolvassa a pályát a pályát tartalmazó fájlból, és ez alapján létrehozza a mezõket és beállítja a szomszédokat.
+     * Ezután meghívja a GameBoard initjét, majd beállítja a jegesmedvét.
      */
-    public void init(int n) {  //szin tipus kezdomezo
-
-
+    public void init() {
         ArrayList<String[]> fields = new ArrayList<>();
         ArrayList<String[]> neighbours = new ArrayList<>();
         try {
@@ -92,8 +96,8 @@ public class Game {
         gameboard.init(fields, neighbours);
         startField = gameboard.getStartField();
 
-        Field field;
-        field = gameboard.getRandomField();
+        //A jegesmedve startmezõjét állítja be úgy, hogy az véletlenül se legyen a játékosok startmezeje.
+        Field field = gameboard.getRandomField();
         while(field == startField){
             field = gameboard.getRandomField();
         }
@@ -101,24 +105,31 @@ public class Game {
         field.stepOn(polarbear);
     }
 
+    /**
+     * Hozzáad egy játékost a játékosok tömbjéhez.
+     * @param p - A hozzáadandó játékos.
+     */
     public void addPlayer(Player p) {
         players.add(p);
         startField.stepOn(p);
     }
 
+    /**
+     * Getter függvény, visszaadja a kezdõmezõt.
+     * @return
+     */
     public Field getStartField() {
         return startField;
     }
 
 
     /**
-     * Ciklusban h?vogatja meg a j?t?kosok k?reinek lezajl?s??rt felel?s f?ggv?nyeket.
-     * A ciklus minden lefut?sa sor?n el?sz?r egy adott val?sz?n?s?g alapj?n eld?nti hogy j?n-e vihar.
-     * Ha j?n, akkor megh?vja a Gameboard storm() f?ggv?ny?t (ellenkez? esetben ez a f?ggv?nyh?v?s kimarad).
-     * Ha ez nem DIE-al t?rt vissza, akkor megh?vja a Player oszt?ly round() met?dus?t.
-     * Amennyiben ez b?rmikor DIE vagy WIN visszat?r?si ?rt?ket ad, vagy m?r kor?bban a storm() DIE-al t?rt vissza,
-     * akkor kil?p a ciklusb?l. (Ciklusban marad?shoz OK visszat?r?si ?rt?k kell. NOTHING-nak itt nincs szerepe.).
-     * V?gezet?l az endGame(Result) f?ggv?ny ker?l megh?v?sra .
+     * Ciklusban hivogatja meg a játékosok köreinek lezajlás?áért felelõs függvényeket.
+     * A ciklus minden lefutása során elõször lépteti a jegesmedvét és egy adott valósznûség alapján eldönti hogy jön-e vihar.
+     * Ha jön, akkor meghívja a Gameboard storm() függvényét.
+     * Ha ez nem DIE-al tért vissza, akkor meghívja a Player osztály round() metódusát.
+     * Amennyiben ez bármikor DIE vagy WIN visszatérési értéket ad, vagy már korábban a storm() vagy a jegesmedve DIE-al tért vissza,
+     * akkor kilép a ciklusból. (Ciklusban maradáshoz OK visszatérési érték kell. NOTHING-nak itt nincs szerepe.)
      */
     public Result mainLoop(Frame frame) {
         Result lastResult = NOTHING;
@@ -145,6 +156,11 @@ public class Game {
         return NOTHING;
     }
 
+    /**
+     * Visszaadja a kapott játékos színének stringjét, ez az állapotsávon fog látszani.
+     * @param p - a játékos akinek a színét keressük
+     * @return
+     */
     public String which(Player p) {
         switch (p.getColor()){
             case 'p':
@@ -166,32 +182,33 @@ public class Game {
     }
 
     /**
-     * A players attrib?tumban t?rolt j?t?kosok sz?m?val t?r vissza.
-     *
-     * @return int player sz?ma
+     * A players attribútumban tárolt játékosok számával tér vissza.
+     * @return int player száma
      */
     public int getPlayerNumber() {
         return players.size();
     }
 
+    /**
+     * Getter függvény, visszaadja a GameBoardot.
+     * @return GameBoard objektum
+     */
     public GameBoard getGameboard(){
         return gameboard;
     }
 
 
     /**
-     * A flare_gun attrib?tum ?rt?k?t v?ltoztatja meg, m?gpedig ?gy, hogy hozz?ad egy ?j FlareGun p?ld?nyt a list?hoz.
-     *
-     * @param f hozz?adand? FlareGun r?sz
+     * A flare_gun attribútum értékét változtatja meg, mégpedig úgy, hogy hozzáad egy új FlareGun példányt a listához.
+     * @param f hozzáadandó FlareGun rész
      */
     public void addPart(FlareGun f) {
         flare_gun.add(f);
     }
 
     /**
-     * Megvizsg?lja, hogy a j?t?kosok ?sszegy?jt?tt?k-e a h?rom sz?ks?ges t?rgyat (GUN, FLARE, CHARGE),
-     * teh?t h?rom elemet tartalmaz-e a flare_gun lista. Ha igen, akkor TRUE, m?sk?l?nben FALSE ?rt?kkel fog visszat?rni.
-     *
+     * Megvizsgálja, hogy a játékosok összegyûjtötték-e a három szükséges tárgyat (GUN, FLARE, CHARGE),
+     * tehát három elemet tartalmaz-e a flare_gun lista. Ha igen, akkor TRUE, máskülönben FALSE értékkel fog visszatérni.
      * @return true or false
      */
     public boolean haveAllParts() {

@@ -21,16 +21,14 @@ public abstract class Field implements Drawable {
      */
     protected int snow;
 
+    //A Fielden lévõ tárgy referenciája
     private Item item;
-
-
 
     /**
      * Az adott mezõ teherbíró képességét tárolja el. Stabil jégtábla esetén a max játékosok száma,
      * lyuk esetén pedig nulla az értéke.
      */
     protected int capacity;
-
 
     /**
      * Tárolja a 4 irányban elhelyezkedõ mezõt.
@@ -47,6 +45,12 @@ public abstract class Field implements Drawable {
      */
     protected static PolarBear polarbear;
 
+    /**
+     * Field konstruktora. Beállítja az attribútumait a paraméterként kapott hómennyiségre, kapacitásra és névre.
+     * @param snow - az adott mezõ hómennyisége
+     * @param capacity - az adott mezõ teherbírása
+     * @param name - az adott mezõ neve
+     */
     public Field(int snow, int capacity, String name) {
         this.snow = snow;
         this.capacity = capacity;
@@ -127,6 +131,10 @@ public abstract class Field implements Drawable {
         return OK;
     }
 
+    /**
+     * Getter függvény a hómennyiségre.
+     * @return az adott mezõ hómennyisége
+     */
     public int getSnow(){
         return snow;
     }
@@ -141,6 +149,9 @@ public abstract class Field implements Drawable {
         players.remove(p);
     }
 
+    /**
+     * Amikor a jegesmedve elhagyja a mezõt, akkor beállítja null-ra.
+     */
     public void leaveField() {polarbear.setActualfield(null);}
 
     /**
@@ -182,14 +193,35 @@ public abstract class Field implements Drawable {
         return capacity;
     }
 
+    /**
+     * Absztrakt függvény, a jegesmedve mezõre lépését valósítják meg a leszármazottak.
+     * @param pb - jegesmedve referenciája
+     * @return a medve mezõre lépésének eredménye
+     */
     public abstract Result stepOn(PolarBear pb);
 
+    /**
+     * A mezõ öregítését végzi, azaz a letelt körök függvényében öregíti a pályát.
+     */
     public void aging(){}
 
+    /**
+     * Getter függvény, visszaadja a mezõn lévõ iglu vagy sátor referenciáját.
+     * @return iglu vagy sátor referenciája
+     */
     public Igloo getProtection(){return null;}
 
+    /**
+     * Getter függvény, visszaadja a mezõn lévõ Item referenciáját.
+     * @return Item referencia
+     */
     public Item getItem(){return null;}
 
+    /**
+     * Absztrakt függvény. A Drawable interfészbõl implementált függvény.
+     * @param draw - Draw osztály példánya amelyben implementálva van a mezõket kirajzoló függvény.
+     * @param x - kirajzolás helyének X koordinátája
+     * @param y - kirajzolás helyének Y koordinátája
+     */
     public abstract void draw(Draw draw, int x, int y);
-
 }

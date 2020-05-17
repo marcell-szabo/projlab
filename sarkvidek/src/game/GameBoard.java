@@ -19,19 +19,17 @@ public class GameBoard {
     public GameBoard() {
     }
 
-    public void asdf() {
-        for (int i = 0; i < fields.size(); i++) {
-            System.out.print("teherbírás: " + fields.get(i).getCapacity());
-            System.out.println("hó: " + fields.get(i).getSnow());
-        }
-    }
-
+    /**
+     * Getter függvény, visszaadja a játéktábla mezõit.
+     * @return játéktábla mezõi
+     */
     public List<Field> getFields() {
         return fields;
     }
 
     /**
-     * A már elkészített Field-eknek beállítja a szomszédait a fields tömb alapján.
+     * Beállítja a mezõk szomszédait.
+     * @param neighbours - a mezõk szomszédai
      */
     public void setNeighbours(List<String[]> neighbours) {
         for (String[] i : neighbours) {
@@ -47,7 +45,6 @@ public class GameBoard {
 
     /**
      * Visszatér a bal felsõ sarokban lévõ Field referenciájával. (Errõl a mezõrõl fognak elindulni a játékosok).
-     *
      * @return Field-bal felsõ
      */
     public Field getStartField() {
@@ -58,7 +55,6 @@ public class GameBoard {
      * Eldönti egy adott valószínûség alapján minden egyes mezõre, hogy ott jön-e vihar.
      * Ha jön, akkor meghívja annak a mezõnek(Field) a storm() függvényét. Futás végén,
      * ha legalább egy mezõ storm() függvénye DIE-al tért vissza, akkor õ is DIE-al fog, különben pedig OK-kal.
-     *
      * @return DIE or OK
      */
     public Result storm() {
@@ -73,6 +69,12 @@ public class GameBoard {
         return s_result;
     }
 
+    /**
+     * Inicializálja a játéktáblát, az attribútumként kapott fieldsinput és neighbour stringtömb listák alapján létrehozza
+     * és beállítja az egyes mezõket és azok tulajdonságait.
+     * @param fieldsinput - a mezõket leíró bemeneti nyelv parancsai
+     * @param neighbour - a mezõ szomszédos mezõi
+     */
     public void init(List<String[]> fieldsinput, List<String[]> neighbour) {
         for (String[] s : fieldsinput) {
             if (Integer.parseInt(s[2]) == 0)
@@ -114,10 +116,17 @@ public class GameBoard {
         setNeighbours(neighbour);
     }
 
+    /**
+     * Getter függvény, visszaad egy random mezõt a játéktábláról.
+     * @return random mezõ
+     */
     public Field getRandomField() {
         return fields.get(new Random().nextInt(fields.size()));
     }
 
+    /**
+     * Öregíti a játéktáblát.
+     */
     public void aging() {
         for (Field f : fields)
             f.aging();
