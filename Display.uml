@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Display</OriginalElement>
+  <nodes>
+    <node x="39.499999999999986" y="306.0">controller.Controller</node>
+    <node x="192.48809523809524" y="102.0">graphics.Drawable</node>
+    <node x="107.24999999999999" y="0.0">graphics.Draw</node>
+    <node x="81.48809523809523" y="204.0">Display.Frame</node>
+    <node x="0.0" y="408.0">controller.KeyboardEventHandler</node>
+    <node x="77.48809523809523" y="102.0">Display.Screen</node>
+    <node x="185.5" y="306.0">Display.MainScreen</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Display.MainScreen" target="Display.Frame">
+      <point x="0.0" y="-26.0" />
+      <point x="248.5" y="281.0" />
+      <point x="157.61309523809524" y="281.0" />
+      <point x="32.625" y="26.0" />
+    </edge>
+    <edge source="Display.Frame" target="controller.Controller">
+      <point x="10.875" y="26.0" />
+      <point x="135.86309523809524" y="281.0" />
+      <point x="144.5" y="281.0" />
+      <point x="42.0" y="-26.0" />
+    </edge>
+    <edge source="Display.Frame" target="Display.Screen">
+      <point x="-21.75" y="-26.0" />
+      <point x="103.23809523809523" y="179.0" />
+      <point x="101.23809523809523" y="179.0" />
+      <point x="-23.75" y="26.0" />
+    </edge>
+    <edge source="controller.Controller" target="Display.Frame">
+      <point x="-42.0" y="-26.0" />
+      <point x="60.499999999999986" y="281.0" />
+      <point x="92.36309523809523" y="281.0" />
+      <point x="-32.625" y="26.0" />
+    </edge>
+    <edge source="graphics.Drawable" target="graphics.Draw">
+      <point x="0.0" y="-26.0" />
+      <point x="247.98809523809524" y="77.0" />
+      <point x="173.91666666666666" y="77.0" />
+      <point x="26.66666666666667" y="26.0" />
+    </edge>
+    <edge source="controller.KeyboardEventHandler" target="controller.Controller">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="Display.Screen" target="graphics.Draw">
+      <point x="23.75" y="-26.0" />
+      <point x="148.73809523809524" y="77.0" />
+      <point x="147.25" y="77.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="132.88075958710067" y="152.77802320659077" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

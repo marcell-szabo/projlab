@@ -1,0 +1,128 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23_[Default_Changelist]/shelved.patch	(revision 70b2ff9eb37043395e14861298c930af6f8b8e5c)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23_[Default_Changelist]/shelved.patch	(revision 70b2ff9eb37043395e14861298c930af6f8b8e5c)
+@@ -1,113 +0,0 @@
+-Index: src/gui/ImageResoucres.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package gui;\n\nimport javax.imageio.ImageIO;\nimport javax.swing.*;\nimport java.awt.image.BufferedImage;\nimport java.io.IOException;\n\npublic class ImageResoucres {\n    public final ImageIcon hole = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/hole.png\");\n    public final ImageIcon holepb = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/holepb.png\");\n    public final ImageIcon snow = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/snow.png\");\n    public final ImageIcon ice = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/ice.png\");\n    public final ImageIcon tentice = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/tentice.png\");\n    public final ImageIcon tentsnow = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/tentsnow.png\");\n    public final ImageIcon iglooice = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/iglooice.png\");\n    public final ImageIcon igloosnow = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/igloosnow.png\");\n    public final ImageIcon sea = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/sea.png\");\n    public final ImageIcon bear = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/bear.png\");\n    public final ImageIcon exb = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exb.png\");\n    public final ImageIcon exg = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exg.png\");\n    public final ImageIcon exo = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exo.png\");\n    public final ImageIcon exp = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exp.png\");\n    public final ImageIcon exr = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exr.png\");\n    public final ImageIcon exy = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/exy.png\");\n    public final ImageIcon esb = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esb.png\");\n    public final ImageIcon esg = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esg.png\");\n    public final ImageIcon eso = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/eso.png\");\n    public final ImageIcon esp = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esp.png\");\n    public final ImageIcon esr = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esr.png\");\n    public final ImageIcon esy = new ImageIcon(\"/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esy.png\");\n\n    public ImageResoucres(){\n    }\n}\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1250
+-===================================================================
+---- src/gui/ImageResoucres.java	(revision f40fc40a846236e54d0312d90d3b73fc8e8b1751)
+-+++ src/gui/ImageResoucres.java	(date 1588536802121)
+-@@ -28,7 +28,6 @@
+-     public final ImageIcon esp = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esp.png");
+-     public final ImageIcon esr = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esr.png");
+-     public final ImageIcon esy = new ImageIcon("/Users/kinga/IdeaProjects/projlab/sarkvidek/src/textures/esy.png");
+--
+-     public ImageResoucres(){
+-     }
+- }
+-Index: src/gui/Application.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package gui;\n\nimport game.Game;\nimport javax.swing.*;\nimport java.awt.*;\n\n\npublic class Application {\n    private JFrame frame;\n    private JPanel panel;\n    int i = 10, j = 14;\n    JLayeredPane layers;\n    ImageResoucres imageResoucres = new ImageResoucres();\n    Game game;\n\n    public Application(){\n        initialize();\n        game = new Game();\n        new MainScreen(this, game);\n    }\n\n    private void initialize() {\n        frame = new JFrame();\n        frame.setResizable(false);\n        frame.setBounds(100, 100, 840, 600);\n        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n        frame.setVisible(true);\n\n        layers = new JLayeredPane();\n        layers.setPreferredSize(new Dimension(840,600));\n        layers.setLayout(new GridLayout(i, j));\n\n        frame.add(layers);\n    }\n\n    public void draw(){\n        JLabel[] seaArray = new JLabel[140];\n\n        for(int m = 0; m < i; m++) {\n            for (int n = 0; n < j; n++) {\n                layers.add(new JLabel(imageResoucres.sea),1, 0);\n                layers.add(new JLabel(imageResoucres.esp), 1, 1);\n            }\n        }\n\n\n        frame.add(layers);\n\n        frame.repaint();\n        frame.revalidate();\n    }\n\n}\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1250
+-===================================================================
+---- src/gui/Application.java	(revision f40fc40a846236e54d0312d90d3b73fc8e8b1751)
+-+++ src/gui/Application.java	(date 1588539002143)
+-@@ -9,6 +9,7 @@
+-     private JFrame frame;
+-     private JPanel panel;
+-     int i = 10, j = 14;
+-+    private Cell[][] cell =  new Cell[10][10];
+-     JLayeredPane layers;
+-     ImageResoucres imageResoucres = new ImageResoucres();
+-     Game game;
+-@@ -26,25 +27,32 @@
+-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-         frame.setVisible(true);
+- 
+--        layers = new JLayeredPane();
+-+        /*layers = new JLayeredPane();
+-         layers.setPreferredSize(new Dimension(840,600));
+--        layers.setLayout(new GridLayout(i, j));
+-+        layers.setLayout(new GridLayout(i, j));*/
+- 
+--        frame.add(layers);
+-+        panel = new JPanel();
+-+        panel.setLayout(new GridLayout(i,j));
+-+        frame.add(panel);
+-     }
+- 
+-     public void draw(){
+--        JLabel[] seaArray = new JLabel[140];
+-+        for(int m = 0; m < i; m++) {
+-+            for (int n = 0; n < j; n++) {
+-+                label[m][n] = new JLabel();
+-+                panel.add(label[m][n]);
+-+            }
+-+        }
+- 
+-         for(int m = 0; m < i; m++) {
+-             for (int n = 0; n < j; n++) {
+--                layers.add(new JLabel(imageResoucres.sea),1, 0);
+--                layers.add(new JLabel(imageResoucres.esp), 1, 1);
+-+                panel = (label[m][n].add(new JLabel(imageResoucres.sea)));
+-             }
+-         }
+- 
+-+        //panel.add(new JLabel(imageResoucres.esp));
+- 
+--        frame.add(layers);
+-+        frame.add(panel);
+- 
+-         frame.repaint();
+-         frame.revalidate();
+-Index: src/gui/BoardView.java
+-===================================================================
+---- src/gui/BoardView.java	(revision f40fc40a846236e54d0312d90d3b73fc8e8b1751)
+-+++ src/gui/BoardView.java	(revision f40fc40a846236e54d0312d90d3b73fc8e8b1751)
+-@@ -1,4 +0,0 @@
+--package gui;
+--
+--public class BoardView {
+--}
+-Index: src/gui/Cell.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1250
+-===================================================================
+---- src/gui/Cell.java	(date 1588539201381)
+-+++ src/gui/Cell.java	(date 1588539201381)
+-@@ -0,0 +1,22 @@
+-+package gui;
+-+
+-+import javax.swing.*;
+-+import java.awt.*;
+-+
+-+public class Cell extends JPanel {
+-+    //Indicate the row and column of this cell in the board
+-+    private int GridRow;
+-+    private int GridColumn;
+-+    ImageResoucres imageResoucres = new ImageResoucres();
+-+
+-+
+-+    public Cell(int GridRow, int GridColumn) {
+-+
+-+        this.GridRow = GridRow;
+-+        this.GridColumn = GridColumn;
+-+
+-+        setBackground(imageResoucres.sea);
+-+
+-+    }
+-+}
+-+
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23__Default_Changelist_.xml	(revision 70b2ff9eb37043395e14861298c930af6f8b8e5c)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23__Default_Changelist_.xml	(revision 70b2ff9eb37043395e14861298c930af6f8b8e5c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2020__05__04__11_23_[Default_Changelist]" date="1588584190516" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020__05__04__11_23_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2020. 05. 04. 11:23 [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
